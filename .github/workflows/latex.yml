@@ -30,7 +30,7 @@ jobs:
 
         # Больше параметров в офф. документации
 
-        working_directory: /
+        working_directory: ./
 
         # Аргументы, к которыми запускать компилятор (latexmk)
 
@@ -56,4 +56,4 @@ jobs:
 
         # Здесь это <working_directory>/<jobname>.pdf
 
-        path: /result.pdf
+        path: ./result.pdf
