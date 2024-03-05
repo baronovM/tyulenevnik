@@ -1,0 +1,114 @@
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\G}{\mathcal{G}}
+
+
+\newpage
+
+
+\section{Многообразия}
+\setlength{\epigraphwidth}{0.5\textwidth}
+\epigraph{\normalsize{Что-то у вас взгляд отсутствующий. \\Вы поняли что я сказал?}}{\large{© А. И. Тюленев}}
+\begin{definition}
+    Пусть $m \in \N$, $1 \leq k \leq m$. Пусть зафиксировано $r \in \N \cup \{+\infty \}$. Будем говорить что множество $\M \in \R^{n}$ является простым многообразием, если:
+    \begin{enumerate}
+        \item $\exists U \in \R^k$ и $\exists \Phi: U \mapsto \M$(называемое параметризацией многообразия), которое является гомеоморфизмом $U$ на $\M$
+        \item $\forall t^0 \in U$, $rank(\D_{t^0}\Phi) = k$
+    \end{enumerate}
+    Если при этом $\Phi \in C^{r}(U, \R^m)$, то говорят что параметризация $r$ - гладкая, а само множество называется $k$-мерным, $r$-гладким многообразием\\
+    Если $k = m$, то $\M$ - открытое множестов в $\R^{m}$\\
+    Если $k=1$, то получается определение $r$-гладкой кривой
+\end{definition}
+
+\begin{example}
+    Афинное пространство.
+    Пусть $\overline{e_1},...,\overline{e_k}$ - линейно независимые вектора в $\R^m$.
+
+    $\mathcal{L} = \{ x\in \R^m: x = \overline{h} + \sum_{t=1}^{k} t_i \cdot \overline{e_i}, t_i \in \R \}$
+    $\mathcal{L} - k$-мерное, $\infty$-гладкое многообразие в $\R^m$
+\end{example}
+
+\begin{example}
+Функция графика. Пусть $U\subset \R^k,$ и $f: U \mapsto R^{m-k}$, ($k<m$)
+    Тогда $\Phi = \begin{pmatrix}
+  t\\
+  f(t)
+\end{pmatrix}$ -многообразие
+
+Докажем по определению:
+\begin{enumerate}
+    \item Рассмотрим отображение $\overline{\Phi}: \R^n \mapsto \R^m$, которое продолжает отображение:
+    $\overline{\Phi}(t, z) = (t, z + f(t))$
+    $\overline{\Phi}^{-1}(t, z) = (t, z - f(t))$
+
+    Если $f$ непрерывно, то $\overline{\Phi}$ и $\overline{\Phi^{-1}}$ непрерывны
+\end{enumerate}
+Но $\overline{\Phi}(t, 0) = \Phi$, $\Phi^{-1}(t, f(t)) = \Phi$, значит это гомеоморфизм
+\end{example}
+
+СУКА ДОПИСАТЬ БЛЯТЬ
+
+\begin{lemma}
+    Определение простого $r$-гладкого многообразия корректно в следующем смысле:
+\end{lemma}
+
+\begin{proof}
+    Если $\Phi \in C^r(U, \R^m), U \subset \R^k$ - открытое, $U'\subset \R^{k'}$ и $rank(\D_{t}\Phi) = k, \ \forall t \in U$
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{definition}
+    Пусть $m \in \N, \ k \in \{ 1,\dots, m\}$, $r \in \N \cup \{+\infty \}$. Множество $\M \in \R^{m} $ называется $k$-мерным $r$-гладким многообразием, если $\forall p \in \M \ \exists$ окрестность $U(p) \subset \R^{m}$ такой, что $U(p) \cap \M$ является простым $k$-мерным $r$-мерным многообразием. 
+\end{definition}
+
+\begin{example}
+    Сфера в $\R^{k}$. Не является простым многообразием, но является $k$-мерным $\inf$-гладким многообразием. 
+
+    \noindent $x^2 + y^2 + z^2 = 1$ -- компакт.
+    
+    \textbf{НУЖНА КАРТИНКА СФЕРЫ}
+\end{example}
+
+\begin{theorem}[Эквивалентные определения многообразия]
+Пусть $\M \subset \R^m, m \in \N, r \in \N \cup \{+ \infty \}$. Пусть $p \in \M$.
+Следующие условия эквивалентны: 
+\begin{enumerate}
+    \item $\exists V(p) \subset \R^m$ -- окрестность точки $p$, такая что $\mathcal{V}(p) \cap \M$ является простым $k$-мерным $r$-гладким многообразием 
+    \item $\exists$ множество $\G \subset R^m$ - открытое, и диффеоморфизм $\Theta: \G \mapsto \Theta(\G)$, такое что $p \in \Theta(\G)$ и $\Theta(\G) \cap \M = \Theta(\G \cap \R^k)$
+    \item Существует открытая окрестнсть $U(p) \in \R^m$ и такие определенные в ней функции $F_{1}, \dots , F_{m-k} \in C^{r}(U(p), R)$, такие, что $\forall x \in \M$ выполнено:
+    $$x \in \M \Longleftrightarrow F_{1}(x) = \dots = F_{m-k} = 0$$
+    А также векторы \{$grad F_1(p),\dots, \ grad F_{m-k}(p)\}$ линейно не зависимы
+    \item Существует такая окрестность $W(p) \subset \R^m$, что пересе
+чение $\M \cap W$ представляет собой график (в широком смысле) некото-
+рого отображения класса $C^r$ , определённого в k-мерной области
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Проведем доказательство в формате $(1) \Longrightarrow (2) \Longrightarrow (3) \Longrightarrow (4)$
+
+    $(1) \Longrightarrow (2)$ Существует $\Phi$ - гомеоморфизм, $\Phi \in C^{r}(U. \R^m)$ и $\Phi(U)= W(p) \cap \M$ и $\forall t \in U$ $rank\D \Phi(t) = k$. Пусть $\Phi(t^0) = p$
+    По теореме о продолжении до диффеоморфизма $\exists \Theta := \overline{\Phi}$.
+    Существует открытое $\G(t^0) \in \R^m$, такое что $\overline{\Phi} \in C^{1}(\G(t^0), \R^m)$. Получается что $\overline{\Phi}$ - диффеоморфизм $\G(t^0)$, тогда $\overline{\Phi}(\G(t^0))$ (ТУТ НЕ ПОНЯТНО)
+
+    $\Theta(\G \cap \R^k) \$
+\end{proof}

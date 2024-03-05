@@ -1,0 +1,44 @@
+\subsubsection{Теорема о локальном диффеаморфизме}
+\begin{theorem} (Теорема Лагранжа о среднем). \;
+    Пусть отображение $F \in \DIF(B_\delta (x^0) {\scriptstyle \subset \R^m},\ \R^n)$. Тогда $\forall y, z \in B_\delta (x^0)\; \exists \theta \in (0, 1)l$ т.ч.
+
+    $\|F(y) - F(z)\| \leqslant \|DF(y + \theta(z - y)\| \|y - z\|$
+\end{theorem}
+\begin{proof}
+
+
+    Т. к. шар — выпуклое мн-во, то $[y, z] = \{x = y + t(z - y) : t \in [0, 1]\} \subset B_\delta(x^0)$
+
+    Рассмотрим отображение $f(t) = F(y + t(z - y))$
+
+    Получим отображение $f: [0, 1] \mapsto \R^n$.
+
+    По теореме о композиции дифференцируемого отображения, $f$ является дифференцируемым отображением и $f'(t) = DF(y + t(z - y)) \cdot (z - y)$
+
+    По т. Лагранжа о среднем для ф-ии $f$
+
+    $\exists \theta \in (0, 1)$ т. ч.
+
+    $\|f(1) - f(0)\| \leqslant \|f'(\theta)\|(1 - 0) = \|DF(y + \theta(z - y))(z - y)\| \leqslant \|DF(y + \theta(z - y)\|$
+\end{proof}
+\begin{theorem}
+    Пусть $F \in C^1(\Omega, \R^m), \Omega \subset \R^m$. Пусть $J_F(x^0) \neq 0,$ где $x^0 \in \Omega$
+
+    Тогда $\exists U \subset \Omega: U \ni x^0,$ F осуществляет диффеоморфизм $U$ на $F(u)$.
+    \begin{note}
+        $J_F(x^0) := \det \mathrm{DF}(x^0)$, называется Якобиан
+    \end{note}
+\end{theorem}
+\begin{proof}
+    т. к. $J_F(x^0) \neq 0 \Longleftrightarrow обратимость отображения DF(x^0)$.
+
+    $\implies \exists$ "малый" шар $B_\delta(x^0)$ т. ч.
+
+    $J_F(x) \neq 0 \quad \forall B_\delta(x^0)$
+
+    т. к. $DF(x^0) \text{ обратима, то } \|DF(x^0)x\| \geqslant \|DF(x^0)^{-1}\| \|x\|$
+
+    $C := \|DF(x^0)^{-1}\|$
+
+    т.к. $F \in C^1(\Omega, \R^m)$, то матрица Якоби непрерывна как ф-ия точки x.
+\end{proof}
