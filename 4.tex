@@ -1,0 +1,214 @@
+\begin{definition}
+    Пусть $\Omega \subset \R^n$~---~открытое непустое множество, $k \in \N$. Назовём $\DIF^{k} (\Omega)$ \textit{множество всех $k$ раз дифференцируемых в каждой точке $\Omega$ функций}.
+\end{definition}
+
+\begin{note}
+    Заметим, что это линейное пространство.
+\end{note}
+
+\begin{definition}
+    Пусть $\Omega \subset \R^n$~---~открытое непустое множество, $F$: $\Omega \mapsto \R$ является $k$ раз дифференцируемой в точке $x^{0} \in \Omega$. \textit{Дифференциалом} $k$-го порядка назовём дифференциал $(k-1)$-го порядка, то есть $\forall k \in \N$ $\displaystyle d_{x^{0}}^{k} [F] = d \left[d_{x^{0}}^{k-1} \right]$, при этом $d_{x_i}$ считаются фиксированными в случае $(k-1)$.
+
+    \textit{Дифференциалом нулевого порядка} будем считать саму функцию.
+\end{definition}
+
+\begin{lemma}
+    Пусть $F$: $\Omega \mapsto \R$ $k$ раз дифференцируемо в точке $x^{0} \in G$. Тогда
+    $$\displaystyle d_{x^0}^{k} F (dx) = \sum\limits_{i_1 = 1}^{n} \ldots \sum\limits_{i_k = 1}^{n} \frac{\partial^{k} F (x^0)}{\partial x_{i_k} \ldots \partial x_{i_1}} dx_{i_1} \ldots dx_{i_k}.$$
+\end{lemma}
+
+\begin{proof}
+    Доказательство по индукции.
+
+    База: $k = 1$ получаем выражения для записи первого дифференциала.
+
+    Шаг: пусть верно для $k = l$, докажем для $l + 1$.
+
+    $$d_{x^0}^{l + 1} F (dx) = d_{x^{0}} \left( d_{x^{0}}^{l} F (dx)\right) = d_{x^{0}} \left( \sum\limits_{i_1 = 1}^{n} \ldots \sum\limits_{i_l = 1}^{n} \frac{\partial^{l} F (x^0)}{\partial x_{i_l} \ldots \partial x_{i_1}} dx_{i_1} \ldots dx_{i_l}\right) \quad (*)$$
+    По линейности дифференциала получаем $(*) = \sum\limits_{i_1 = 1}^{n} \ldots \sum\limits_{i_l = 1}^{n} d_{x^{0}} \left(\frac{\partial^{l} F (x^0)}{\partial x_{i_l} \ldots \partial x_{i_1}} dx_{i_1} \ldots dx_{i_l}\right) = $
+    $= \sum\limits_{i_1 = 1}^{n} \ldots \sum\limits_{i_l = 1}^{n} \sum\limits_{i_{l+1} = 1}^{n}\frac{\partial^{l+1} F (x^0)}{\partial x_{i_{l+1}}\partial x_{i_l} \ldots \partial x_{i_1}} dx_{i_1} \ldots dx_{i_l} dx_{i_{l + 1}}$, чего мы и хотели, так как порядок суммирования мы можем менять.
+\end{proof}
+
+\begin{note}
+    Если все частные производные $k$-го порядка оказались непрерывны в какой-то точке $x^{0} \in \Omega$, то 
+    $$ \cfrac{\partial^{k} F (x^{0})}{\partial x_{i_1} \ldots \partial x_{i_k}} = \cfrac{\partial^{k} F (x^{0})}{\partial x_{\sigma(i_1)} \ldots \partial x_{\sigma(i_k)}},$$
+    где $\sigma$~---~произвольная перестановка индексов $i_{1}, \ldots, i_{k}$. Тогда выражение для $d_{x^0}^{k} F (dx)$ можно переписать в более компактном виде.
+\end{note}
+
+
+\begin{definition}
+    Пусть $\alpha \in \N_{0}^{n}$, то есть, $\alpha = (\alpha_1, \alpha_2, \dots \alpha_n)$, где $\alpha_i \in \N_{0}, i \in \{1, 2, \dots n\}$. Также определим $|\alpha| = \sum_{i = 1}^n \alpha_i$. Тогда будем называть мультииндексным обозначением
+    \[D^\alpha F(x^0) := \frac{\partial^{|\alpha|} F}{\partial^{\alpha_1}x_1 \cdot \partial^{\alpha_2} x_2 \dots \partial^{\alpha_n}x_n}\]
+\end{definition}
+
+\begin{note} 
+    Теперь можно переписать $k$-ый дифференциал в болле компактном виде.
+    Пусть $F$ имеет все производные $k$-ого порядка непрерывные в точке $x^{0}$. Тогда \[d_{x^0}^k F(d x) = \sum_{|\alpha| = k} C_{\alpha} D^{\alpha} F(x^0) dx^{\alpha}\]
+    где $C_{\alpha} = \frac{k!}{\alpha_1! \cdot \alpha_2! \dots \alpha_n!}$ и $dx^{\alpha} = (dx_1)^{\alpha_1} \cdot (dx_2)^{\alpha_2} \dots (dx_n)^{\alpha_n}$
+    
+\end{note}
+
+\subsection{Линейные операторы и их нормы}
+
+\begin{definition}
+    Пусть $E_1$, $E_2$~---~линейные пространства. 
+    Отображение $A$: $E_1 \mapsto E_2$~---~\textit{линейный оператор} или \textit{линейное отображение} (или \textit{гомоморфизм}) из $E_1$ в $E_2$, \\
+    если выполнено \[A(\alpha x + \beta y) = \alpha A(x) + \beta A(y), \hspace{0.5cm} \forall \alpha, \beta \in \R \hspace{0.2cm} \forall x, y \in E_1\]
+\end{definition}
+
+\begin{note}
+    Множество всех линейных операторов из $E_1$ в $E_2$ можно само наделить структурой линейного пространства, \\
+    \begin{flalign*}
+        \text{если для } A: E_1 &\mapsto E_2 \text{~---~линейный оператор} && \\ 
+        B: E_1 &\mapsto E_2 \text{ - линейный оператор} &&
+    \end{flalign*}
+    введем $(A+B) (x) := A(x) + B(x) \hspace{0.2cm} \forall x \in E_1$ \\ 
+    и для $\alpha \in \R$: $(\alpha A)(x) := \alpha \cdot A(x) \hspace{0.2cm} \forall x \in E_1$
+\end{note}
+
+\begin{definition}
+    Пусть $E_1$, $E_2$~---~линейное нормированное пространство, \\ $A$: $E_1 \mapsto E_2 $~---~линейный оператор и определим его норму как 
+    \[ \|A\| = \sup_{x \neq 0}{\frac{\|A(x)\|_{E_2}}{\|x\|_{E_1}}} \in [0, +\inf] \]
+
+    Если $\|A\| < +\infty$, то $A$ называют \textit{ограниченным линейным оператором} из $E_1$ в $E_2$.
+\end{definition}
+
+\begin{note}
+    Не очень ясно как считать супремум по всем $x \neq 0$. Преобразуем $\frac{\|A(x)\|_{E_2}}{\|x\|_{E_1}}$ следующим образом, используя свойство нормы (заносить неотрицательный на скаляр под нее): \\
+    \[ \frac{\|A(x)\|_{E_2}}{\|x\|_{E_1}} = \bigg\|\frac{1}{\|x\|_{E_1}} \cdot A(x) \bigg\|_{E_2} = \] 
+    Далее, используя линейность оператора можно занести скаляр в $A(x)$
+    \[ = \bigg\|A \left( \frac{x}{\|x\|_{E_1}} \right) \bigg\|_{E_2} \]
+    Теперь же заметим, что $\bigg\| \frac{x}{\|x\|_{E_1}} \bigg\|_{E_1} = 1 \Longrightarrow $ \\ $\Longrightarrow $ если $x$ пробегает все $E_1 \setminus 0$, то $ \frac{x}{\|x\|_{E_1}} $ пробежит единичную сферу в $E_1$.
+
+    \[ \sup_{x \neq 0} \frac{\|A(x)\|_{E_2}}{\|x\|_{E_1}} = \sup_{x \neq 0} \bigg\|\frac{1}{\|x\|_{E_1}} \cdot A(x) \bigg\|_{E_2} = \sup_{x \neq 0} \bigg\|A \left( \frac{x}{\|x\|_{E_1}} \right) \bigg\|_{E_2} = \sup_{x \in S_1^{E_2}(0)}{\|A(x)\|}\] 
+
+\end{note}
+
+\begin{definition}
+    Ядром линейного оператора называется множество элементов которые переходят в 0. Обозначается $Ker A$ для оператора $A$. \\
+    Ядро линейного оператора образует \textit{линейное подпространство}. \\ 
+    Если подпространство совпадает с линейным пространством, то такой оператор называется \textit{нулевым}.
+\end{definition}
+
+\begin{theorem}
+    Множество всех ограниченных линейных операторов из $E_1$ в $E_2$ (каждое из которых линейное нормированные пространство) имеет естественную структуру линейного нормированного пространства. \\
+    Учитывая обозначения современного функционального анализа: \[\mathcal{L}(E_1, E_2) - \text{л. н. п. всех ограниченых линейных операторов из $E_1$ в $E_2$}\]
+\end{theorem}
+
+\begin{proof}
+    Проверим каждое из условий линейного нормированного пространства:   
+    \begin{enumerate} 
+        \item 
+        Оператор нулевой тогда и только тогда, когда его норма равна нулю.
+    
+        Если $A \equiv 0$, то $\|A\| = 0$. 
+        
+        Если $\| A \| = 0$, то $0 \leq A(x) \leq \frac{\|A(x)\|}{\|x\|} \cdot \|x\| \leq \|A\| \cdot \|x\| = 0$ $\Rightarrow \| A(x) \| = 0 \Rightarrow \\ \Rightarrow A(x) = 0 \Rightarrow Ker A = E_1 \Rightarrow A$ - тождественно нулевой оператор.
+
+        Нулевой оператор выполняет роль нуля в линейном пространстве всех \textit{линейных операторов}.
+        \item $\| \alpha A \| = \sup_{x \neq 0}{\frac{\|\alpha A(x)\|}{\|x\|}} = |\alpha| \sup_{x \neq 0}{\frac{\|A(x)\|}{\|x\|}} = |\alpha| \cdot \|A\|$
+        \item Проверим же теперь неравенство треугольника.\\
+        $\| A + B \| = \sup_{x \neq 0}{\frac{\| A(x) + B(x) \|}{\|x\|}} \leq \sup_{x \neq 0}{\frac{\|A(x)\| + \|B(x)\|}{\|x\|}} \leq \sup_{x \neq 0}{\frac{\|A\|}{\|x\|}} + \sup_{x \neq 0}{\frac{\|B(x)\|}{\|x\|}} = \\ = \|A\| + \|B\|$
+    \end{enumerate}
+\end{proof}
+
+\begin{note}
+    Неограниченные операторы бывают только в бесконечно мерных пространствах.
+\end{note}
+
+\begin{note}
+    Геометрический смысл нормы оператора: \\
+    $\|A\| = \sup_{x \neq 0}{\frac{\|A\|_{E_2}}{\|x\|_{E_1}}}$ - "макс" искажение длины при линейном отображении.
+\end{note}
+
+\begin{lemma}
+    $A \in \mathcal{L}(E_1, E_2)$, то $\forall x \in E_1$ справедлива оценка:
+    \[\|A(x)\|_{E_2} \leq \|A\| \cdot \|x\|_{E_1}\]
+\end{lemma}
+
+\begin{proof}
+    При $x = 0$ обе части обращаются в ноль и доказывать нечего.
+
+    При $x \neq 0$, то $\|A(x)\|_{E_2} = \frac{\|A(x)\|_{E_2}}{\|x\|_{E_1}} \cdot \|x\|_{E_1} \leq \sup_{x \neq 0}{\frac{\|A(x)\|_{E_2}}{\|x\|_{E_1}}} \cdot \|x\|_{E_1} = \|A\| \cdot \|x\|_{E_1} $
+\end{proof}
+
+
+\begin{note}
+    Рассмотрим пример неограниченного линейного оператора.
+    
+    $E_1$ - линейное пространство всех непрерывно дифференцируемых на $[0, 1]$ функций с нормой: 
+    \[\|f \| = \sup_{x \in [0; 1]}{|f(x)|} = \max_{x \in [0; 1]}{|f(x)|}\] 
+
+    $E_2$ - линейное пространство всех непрервных на $[0; 1]$ функций с нормой $\|g\| = \max_{x \in [0; 1]}{|g(x)|}$
+
+    $A: \frac{d}{dx}$ - оператор дифференцирования функций из $E_1$ в $E_2$.
+    Посчитаем его норму по определению:
+
+    \[\| A \| = \sup_{f \neq 0}{\frac{\max_{x \in [0; 1]}{\frac{df}{dx}}}{\max_{x \in [0; 1]}{|f(x)|}}} \geq \sup_{n \in \N}{\frac{\max_{x \in [0; 1]}{|\frac{df_n}{dx}(x)}|}{\max_{x \in [0; 1]}{|f_n(x)|}}} = \sup_{n \in N} n = +\infty\]
+
+    где $f_n(x) = sin(nx)$, $f'_n(0) = n$, $\max_{x \in [0; 1]}{|f'_n(x)|} = n$, $\max_{x \in [0; 1]}{|f_n(x)|} = 1$
+\end{note}
+
+
+\begin{theorem}
+    Если $E_1 \subset \R^n, E_2 \subset \R^m$~---~линейные нормированные пространства с евклидовой нормой, то любой линейный оператор $A: E_1 \mapsto E_2$~---~ограниченный.
+\end{theorem}
+
+\begin{proof}
+    Пусть $\{ e_1, e_2, \dots e_n \}$~---~базис в $E_1$
+
+    $A \rightarrow$ соотвествующая матрица оператора в этом базисе.
+
+    $m$~---~ размерность в $E_2$, $A(e_i)$~---~ $i$-ый столбец матрицы $A$.
+    
+    Разложение $x = \sum_{i = 1}^n x_i \cdot e_i$ в $E_1$.
+     \[A(x) = A( \sum_{i = 1}^n x_i \cdot e_i ) = \sum_{i = 1}^n x_i \cdot A(e_i) \leq \sum_{i = 1}^n \| x_i \cdot A(e_i) \| = \sum_{i = 1}^n |x_i| \|A(e_i)\| \leq \] \[ \leq \text{по неравеству Коши-Буняковского} \leq \left (\sum_{i = 1}^n {x_i^2} \right)^{1/2} \cdot \left(\sum_{i = 1}^n {\|A e_i\|}^2 \right)^{1/2} \]
+
+     Заметим, что $\left(\sum_{i = 1}^n {x_i^2} \right)^{1/2} = \| x \| < + \infty$ , также $\|A\| \leq \sum_{i = 1}^n {\|A e_i\|}^2 =\sum_{i = 1}^n \sum_{i = 1}^m a_{i, j}^2 < + \infty $
+
+     Итого получаем, что 
+     \[ \|Ax\| \leq \left(\sum_{i = 1}^n \sum_{i = 1}^m a_{i, j}^2\right)^{1/2} \cdot \|x\| < +\infty \]
+\end{proof}
+
+\begin{definition}
+    Если $E_1, E_2, E_3$~---~линейные пространства. 
+
+    $A: E_1 \mapsto E_2$~---~линейный оператор
+    
+    $A: E_2 \mapsto E_3$~---~линейный оператор
+
+    Тогда можно определить \textit{композицию (или произведение)} операторов $A \text{ и } B$ называют оператор $B \circ A := BA$~---~композиция отображений $A \text{ и } B$.
+
+    Заметим, что $BA$~---~ линейный оператор из $E_1$ в $E_3$:
+    \[(BA)(\alpha x + \beta y) = B( A(\alpha x + \beta y) ) = B( \alpha A(x) + \beta A(y)) = \alpha (BA)(x) + \beta (BA)(y)\]
+\end{definition}
+
+\begin{lemma}
+    $E_1, E_2, E_3$~---~ линейные нормированные пространства. \\ Если, $A \in \mathcal{L}(E_1, E_2), B \in \mathcal{L}(E_2, E_3)$, то $(BA) \in \mathcal{L}(E_1, E_3)$ и при этом $\|BA\| \leq \|B\| \cdot \|A\|$
+\end{lemma}
+
+\begin{proof}
+    Вспомним свойство: $\| Ax \| \leq \|A\| \cdot \| x \| \forall x$
+    \[\|(BA)(x)\|_{E_3} \leq \|B\| \cdot \|A(x)\|_{E_2} \leq \|B\| \cdot \|A\| \cdot \|x\|_{E_1}\]
+    $\Rightarrow$ если $x \neq 0$, то 
+    \[\frac{\|(BA)(x)\|_{E_3}}{\|x\|_{E_1}} \leq \|B\| \cdot \|A\| \Rightarrow \|BA\| \leq \|B\| \cdot \|A\|\]
+\end{proof}
+
+\begin{note}
+    Даже, если $E_1 = E_2 = E_3$, то $A$ и $B$ могут не коммутировать, то есть $A \cdot B \neq B \cdot A$.
+
+    Например, $A = \sum_{i = 1}^n \lambda_i \cdot \dfrac{\partial }{\partial x}$, где $\lambda = (\lambda_1, \lambda_2, \dots \lambda_n) \neq 0$. Причем, $A$ называется дифференциальный оператор.
+
+    $A: DIF^K(\Omega) \mapsto DIF^{K-1}(\Omega), K \in \N$ 
+\end{note}
+
+\begin{note}
+    Пусть $F \in DIF^1(\Omega)$.
+
+    Тогда $(AF)(x^0) = \left(\sum_{i = 1}^n \lambda_i \dfrac{\partial}{\partial x_i} \right) F(x^0) = \sum_{i = 1}^n \lambda_i \cdot \dfrac{\partial F}{\partial x_i}(x^0) = \left(\dfrac{\partial F}{\partial \lambda}\right)(x^0) = \langle grad F(x^0), \lambda \rangle$
+    Тогда, если взять вместо $\lambda_i$, $dx_i$, получится выражение для $d_{x^0}F(dx)$.
+\end{note}
+
+%\not = это \neq
+
+% есть, сер!

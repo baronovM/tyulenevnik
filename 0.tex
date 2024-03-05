@@ -1,0 +1,354 @@
+\section{Функции нескольких переменных}
+
+\setlength{\epigraphwidth}{0.5\textwidth}
+\epigraph{\normalsize{Мы будем работать по бразильской системе:\\Я расскажу столько, сколько захочу, \\ Вы поймете столько, сколько сможете}}{\large{© А. И. Тюленев}}
+
+
+\subsection{Предел функции нескольких переменных}
+
+Будем использовать <<тензорные>>$\ $обозначения, к примеру, $x^0 _1$, $0$~---~это индекс, а $1$ означает номер координаты.
+
+Ранее было введено понятие предела и непрерывности по множеству для для отображения $f$: $X \mapsto Y$, где $X = (X, \rho)$ и $Y = (Y, d)$ метрические пространства.
+
+\begin{definition}
+    \textit{(Последовательность Гейне в точке)} Последовательностью Гейне в точке $x^0$ называют последовательность $\{x^n\}$:
+
+        \begin{enumerate}
+        \item $\lim\limits_{n\to \infty} x^{n} = x^{0};$
+        \item $x^{n} \neq x^{0} \  \forall n \in \N.$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Пусть $x^{0}$~---~предельная точка множества $E \subset X$. Пусть $Y = (Y, d)$ - метрическое пространство и $f: E \mapsto Y$ 
+    Будем говорить, что $\lim\limits_{\underset{x \in E}{x\to x_{0}}} f (x) = y^{0} \in Y$, если:
+
+    $$ \forall \epsilon > 0 \  \exists \delta =  \delta (\epsilon) > 0: \forall x \in \mathring{B}_{\delta (\epsilon)} (x^{0}) \cap E \hookrightarrow f (x) \in B_{\epsilon} (y^{0}) \cap E \text{~---~по Коши.}$$
+
+    
+
+    $$ \forall \text{ последовательности Гейне }\{ x^{n}\} \subset E \  \text{в точке } x_{0} \hookrightarrow  \exists  \lim\limits_{n\to \infty} f (x^{n}) = A\text{~---~по Гейне.}$$
+        
+\end{definition}
+
+Далее рассмотрим функции на $X = \R ^n$:
+% $ \rho = \sqrt{\sum_{k = 1}^{n} (x_i - y_i)^2}$
+% $\R^n = {x = (x_1,...,x_n): x_i \in \R}$
+
+\begin{definition}
+    \textit{(Предел по совокупности)} Пусть $f$: $\mathring{B}_{\delta _0} \mapsto \R$. Предел в смысле общей теории метрических пространств будем называть пределом по совокупности переменных и записывать:
+
+    $$\lim_{x \to x^0} f(x) = A \in \overline{\R}  \Longleftrightarrow \lim\limits_{\underset{x_n \to x_n^0}{x_1 \to x_{1}^0}} f (x_1, ..., x_n) = A. $$
+    
+    $$\forall \epsilon > 0 \  \exists \  \delta(\epsilon) > 0: \ \forall x = (x_{1}, ..., x_n) \in \mathring{B}_{\delta(\epsilon)}(x^0) \  \hookrightarrow \ f(x) \in U_\epsilon(A).
+    $$
+    
+\end{definition}
+
+\begin{note}
+    Даже в случае абстрактных метрических пространств отображение $f$: $X \mapsto Y$, где $X = (X, \rho)$ и $Y = (Y, d)$ --- абстрактные метрические пространства. Определния предела по Коши и по Гейне эквивалентны
+\end{note}
+
+\begin{definition}
+    \textit{(Предел по направлению)} Пусть $f$: $B_{\delta _0} \mapsto \R$ и $\overline{l} \in \R^n$: $||\overline{l}|| = 1$. Пределом функции $f$ в точке $x^0$ по направлению $\overline{l}$ будем называть:
+
+    $$\lim_{t \to +0} f (x^0 + t\overline{l}) = y^{0} \in Y. $$
+\end{definition}
+
+\begin{definition}
+$S_r^{n-1}(x^0) := (n-1)$мерная сфера радиуса $r$ с центром в точке $x^0$.
+
+    Сфера в $\R^n$ имеет размерность $n-1$, так как нужна $n-1$ координата для определения положения точки, ведь радиус фиксирован.
+
+
+\end{definition}
+
+\begin{lemma}
+    Если существует предел по совокупности переменных, то существуют пределы по любому направлению и все они равны пределу по совокупности
+
+    Пусть $f$: $B_{\delta _0}(x^0) \mapsto \R$ и $\exists \lim_{x \to x^0} f(x) = A \in \overline{\R}$ Тогда $\forall \overline{l} \in S^{n-1}_1(0)$: $ \exists \lim_{t \to +0} f(x^0 + t\overline{l}) = A.$ 
+    
+\end{lemma}
+
+\begin{proof}
+    $$\exists \lim_{x \to x^0} f(x) = A \in \overline{\R} \Longrightarrow    \forall \epsilon > 0 \  \exists \  \delta(\epsilon) > 0: \ \forall x \in \mathring{B}_{\delta(\epsilon)}(x^0) \  \hookrightarrow \ f(x) \in U_\epsilon(A).
+    $$
+
+    $$\forall \epsilon > 0 \  \exists \  \delta(\epsilon) > 0: \forall t \in (0, \delta(\epsilon)) \hookrightarrow x^0 + t \overline{l} \in \mathring{B}_{\delta}(x^0) \Longrightarrow f(x^0 + t \overline{l}) \in U_{\epsilon}(A).$$
+
+    Примечание: $\delta(\epsilon)$ в определении второго предела такое же, как в первом.
+\end{proof}
+
+
+\begin{note}
+    Из существования предела по любому направлению не следует существвование предела по совокупности.
+
+    Более того пределы по всем направлениям могут быть равны, а предела по совокупности может всё равно не существовать
+
+\end{note}
+
+\begin{example}$\ $
+    \sidefig(8 cm)(7 cm)
+{
+    \begin{flushleft}
+        \normalsize
+        \centering
+        Положим $ z(x, y) =
+        \begin{cases}
+            1, \ y = x^2, x \neq 0\\
+            0, \text{иначе}&
+        \end{cases}  
+        $
+    \end{flushleft}
+}
+{
+\input{ebanya_parabola}
+}
+
+    Чтобы доказать отсутствие предела, воспользуемся определением по Гейне. Достаточно привести две последовательности Гейне, на которых получаются разные пределы.
+
+    \begin{enumerate}
+        \item $ \left\{ \left(\frac{1}{n}, \frac{1}{n^2}\right) \right\} - \text{последовательность Гейне в }(0, 0); \  z\left(\frac{1}{n}, \frac{1}{n^2}\right) = 1 \to 1, n \to \infty.
+        $
+        \item $ \left\{ \left(0, \frac{1}{n}\right) \right\} - \text{последовательность Гейне в }(0, 0); \  z\left(\frac{1}{n}, \frac{1}{n^2}\right) = 0, \  \forall n \in \N.
+        $
+    \end{enumerate}
+
+    Мы предъявили две последовательности Гейне в точке $(0, 0)$, пределы которых не равны, значит, предела по совокупности нет.
+    
+    Докажем, что существует предел по любому направлению. \
+
+
+\sidefig(8 cm)(7 cm)
+{
+    \begin{flushleft}
+    \normalsize
+    Перейдем в полярные координаты. Тогда любая точка имеет вид $(x, y) = (r \cos\phi, r \sin\phi)$. Выберем направляющий единичный вектор $\overline{l} = (\cos\phi, \sin\phi), \ \phi \in [ - \pi, \pi ).$
+    \end{flushleft}
+}
+{
+    \input{ebanya_parabola_2}
+}
+
+    $\text{Если }\phi \in [ - \pi, 0 ]\text{, то }\forall r \geq 0, \ z(r \cos\phi, r \sin\phi) = 0 \Longrightarrow \exists \lim_{r \to +0} z(r \cos\phi, r \sin\phi) = 0$
+
+    $\text{Если } \phi \in ( 0, \pi ) \text{, то есть точка пересечения с параболой: } r_0 = \frac{\sin\phi}{\cos^2\phi}\Longrightarrow  $ 
+
+    \begin{flushright}
+$\Longrightarrow  \forall\rho \in (0, r_0) \hookrightarrow \ \exists \lim_{\rho \to +0} z(r \cos\phi, r \sin\phi) = 0.$        
+    \end{flushright}
+
+
+    То есть по любому направлению есть предел и он равен 0, но предела по совокупности нет.
+
+\end{example}
+
+\subsection{План исследования функции двух переменных на существование предела в точке}
+
+Пусть $f:$ $B_{r}((x^0, y^0)) \mapsto \R.$
+
+\begin{enumerate}
+    \item Ищем пределы по направлению, то есть $\forall \phi \in [0, 2\pi)$ ищем предел
+$$\lim_{r \to +0} f(x^0 + r \cos\phi, \ y^0 +  r \sin\phi) \ (*)$$
+
+Если при каком-то $\phi$ предела (*) не существует, либо при разных $\phi$ пределы разные, то предела $f(x, y)$ в точке $(x^0, y^0)$ по совокупности переменных не существует. Так как это необходимое условие (но не достаточное).
+
+
+
+Пусть оказалось, что:
+
+$$\forall \phi \in [0, 2\pi): \  \exists \lim_{r \to +0} f(x^0 + r \cos\phi, \ y^0 +  r \sin\phi) = A^{*} \in \R.$$
+
+\begin{proposition}(Метод полярных координат)
+
+    Пусть $\exists \delta_0 > 0 \text{ и функция } \rho(r)$: $ [0, \delta_0) \mapsto [0, +\infty),\text{ называемая \textit{мажорантой}:}$
+    $$
+    \begin{cases}
+        \forall r \in [0, \delta_0) \text{ и } \forall \phi  \in [0, 2\pi) \hookrightarrow |f(x^0 + r \cos\phi, \ y^0 +  r \sin\phi) - A^{*}| \leq \rho(r), \\
+        \lim_{r \to +0} \rho(r) = 0.&
+    \end{cases}  
+    $$
+
+    Это равносильно     $\exists \lim_{(x, y) \to (x^0, y^0)} f(x^0 + r \cos\phi, \ y^0 +  r \sin\phi) = A^{*}  $.
+
+\begin{proof}
+    $(\Longrightarrow)$Распишем определение предела функции:
+    $$\forall \epsilon > 0 \  \exists \  \delta_1(\epsilon) > 0: \ \forall (x, y)  \in \mathring{B}_{\delta_1(\epsilon)}(x^0, y^0) \  \hookrightarrow \ |f(x) - A^{*}| < \epsilon.
+    $$
+
+Распишем определение предела мажоранты:
+
+$$\forall \epsilon > 0  \ \exists \delta_2(\epsilon) \in (0, \delta_0):  \forall r \in (0, \delta_2(\epsilon)) \hookrightarrow 0 \leq \rho(r) < \epsilon.$$
+
+Заметим, что точка $(x, y)$ в полярных координатах может быть записана:
+
+$    \begin{cases}
+        x = x^0 + r \cos\phi\\
+        y = y^0 +  r \sin\phi&
+    \end{cases}$
+
+    $(x, y) \text{ пробегает шар } \mathring{B}_{\delta(\epsilon)}(x^0, y^0) \Longleftrightarrow 
+        \begin{cases}
+        r \in (0, \delta(\epsilon))\\
+        \phi \in [0, 2\pi)&
+    \end{cases}
+    $
+
+    В итоге:
+    $$\forall \epsilon > 0  \ \exists \delta_2(\epsilon) \in (0, \delta_0): \forall r \in \delta(\epsilon) \text{ и } \phi \in [0, 2\pi) \hookrightarrow |f(x^0 + r \cos\phi, \ y^0 +  r \sin\phi) - A^{*}| \leq \rho(r) < \epsilon,$$
+
+    Что равносильно $\ \forall (x, y) \in \mathring{B}_{\delta(\epsilon)}(x^0, y^0) \hookrightarrow |f(x, y) - A^{*}| < \epsilon.$
+
+    $(\Longleftarrow)$ Теперь докажем, что если есть передел по совокупности, то существует мажоранта.
+
+    $\exists \lim_{(x, y) \to (x^0, y^0)} f(x^0 + r \cos\phi, \ y^0 +  r \sin\phi) = A^{*}  \Longleftrightarrow$
+    \begin{flushright}
+            $\Longleftrightarrow \forall \epsilon > 0 \  \exists \delta(\epsilon) > 0: \ \forall (x, y)  \in \mathring{B}_{\delta(\epsilon)}(x^0, y^0) \  \hookrightarrow \ |f(x, y) - A^{*}| < \epsilon \Longrightarrow
+    $
+    \end{flushright}
+
+    Тогда $\forall \epsilon > 0  \ \exists \delta(\epsilon) \in (0, \delta_0):  \forall r \in (0, \delta(\epsilon)) \ \forall \phi \in [0, 2\pi) \hookrightarrow$
+    \begin{flushright}
+        $\hookrightarrow |f(x^0 + r \cos\phi, \ y^0 +  r \sin\phi) - A^{*}|< \epsilon$
+    \end{flushright}
+
+    $\forall \epsilon > 0\ \exists \delta(\epsilon) \in (0, \delta_0):  \forall r \in (0, \delta(\epsilon)) \  \hookrightarrow $
+    \begin{flushright}
+            $ \hookrightarrow 
+    \hat{\rho}(r) :=
+    \underset{\phi \in [0, 2\pi)}{\sup}|f(x^0 + r \cos\phi, \ y^0 +  r \sin\phi) - A^{*}| \leq \epsilon$
+    \end{flushright}
+
+    Тем самым определена функция $\hat{\rho}(r)$: $(0, \delta_{0}) \mapsto [0, +\infty)$, которую мы и назовем мажорантой. Ведь $ \forall \phi \in [0, 2\pi) \hookrightarrow f(x, y) \leq \hat{\rho}(r)$ и $\lim_{r \to +0} (\hat{\rho(r)}) = 0.$
+    
+\end{proof}
+
+% 1:24:00 Я ЗАЕБАЛСЯ СУКА ОН НОЛЬ СЛОВ ГОВОРИТ ЭТО КАКАЯ_ТО ХУЙНЯ
+\end{proposition}
+\end{enumerate}
+
+
+\subsection{Повторные пределы}
+
+По определеню двумерный куб $Q_{\delta}(x^0, y^0) := (x^0 - \delta, x^0 + \delta) \times (y^0 - \delta, y^0 + \delta)$.
+
+\begin{definition} (Повторный предел)
+    
+Пусть $f$: $Q_{\delta}(x^0, y^0) \mapsto \R$. Предположим, что $\forall y \in (y^0 - \delta, y^0 + \delta)$
+
+$\exists \lim_{x \to x^{0}} f(x, y) = \phi(y).$
+
+Тогда \textit{повторным пределом} функции $f$ в точке называют: $\lim_{y \to y^0} \phi(y) = \lim_{x \to x^0} \lim_{y \to y^0} f(x, y).$
+\end{definition}
+
+\begin{note}
+    Повторный предел зависит от порядка переменных, по которым берется предел, то есть $ \exists \lim_{x \to x^0} \lim_{y \to y^0} f(x, y) = A_1 \in \R \neq \exists \lim_{y \to y^0} \lim_{x \to x^0} f(x, y) = A_2 \in \R$
+\end{note}
+
+\begin{note}
+
+    Из существования предела по совокупности не следует существование повторного предела, и наоборот, даже если повторные переделы равны.
+\end{note}
+
+\begin{example}
+    $ f(x, y) =
+    \begin{cases}
+        (x + y)\sin\frac{1}{x} \sin \frac{1}{y}, \ xy \neq 0\\
+        0, \text{иначе}&
+    \end{cases}  
+    $
+
+    Метод полярных координат: $|f(r \cos\phi, \ r \sin\phi)| \leq |x| + |y| \leq r(|\cos\phi| + |\sin \phi|) \leq|r|$, значит предел по совокупности равен нулю. Повторного же предела ни по одной из переменных не существует.
+
+    %ВСТАВИТЬ ТЕОРЕМУ ОТ СКУФА
+\end{example}
+
+
+\begin{note}
+    Повторные пределы могут существовать и быть равны, а предела по совокупности модет не быть, пример (Парабола, поднятая вверх) $ z(x, y) =
+    \begin{cases}
+        1, \ y = x^2\\
+        0, \text{иначе}&
+    \end{cases}  
+    $
+\end{note}
+
+
+
+
+\begin{theorem} (Непрерыность композиции отображений)
+Пусть даны три метрических пространства $(X, d_{1}), \ (Y, d_2), \ (Z, d_3)$. В них выбораны подмножества $G \subset X, \ E \subset Y, F \subset Z$. И есть функции:
+
+$$f: G \mapsto E$$
+$$h: E \mapsto H$$
+
+
+Пусть $\phi$ непрерывна в точке $x^0 \in G$ по множеству $G$. Пусть  $h$ непрерывна в точке $y^0 \in E$ по множеству $E$. При том $y^0 = \phi(x^0)$
+
+Тогда композиция $f \circ \phi: G \mapsto F$ непрерывна в точке $x^0$
+\end{theorem}
+
+\begin{proof}
+    Доказательство идено такое же, как для функции одной переменной.
+
+    Определение непрерывности функции $h$ в точке $y^0$:
+    
+$$ \forall \epsilon > 0 \  \exists \delta (\epsilon) > 0: \forall y \in B_{\delta (\epsilon)} (y^{0}) \cap E \hookrightarrow d_{3}(h(y),\  h(y^0)) < \epsilon$$
+
+Определение непрерывности функции $f$ в точке $x^0$:
+    
+$$ \forall \delta > 0 \  \exists \sigma (\delta) > 0: \forall y \in B_{\sigma (\delta)} (x^{0}) \cap G \hookrightarrow d_{2}(f(x),\  f(x^0)) < \delta$$
+
+Тогда:
+
+    
+$$ \forall \epsilon > 0 \  \exists \widetilde{\sigma} =  \sigma(\delta(\epsilon)): \forall x \in B_{\widetilde{\sigma} (\delta)} (x^{0}) \cap G \hookrightarrow d_{2}(f(x),\  f(x^0)) < \delta(\epsilon) \Longrightarrow d_3(h(f(x)), \ h(f(x^0))) < 0$$
+
+Следовательно композиция $h \circ f$ непрерывна в точке $X^0$
+
+\end{proof}
+
+\begin{definition}
+    Функция $f: X \mapsto Y$, где $X$ и $Y$ - метрические пространства непрерына на $X$ если она непрерына по множеству в кажой точке $X$
+\end{definition}
+
+\begin{definition}
+    Образом множества называют $f(X):= \{f(x): x \in X\}$
+\end{definition}
+
+\begin{theorem} (О непрерывном отображении компакта)
+
+    Пусть $K \subset X$ - компакт. $(X, d)$ и $(Y, \rho)$ - метрические пространства. $f: K \mapsto Y$ - непрерывна на $K$. Тогда образ компакта $f(K)$ - компакт
+\end{theorem}
+
+\begin{proof}
+    Рассмотрим произвольную последовательность точек в образе $\{y^n\} \subset f(K) $. Так как у каждой точки есть праобраз, мы имеем последовательность в компакте $\exists \{ x^n \} \subset K: \ f(x^n) = y^n, \  \forall n \in \N$. Так как она лежит в компакте, у нее есть сходящаяся  подпоследовательность $\{x^{n_{j}}\} \subset K$ к $\exists x^0 \in K$ такая, что $\lim_{j \to \infty} x^{n_{j}} = x^{0}$
+
+    Но тогда в силу непрерывности $f$ на компакте, и как следствие в точке $x^0$. Тогда по Гейне существует предел: $\lim_{j \to \infty} f(x^{n_{j}}) = f(x^{0}) \in K \Longleftrightarrow \lim_{j \to \infty} y^{n_{j}} = y^0$
+
+    То есть получили точку $y^0 \in f(K)$ и получили подпоследовательность $\{ y^{n_{j}} \}$ произваольной последовательности $\{ y^n \}$. Такую, что $\lim_{j \to \infty} y^{n_{j}} = y^0 \in f(K) $
+    
+\end{proof}
+
+
+\begin{corollary}
+
+    Если $(X, d), \ (Y, \rho)$~---~метрические пространства. $R \subset X$~---~компакт. А $f: \ K \mapsto Y$~---~непрерывное отображение. Тогда $f(K)$~---~ограниченное множество
+
+    \begin{proof}
+        Ранее было доказано, что компакт в $R^{n}$~---~замкнутое и вполне ограниченное множество. Также из предыдущей теоремы $f(K)$~---~компакт.
+    \end{proof}
+\end{corollary}
+
+\begin{corollary} (Продвинутая теорема Вейерштрасса/О достижимости точных граней для функций непрерывных на компакте)
+
+    Пусть $(X, \rho)$~---~метрические пространства. $K$~---~компакт и $f$: $K \mapsto \R$
+
+    Если $f$ непрерывна на $K$, то она достигает на нем своего минимума и максимума, то есть 
+    $$\exists \ min \{ f(x): x \in K \}$$
+    $$\exists \ max \{ f(x): x \in K \}$$
+
+\begin{proof}
+    Так как $f(K) \subset \R$~---~компакт. Ранее было доказано что на $\R$ компакт замкнут и ограничен $\Longrightarrow$ Из определения инфимума $inf f(K) = m$ и $\forall \epsilon > 0: \ U_{\epsilon} \cap f(K) \neq \emptyset$ тогда по определению инфимум принадлежит замыканию $\inf f(k) \in cl f(K)$. Максимум аналогично
+\end{proof}
+\end{corollary}

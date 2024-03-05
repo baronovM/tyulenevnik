@@ -1,0 +1,29 @@
+\begin{tikzpicture}[scale=0.9]
+    \begin{axis}[
+        axis lines=middle,
+        xlabel=$x$, ylabel=$y$,
+        xmin=-3.1, xmax=3.1,
+        ymin=-0.175, ymax=9,
+        xtick={-2,-1,...,2}, % Custom x-axis ticks
+        ytick={2,4,...,8},   % Custom y-axis ticks
+        tick label style={font=\small},
+    ]
+    % Decoration style for arrows
+    \tikzset{arrowstyle/.style={decoration={
+        markings,
+        mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+    
+    % Draw the parabola with arrows lying on it
+    \addplot[samples=100, domain=-3:-0, ultra thick, arrowstyle=0.98, name path=parabola] {x^2};
+    \addplot[samples=100, domain=3:0, ultra thick, arrowstyle=0.98] {x^2};
+    \node at (axis cs:0,0) [circle, fill=white, inner sep=3pt]{};
+    % Draw a line crossing the parabola, named path for intersection calculation
+    \addplot[domain=0:3, ultra thick, red, name path=crossline] {2.5*x};
+    \addplot[->, ultra thick, red] coordinates {(0,0) (1.6,4)};
+    \addplot[domain=-0.5:0.5, thin, black] {0};
+    \addplot[domain=0:0.001, thin, black] {10000*x};
+    
+    \end{axis}
+
+
+\end{tikzpicture}
