@@ -37,7 +37,7 @@ jobs:
 
         # -jobname=<name> дает возможность поменять имя выходного файла
 
-        args: -jobname=result -pdf -f -file-line-error -continue-on-error -interaction=nonstopmode
+        args: -jobname=result -pdf -f -file-line-error -interaction=nonstopmode
 
         compiler: latexmk
 
