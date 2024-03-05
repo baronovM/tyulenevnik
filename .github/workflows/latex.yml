@@ -30,13 +30,13 @@ jobs:
 
         # Больше параметров в офф. документации
 
-        working_directory: latex_sources/
+        working_directory: /
 
         # Аргументы, к которыми запускать компилятор (latexmk)
 
         # -jobname=<name> дает возможность поменять имя выходного файла
 
-        args: -jobname=my_doc -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+        args: -jobname=result -pdf -file-line-error -halt-on-error -interaction=nonstopmode
 
         compiler: latexmk
 
@@ -50,10 +50,10 @@ jobs:
 
         # Это значение используется как ключ в хранилище
 
-        name: my_doc
+        name: result
 
         # Путь до собранного pdf. Может содержать «*», «**»
 
         # Здесь это <working_directory>/<jobname>.pdf
 
-        path: latex_sources/result.pdf
+        path: /result.pdf
