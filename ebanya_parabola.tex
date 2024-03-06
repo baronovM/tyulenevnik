@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+%    \begin{axis}[
+%        view={30}{30}, % Adjusts the angle at which you %view the 3D plot
+%        xlabel=$x$, ylabel=$y$, zlabel=$z$,
+%        domain=-10:10, % Domain for your parameter t
+%        ]
+    \begin{axis}[
+        view={25}{30},
+        xmin=-5, xmax=5,
+        ymin=-0.1, ymax=7, 
+        zmin=-0.1, zmax=2,
+        xlabel=$x$, ylabel=$y$, zlabel=$z$,
+        axis lines=middle,
+        axis on top,
+    ]
+    \tikzset{arrowstyle/.style={decoration={
+        markings,
+        mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+    \addplot3[->, blue] coordinates {(0,0,0) (1,0,0)};
+    \addplot3[->, red] coordinates {(0,0,0) (0,1,0)};
+    \addplot3[->, green] coordinates {(0,0,0) (0,0,1)};
+    % Plot your parametric equation
+    \addplot3[samples=400, domain=-5:-0.45, samples y=0, -, thick, arrowstyle=1] ({-0.5*x}, {0.25*x^2}, {1});
+    \addplot3[samples=400, domain=5:0.45, samples y=0, -, thick, arrowstyle=1] ({-0.5*x}, {0.25*x^2}, {1});
+    % Draw a point at (0, 0, 0)
+    \node at (axis cs:0,0,0) [circle, fill, inner sep=1.5pt]{};  
+%    \node at (axis cs:0,0,1) [circle, fill=white, inner sep=1.8pt]{};
+%    \draw[thick, <-] (0.03, 0.03, 0.992) arc(-70:-60:2);
+%    \draw[thick, <-] (0, 0, 0.995) arc(80:30:-1.15);
+
+\end{axis}
+\end{tikzpicture}
