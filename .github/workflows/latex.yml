@@ -20,7 +20,7 @@ jobs:
 
     - name: Build document
 
-      uses: xu-cheng/latex-action@v2
+      uses: dante-ev/latex-action@2021-A
 
       with:
 
