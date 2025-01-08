@@ -47,9 +47,18 @@ jobs:
           source: ./
           destination: ./_site
 
+      - name: Debug_оutput DOWNLOAD_URL
+        run: echo "DOWNLOAD_URL=$DOWNLOAD_URL"
+
+
       - name: Replace placeholder with download URL
         run: |
-          sed -i "s|{{LATEST_RELEASE_DOWNLOAD_URL}}|$DOWNLOAD_URL|g" ./_site/index.html
+          if [ -z "$DOWNLOAD_URL" ]; then
+            echo "Error: DOWNLOAD_URL is empty"
+            exit 1
+          fi
+          find ./_site -type f -name "*.html" -exec sed -i "s|{{LATEST_RELEASE_DOWNLOAD_URL}}|$DOWNLOAD_URL|g" {} +
+
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
