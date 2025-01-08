@@ -33,10 +33,17 @@ jobs:
 
       - name: Fetch latest release download URL
         id: fetch_latest_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          LATEST_RELEASE=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest)
-          DOWNLOAD_URL=$(echo "$LATEST_RELEASE" | jq -r '.assets[0].browser_download_url')
-          echo "DOWNLOAD_URL=$DOWNLOAD_URL" >> $GITHUB_ENV
+          RESPONSE=$(curl -H "Authorization: token $GITHUB_TOKEN" -s https://api.github.com/repos/${{ github.repository }}/releases/latest)
+          if echo "$RESPONSE" | jq -e '.assets' > /dev/null; then
+            DOWNLOAD_URL=$(echo "$RESPONSE" | jq -r '.assets[0].browser_download_url')
+            echo "DOWNLOAD_URL=$DOWNLOAD_URL" >> $GITHUB_ENV
+          else
+            echo "Error fetching latest release: $RESPONSE"
+            exit 1
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
