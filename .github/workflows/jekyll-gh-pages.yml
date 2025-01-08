@@ -30,15 +30,30 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Fetch latest release download URL
+        id: fetch_latest_release
+        run: |
+          LATEST_RELEASE=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest)
+          DOWNLOAD_URL=$(echo "$LATEST_RELEASE" | jq -r '.assets[0].browser_download_url')
+          echo "DOWNLOAD_URL=$DOWNLOAD_URL" >> $GITHUB_ENV
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
+
+      - name: Replace placeholder with download URL
+        run: |
+          sed -i "s|{{LATEST_RELEASE_DOWNLOAD_URL}}|$DOWNLOAD_URL|g" ./_site/index.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+
 
   # Deployment job
   deploy:
