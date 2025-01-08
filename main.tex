@@ -1,71 +1,31 @@
-\documentclass{article}
-\usepackage[T2A]{fontenc}
-\usepackage{amsmath}
-\usepackage{tikz}
-\usepackage{amssymb}
-\usepackage[english,russian]{babel}
-\usepackage[center]{titlesec}
-\usepackage[left=2cm,right=2cm,
-    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
-
-\everymath{\displaystyle}
-
-\newcommand\tab[1][1cm]{\hspace*{#1}}
-
-\title{Домашнее задание 1 по алгоритмам}
-\author{Баронов Михаил, группа Б05-307}
-
+\input{header}
 
 \begin{document}
-
-\maketitle
-
-\addtocounter{section}{1}
-
-\begin{center}
-
-
-\subsection{} % 1.1
-
-Будем рассматривать гвоздики в порядке неубывания координат, на сортировку координат гвоздей затратим $O(n\log n)$ времени. Заметим, что нет смысла соединять не соседние гвоздики, так как тогда можно не увеличивая суммарной длины ниточек разделить это соединение на соединение нескольких соседних, с возможным убиранием некоторых нитей. Пусть задача решена для первых $i - 1$ гвоздиков, тогда нам понадобится $a$
-
-\subsection{} % 1.2
-
-Будем строить динамику dp[i][j], где i - размер перевезённого префикса, j - размер перевезённого суффикса, а в dp[i][j] хранится необходимое число переправ и вес грузов в последней переправе. Тогда ответом будет $\min_i dp[i][n - i]$, а рассчитывать динамику можно будет следующим образом:
-\[
-dp[i][j] = 
-\begin{cases}
-    (dp[i - 1][j].ans,\quad dp[i - 1][j].weight + a_i), & \text{если}\ dp[i - 1][j] + a_i \leq t \\
-    (dp[i - 1][j].ans + 1,\quad a_i) & \text{иначе}
-\end{cases}
-\]
-
-Аналогично рассчитываем для изменения длины суффикса, то есть для перехода от dp[i][j - 1], а затем возьмём минимум между ними.
-
-
-\subsection{} % 1.3
-
-Вспомним, что при решении задачи о рюкзаке без восстановления ответа, можно хранить только последний слой, затрачивая таким образом $O(W)$ памяти. Теперь добавим сюда запоминание слоёв, чьи номера делятся на $\sqrt{n}$. Тогда расчёт динамики потребует $O(W\sqrt{n})$ памяти и всё так же как и раньше $O(nW)$ времени. Теперь будем восстанавливать ответ по имеющимся данным. Опять рассчитаем динамику, но теперь начиная с последнего сохраненного слоя, номер которого делится на $O(\sqrt{n})$, до конца, и в этот раз будем сохранять слои
-
-\addtocounter{subsection}{1} % skip 1.4
-
-\subsection{} % 1.5
-
-\[f(a) = \sum_{i<j} \frac{a_i}{a_j} = \sum_j \frac{\small{\displaystyle \sum_{i<j} a_i }}{a_j}\]
-
-$f(a \cup \{a_{n+1}\}) = \sum_{j\leq n + 1} \frac{\small{\displaystyle \sum_{i<j} a_i }}{a_j} = \sum_{j\leq n} \frac{\small{\displaystyle \sum_{i<j} a_i }}{a_j} + \frac{\small{\displaystyle \sum_{i<n+1} a_i }}{a_{n+1}} = f(a) + \frac{\sum a}{a_{n+1}}$
-
-$dp[sum][count + 1] = \min_{subsum < sum}{\{dp[subsum][count] + \frac{subsum}{sum - subsum}\}}$
-
-\subsection{} % 1.6
-
-\subsection{} % 1.7
-
-
-\subsection{} % 1.8
-
-\textit{Превосходство} одного кубика над другим определяется отношением числа пар выпавших чисел, в которых первое больше второго, к общему числу пар. Заметим, что оно зависит лишь от соотношений больше/меньше между числами на кубиках, но не от их значений. А значит, \textit{хорошесть} тройки кубиков однозначно задаётся отношением порядка между числами на их сторонах. Следовательно, \textit{хорошесть} тройки кубиков $(a, b, c)$ задаётся некоторой системой неравенств, например $b_1 \leq b_2 \leq a_1 \leq c_1 \leq b_3 \leq a_2 \leq \hdots$, а так как индексы вычисляются из последовательности букв, то строкой из 18 букв из набора a, b, c, в которой каждая буква встречается ровно 6 раз, в рассматриваемом примере это будет строка $bbacba\hdots$. Но таких последовательностей не более $3^18$. Значит, раз 
-
-
-\end{center}
+    \input{title_page}
+    \newpage
+    \hypertarget{intro}{}
+    \tableofcontents
+    \newpage
+    
+    
+    \input{Lectures/Lecture_1}
+    \input{Lectures/Lecture_2}
+    \input{Lectures/Lecture_3}
+    \input{Lectures/Lecture_4}
+    \input{Lectures/Lecture_5}
+    \input{Lectures/Lecture_6}
+    \input{Lectures/Lecture_7}
+    \input{Lectures/Lecture_8}
+    \input{Lectures/Lecture_16}
+    \input{Lectures/Lecture_9}
+    \input{Lectures/Lecture_10}
+    \input{Lectures/Lecture_11}
+    \input{Lectures/Lecture_12}
+    \input{Lectures/Lecture_13}
+    \input{Lectures/Lecture_14}
+    \input{Lectures/Lecture_15}
+    \input{Lectures/Lecture_16_2}
+    \input{Lectures/Anecdotes}
+    \newpage
+    
 \end{document}

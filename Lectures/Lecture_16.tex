@@ -1,0 +1,116 @@
+\subsection{Сравнение интегралов Лебега и Римана}
+\begin{theorem}
+    Пусть $f \in \mathcal{R}([a, b])$. Тогда $f \in \Tilde{L}_1([a, b])$. Более того, верно следующее: \[ \int\limits_a^b f(x)dx = \int\limits_{[a, b]}fd\LL^1\]
+\end{theorem}
+\begin{proof}
+    Пусть фиксировано некоторое натуральное $n$. Разобьём $[a, b]$ на $2^n$ равных частей. Тогда обозначим за $x_k$ и $\Delta_k$: \[x_k = a + \dfrac{k}{2^n}(b - a), k = \overline{0, 2^n}; \quad \Delta_k = [x_k, x_{k + 1}], k = \overline{0, 2^n - 2}, \Delta_{2^n - 1} = [x_{2^n - 1}, x_{2^n}]\] 
+    Теперь рассмотрим следующие последовательности функций: \[\underline{f}_n = \sum\limits_{k = 0}^{2^n} \inf\limits_{x \in \Delta_k} f\cdot \chi_{\Delta_k} \quad \overline{f}_n = \sum\limits_{k = 0}^{2^n} \sup\limits_{x \in \Delta_k} f\cdot \chi_{\Delta_k}\]
+    Их монотонность~---~$\overline{f}_{n + 1} \leq \overline{f}_n$ и $\underline{f}_{n + 1} \geq \underline{f}_n$~---~очевидна. Также введём для $\underline{f}_n$ и $\overline{f}_n$ обозначения: \[m_{k, n} = \inf\limits_{\Delta_k} f \quad M_{k, n} = \sup\limits_{\Delta_k} f \]
+    Применим теорему Леви (поскольку $\overline{f}_n$ и $\underline{f}_n$~---~измеримые) к $g_n = \overline{f}_n - \overline{f}_1$: \[\exists \lim\limits_{n \rightarrow +\infty} \int\limits_{[a, b]}g^nd\LL^1 = \int\limits_{[a, b]}\lim\limits_{n \rightarrow +\infty} g_nd\LL^1 = \int\limits_{[a, b]}gd\LL^1\]
+    Тогда, поскольку $g_n = \overline{f}_n - \overline{f}_1$, то $g = \overline{f} - \overline{f}_1$ и в силу линейности мы получаем \[\lim\limits_{n \rightarrow +\infty} \int\limits_{[a, b]} \overline{f}_nd\LL^1 = \int\limits_{[a, b]}\overline{f}d\LL^1\]
+    Аналогичными рассуждениями можно получить для $\underline{f} = \lim\limits_{n \rightarrow +\infty}\underline{f}_n$ следующее: \[\lim\limits_{n \rightarrow +\infty} \int\limits_{[a, b]}\underline{f}_nd\LL^1 = \int\limits_{[a, b]}\underline{f}d\LL^1\]
+    Обозначим $S_{T_n}$ и $s_{T_n}$ верхнюю и нижнюю суммы Дарбу для разбиения отрезка $[a, b]$ на $2^n$ равных частей. Очевидно, что выполняются следующие неравенства: \[s_{T_n} \leq \int\limits_{[a, b]}\overline{f}_nd\LL^1 = \sum\limits_{k = 0}^{2^n - 1}M_{k, n}\dfrac{1}{2^n} \leq S_{T_n} \quad S_{T_n} \geq \int\limits_{[a, b]} \underline{f}_n d\LL^1 = \sum\limits_{k = 0}^{2^n - 1} m_{k, n}\dfrac{1}{2^n} \geq s_{T_n}\]
+    Из интегрируемости по Риману следует существование предела сумм Дарбу, равного интегралу Римана $\int\limits_a^b f(x)dx$. Значит \[\int\limits_{[a, b]}\overline{f}d\LL^1 = \int\limits_{[a, b]}\underline{f}d\LL^1 = \int\limits_a^bf(x)dx\]
+    Но, в тоже время, $\underline{f} \leq f \leq \overline{f}$. Значит $\int\limits_{[a, b]}\overline{f} - fd\LL^1 = 0$. Из неотрицательности $\overline{f} - f$ следует, что $\overline{f} = f$ п.в. Тогда \[\int\limits_{[a, b]}fd\LL^1 = \int\limits_{[a, b]}\overline{f}d\LL^1 = \int\limits_a^bf(x)dx\]
+\end{proof}
+\begin{example}
+    $\chi_{[0, 1] \cap \Q}$ не интегрируема по Риману, но интегрируема по Лебегу.
+\end{example}
+\begin{example}[?]
+    Пусть ${r_k}$~---~нумерация рациональных чисел на $[0, 1]$. Пусть выбрано некоторое $\delta \in (0, 1)$. Определим функцию $f$ как \[f = \sum\limits_{k = 1}^\infty \chi_{(r_k - \frac{\delta}{2^k}, r_k + \frac{\delta}{2^k})}\]
+    Функция $f \notin \mathcal{R}([-1, 2])$, но $f \in \Tilde{L}_1([-1, 2])$. Пусть \[G = \bigcup\limits_{k = 1}^\infty (r_k - \dfrac{\delta}{2^k}, r_k + \dfrac{\delta}{2^k})\]
+     Множество $F = [0, 1] \setminus G$~---~множество положительной меры, и множество точек разрыва всегда его содержит, а значит функция $f$ неинтегрируема по Риману в силу критерия Лебега. При этом, в отличии от функции Дирихле, $f$ нельзя поправить на множество нулевой меры так, чтобы она стала интегрируемой по Риману. 
+\end{example}
+\begin{example}
+    Пусть $f$ задана как \begin{equation*}
+    f = 
+        \begin{cases}
+        \dfrac{1}{\sqrt{x}}, & x \in (0, 1] \\
+        0, & x \notin (0, 1]
+        \end{cases}
+    \end{equation*}
+    Она интегрируема в несобственном смысле по Риману и интегрируема по Лебегу на $(0, 1]$. Определим последовательность функций $f_n$ как \begin{equation*}
+    f_n = 
+        \begin{cases}
+         \dfrac{1}{\sqrt{x}}, & x \in [\frac{1}{n}, 1] \\ 
+         0, & x \notin [\frac{1}{n}, 1]
+        \end{cases}
+    \end{equation*}
+    Поскольку $f_n \in \mathcal{R}([0, 1])$, то $f_n \in \LL_1([0, 1])$ и интегралы Римана и Лебега совпадают. Но т.к. $f = \lim\limits_{n \rightarrow +\infty} f_n$ и $f_n$~---~монотонны, то применяя теорему Леви мы получаем \[\int\limits_{[0, 1]}fd\LL^1 = \lim\limits_{n \rightarrow +\infty} f_nd\LL^1 = \int\limits_0^1 f(x)dx\]
+\end{example}
+
+
+\subsection{Точки Лебега локально интегрируемых функций}
+\begin{definition}
+    Будем говорить что $f \in \Tilde{L}_1^{loc}(\R^n)$ и называть её локально интегрируемой по Лебегу, если $\forall R > 0 \  f \in \Tilde{L}_1(B_R(0))$
+\end{definition}
+\begin{definition}
+    Пусть $f \in \Tilde{L}_1^{loc}(\R^n)$. Тогда будем называть $x^* \in \R^n$ точкой Лебега функции $f$, если \[\lim\limits_{r \rightarrow +0} \dfrac{1}{\LL^n(B_r(x^*))}\int\limits_{B_r(x^*)} |f(y) - f(x^*)|dy = 0\]
+\end{definition}
+\begin{note}
+    В каждой точке Лебега \[f(x^*) = \lim\limits_{r \rightarrow +0} \dfrac{1}{\LL^n(B_r(x^*))} \int\limits_{B_r(x^*)} f(y)dy\]
+\end{note}
+\begin{note}
+    Введём следующее обозначение: \[\dashint_{B_r(x^*)} \ldots = \dfrac{1}{\LL^n(B_r(x^*))} \int\limits_{B_r(x^*)} \ldots \]
+\end{note}
+\begin{lemma}
+    Пусть $(X, \MM, \mu)$~---~пространство с мерой. Тогда, если $f \in \Tilde{L}_1(X)$, то существует простая $f_\epsilon$, что \[\int\limits_X |f - f_\epsilon|d\mu \leq \epsilon\]
+\end{lemma}
+\begin{proof}
+    Если $f \geq 0$, то это очевидное следствие из определений интеграла и супремума. Если же она знаконепостоянна, то мы разбиваем её на две части~---~$f_+$ и $f_i$, и для каждую из них аппроксимируем.
+\end{proof}
+\begin{definition}[Максимальная функция Харди-Литтлвуда]
+    Пусть $f \in \Tilde{L}_1^{lop}(\R^n)$. Определим $M[f](x)$ как \[M[f](x) = \sup\limits_{r > 0}\dashint_{B_r(x)} |f(y)|dy\]    
+\end{definition}
+\begin{note}
+    Заметим измеримость максимальной функции на $\R^n$. При фиксированном $r > 0$ функция \[x \mapsto \dashint_{B_r(x)}|f(y)|dy\]
+    непрерывна и при фиксированном $x$ \[r \mapsto \dashint_{B_r(x)}|f(y)|dy\] непрерывна как функция $r$
+    Поэтому $M[f]$ можно вычислять, беря супремум лишь в рациональных точках.
+\end{note}
+\begin{note}
+    Заметим, что если $J = \int\limits_{\R^n} |f(x)|dx > 0$, то $M[f] \notin \Tilde{L}_1(\R^n)$. При достаточно большой $\|x\|$ верно следующее: \[M[f](x) \geq \dfrac{1}{\LL^n(B_{2\|x\|(x)})}\int\limits_{B_{2\|x\|(x)}}|f(y)|dy \geq \dfrac{C}{\|x\|^n}J \]
+\end{note}
+\begin{lemma}
+    Пусть $f \in \Tilde{L}_1(\R^n)$. Тогда \[\forall t > 0 \ 
+ \LL^n(E_t) \leq \dfrac{5^n}{t}\int\limits_{\R^n}fd\LL^n\]
+ Где $E_t = \{x \in \R^n \mid M[f](x) > t\}$.
+\end{lemma}
+\begin{proof}
+    По определению $E_t$ для каждой точки $x \in E_t$ существует шар $B_r(x)$ т.ч. \[\dashint_{B_r(x)}|f(y)|dy \geq t\]
+    Что равносильно \[\LL^n(B_r(x)) \leq \dfrac{1}{t}\int\limits_{B_r(x)}|f(y)|dy\]
+    Тогда радиусы всех таких шаров, покрывающих точки $E_t$, равномерно ограничены. Пусть теперь $R > 0$~---~произвольное действительное число. Обозначим за \[E_t^R = E_t \cap B_R(0)\]
+    Полученное таким образом $E_t^R$~---~ограничено. В силу $5B$-леммы Витали существует не более чем счётный набор дизъюнктных шаров $\{B_k\}$ такой, что \[\bigcup\limits_{k = 1}^\infty 5B_k \supset E_t^R\]
+    Тогда \[\LL^n(E_t^R) \leq \sum\limits_{k = 1}^\infty \LL^n(5B_k) \leq \dfrac{5^n}{t}\sum\limits_{k = 1}^\infty \int\limits_{B_k}|f(y)|dy \leq \dfrac{5^n}{t}\int\limits_{\R^n}|f(y)|dy\]
+    (Последний переход получен из дизъюнктности набора шаров $\{B_k\}$ и монотонности интеграла). Теперь, в силу того, что оценка не зависит от $R$ мы возьмём супремум по $R$ и получим требуемое утверждение.
+\end{proof}
+\begin{theorem}
+    Пусть $f \in \Tilde{L}_1^{loc}(\R^n)$. Тогда п.в. $x \in \R^n$ является точкой Лебега функции $f$.
+\end{theorem}
+\begin{proof}
+    Пусть $f = \chi_E, E \in \MM^n$. Тогда по теореме о точках плотности, п.в. $x$~---~точка плотности. Тогда,
+    \begin{equation*}
+        |f(y) - y(x)| = |\chi_E(y) - \chi_E(x)| = \begin{cases}
+            \chi_E(y), & x \notin E \\
+            1 - \chi_E(y), & x \in E
+        \end{cases}
+    \end{equation*}
+    Но, тогда, 
+    \begin{equation*}
+    \dashint_{B_r(x)}|f(y) - f(x)|dy = 
+    \begin{cases}
+        1 - \dfrac{\LL^n(E \cap B_r(x))}{\LL^n(B_r(x))} & x \in E \\
+        \dfrac{\LL^n(E \cap B_r(x))}{\LL^n(B_r(x))}, & x \notin E
+    \end{cases}
+    \end{equation*}
+    Правая часть п.в. стремится к 0 при $r \rightarrow +0$, поскольку п.в. точки -- точки плотности (для $E$ или для дополнения $E$ соответственно). Таким образом для харфункций утверждение доказано. Очевидно, что утверждение остаётся справедливым и для простых функций. Пусть теперь $f \in \Tilde{L}_1^{loc}(\R^n)$. Достаточно доказать, что $\forall R > 0$ утверждение выполняется для $\chi_{B_R(0)}f$. Поэтому без ограничения общности мы можем считать $f \in \Tilde{L}_1(\R^n)$. Зафиксируем $t > 0$. Покажем что $\LL^n(E_t(f)) = 0$, где \[E_t(f) = \{x \in \R^n \mid \limsup\limits_{r \rightarrow +0} \dashint_{B_r(x)}|f(y) - f(x)|dy > t\}\]
+    Поскольку \[\limsup\limits_{r \rightarrow +0} \dashint_{B_r(x)}|f(y) - f(x)|dy \leq |f(x)| + \limsup\limits_{r \rightarrow +0}\dashint_{B_r(x)}|f(y)|dy \leq |f(x)| + M[f](x)\]
+    То $E_t(f) \subset E_t^1(f) \cup E_t^2(f), E_t^1(f) = \{x \in \R^n \mid |f(x)| > t/2\}, E_t^2(f) = \{x \in \R^n \mid M[f](x) > t/2\}$. Согласно неравенству Чебышева \[\LL^n(E^1_t(f)) \leq \dfrac{2}{t}\int\limits_{\R^n} |f(y)|dy\]
+    \[\LL^n(E^2_t(f)) \leq 2 \cdot \dfrac{5^b}{t} \int\limits_{\R^n} |f(y)|dy\]
+    Из полуаддитивности внешней меры следует \[\lambda^*(E_t(f)) \leq \dfrac{C}{t}\int\limits_{\R^n}|f(y)|dy\] 
+    Пусть $h$~---~произвольная простая функция, аппроксимирующая $f$ с точностью до $\epsilon$. Тогда \[F_{f,h} = |f(y) - f(x)| - |h(y) - h(x)| \leq R_{f, h} = |f(y) - f(x) - (h(y) - h(x))| \leq |f(y) - f(x)| + |h(y) - h(x)| = G_{f, h}\]
+    Усреднив неравенство: \[\dashint_{B_r(x)} F_{f, h}(y)dy \leq \dashint_{B_r(x)}R_{f, h}(y)dy \leq \dashint_{B_r(x)}G_{f, h}(y)dy\]
+    Перейдём к верхнему пределу при $r \rightarrow +0$ и получим, что \[\limsup\limits_{r \rightarrow +0}\dashint_{B_r(x)}|f(y) - f(x)|dy = \limsup\limits_{r \rightarrow +0} \dashint_{B_r(x)} |f(y) - h(y) - (f(x) - h(x))|\]
+    для всякой простой $h$. То есть \[\lambda^*(E_t(f - h)) = \lambda^*(E_t(f)) \leq \dfrac{C}{t}\int\limits_{\R^n}|f(y) - h(y)|dy\]
+    Поскольку правая часть может быть сколь угодно малой, то $\lambda^*(E_t(f)) = 0$, что и завершает доказательство.
+\end{proof}
+

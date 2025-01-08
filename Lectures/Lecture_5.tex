@@ -1,0 +1,251 @@
+\section{Измеримые функции}
+\subsection{Измеримые и борелевские функции}
+\begin{definition}
+    Пару $(X, \MM)$ из абстрактного множества $X$ и $\sigma$-алгебры его подмножеств $\MM$ будем называть измеримым пространством.
+\end{definition}
+
+\begin{definition}
+    Пусть $(X, \MM)$~---~измеримое пространство и задана функция $f: X \rightarrow \overline{\R}$. Её будем называть $\MM$-измеримой, если \[\forall c \in \R \hookrightarrow f^{-1}((c, +\infty]) \in \MM\]
+\end{definition}
+
+\begin{definition}
+    Будем называть $\MM$-измеримую функцию борелевской, если $\MM = \mathfrak{B}(\R^n)$.
+\end{definition}
+
+\begin{note}
+    Распишем некоторые полезные факты из теории множеств. Пусть задано отображение $f$: $X \rightarrow Y$. Тогда $\forall A, B \subset Y:$
+    \begin{itemize}
+        \item $f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B);$
+        \item $f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B);$
+        \item $f^{-1}(A \setminus B) = f^{-1}(A) \setminus f^{-1}(B);$
+    \end{itemize}
+    Для объединения и пересечения прообразов справедливы более сильные утверждения. \\ $\forall \{E_\alpha\}_{\alpha \in I} \subset 2^Y:$
+    \begin{itemize}
+        \item $f^{-1}(\bigcap\limits_{\alpha \in I} E_\alpha) = \bigcap\limits_{\alpha \in I} f^{-1}(E_\alpha);$
+        \item $f^{-1}(\bigcup\limits_{\alpha \in I} E_\alpha) = \bigcup\limits_{\alpha \in I} f^{-1}(E_\alpha);$
+    \end{itemize}
+\end{note}
+
+\begin{remark}
+    Введём следующее обозначение: $E(f < a) = \{x \in E \mid f(x) < a\}$. Аналогичные обозначения введём для $\leq, >, \geq$.
+\end{remark}
+
+\begin{lemma}
+    Пусть $E \subset X, E \in \MM$, где $(X, \MM)$~---~измеримое пространство. Тогда следующие условия эквивалентны:
+    \begin{enumerate}
+        \item $\forall a \in \R \  E(f < a) \in \MM;$
+        \item $\forall a \in \R \  E(f \leq a) \in \MM;$
+        \item $\forall a \in \R \  E(f > a) \in \MM;$
+        \item $\forall a \in \R \  E(f \geq a) \in \MM;$
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    Докажем лемму по схеме $3) \Rightarrow 4) \Rightarrow 1) \Rightarrow 2) \Rightarrow 3)$:
+    \begin{enumerate}
+        \item[$3) \Rightarrow 4)$] Заметим, что $\forall a \in \R \hookrightarrow E(f \geq a) = \bigcap\limits_{n = 1}^\infty E(f > a - 1/n)$. Из замкнутости $\MM$ относительно счётных пересечений следует необходимое.
+        \item[$4) \Rightarrow 1)$] Заметим, что $\forall a \in \R \hookrightarrow E(f < a) = E \setminus E(f \geq a)$, из чего очевидно следует необходимое.
+        \item[$1) \Rightarrow 2)$] Заметим, что $\forall a \in \R \hookrightarrow E(f \leq a) = \bigcap\limits_{n = 1}^\infty E(f < a + 1/n)$.
+        \item[$2) \Rightarrow 3)$] Заметим, что $\forall a \in \R \hookrightarrow E(f > a) = E \setminus E(f \leq a)$.
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+    Пусть дано измеримое пространство $(X, \MM)$ и на нём задана $\MM$-измеримая функция $f$: $E \rightarrow \overline{\R}$, где $E \subset X, E \in \MM$.
+    Тогда выполнено следующее:
+    \begin{enumerate}
+        \item $\forall c \in \overline{\R} \hookrightarrow \  f^{-1}(\{c\}) \in \MM;$
+        \item $f^{-1}(\lfloor a, b \rceil) \in \MM$, где $-\infty \leq a \leq b \leq +\infty;$
+        \item $\forall B \in \mathfrak{B}(\R) \hookrightarrow f^{-1}(B) \in \MM;$
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+    Для начала докажем первую часть утверждения. \\
+    Зафиксируем $c \in \R$. Тогда прообраз точки представим в следующем виде: \[f^{-1}(\{c\}) = f^{-1}([-\infty, c]) \cap f^{-1}([c, +\infty])\]
+    Поэтому $f^{-1}(\{c\}) \in \MM$. \\
+    Если же $c = +\infty$, то \[f^{-1}(\{+ \infty\}) = \bigcap\limits_{n \in \N} f^{-1}([n, +\infty])\] Значит прообраз $+\infty$ также измерим. \\
+    Для $c = -\infty$ аналогично: \[f^{-1}(\{- \infty\}) = \bigcap\limits_{n \in \N} f^{-1}([-\infty, -n]) \Rightarrow f^{-1}(\{-\infty\}) \in \MM\] \\
+    Докажем вторую часть утверждения. \\
+    Рассмотрим случай полуинтервала: \[f^{-1}((a, b]) = f^{-1}([-\infty, b]) \setminus f^{-1}([-\infty, a]) \in \MM.\] Для доказательства того, что отрезок/интервал лежат в $\MM$ необходимо просто добавить/вычесть точку к полуинтервалу. В предельных случаях: \\
+    \[f^{-1}(\R) = \bigcup\limits_{n \in \N} f^{-1}([-n, n]) \in \MM;\]
+    \[f^{-1}(\overline{\R}) = f^{-1}(\{-\infty\}) \cup f^{-1}(\R) \cup f^{-1}(\{+\infty\}) \in \MM.\]
+    Докажем третью часть утверждения. \\
+    Рассмотрим все такие $B \subset \R$, что $f^{-1}(B) \in \MM$. Заметим, что система таких множеств \[\mathcal{R} = \{B \subset \R \mid f^{-1}(B) \in \MM\}\] является $\sigma$-алгеброй. По только что доказанному, $\mathcal{R}$ содержит все промежутки. Но, борелевская $\sigma$-алгебра -- минимальная $\sigma$-алгебра, содержащая все промежутки. Значит, $R \supset \mathfrak{B}(\R)$
+\end{proof}
+
+\begin{note}
+    До этого было введено понятие измеримости на всем пространстве, а теперь введем понятие измеримости на множестве.
+    Пусть $(X, \MM)$~---~измеримое пространство, $E \subset X, E \in \MM$ и функция $f: E \rightarrow \overline{\R}$. Тогда если $\forall c \in \R \  E(f > c) \in \MM$, то будем называть $f$ измеримой на $E$. Если $E = X$, то $f$ --- $\MM$-измерима на всем пространстве. \\
+
+\end{note}
+\begin{remark}
+Если $E \in \MM$, то любую функцию, измеримую на $E$ можно продолжить 0 на дополнении к $E$ и получить функцию, измеримую на всём пространстве. \\
+Верно и обратное: если $f$~---~$\MM$-измеримая на $X$, то $f|_E$~---~$\MM$-измерима на $E$.
+\end{remark}
+
+\begin{lemma}
+    Пусть дана $\{E_n\}_{n = 1}^\infty \subset \MM$. Тогда если $f: X \rightarrow \overline{\R}$ измеримо на $E_n$ для любого $n$, то $f$~---~измеримо и на объединении.
+\end{lemma}
+\begin{proof}
+    Очевидно: \[f|_{\bigcup\limits_{n \in \N} E_n}^{-1}((c, +\infty]) = \bigcup\limits_{n \in \N} f|_{E_n}^{-1}((c, +\infty])\] и прообраз измерим как счётное объединение измеримых.
+\end{proof}
+\subsection{Предельный переход для измеримых функций}
+\begin{theorem}
+    Пусть дано измеримое пространство $(X, \MM)$ и последовательность измеримых на нём функций $\{f_n\}$. Тогда верно следующее:
+    \begin{enumerate}
+        \item $\overline{f} = \sup\limits_{n \in \N} f_n$ и $\underline{f} = \inf\limits_{n \in \N} f_n$~---~измеримы на $X$;
+        \item $\overline{F} = \limsup\limits_{n \rightarrow +\infty} f_n$ и $\underline{F} = \liminf\limits_{n \rightarrow +\infty} f_n$~---~измеримы на $X$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Заметим, что \[X(\underline{f} < a) = \bigcup\limits_{n \in \N} X(f_n < a)\] Из этого следует, что $\forall a \in \R \  X(\underline{f} < a) \in \MM$ и, следовательно, функция $\underline{f}$~---~измерима. Аналогичное рассуждение (только с $X(\overline{f} > a)$) верно для супремума. Теперь, для доказательства второй части теоремы достаточно заметить, что \[\liminf\limits_{n \rightarrow +\infty} f_n = \sup\limits_{n \in \N} \inf\limits_{k \geq n} f_k\] По первой части утверждения каждый из инфинумов является измеримой функцией, а следовательно супремум по ним тоже измерим, что и требовалось доказать. Для верхнего предела доказательство аналогично.
+\end{proof}
+
+\begin{corollary}
+    Пусть $E = \{x \in X \mid \underline{F}(x) = \overline{F}(x)\}$. Это множество -- измеримо, и, более того, функция $F = \lim\limits_{n \rightarrow +\infty} f_n$~---~измерима на $E$.
+\end{corollary}
+
+\begin{theorem}
+    Пусть дана непустое множество $G \subset \R^n$, функция $\phi \in C(G)$. Пусть $f_1, \ldots, f_n$~---~измеримые функции, такие, что $f = (f_1, \ldots, f_n) \in G \  \forall x \in X$  (стандартно, $(X, \MM)$~---~измеримое пространство, каждая из функций задана на нём). Тогда $\phi \circ f$~---~измерима на $X$.
+\end{theorem}
+\begin{proof}
+    Поскольку $\phi$~---~непрерывно, то $\phi^{-1}((c, +\infty]) = \phi^{-1}((c, +\infty))$. По критерию непрерывности прообраз открытого $(c, +\infty)$ относительно открыт, то есть $\phi^{-1}((c, +\infty)) = G \cap \Omega_c$. В тоже время $f^{-1}(G \cap \Omega_c) = f^{-1}(\Omega_c)$, так как $f$ отображает $X$ в подмножество $G$. \\ Поскольку $\Omega_c$~---~открытое, оно представимо в виде \[\Omega_c = \bigcup\limits_{m \in \N} [a^m, b^m)\]
+    Значит прообраз $\Omega_c$ представляется в виде \[f^{-1}(\Omega_c) = f^{-1}\biggr(\bigcup\limits_{m \in \N} [a^m, b^m)\biggr) = \bigcup\limits_{m \in \N} f^{-1}([a^m, b^m)) = \bigcup\limits_{m \in \N} \bigcap\limits_{k = 1}^n f_k^{-1}([a^m_k, b^m_k))\] Поскольку каждая из $f_k$~---~измерима, то прообраз всякой ячейки измерим. Тогда пересечение измеримых -- измеримо, и счётное объединение тоже измеримо, а следовательно $\phi \circ f$~---~измеримая функция.
+\end{proof}
+
+\begin{remark}
+    Договоримся о следующем распространении арифметических операций на $\pm\infty$:
+    \begin{enumerate}
+        \item $0 \cdot \pm\infty = \pm\infty \cdot 0 = 0;$
+        \item $(\pm\infty) + (\pm\infty) = \pm\infty;$
+        \item $\forall c \in \overline{\R} \setminus \{0\}: c \cdot \pm\infty = \pm\infty, c > 0 \wedge c \cdot \pm\infty = \mp\infty, c < 0;$
+        \item $\forall c \in \R: c + (+\infty) = +\infty;$
+        \item $\forall c \in \R: c - (+\infty) = c + (-\infty) = -\infty;$
+        \item $(+\infty) - (+\infty) = 0$ и аналогичные;
+        \item $\forall c \in \overline{\R}: \frac{c}{\pm\infty} = 0.$
+    \end{enumerate}
+\end{remark}
+
+\begin{theorem}
+    Пусть $f$ и $g$~---~измеримые функции. Тогда верны следующие утверждения:
+    \begin{enumerate}
+        \item $f \cdot g$~---~измеримая;
+        \item $f + g$~---~измеримая;
+        \item $\alpha f$~---~измеримая, $\alpha \in \R$;
+        \item $f^p$~---~измеримая, если $p > 0$ и $f \geq 0$;
+        \item $\frac{1}{f}$~---~измеримая на множестве, на котором $f \neq 0$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item Рассмотрим такие точки, в которых $f$ и $g$ конечны одновременно. Это множество $E = \{x \mid f(x) \in \R, g(x) \in \R\}$ измеримо. Пусть $\phi(x, y) = xy, \phi \in C^2(\R^2)$. Определим $\tilde{f}$ и $\tilde{g}$ как $\tilde{f}|_E = f, \tilde{f}|_{E^c} = 0$; $\tilde{g}$~---~аналогично. Тогда $\tilde{f}\cdot\tilde{g} = \phi(\tilde{f}, \tilde{g})$ и является измеримой функцией по предыдущей теореме. Значит $fg$~---~измерима на $E$, поскольку является сужением измеримой на измеримое. Если же одно из значений является $\pm\infty$, то эти случаи рассматриваются достаточно очевидно: прообразы $\pm \infty$ и $0$ получаются как пересечения/объединения измеримых множеств, поэтому функция $fg$ будет измерима всюду.
+        \item[2., 3.] Аналогично $1)$ пункту.
+        \item[4.] Если функция конечна, то $\phi(x) = x^p$~---~непрерывна и по предыдущей теореме функция измерима на подмножестве, где функция конечна. А если $f$ принимает бесконечные значения, то считая $(+\infty)^p = +\infty$ мы получаем постоянство на $f^{-1}(\{+\infty\})$. Тогда функция будет измерима на объединении, т.е. всюду.
+        \item[5.] На множестве $X(f \neq 0)$ мы можем рассмотреть её композицию с $\phi(x) = 1/x$~---~непрерывной на множестве $\R \setminus {0}$. Тогда в точках, где $f$~---~конечна мы получаем измеримость композиции, а в точках бесконечности мы получаем измеримость как объединение измеримых.
+    \end{enumerate}
+\end{proof}
+
+\subsection{Простые функции}
+
+\begin{definition}
+    Пусть дано измеримое пространство $(X, \MM)$. Пусть дана функция $f: X \rightarrow \R$. Тогда, если существуют $\{a_1, \ldots, a_n\} \subset \R$ и дизъюнктные множества $E_1, \ldots E_n \in \MM$ такие, что \[
+        f = \sum\limits_{i = 1}^n a_i\chi_{E_i}
+    \]
+    то функция $f$ называется простой. То есть простая функция --- такая у которой множество значений конечно.
+\end{definition}
+
+\begin{example}
+    Функция Дирихле~---~простая.
+\end{example}
+
+\begin{note}
+    Набор множеств $E_1, \ldots E_n$ может быть выбран не единственным способом.
+\end{note}
+
+\begin{note}
+    Определение простой функции корректно, поскольку если есть два допустимых набора множеств то их всякие попарные пересечения тоже образуют допустимый набор множеств.
+\end{note}
+
+\begin{lemma}
+    Сумма, разность и произведение простых функций тоже является простой функцией.
+\end{lemma}
+\begin{proof}
+    Пусть $f = \sum\limits_{i = 1}^{n} a_i\chi_{E_i}$ и $g = \sum\limits_{j = 1}^{m} a'_j\chi_{E'_j}$. Тогда \[f + g = \sum\limits_{i, j = 1, 1}^{n, m} (a_i + a'_j)\chi_{E_i \cap E'_j}\]
+    Аналогичное верно и для произведения простых функций.
+\end{proof}
+
+\begin{theorem}
+    Пусть дано измеримое пространство $(X, \MM)$, и на нём задана измеримая функция $f$: $X \rightarrow \overline{\R}$. Тогда $\exists \ \{f_n\}_{n = 1}^\infty$~---~последовательность простых функций: $f_n \xrightarrow{} f, n \rightarrow +\infty$.
+\end{theorem}
+\begin{proof}
+\textbf{Шаг 1.} Рассмотрим сначала $f \geq 0$. \\
+    Зафиксируем некоторое $n \in \N$. Определим $\Delta_{k, n} = [\frac{k}{n}, \frac{k + 1}{n})$. Тогда $[0, n) = \bigsqcup\limits_{k = 0}^{n^2 - 1} \Delta_{k, n}$. \\
+    Пусть $E_{k, n} = f^{-1}(\Delta_{k, n})$. Теперь определим функцию 
+    \[
+    f_n(x) = 
+    \begin{cases}
+        \frac{k}{n}, &  x \in E_{k, n} \\
+         n, &  x \in f^{-1}([n, +\infty])
+    \end{cases},\text{~---~она, очевидно, простая}
+    \]
+    Пусть $f(x) < +\infty$. Тогда $\forall n \in \N \hookrightarrow | f_n(x) - f(x) | \leq 1 / n$ (оцениваем как бы <<колебанием>>).\\
+    А так как $\exists N \in \N$: $\forall n \geq N \hookrightarrow f(x) \in [0, n)$, то $ |f_n(x) - f(x)| \leq \frac{1}{n}\  \forall n \geq N \Rightarrow f_n(x) \xrightarrow{} f(x)$, $n \to \infty$.\\
+    Если же рассмотреть \[E^\infty = f^{-1}(\{+\infty\}) = \bigcap\limits_{n \in \N} f^{-1}([n, +\infty]),\]
+    то $f_n|_{E^\infty} = n$, а следовательно если $f(x) = +\infty$, то $f_n(x) \rightarrow f(x), n \rightarrow +\infty$. \\
+    \textbf{Шаг 2.} Пусть теперь функция $f$~---~произвольная. Тогда определим $f_+ = \max\{f, 0\}$ и $f_- = \max\{-f, 0\}$. В таком случае $f = f_+ - f_-$. Повторяя рассуждения предыдущего пункта мы аппроксимируем $f_+$ и $f_-$, а после из того, что разность простых -- простая мы получаем необходимую последовательность функций для $f$.
+\end{proof}
+
+\section{Различные виды сходимости}
+\subsection{Сходимость по мере и почти всюду}
+Зафиксируем пространство с полной мерой $(X, \MM, \mu)$. $X$~---~абстрактное множество, $\MM$~---~$\sigma$-алгебра на нём, $\mu$~---~счётно-аддитивная полная мера на $\MM$.
+
+\begin{definition}
+    $\LL_0(X, \mu)$~---~линейное пространство измеримых \underline{почти всюду конечных} функций над $X$.
+\end{definition}
+
+\begin{reminder} (Из 2 семестра)
+    Будем говорить, что последовательность  $\{f_n\}_{n = 1}^\infty$ поточечно сходится к функции $f : X \rightarrow \R,$ если
+    $$\forall \ x \in X: \lim_{n \rightarrow \infty} f_n(x) = f(x).$$
+    При этом записывают это так:
+    $$f_n \underset{X}{\rightarrow} f, \ n\rightarrow \infty$$
+\end{reminder}
+
+
+\begin{definition} (Сходимость почти всюду)
+    Пусть $\{f_n\}_{n = 1}^\infty$~---~последовательность измеримых на $E$ функций, где $E \in \MM$. Будем говорить что $f_n$ сходится почти всюду (далее -- п.в.) к измеримой функции $f$, если $$\mu\Big(\{x \in E \mid f_n(x) \not\rightarrow f(x), \ n \rightarrow +\infty\}\Big) = 0$$ Будем обозначать как $f_n \xrightarrow[E]{\text{п.в.}} f, n \rightarrow +\infty$.
+\end{definition}
+
+\begin{definition} (Сходимость по мере)
+    Пусть есть последовательность функций $\{f_n\}_{n = 1}^\infty \subset \LL_0(E, \mu)$, где $E \in \MM$. Будем говорить, что $f_n$ сходится по мере к $f \in \LL_0(E, \mu)$, если $$\forall \epsilon > 0 \  \mu\Big(\{x \in E \mid \ \| f(x) - f_n(x)\| \geq \epsilon \}\Big) \xrightarrow{} 0, n \rightarrow \infty$$ И обозначать как $f_n \xrightarrow{\mu} f, n \rightarrow +\infty$. \\
+    Таким образом, $f_n \xrightarrow{\mu} f, n \rightarrow +\infty$, если для достаточно больших $n$ каждая из функций равномерно близка к $f$ на множестве, получаемым удалением из $E$ множества сколь угодно малой меры. Стоит заметить, что поскольку для каждой из функций это удаляемое множество своё, и в общем случае нельзя удалить одно множество, вне которого все функции $f_n$ с достаточно большими номерами были бы равномерно близки к предельной.
+\end{definition}
+
+\begin{proposition}
+    Из сходимости по мере не следует сходимость почти всюду.
+\end{proposition}
+\begin{proof}
+    Определим $\forall n \in \N$ следующий набор множеств:  \[ \Delta_{k, n} = \left[\frac{k}{2^n}, \frac{k + 1}{2^n}\right), k \in \{0, \ldots, 2^n - 1\}.\]
+    Можно заметить, что $\forall m \in \N \  m = 2^n + k, k \in \overline{0, \ldots, 2^{n} - 1}$, причём $n, k$ определяются единственным образом. Зададим последовательность функций $\{h_m\}_{m = 1}^\infty$ следующим образом: $h_m = \chi_{\Delta_{k, n}(m)}.$\\
+    Заметим, что при $m \rightarrow \infty$, $n \to \infty$. Тогда верно следующее: $\LL^1(\Delta_{k, m}) = 2^{-n} \rightarrow 0, n \rightarrow \infty$, где $\LL^1$~---~одномерная мера Лебега. Значит $\LL^1(\{x \in [0, 1] \mid h_m(x) > 0\}) \leq 2^{-n} \rightarrow 0, m \rightarrow \infty$ и $h_n \xrightarrow[n \rightarrow \infty]{\LL^1} 0$. В то же время $h_n \not\xrightarrow[\text{п.в.}]{[0, 1]} 0$, поскольку ни в какой точке $h_n(x)$ не имеет предела.
+\end{proof}
+
+\begin{proposition}
+    Из сходимости п.в. не следует сходимость по мере
+\end{proposition}
+\begin{proof}
+    Возьмём $f_n = \chi_{[n, +\infty)}$. Тогда $f_n \xrightarrow[\R]{\text{п.в.}} 0, n \rightarrow +\infty$, но так как мера точек, больших $1/2$ всегда бесконечна, то сходимость по мере отсутствует.
+\end{proof}
+
+\begin{theorem}[Лебега]
+    Пусть мера пространства конечна $\left(\mu (X) < +\infty\right)$. Тогда из сходимости почти всюду следует сходимость по мере.
+\end{theorem}
+\begin{proof}
+     Шаг 1. Пусть $\{f_n\}_{n = 1}^\infty$~---~это последовательность неотрицательных измеримых монотонно убывающих функций, сходящаяся к нулю п.в. Определим $$\forall \epsilon > 0 \ E_n(\epsilon) = \{x \in X \mid f_n(x) \geq \epsilon\}$$ Заметим, что $E_{n + 1}(\epsilon) \subset E_n(\epsilon)\  \forall n \in \N$. В то же время так как есть сходимость почти всюду, то с какого-то номера мы <<упадем>> меньше $\epsilon$, а значит $\mu \Big(\bigcap\limits_{n = 1}^\infty E_n(\epsilon) \Big) = 0$.\\
+     Теперь в силу непрерывности меры сверху \hyperlink{upper_continious}{(именно здесь применяется конечность меры $X$)} получаем, что $\mu(E_n(\epsilon)) \rightarrow 0, n \rightarrow \infty$, следовательно $f_n \xrightarrow[X]{\mu} 0, n \rightarrow \infty$. \\
+    Шаг 2. Теперь рассмотрим общий случай. Пусть $\{f_n\}_{n = 1}^\infty$~---~последовательность измеримых функций, п.в. сходящаяся к $f$. \\
+    Определим $h_n(x ) = \sup\limits_{k \geq n}\|f_k - f\|$. Она измерима, так как супремум измеримых измерим. Супремум конечен почти всюду, ведь почти всюду $f_k$ сходится к $f$, а $f$ почти всюду конечна. $\forall n \in \N$  и  $\forall$ п.в. $x \in X$ $h_n < +\infty$
+    Тогда ясно, что $h_n$ удовлетворяет частному случаю, и по доказанному $h_n \xrightarrow[X]{\mu} 0, n \rightarrow \infty$. Но, тогда применяя предыдущий шаг мы получаем  $\|f_n - f\| \leq h_n$, то $E(\|f_n - f\| > \epsilon) \subset E(h_n > \epsilon)$, а значит $\mu(E(\|f_n - f\| > \epsilon)) \rightarrow 0, n \rightarrow \infty$ т.е. $f_k \xrightarrow[X]{\mu} f, k \rightarrow +\infty$.
+\end{proof}
+
+\begin{counterexample}
+    Почему нужна конечность меры $X$: если мы возьмем $\chi_{[n, +\infty)}$, то их пересечение пусто, но мера каждого луча $+\infty$ и тогда последний переход шага $1$ не работает.
+\end{counterexample}

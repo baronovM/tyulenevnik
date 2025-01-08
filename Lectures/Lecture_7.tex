@@ -1,0 +1,197 @@
+\subsection{Свойства интеграла Лебега для неотрицательных функций}
+\begin{reminder}
+    Пусть сейчас и далее фиксировано некоторое пространство с мерой $(X, \MM, \mu)$.
+\end{reminder}
+\begin{reminder}
+    Если $g$~---~неотрицательная измеримая функция на $E \in \MM$, то $\int\limits_E gd\mu = \sup\limits_{\phi} \int\limits_E \phi d\mu$, где супремум берётся по простым функциям $\phi$, таким что $\phi \leq g$ на $E$.
+\end{reminder}
+
+\begin{proposition}[Монотонность по функциям]
+    Пусть $E \in \MM$, $f, g$~---~неотрицательные измеримые функции. Тогда если $f \leq g$ на $E$, то $\int\limits_E fd\mu \leq \int\limits_E gd\mu$.
+\end{proposition}
+\begin{proof}
+    Пусть $\psi, h$~---~две простые функции: $\psi \leq h$ на $E$. У них есть допустимые разбиения $X$. Заметим, что если мы попарно пересечём множества разбиения для $\psi$ с множествами разбиения для $h$, то мы получим общее допустимое разбиение $\{A_i\}_{i = 1}^N$ для этих функций: $\psi = \sum\limits_{i = 1}^N a_i\chi_{A_i},\text{ аналогично } h = \sum\limits_{i = 1}^N b_i\chi_{A_i}$. Тогда, зная, что $\forall k \in \{1,\dots, N\} \hookrightarrow a_k \leq b_k$, получаем:\[\int\limits_{E} \psi d\mu = \sum\limits_{i = 1}^N a_i \mu(E \cap A_i) \leq \sum\limits_{i = 1}^N b_i \mu(E \cap A_i) = \int\limits_E h d \mu.\] Теперь рассмотрим общий случай. Пусть у нас $\psi$~---~произвольная неотрицательная простая функция такая, что $\psi \leq f$ на $E$. В тоже время, $f \leq g$ по условию. Тогда \[\int\limits_E fd\mu = \sup\limits_{0 \leq \psi \leq f}\int\limits_E \psi d\mu \leq \sup\limits_{0 \leq h \leq g} \int\limits_{E} h d\mu = \int\limits_{E}g d\mu,\] где супремум берётся по всем таким простым функциям.
+\end{proof}
+\begin{proposition}
+    Пусть множество $E$: $\mu(E) = 0$. Тогда $\int\limits_E fd\mu = 0$.
+\end{proposition}
+\begin{proof}
+    Для простой функции это очевидно по определению интеграла. В общем же случае \[\int\limits_E gd\mu = \sup\limits_{\phi \leq g} \int\limits_E \phi d \mu = 0.\]
+\end{proof}
+\begin{proposition}
+    Пусть $E \in \MM$. Тогда $\int\limits_E fd\mu = \int\limits_X f \cdot\chi_Ed\mu$.
+\end{proposition}
+\begin{proof}
+    Покажем, что для простых функций это так. Пусть $\psi$~---~простая, а $\{A_i\}_{i = 1}^N$~---~допустимое разбиение для $\psi$. Тогда \[\chi_E\psi = \sum\limits_{i = 1}^N a_i\chi_{A_i}\chi_E = \sum\limits_{i = 1}^N a_i\chi_{A_i \cap E} + 0 \cdot \chi_{X \setminus E}.\] Значит, \[\int\limits_X \chi_E \psi d\mu = \sum\limits_{k = 1}^N a_k \mu(A_k \cap E) + 0\mu(X \setminus E) = \sum\limits_{k = 1}^N a_k\mu(A_k \cap E) = \int\limits_E \psi d \mu.\]
+    Пусть $\psi$~---~простая: $0 \leq \psi \leq f$ на $E$. Обозначим это условие $(*)$. Пусть $h$~---~простая, и $0 \leq h \leq \chi_E f$ на $X$.
+    Заметим, что $h = \chi_E h$. Значит, верно следующее: \[\int\limits_X hd\mu = \int\limits_X \chi_E h d\mu = \int\limits_E hd\mu \leq \int\limits_E fd\mu\]
+    Теперь если мы возьмём $\sup$ по всем таким $h$:
+    \[\int\limits_X \chi_E fd\mu = \sup\limits_h \int\limits_X hd\mu \leq \int\limits_E fd\mu\]
+    Рассмотрим произвольную $\psi$, удовлетворяющую условию $(*)$:
+    \[\int\limits_E \psi d\mu = \int\limits_X \chi_E\psi d\mu \leq \int\limits_X \chi_E fd\mu\]
+    Возьмём супремум по всем таким функциям таким $\psi$:
+    \[\int\limits_E fd\mu = \sup\limits_\psi \int\limits_E \psi d\mu \leq \int\limits_X \chi_E fd\mu\]
+    Значит \[\int\limits_E fd\mu = \int\limits_X \chi_Efd\mu\]
+\end{proof}
+\begin{corollary}[Монотонность по множеству]
+    Пусть $A, B \in \MM, A \subset B$, $f: X \rightarrow [0, +\infty]$~---~измеримая. Тогда \[\int\limits_A fd\mu = \int\limits_X f\chi_Ad\mu \leq \int\limits_X f\chi_Bd\mu = \int\limits_B fd\mu\]
+\end{corollary}
+
+\hypertarget{beppo_levi}{}
+\begin{theorem}[Беппо Леви]
+    Пусть дана последовательность $\{f_n\}$ неотрицательных измеримых на $X$ функций: $f_n \leq f_{n + 1}$ на $X$, сходящаяся к функции $f = \lim\limits_{n \rightarrow +\infty} f_n$ Тогда верно следующее: \[\lim\limits_{n \rightarrow +\infty} \int\limits_X f_nd\mu = \int\limits_X \lim\limits_{n \rightarrow +\infty} f_n d\mu = \int\limits_X fd\mu\]
+\end{theorem}
+\begin{proof}
+    Пусть $L_n = \int\limits_X f_nd\mu$. Заметим, что $\{L_n\}$~---~монотонно не убывает в $[0, +\infty]$. Значит, $\exists \lim\limits_{n\rightarrow+\infty} L_n = \sup\limits_n L_n = L$. Поскольку $\forall n \in \N \hookrightarrow f \geq f_n$, значит: \[\int\limits_X fd\mu \geq \int\limits_X f_nd\mu\]
+    Т.е. \[\int\limits_X fd\mu \geq L = \lim\limits_{n \rightarrow +\infty} \int\limits_X f_nd\mu\]
+    Теперь необходимо показать включение в обратную сторону. Зафиксируем $\theta \in (0, 1)$. Пусть $g$~---~произвольная неотрицательная простая функция, т.ч. $0 \leq g \leq f$ на $X$.\\ Рассмотрим $X_n = X(f_n \geq \theta g)$. Заметим, что $ \forall n \in \N \ldots \subset X_n \subset X_{n + 1} \subset \ldots$. В тоже время, $\bigcup\limits_{n = 1}^\infty X_n = X$, поскольку множестве нулей функции $g$ заведомо исчерпывается. Если $g(x) > 0$, то т.к. $g \leq f \Rightarrow \theta g < f$. Т.к. $\lim\limits_{n\rightarrow +\infty}f_n = f$, значит с некоторого $N \hookrightarrow f_N(x) > \theta g(x) \Rightarrow x \in X_N$, поэтому $\bigcup\limits_{n = 1}^\infty X_n = X$. \\
+    Тогда $\forall A \in \MM \hookrightarrow A = \bigcup\limits_{n = 1}^\infty A \cap X_n$. В силу непрерывности снизу мы получаем, что $\forall A \in \MM$ \[\mu(A) = \lim\limits_{n \rightarrow +\infty} \mu(A \cap X_n) (*)\]
+    Т.е. \[\int\limits_X f_nd\mu \geq \int\limits_{X_n} f_nd\mu \geq \int\limits_{X_n} \theta g d\mu = \theta \sum\limits_{k = 1}^N a_k\mu(A_k \cap X_n)\]
+    Устремим $n$ в бесконечность:
+    \[L = \lim\limits_{n \rightarrow +\infty} \int\limits_X f_nd\mu \geq \theta\sum\limits_{k = 1}^N a_k\mu(A_k \cap X) = \theta\int\limits_{X} gd\mu \]
+    В силу произвольного выбора $\theta$, при взятии супремума по $\theta$, мы получим следующее неравенство: \[L \geq \int\limits_X gd\mu\]
+    Теперь взяв супремум по всем таким $g$ мы получим искомое включение: \[L \geq \sup\limits_g \int\limits_X gd\mu = \int\limits_X fd\mu\]
+\end{proof} 
+
+
+\begin{theorem}[Фату]
+    Пусть $\{f_n\}$~---~последовательность неотрицательных измеримых функций. Тогда верно следующее: \[\int\limits_X   \underset{n \ra \infty}{\underline{\lim}} f_nd\mu \leq \underset{n \ra \infty}{\underline{\lim}} \int\limits_{X} f_nd\mu\]
+\end{theorem}
+\begin{proof}
+    Вспомним, $\underset{n \ra \infty}{\underline{\lim}} f_n(x) = \lim\limits_{n \ra \infty} \inf\limits_{k\geq n} f_k(x)$. Обозначим за $g_n = \inf\limits_{k \geq n} f_k$. Заметим, что последовательность $g_n$~---~монотонна. Тогда $\liminf\limits_{n \rightarrow +\infty} f_n = \lim\limits_{n \rightarrow \infty} g_n$. Применим \hyperlink{beppo_levi}{теорему Леви} к $g_n$: \[\int\limits_X \underset{n \ra \infty}{\underline{\lim}} f_n d\mu =  \int\limits_X \lim\limits_{n \rightarrow +\infty} g_nd\mu = \lim\limits_{n\rightarrow +\infty} \int\limits_X \inf\limits_{k \geq n} f_k d\mu \leq \lim\limits_{n\rightarrow +\infty}\inf\limits_{k \geq n} \int\limits_X f_k d\mu = \underset{n \ra \infty}{\underline{\lim}} \int\limits_X f_nd\mu\]
+\end{proof}
+
+\begin{proposition}[Аддитивность по функциям]
+    Пусть $f, g$ неотрицательные измеримые функции. Тогда верно следующее: \[\int\limits_X (f + g) d\mu = \int\limits_X fd\mu + \int\limits_X gd\mu\]
+\end{proposition}
+\begin{proof}
+    Сначала докажем это для простых функций $\psi: 0 \leq \psi \leq f, h: 0 \leq h \leq g$. Возьмём общее для них разбиение: \[\psi = \sum\limits_{k = 1}^N a_k \chi_{C_k}, \ h = \sum\limits_{k = 1}^N b_k \chi_{C_k}\]
+    По определению интеграла для простых функций: \[\int\limits_X (\psi + h)d\mu = \sum\limits_{k = 1}^N (a_k + b_k)\mu(C_k) = \sum\limits_{k = 1}^N a_k\mu(C_k) + \sum\limits_{k = 1}^N b_k\mu(C_k) = \int\limits_X \psi d\mu + \int\limits_X h d\mu\]
+    Теперь покажем корректность утверждения для произвольных измеримых функций. Поскольку любая измеримая является пределом последовательности простых (без ограничения общности последовательность можно взять возрастающей; если же она не возрастающая, то просто берём $t_k = \max\limits_{i = 1}^k f_k$), то $f = \lim\limits_{n\rightarrow +\infty} f_n$, $g = \lim\limits_{n \rightarrow +\infty} g_n$. Тогда используя \hyperlink{beppo_levi}{теорему Леви} мы получаем следующее:     
+    \[\int\limits_X (f + g)d\mu = \int\limits_X \lim\limits_{n\rightarrow +\infty} (f_n + g_n) d\mu = \lim\limits_{n \rightarrow + \infty} \int\limits_X (f_n + g_n)d\mu = \]\[ = \lim\limits_{n\rightarrow +\infty} \int\limits_X f_nd\mu + \int\limits_X g_nd\mu = \int\limits_X \lim\limits_{n \rightarrow +\infty} f_nd\mu + \int\limits_X \lim\limits_{n \rightarrow +\infty} g_nd\mu = \int\limits_X fd\mu + \int\limits_X gd\mu\]
+\end{proof}
+\begin{proposition}[Положительная однородность]
+    Пусть $f$~---~неотрицательная измеримая функция. Тогда $\forall \alpha \geq 0 \hookrightarrow \int\limits_X \alpha f d\mu = \alpha \int\limits_X fd\mu$.
+\end{proposition}
+\begin{proof}
+    Доказательство аналогично доказательству аддитивности по функциям.
+\end{proof}
+\begin{proposition}
+    Пусть $E \in \MM, \{E_n\}_{k = 1}^N \subset \MM$ и $E = \bigcup\limits_{n = 1}^N E_n$. Тогда для произвольной измеримой неотрицательной функции $f$ верно следующее: \[\int\limits_E fd\mu < +\infty \Longleftrightarrow \forall k \int\limits_{E_k} fd\mu < +\infty\]
+    Более того, если $E = \bigsqcup\limits_{k = 1}^N E_k$, то \[\int\limits_E fd\mu = \sum\limits_{k = 1}^N \int\limits_{E_k} fd\mu\]
+\end{proposition}
+\begin{proof}
+    ($\Longrightarrow$) Заметим, что $\int\limits_{E_k} fd\mu \leq \int\limits_{E}fd\mu$, а значит, если $\int\limits_E fd\mu < +\infty$, то и $\forall k \int\limits_{E_k} fd\mu < +\infty$ \\
+    ($\Longleftarrow$) Пусть теперь $\forall k \int\limits_{E_k} fd\mu < +\infty$. Но тогда $\int\limits_{E} fd\mu = \int\limits_X f\chi_{E}d\mu \leq \int\limits_X f\sum\limits_{k = 1}^N \chi_{E_k}d\mu = \sum\limits_{k = 1}^N \int\limits_{E_k} fd\mu < +\infty$. \\
+    Если же набор множеств $E_k$ разбивает $E$, тогда $\chi_E = \sum\limits_{k = 1}^N \chi_{E_k}$, поэтому очевидно выполнение равенства.
+\end{proof}
+\begin{proposition}
+    Пусть $E \in \MM$: $\mu(E) > 0$ и дана измеримая $f > 0$ на $E$. Тогда $\int\limits_{E} fd\mu > 0$.
+\end{proposition}
+\begin{proof}
+    Пусть $E_n = E(f > 1/n)$. Тогда $E = \bigcup\limits_{n = 1}^\infty E_n$. Тогда $\exists n_0 \in \N$: $\mu(E_{n_0}) > 0$. Значит, \[\int\limits_{E} fd\mu \geq \int\limits_{E_{n_0}} fd\mu \geq \int\limits_{E_{n_0}} \cfrac{1}{n_0}d\mu = \cfrac{1}{n_0} \mu(E_{n_0}) > 0.\]
+\end{proof}
+
+\subsection{Свойства интеграла Лебега от произвольных измеримых функций}
+\begin{proposition}
+    $f$~---~интегрируема по Лебегу $\Longleftrightarrow$ $|f|$~---~интегрируема по Лебегу
+\end{proposition}
+\begin{proof}
+    Пусть $f_+ = \max(f, 0)$ и $f_- = \max(-f, 0)$. Тогда \\
+    Если $f$~---~интегрируема по Лебегу, то согласно определению $\int f_+ d\mu < +\infty$ и $\int f_-d\mu < +\infty$. Поскольку $|f| = f_+ + f_-$, то $\int |f|d\mu < +\infty$. \\
+    Если $f$~---~интегрируема по Лебегу, то $\int |f|d\mu < +\infty$, а поскольку $f_+ \leq f$ и $f_- \leq f$, то $\int f_+ d\mu < +\infty$ и $\int f_- d\mu < +\infty$, а значит $f$~---~интегрируема по Лебегу.
+\end{proof}
+\begin{note}
+    Для интеграла по Римману, утверждение выше не верно
+\end{note}
+\begin{proposition}
+    Пусть $f$~---~интегрируемая по Лебегу функция на $E$. Тогда $$|\int\limits_E fd\mu| < \int\limits_E |f|d\mu.$$
+\end{proposition}
+\begin{proof} Используя неравенство треугольника для определения интеграла от модуля функции
+    \[\Bigg|\int\limits_E fd\mu\Bigg| = \Bigg|\int\limits_{E} f_+d\mu - \int\limits_E f_-d\mu\Bigg| \leq \Bigg|\int\limits_E f_+d\mu\Bigg| + \Bigg|\int\limits_E f_-d\mu\Bigg| = \int\limits_E f_+d\mu + \int\limits_E f_-d\mu = \int\limits_E |f|d\mu\]
+\end{proof}
+
+\begin{proposition}
+    Пусть $f$ интегрируема по Лебегу на $E$. Тогда она п.в. конечна на $E$.
+\end{proposition}
+\begin{proof}
+    Поскольку интегрируемость $f$ равносильно интегрируемости $|f|$, то $\int\limits_E |f|d\mu < +\infty$. Пусть $E_0 = \{x \mid f(x) = \pm\infty\} \subset E$. Тогда \[+\infty > \int\limits_{E} |f|d\mu \geq \int\limits_{E_0}|f|d\mu \geq \int\limits_{E_0} nd\mu, \ \forall n \in \N\]
+    Но $\int\limits_{E_0} nd\mu = n\mu(E_0)$,
+    \[
+    \mu(E_0) \leq \frac{1}{n} \int\limits_{E} |f|d\mu, \ \forall n \in \N
+    \]
+    
+    А значит $E_0$~---~ множество меры нуль.
+\end{proof}
+
+\begin{proposition}
+    Пусть $E$~---~произвольное множество и $\int\limits_E |f|d\mu = 0$. Тогда $f$ п.в. равна $0$.
+\end{proposition}
+\begin{proof}
+    Пусть это не так. Тогда существует множество положительной меры $e \subset E$: $|f| > 0$ на $e$. Но, по свойству интеграла Лебега для неотрицательных функций $\int\limits_e |f| d\mu > 0$, чего не может быть в силу $0 = \int\limits_E |f| d\mu \geq \int\limits_e |f|d\mu$. Значит функция п.в. равна $0$.
+\end{proof}
+
+\begin{proposition}
+    Пусть $f$~---~ограниченная измеримая функция. Тогда она интегрируема по Лебегу на множестве конечной меры.
+\end{proposition}
+\begin{proof}
+    Пусть $E$~---~множество конечной меры. Тогда $|f| < C$ на этом множестве. Значит, $\int\limits_E |f|d\mu \leq \int\limits_E Cd\mu < +\infty$, что равносильно интегрируемости $f$.
+\end{proof}
+
+\begin{proposition}
+    Пусть $f = g$ п.в. на множестве $E$. Тогда верно следующее:
+    \begin{itemize}
+        \item $f$~---~интегрируема по Лебегу $\Longleftrightarrow$ $g$~---~интегрируема по Лебегу
+        \item Если $f$ интегрируема по Лебегу, то $\int\limits_E fd\mu = \int\limits_E gd\mu$
+    \end{itemize}
+\end{proposition}
+\begin{proof}
+    Интегрируемость $f$ равносильна интегрируемости $|f|$, а интегрируемость $g$ равносильна интегрируемости $|g|$. Тогда пусть $e = \{x | f(x) \neq g(x)\}$. Так как $\mu(e) = 0$, то $\int\limits_e |f| d\mu = \int\limits_e |g|d\mu = 0$. Значит $\int\limits_{E\setminus e} |f|d\mu = \int\limits_{E\setminus e} |g|d\mu$, и, в силу аддитивности интеграла по множеству, мы получаем утверждение.
+\end{proof}
+
+\begin{proposition}
+    Пусть множества $E, E'$: $\mu(E \triangle E') = 0$. Тогда для всякой измеримой $f$ верно следующее:
+    \begin{itemize}
+        \item $f$~---~интегрируема по Лебегу на $E \Longleftrightarrow$ $f$~---~интегрируема по Лебегу на $E'$
+        \item Если $f$~---~интегрируема, то $\int\limits_E fd\mu = \int\limits_{E'} fd\mu$
+    \end{itemize}
+\end{proposition}
+\begin{proof}
+    Доказательство аналогично.
+\end{proof}
+
+\begin{definition}
+    Будем называть функцию $f: E \rightarrow \R$ \textit{
+\underline{измеримой в широком смысле}} на $E \in \MM$, если $\exists E': E'\subset E$: $f$~---~измерима на $E'$, и $\mu(E\setminus E') = 0$. \\
+\end{definition}
+
+\begin{remark}
+    То есть если функция не определена на множестве меры ноль, мы <<не чувствуем>> это.
+\end{remark}
+
+\begin{note}
+    В силу только что доказанных свойств интеграла Лебега, при работе с ним можно использовать функции, измеримые в широком смысле.
+\end{note}
+
+\begin{proposition}
+    Пусть $f, g \in \widetilde{L_1}$. Тогда если $f \leq g$ п.в., то \[\int\limits_E fd\mu \leq \int\limits_E gd\mu\]
+\end{proposition}
+\begin{proof}
+    Пусть $f = f_+ - f_-, g = g_+ - g_-$. Тогда \[f_+ + g_- \leq f_- + g_+ \]
+    почти всюду. Значит, в силу монотонности, \[\int\limits_E f_+ + g_- d\mu \leq \int\limits_E g_+ + f_- d\mu\]
+    Так как $f, g$~---~интегрируемы по Лебегу, то \[\int\limits_E f_+d\mu - \int\limits_E f_-d\mu \leq \int\limits_E g_+d\mu - \int\limits_E g_-d\mu\]
+    Что нам и требовалось получить.
+\end{proof}
+
+
+\begin{proposition}[Аддитивность по функциям]
+    Пусть $f, g \in \widetilde{L_1}$. Тогда \[\int\limits_E f + gd\mu = \int\limits_E fd\mu + \int\limits_E gd\mu\]
+\end{proposition}
+\begin{proof}
+    Пусть $f = f_+ - f_-, g = g_+ - g_-$. Пусть $h = f + g$. Тогда $h = f + g = (f_+ + g_+) - (f_- + g_-) = (f_+ - f_-) = (g_+ - g_-)$. С другой стороны, $h = h_+ - h_-$. Т.е. \[h_+ - h_- = (f_+ + g_+) - (f_- + g_-)\]
+    Значит, \[h_+ + f_- + g_- = f_+ + g_+ + h_-\]
+    Но тогда \[\int\limits_E h_+ + f_- + g_-d\mu = \int\limits_E h_- + f_+ + g_+d\mu\]
+    А значит \[\int h_+d\mu + \int f_-d\mu + \int g_-d\mu = \int h_-d\mu + \int f_+d\mu + \int g_+d\mu\]
+    В силу конечности всех этих интегралов мы и получаем искомое утверждение.
+\end{proof}
+

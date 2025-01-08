@@ -1,0 +1,94 @@
+\begin{proposition}[Однородность интеграла Лебега]
+    Пусть $f \in \widetilde{L_1}(E, \mu)$. Тогда $\forall a \in \R \hookrightarrow$ \[\int\limits_E afd\mu = a\int\limits_E fd\mu\]
+\end{proposition}
+\begin{proof}
+    Пусть $a \geq 0$. Тогда $f = f_+ - f_-$, и $af = af_+ - af_-$. Тогда из положительной однородности интеграла Лебега для неотрицательных функций следует \[a\int\limits_E f_+d\mu = \int\limits_E af_+d\mu\]
+    \[a\int\limits_E f_-d\mu = \int\limits_E af_-d\mu\]
+    Но, Тогда \[\int\limits_E afd\mu = a\int\limits_E f_+d\mu - a\int\limits_E f_-d\mu = a\int\limits_E fd\mu\]
+    Если же $a < 0$, то в силу уже доказанной положительной однородности нам достаточно рассмотреть случай $a = -1$. Тогда $(-f)_+ = f_-, (-f)_- = f_+$. Значит, \[\int\limits_E (-f)d\mu = \int\limits_E (-f)_+d\mu - \int\limits_E (-f)_-d\mu = -(\int\limits_E f_+d\mu - \int\limits_E f_-d\mu) = -\int\limits_E fd\mu\]
+    Утверждение доказано.
+\end{proof}
+\begin{corollary}
+    Очевидно, что если $f_1, \ldots f_N \in \widetilde{L_1}(E, \mu)$ и даны $\alpha_1, \ldots, \alpha_N \in \R$, то \[\sum\limits_{i = 1}^N \alpha_if_i \in \widetilde{L_1}(E, \mu)\]
+    И, более того, \[\int\limits_E \sum\limits_{i = 1}^N \alpha_if_i d\mu = \sum\limits_{i = 1}^N \alpha_i \int\limits_E f_i d\mu\]
+\end{corollary}
+
+\subsection{Интеграл Лебега как функция множества}
+\begin{proposition}[Аддитивность интеграла Лебега по множеству]
+    Пусть $E = \bigcup\limits_{i = 1}^N E_i$, где $\{E_i\} \subset \MM$. Тогда для произвольной измеримой функции верно следующее: \[f \in \widetilde{L_1}(E, \mu) \Longleftrightarrow \forall i \hookrightarrow f \in \widetilde{L_1}(E_i, \mu)\]
+    Более того, если $E = \bigsqcup\limits_{i = 1}^N$, то \[\int\limits_{E} fd\mu = \sum\limits_{i = 1}^N \int\limits_{E_i} fd\mu\]
+\end{proposition}
+\begin{proof}
+    В силу равносильности интегрируемости функции интегрируемости модуля функции, следующее неравенство нам даёт первое утверждение: \[|f|\chi_{E_i} \leq |f|\chi_E \leq |f|\sum\limits_{i = 1}^N \chi_{E_i}\]
+    Если же $E = \bigsqcup E_i$, то $f \chi_E = f \sum\limits_{i = 1}^N \chi_{E_i}$. Интегрирование этого равенства даёт нам утверждение задачи.
+\end{proof}
+
+\begin{theorem}[Счётная аддитивность интеграла Лебега]
+    Пусть $\{E_i\}_{i = 1}^\infty \subset \MM$ и $E_i \cap E_j \neq \emptyset \Rightarrow i = j$. Тогда для любой неотрицательной функции $f$, измеримой на объединении верно следующее равенство: \[\int\limits_{\bigsqcup\limits_{i = 1}^\infty E_i} fd\mu = \sum\limits_{i = 1}^\infty \int\limits_{E_i} fd\mu\]
+\end{theorem}
+\begin{proof}
+    Без ограничения общности мы можем продолжить $f$ на $X \setminus \bigsqcup\limits_{i = 1}^\infty E_i$ нулем. Введём функцию "срезки" первых $N$ элементов: \[f^N(  x) = \sum\limits_{i = 1}^N \chi_{E_i}f(x)\]
+    В силу конечной аддитивности по множеству верно следующее: \[\int\limits_E f^Nd\mu = \sum\limits_{i = 1}^N \int\limits_{E_i} fd\mu\]
+    Заметим, что $f^N \leq f^{N + 1}$, $\lim\limits_{N \ra \infty} f^N = f$ а значит допустимо применение теоремы Леви: \[\lim\limits_{n \rightarrow +\infty} \int\limits_{E} f^nd\mu = \int\limits_E \lim\limits_{n \rightarrow +\infty} f^n d\mu\]
+    Т.е. \[\int\limits_E fd\mu = \lim\limits_{n \rightarrow +\infty} \sum\limits_{i = 1}^n \int\limits_{E_i} fd\mu = \sum\limits_{i = 1}^\infty \int\limits_{E_i} fd\mu\]
+    Что и требовалось доказать.
+\end{proof}
+
+\begin{corollary}
+    Принимая во внимания предыдущие свойства интеграла Лебега, мы можем сказать что интеграл Лебега от неотрицательной функции (как функция множества) является счётно-аддитивной мерой на $X$.
+\end{corollary}
+
+\begin{corollary}
+    Если $f \in \widetilde{L_1}(X, \mu)$, то интеграл Лебега непрерывен сверху и снизу, как функция множества, т.е. если \[A = \bigcup\limits_{i = 1}^\infty A_i, \{A_i\} \subset \MM, \ldots \subset A_i \subset A_{i + 1} \subset \ldots\]
+    то \[\int\limits_A fd\mu = \lim\limits_{n \rightarrow +\infty} \int\limits_{A_n} fd\mu\]
+    И, если \[B = \bigcap\limits_{i = 1}^\infty B_i, \{B_i\} \subset \MM, \ldots \supset B_i \supset B_{i + 1} \supset \ldots\]
+    то \[\int\limits_B fd\mu = \lim\limits_{n \rightarrow +\infty} \int\limits_{B_n} fd\mu\]
+\end{corollary}
+\begin{proof}
+    Утверждение очевидно из определения интеграла Лебега и непрерывности сверху и снизу конечных мер, порождаемых $f_+$ и $f_-$.
+\end{proof}
+
+\begin{theorem}[Абсолютная непрерывность интеграла Лебега]
+    Пусть $f \in \widetilde{L_1}(X, \mu)$. Тогда $\forall \epsilon > 0 \ \exists \delta(\epsilon)$ т.ч. $\forall E \in \MM : \mu(E) < \delta \hookrightarrow$ \[\int\limits_{E} |f|d\mu < \epsilon\]
+\end{theorem}
+\begin{proof}
+    Шаг 1. Заметим, что утверждение задачи для $f = \chi_E$ очевидно: мы можем просто взять $\delta(\epsilon) = \epsilon$. Случай простой функции сводится к случаю харфункции. \\
+    Шаг 2. Пусть теперь $f$~---~неотрицательная измеримая функция, интегрируемая по Лебегу. По определению, $\forall \epsilon > 0 \exists \psi$~---~простая, т.ч. $\int\limits_X \mid f - \psi \mid d\mu < \frac{\epsilon}{2}$. Получается $\forall \epsilon > 0  \exists \delta(\frac{\epsilon}{2}): \forall E \in \MM  \mu(E) < \delta(\frac{\epsilon}{2}) \hookrightarrow$ \[\int\limits_E fd\mu = \int\limits_{E} |f - \psi|  d\mu + \int\limits_E \psi d\mu < \epsilon,\]
+     поскольку $\int\limits_{E}f - \psi d\mu \leq \int\limits_{X}(f - \psi)d\mu < \frac{\epsilon}{2}$ и $\int\limits_{E}\psi d\mu < \frac{\epsilon}{2}$.
+\end{proof}
+
+\begin{proposition}
+    Пусть $f \in \widetilde{L_1}(X, \mu)$. Тогда $\forall \epsilon > 0 \ \exists A \in \MM$ конечной меры: \[\int\limits_{X \setminus A} |f|d\mu < \epsilon\]
+\end{proposition}
+\begin{proof}
+    Известно, что $f \in \widetilde{L_1}(X, \mu) \Longleftrightarrow |f| \in \widetilde{L_1}(X, \mu) \Longleftrightarrow \int\limits_X |f|d\mu < \infty$. Обозначим \[X_n = \{x \in X \mid |f(x)| \geq \frac{1}{n}\}, A_n = X\setminus X_n. - \text{ точки где } |f(x)| < \frac{1}{n}\]
+    Очевидно, что $\ldots \subset A_{n + 1} \subset A_n \subset \ldots$. Множество $A = \bigcap\limits_{n = 1}^\infty A_n$ является множеством нулей $|f|$. В силу непрерывности меры сверху: \[0 = \int\limits_A |f|d\mu = \lim\limits_{n \rightarrow +\infty} \int\limits_{A_n} |f|d\mu = \lim\limits_{n \rightarrow +\infty} \int\limits_{X \setminus X_n} |f|d\mu\]
+    Что, по сути и доказывает утверждение: \[\forall \epsilon > 0  \ \exists N \ \forall n \geq N \hookrightarrow \int\limits_{X \setminus X_n} |f|d\mu < \epsilon\]
+    То есть $\forall \epsilon > 0 A_\epsilon = X_{N(\epsilon)}$~---~подходит. Осталось показать, что $\mu(X_n) \leq +\infty$ это по сути неравенство Чебышевого: \[\frac{\mu(X_n)}{n} = \int\limits_{X_n} \frac{1}{n}d\mu \leq \int\limits_{X_n} |f|d\mu \leq \int\limits_{X} |f|d\mu < +\infty\]
+    Из чего следует требуемое.
+\end{proof}
+
+\begin{theorem}[Теорема Лебега (о мажорируемой сходимости)]
+    Пусть дана $\{f_n\}$~---~последовательность измеримых функций, п.в. сходящаяся к $f$. Пусть $\exists g$~---~неотрицательная измеримая функция т.ч. 
+    \begin{itemize}
+        \item $g \in \widetilde{L_1}(X, \mu)$
+        \item $g$~---~мажоранта последовательности $f_n$, т.е. $\forall n \in \N \hookrightarrow |f_n| \leq g$ почти всюду.
+    \end{itemize}
+    Тогда 
+    \begin{itemize}
+        \item $f \in \widetilde{\LL_1}(X, \mu)$
+        \item \[
+    \int\limits_X f d \mu = \int\limits_X \lim\limits_{n \to \infty} f_n d \mu = \lim\limits_{n \to \infty} \int\limits_X f_n d \mu
+    \]
+    \end{itemize}
+
+\end{theorem}
+\begin{proof}
+    Доопределим $f$ 0 в точках, где не существует $\lim\limits_{n \rightarrow +\infty} f_n(x)$. Тогда мы получаем измеримость $f$ в обычном смысле (строго говоря, до этого она была измеримой лишь в широком смысле). Поскольку $|f_n| \leq g$ почти всюду, то $f_n$~---~интегрируема по Лебегу, поскольку $\int\limits_X |f_n|d\mu \leq \int\limits_X gd\mu < +\infty$. Переходя к пределу в неравенстве мы получим интегрируемость и $f$. \\ Пусть теперь $h_n = \sup\limits_{k \geq n} |f - f_k|$. Тогда $h_n$~---~неотрицательная измеримая функция, монотонно сходящаяся к 0 п.в. Тогда $g_n = 2g - h_n$~---~неотрицательная монотонная функция, поскольку $2g - |f - f_k| \geq 2g - |f| - |f_k| \geq 0$. Тогда применяя теорему Леви мы получаем \[\lim\limits_{n \rightarrow +\infty} \int\limits_X g_nd\mu = \int\limits_X \lim\limits_{n \rightarrow +\infty} g_nd\mu = \int\limits_X 2gd\mu\]
+    А следовательно \[\lim\limits_{n \rightarrow +\infty} \int\limits_X \sup\limits_{k \geq n} |f - f_k|d\mu = 0\]
+    Следовательно, $\lim\limits_{n \rightarrow +\infty} \int\limits_X |f - f_n|d\mu = 0 \Rightarrow \lim\limits_{n \rightarrow +\infty} \int\limits_X f - f_nd\mu \Rightarrow \int\limits_X fd\mu = \lim\limits_{n\rightarrow +\infty} \int\limits_X f_nd\mu$, что и требовалось доказать.
+\end{proof}
+
+\begin{note}
+    Условие мажорируемости нельзя отбросить: пусть $f_n = n\chi_{[0, 1/n]}$. Тогда $\lim\limits_{n \rightarrow +\infty} f_n = 0$, и интеграл от 0 равен 0. Но $\lim\limits_{n \rightarrow +\infty} \int\limits_{\R} f_nd\LL^1 = 1, 1 \neq 0$.
+\end{note}

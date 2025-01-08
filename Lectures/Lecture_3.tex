@@ -1,0 +1,297 @@
+\begin{definition}
+    Конечно-аддитивной мера $\mu$ на полукольце $\PP$ подмножеств множества $X$ называется \underline{$\sigma$-конечной}, если
+    \[
+    X = \bigcup_{n = 1}^{\infty}{P_n} \in \PP~~\forall \ \text{и} \ 
+    \mu(P_n) < +\infty~~\forall n \in \mathbb{N}.
+    \]
+    Если же $\mu(X) < +\infty$, то мера называется \underline{конечной}.
+\end{definition}
+
+\begin{definition}
+    Тройка $(X, {\MM}, \mu)$ называется \underline{\textit{измеримым пространством}}, если:
+    \begin{itemize}
+        \item $X$~---~абстрактное множество.
+        \item $\MM$~---~$\sigma$-алгебра подмножеств множества $X$.
+        \item $\mu$~---~счетно-аддитивная неотрицательная функция на этой $\sigma$-алгебре, то есть $\mu : \MM \longrightarrow [0, +\infty]$.
+    \end{itemize}
+    Функция $\mu$ называется мерой на этой $\sigma$-алгебре, а сама $\MM$ называется $\sigma$-алгеброй измеримых подмножеств.
+\end{definition}
+
+\begin{definition}
+    Пусть $(X, {\MM}, \mu)$ --- измеримое пространство. Мера $\mu$ называется \underline{полной}, если
+    \[\forall E \in \MM \ \text{из того, что} \ \mu(E) = 0 \Longrightarrow \  E' \in \MM \quad \forall E' \subset E.
+    \]
+
+\end{definition}
+
+% Ссылочку надо бы, да...
+\example Неполная мера.\\
+Возьмем $X = \mathbb{R}^n$, в качестве $\MM$ возьмем борелевскую $\sigma$-алгебру, а в качестве $\mu$ же~---~ \hyperlink{Mera_lebega}{мера Лебега}. Тогда это неполная мера, так как бывают неборелевские множества.
+
+\hypertarget{upper_continious}{}
+\begin{theorem}
+    Пусть $\mu$~---~\underline{конечная} конечно-аддитивная мера на некоторой $\sigma$-алгебре $\MM$. Следующие условия эквивалентны:
+    \begin{enumerate}
+        \item Мера $\mu$ счетно-аддитивна на $\MM$.
+        \item Мера $\mu$ непрерывна сверху, то есть если $\{A_n\}_{n = 1}^\infty \subset \MM$ ($A_{n + 1} \subset A_n \forall n \in \mathbb{N}$) и $A = \bigcap\limits_{n = 1}^{\infty}{A_n}$, то $\mu(A) = \lim\limits_{n \longrightarrow \infty}{\mu(A_n)}$.
+        \item Мера $\mu$ непрерывна сверху в нуле, то есть если $\{A_n\} \subset \MM$ ($A_{n + 1} \subset A_n \forall n \in \mathbb{N}$) и $\bigcap\limits_{n = 1}^{\infty} A_n= \emptyset$, то $\lim\limits_{n \longrightarrow \infty}{\mu(A_n)} = 0$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \ \\
+    \begin{itemize}
+        \item \textbf{1) $\Longrightarrow$ 2)}\\
+        Рассмотрим множество $B = A_1 \backslash A$. Аналогично получим множества $B_k = A_1 \backslash A_k~~\forall k \in \mathbb{N}$. Тогда $B_{k + 1} \supset B_k~~\forall k \in \mathbb{N}$ и $B = \bigcup\limits_{k \in \mathbb{N}}{B_k}$.\\
+        В силу доказанной непрерывности снизу
+        \[
+        \mu(B) = \lim\limits_{k \longrightarrow \infty}{\mu(B_k)}
+        \]
+        Но, используя конечность меры, получим, что $\mu(B_k) = \mu(A_1) - \mu(A_k) \Longrightarrow$
+        \[
+        \mu(B) = \lim\limits_{k \longrightarrow \infty}{\mu(B_k)} = \lim\limits_{k \longrightarrow \infty}{(\mu(A_1) - \mu(A_k))} \Longrightarrow
+        \]
+        \[
+        \Longrightarrow \exists \lim\limits_{k \longrightarrow \infty}{\mu(A_k)} = \mu(A_1) - \mu(B) = \mu(A_1 \backslash B) = \mu(A)
+        \]
+        Получили искомое.
+        \item \textbf{2) $\Longrightarrow$ 3)}\\
+        Очевидно, так как третье утверждение --- частный случай второго.
+        \item \textbf{3) $\Longrightarrow$ 1)}\\
+        Пусть $C = \bigsqcup\limits_{k = 1}^{\infty}{C_k}$. Возьмем $C^n = \bigsqcup\limits_{k = 1}^n{C_k}$, $\widetilde{C^n} = C \backslash C^n$. Тогда $\widetilde{C}^{n + 1} \subset \widetilde{C^n}$. Из наших определений $\bigcap\limits_{n = 1}^{\infty}\widetilde{C^n} = \emptyset.$\\
+        Тогда в силу пункта 3, $\exists \lim\limits_{n \longrightarrow \infty}{\mu(\widetilde{C^n})} = 0$, значит, в силу конечной аддитивности меры
+        \[
+        \mu(C) = \mu(C^n) + \mu(\widetilde{C^n}) = \sum\limits_{k = 1}^n{\mu(C_k)} + \mu(\widetilde{C^n})
+        \]
+        Но мы получили, что $\lim\limits_{n \longrightarrow \infty}{\mu(\widetilde{C^n})} = 0$, значит, $\exists \lim\limits_{n \longrightarrow \infty}{\sum\limits_{k = 1}^n{\mu(C_k)}} = \mu(C)$, а это и есть счетная аддитивность.
+    \end{itemize} 
+\end{proof}
+
+
+
+
+
+
+\subsection{Продолжение меры с полукольца на $\sigma$-алгебру}
+
+\hypertarget{uppermeasure}{}
+\begin{definition}
+    Пусть $\PP$ --- полукольцо подмножеств множества $X$. Пусть $\mu$ --- счетно-аддитивная мера на $\PP$. Для всякого множества $E \subset X$ определим его \textit{верхнюю меру} по Каратеодори равенством:
+    \[
+    \mu^*(E) := \inf_{E \subset \bigcup\limits_{j = 1}^{\infty}{P_j}} \Bigg\{\sum\limits_{j = 1}^{\infty}{\mu(P_j)},~~~~{\{P_j\} \subset \PP} \Bigg\}.
+    \label{def:mu}
+    \]
+    
+    \remark Если ни одного такого покрытия Е не существует, то формально считаем $\mu^*(E) = +\infty$.
+\end{definition}
+
+\begin{theorem}
+    \label{theorem10}
+    Пусть $\PP$~---~полукольцо подмножеств множества $X$. Пусть $\mu$~---~счетно-аддитивная мера на $\PP$. Тогда $\mu^*$ является \hyperlink{outmeasure}{внешней мерой} и $\mu^*|_{\PP} = \mu$.
+\end{theorem}
+\begin{proof}
+    \textbf{Шаг 1.} Докажем справедливость равенства $\mu^*|_{\PP} = \mu$.\\
+    Фиксируем $P \in \PP$. Тогда заметим, что его можно покрыть самим собой и пустыми множествами, то есть 
+    \[
+    P \subset \bigcup\limits_{i = 1}^{\infty}P_i, \text{ где } P_i = \emptyset,\ i > 1,\  P_1 = P
+    \]
+    При таком выборе покрытия $\sum\limits_{i = 1}^{\infty}{\mu(P_i)} = \mu(P)$. Но мы берем инфимум по всем покрытиям, а он не может быть больше, чем конкретное покрытие $\Longrightarrow$ $\mu^*(P) \leq \mu(P)$.\\
+    Докажем обратное неравенство. Пусть теперь $\{P_j\} \subset \PP$ --- произвольное покрытие $P$. Тогда так как счетно-аддитивная мера на полукольце счетно-полуаддитивна, $\mu(P) \leq \sum\limits_{j = 1}^{\infty}{\mu(P_j)}$. Взяв инфимум от обеих частей по всем возможным покрытиям, получим $\mu(P) \leq \mu^*(P)$.\\
+    Получили $2$ противоположных неравенства $\Longrightarrow$ $\mu^*(P) = \mu(P)$. А так как множество $P$ было выбрано произвольно, это верно $\forall P \in \PP$.\\
+
+    \textbf{Шаг 2.} Покажем теперь, что $\mu^*$~---~внешняя мера. Из доказанного выше следует, что $\mu^*(\emptyset) = \mu(\emptyset) = 0$. Осталось проверить счетную полуаддитивность $\mu^*$.\\
+    
+    \textit{Прим. ред. мы доказываем второе свойство внешней меры (счетная полуаддитивность), а значит мы хотим доказать неравенство полуаддитивности для произвольного покрытия$\{E_n\}$ нашего множества $E$ (поэтому мы не могли например сразу покрывать элементами полукольца).} \\
+    Возьмем произвольное множество $E \subset X$, \underline{произвольную} последовательность множество $\{E_n\}_{n = 1}^\infty \subset X$, так, что $E \subset \bigcup\limits_{n = 1}^{\infty}{E_n}$. По определению инфимума $\forall n \in \mathbb{N}$ и $\forall \varepsilon > 0$
+% ???
+    \[
+    \exists \{P_{n, j}\}_{j = 1}^{\infty} \subset \PP \text{ т.ч. } \sum\limits_{j = 1}^{\infty}{\mu(P_{n, j})} \leq \mu^*(E_n) + \dfrac{\varepsilon}{2^n}
+    \]
+    Тогда $E \subset \bigcup\limits_{n = 1}^{\infty}{\bigcup\limits_{j = 1}^{\infty}{P_{n, j}}}$ $\Longrightarrow$ по \hyperlink{uppermeasure}{определению:} \[ \mu^*(E) \leq \sum\limits_{n = 1}^{\infty}{\sum\limits_{j = 1}^{\infty}{\mu(P_{n, j})}} \leq \sum\limits_{n = 1}^{\infty}{}\Big(\mu^*(E_n) + \dfrac{\varepsilon}{2^n}\Big) \leq \sum\limits_{n = 1}^{\infty}{\mu^*(E_n)} + \varepsilon.\]\\
+    Так как $\varepsilon > 0$ можно выбрать произвольно, получаем, что $\mu^*(E) \leq \sum\limits_{n = 1}^{\infty}{\mu^*(E_n)}$ --- счетная полуаддитивность доказана.
+\end{proof}
+
+% Нумерация формул... 
+\begin{theorem}
+    Пусть $\PP$~---~полукольцо подмножеств множества $X$. Пусть $\mu$~---~счетно-аддитивная мера на $\PP$. Пусть $\mu^*$~---~внешняя мера, построенная по \hyperref[def:mu]{формуле}. Тогда любое множество из $\PP$ измеримо по Каратеодори, то есть $\PP \subset \MM_{\mu^*}$.
+\end{theorem}
+% Есть какие-то проблемки в докве, поправить
+\begin{proof}
+    Требуется доказать, что $\forall E \subset X$ и для любого фиксированного $P \in \PP$
+    \[
+    \mu^*(E) = \mu^*(E \cap P) + \mu^*(E \backslash P) \Longleftrightarrow \mu^*(E) \geq \mu^*(E \cap P) + \mu^*(E \backslash P)
+    \]
+    \textit{
+    Прим. ред. смысл трюка в том, что, пока мы на полукольце у нас продолженная мера совпадает с нашей мерой. А у самой меры мы требовали $\sigma$-аддитивность, а продолженная мера только $\sigma$-полуаддитивна. В итоге мы переходим к обычной мере, разбиваем пробное множество, а дальше получаем нужное неравенство возвращаясь к продолженной мере и пользуясь полуаддитивностью.} \\
+    Начнем с простого случая: будем брать не любое Е, а только из полукольца. По определению полукольца $E \backslash P = \bigsqcup\limits_{j = 1}^N{Q_j}$, где $Q_j \in \PP~~\forall j \in \{1,\ ...,\ N\}$. В силу \hyperref[theorem10]{только что доказанного}
+    \[
+    \mu^*(E) = \mu(E) = \mu\left((E \cap P)\sqcup(\bigsqcup\limits_{j = 1}^N{Q_j})\right) = \text{(в силу конечной аддитивности }\mu) = 
+    \]
+    \[
+    = \mu(E \cap P) + \sum\limits_{j = 1}^N{\mu(Q_j)} = \mu^*(E \cap P) + \sum\limits_{j = 1}^N{\mu^*(Q_j)} \geq \mu^*(E \cap P) + \mu^*(E \backslash P),
+    \]
+    так как $\sum\limits_{j = 1}^N{\mu^*(Q_j)} \geq \mu^*(\bigsqcup\limits_{j = 1}^N{Q_j})$. Получили искомое.\\
+
+    Теперь рассмотрим общий случай. Без ограничения общности считаем, что $\mu^* (E) < +\infty$.\\
+    Возьмем покрытие Е элементами из полукольца: $E \subset \bigcup\limits_{j = 1}^{\infty}{P_j}$. Тогда из случая выше знаем, что $P_j$ измерим: $\forall j \in \mathbb{N}: \ $ $\mu^*(P_j \cap P) + \mu^*(P_j \backslash P) \leq \mu^*(P_j)$.
+    \[
+    \bigcup\limits_{j = 1}^{\infty}{(P_j \cap P)} = (\bigcup\limits_{j = 1}^{\infty}{P_j}) \cap P
+    \]
+    \[
+    \bigcup\limits_{j = 1}^{\infty}{(P_j \backslash P)} = (\bigcup\limits_{j = 1}^{\infty}{P_j}) \backslash P
+    \]
+    Воспринимая левые части равенств, как покрытия правых, и пользуясь счетной полуаддитивностью $\mu^*$, получим: 
+    \[
+    \mu^*\left((\bigcup\limits_{j = 1}^{\infty}{P_j}) \cap P\right) \leq \sum\limits_{j = 1}^{\infty}{\mu^*(P_j \cap P)} \text{ и }
+    \mu^*\left((\bigcup\limits_{j = 1}^{\infty}{P_j}) \backslash P\right) \leq \sum\limits_{j = 1}^{\infty}{\mu^*(P_j \backslash P).}
+    \]
+
+    Суммируем эти $2$ неравенства.
+    \[
+    \mu^*\left((\bigcup\limits_{j = 1}^{\infty}{P_j}) \cap P\right)  + \mu^*\left((\bigcup\limits_{j = 1}^{\infty}{P_j})\backslash P\right) \leq \sum\limits_{j = 1}^{\infty}{}\Bigg(\mu^*(P_j \cap P) + \mu^*(P_j \backslash P)\Bigg) \leq \sum\limits_{j = 1}^{\infty}{\mu^*(P_j)}
+    \]
+    Воспользуемся монотонностью $\mu^*$: $
+    \mu^*(E \cap P) \leq \mu^*\left((\bigcup\limits_{j = 1}^{\infty}{P_j}) \cap P\right)$  и $
+    \mu^*(E \backslash P) \leq \mu^*\left((\bigcup\limits_{j = 1}^{\infty}{P_j})\backslash P\right) $ $\Longrightarrow$
+    \[
+    \mu^*(E \cap P) + \mu^*(E \backslash P) \leq \sum\limits_{j = 1}^{\infty}{\mu^*(P_j)} = \sum\limits_{j = 1}^{\infty}{\mu(P_j)} \longrightarrow \mu^{*}(E)
+    \]
+    Взяв инфимум по всем покрытиям Е последовательностями $\{P_j\}$, получим искомое.
+\end{proof}
+% Поправить. checkpoint.
+\begin{theorem} (Единственность продолжения)
+    Пусть $\PP$~---~полукольцо подмножеств множества $X$. Пусть $\mu$ --- счетно-аддитивная мера на $\PP$. Пусть $\mu^*$~---~продолжение $\mu$ на $\sigma$-алгебру $\MM_{\mu^*}$, $\PP \subset \MM_{\mu^*}$, а $\nu$ --- продолжение $\mu$ на какую-то другую $\sigma$-алгебру $\MM_{\nu}$, $\PP \subset \MM_{\nu}$. Тогда верно следующее:
+    \begin{enumerate}
+        \item $\nu(A) \leq \mu^*(A)~~\forall A \in \MM_{\mu^*} \cap \MM_{\nu}$. Если $\mu^*(A) < +\infty$, то $\mu^*(A) = \nu(A)$.
+        \item Если $\mu$ --- $\sigma$-конечна, то $\mu^*(A) = \nu(A)~~\forall A \in \MM_{\mu^*} \cap \MM_{\nu}$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \textbf{Шаг 1} Пусть $A \subset \bigcup\limits_{j = 1}^{\infty}{P_j}$ --- произвольное покрытие. В силу счетной полуаддитивности $\nu$, а также так как $\nu$  ~---~ это продолжение, а на $\PP$ оно совпадает:
+        \[
+        \nu(A) \leq \sum\limits_{j = 1}^{\infty}{\nu(P_j)} = \sum\limits_{j = 1}^{\infty}{\mu(P_j)}~(*)
+        \]
+        Возьмем инфимум в (*) по всем возможным покрытиям А последовательностями $\{P_j\}$. Получим
+        \[
+        \nu(A) \leq \inf\limits_{A \subset \bigcup\limits_{j = 1}^{\infty}{P_j}} \Bigg\{\sum\limits_{j = 1}^{\infty}{\mu(P_j)}\Bigg\} = \mu^*(A)
+        \]
+        Таким образом, доказали неравенство в пункте 1. \\
+    \textbf{Шаг 2} Покажем, что $\forall P \in \PP$ $\mu(P) < +\infty$ и $\forall A \in \MM_{\mu^*} \cap \MM_{\nu}$ справедливо равенство:
+        \[
+        \nu(P \cap A) = \mu^*(P \cap A)
+        \]
+        Предположим противное(мы уже доказали в 1 шаге "$\leq$"):
+        \[
+        \nu(P \cap A) < \mu^*(P \cap A)
+        \]
+        $P \in \MM_{\mu^*} \Longrightarrow$ измерим по Каратеодори $\Longrightarrow$ $$\mu(P) = \mu^*(P) = \mu^*(P \cap A) + \mu^*(P \backslash A) > \nu(P \cap A) + \nu(P \backslash A) = \nu(P) = \mu(P)$$ Но так как $\mu(P) < +\infty$, это невозможно $\Longrightarrow$ равенство выше верно.\\
+        Если $\mu$ --- $\sigma$-конечна, либо если $\mu^*(A) < +\infty$, то можно покрыть $A \subset \bigcup\limits_{j = 1}^{\infty}{P_j}$ т.ч. 
+        \[
+        \mu(P_j) < +\infty~~\forall j \in \mathbb{N} \text{ и } \{P_j\} \in \PP
+        \]
+        Но верно, что $\mu^*(A \cap P_j) = \nu(A \cap P_j)$ $\Longrightarrow$
+        \[
+        \sum\limits_{j = 1}^{\infty}{\mu^*(A \cap P_j)} = \sum\limits_{j = 1}^{\infty}{\nu(A \cap P_j)}
+        \]
+        \hyperlink{disjoint_union}{По теореме о дизъюнктном разбиении} $P_j$ можно считать попарно непересекающимися (несложно реализовать ее и для счетных объединений). Тогда $\sum\limits_{j = 1}^{\infty}{\nu(A \cap P_j)} = \nu(A)$, а в силу счетной полуаддитивности $\sum\limits_{j = 1}^{\infty}{\mu^*(A \cap P_j)} \geq \mu^*(A)$ $\Longrightarrow$ $\mu^*(A) \leq \nu(A)$. Уже есть противоположное неравенство $\Longrightarrow$ получили искомое.
+\end{proof}
+
+\begin{reminder}
+    Если $\mathcal{E}$ --- система множеств. $\MM(\mathcal{E})$ --- минимальная $\sigma$-алгебра, содержащая $\mathcal{E}.$
+\end{reminder}
+\begin{corollary}
+    Если $\mu$ --- $\sigma$-конечная счетно-аддитивная мера на полукольце $\PP$, то продолжение на $\MM(\PP)$ единственно, то есть на пересечении сигма алгебр они совпадают.
+\end{corollary}
+
+\begin{remark}
+    $(X, \MM_{\mu^*}, \mu^*)$~---~измеримое пространство, причем $\mu^*$ --- полная мера.
+\end{remark}
+
+\begin{lemma}
+    \label{lemma:mu_c}
+    Пусть $\mu^*$ --- внешняя мера, построенная по счетно-аддитивной мере $\mu$ на полукольце $\PP$. Пусть $E \subset X$: $\mu^*(E) < +\infty$. Тогда $\exists $ множество 
+    \[
+    C = \bigcap\limits_{n = 1}^{\infty}{\bigcup\limits_{j = 1}^{\infty}{P_{n, j}}}, \text{ где } P_{n, j} \in \PP \text{ такое что } \mu^*(C) = \mu^*(E)
+    \]
+    Причем $C \in \MM(\PP).$ То есть если множество имеет конечную меру, то оно не обязательно измеримо, но вот у него есть измеримый envelope(покрытие) той же самой меры
+\end{lemma}
+\begin{proof}
+    Так как $\mu^*(E) < +\infty$, то $\forall n \in \mathbb{N}$ $\exists \{P_{n, j}\} \in \PP$: $\dfrac{1}{2^n} + \mu^*(E) \geq \sum\limits_{j = 1}^{\infty}{\mu(P_{n, j})}$ (по определению инфимума). Тогда 
+    \[
+    C^N = \bigcap\limits_{n = 1}^{N}{\bigcup\limits_{j = 1}^{\infty}{P_{n, j}}} \supset E~~\forall N \in \mathbb{N}
+    \Longrightarrow C = \bigcap\limits_{n = 1}^{\infty}{\bigcup\limits_{j = 1}^{\infty}{P_{n, j}}} \supset E, C \in \MM_{\mu^*}.\]\\
+    В силу монотонности и счетной полуаддитивности:: \[\mu^*(C) \leq \mu^*(C^N) \leq \mu^*(\bigcup\limits_{j = 1}^{\infty}{P_{N, j}}) \leq \sum\limits_{j = 1}^{\infty}{\mu^*(P_{N, j})} \leq \mu^*(E) + \dfrac{1}{2^N}.\]\\
+    Так как N --- произвольно, $\mu^*(C) \leq \mu^*(E)$, но с другой стороны $C \supset E$ $\Longrightarrow$ в силу монотонности $\mu^*$ $\mu^*(C) \geq \mu^*(E)$ $\Longrightarrow$ $\mu^*(C) = \mu^*(E).$
+\end{proof}
+
+\hypertarget{envelope}{}
+\begin{theorem}
+    Пусть $E \in \MM_{\mu^*}$ и $\mu^*(E) < +\infty$. Тогда $\exists B,\ C \in \MM(\PP)$ т.ч. $B \subset E \subset C$ и $\mu^*(C \backslash B) = 0$.
+\end{theorem}
+\begin{proof}
+    Множество $С \supset E$ со свойством $\mu^*(C) = \mu^*(E)$ построили в \hyperref[lemma:mu_c]{предыдущей лемме}. Построим В.\\
+    Определим множество $e := C \backslash E$ --- измеримо. Применим к е предыдущую \hyperref[lemma:mu_c]{лемму} и получим $\widetilde{e} \in \MM(\PP)$, при этом $\mu^*(\widetilde{e}) = 0$. Тогда
+    \[
+    B = C \backslash \widetilde{e}
+    \]
+\end{proof}
+
+\begin{theorem}
+    Пусть $\mu$ --- счетно-аддитивная $\sigma$-конечная мера на полукольце $\PP$ подмножеств множества $  X$. Пусть $\nu$ --- полная мера на $\sigma$-алгебре $\MM_{\nu}$, являющаяся продолжением $\mu$. Тогда $\MM_{\mu^*} \subset \MM_{\nu}$.
+\end{theorem}
+\begin{proof}
+    По предыдущей теореме $\nu|_{\MM(\PP)} = \mu^*|_{\MM(\PP)}$. Зафиксируем произвольное множество $e$: $\mu^*(e) = 0$. Покажем, что $e \in \MM_{\nu}$ и $\nu(e) = 0$.\\
+    Так как $\mu^*$ полна $e \in \MM_{\mu*}$ $\Longrightarrow$ $\exists \widetilde{e} \subset \MM(\PP)$ и $e \subset\widetilde{e}$. Это слежует из предыдущей теоремы $\mu^*(\widetilde{e}) = 0$ $\Longrightarrow$ т.к. $\nu|_{\MM(\PP)} = \mu^*|_{\MM(\PP)}$
+    \[
+    \widetilde{e} \in \MM_{\nu} \text{ и } \nu(\widetilde{e}) = 0
+    \]
+    Но $\nu$ полна $\Longrightarrow$ $e \in \MM_{\nu}$.\\
+
+    Теперь фиксируем произвольное $A \in \MM_{\mu^*}$, такое что $\mu^*(A) < +\infty$. Покажем, что $A \in \MM_{\nu}$.\\
+    По \hyperref[lemma:mu_c]{лемме} $\exists C \in \MM(\PP)$ т.ч. $\mu^*(C) = \mu^*(A)$,  а т.к. $A$ --- измеримо, $e = C \backslash A \in \MM_{\mu^*}$ и $\mu^*(C \backslash A) = \mu^*(C) - \mu^*(A) = 0$. Значит $A = C \backslash e$ $\Longrightarrow$ $A \in \MM_{\nu}$.\\
+
+    В общем случае, если $A$ только лишь измеримо, но необязательно имеет конечную меру, то согласно $\sigma$-конечночти $\mu$, пространство $X$ можно представить в виде $X = \bigcup\limits_{n = 1}^{\infty}{X_n}$, где $X_n \in \PP$ и $\mu(X_n) < +\infty$. Тогда $A = \bigcup\limits_{n = 1}^{\infty}{A \cap X_n}$ $\Longrightarrow$ $\mu^*(A \cap X_n) < +\infty$ $\forall n \in \mathbb{N}$, а для этого применим прошлый случай. Тогда $A \cap X_n \in \MM_{\nu}$ $\forall n \in \mathbb{N}$ $\Longrightarrow$ по определению $\sigma$-алгебры $A \in \MM_{\nu}$.
+\end{proof}
+
+\newpage
+\hypertarget{Mera_lebega}{}
+\section{Мера Лебега в $\mathbb{R}^n$}
+\subsection{Конструкция меры Лебега}
+\begin{reminder} Рассмотрим систему множеств:
+    \[
+    \PP_n := \{[a, b) | a = (a_1, ..., a_n),\ b= (b_1, ..., b_n), a_i \leq b_i,\  i \in  1,\dots,n\}
+    \]
+    Система $\PP_n$ является полукольцом. Определим меру на $\PP_n$ равенством:
+    \[
+    \mu \Big([a, b)\Big) := \prod\limits_{i = 1}^n{\mu \Big([a_i, b_i)\Big)} = \prod\limits_{i = 1}^n{|a_i - b_i|.}
+    \]
+    \end{reminder}
+    \begin{remark}
+    Используя рассуждения, \hyperlink{theorem_1_6}{аналогичные одномерным}, доказывается, что $\mu$ --- счетно-аддитивная мера на полукольце $\PP_n$. Кроме того $\mu$ --- $\sigma$-конечная мера на $\PP_n$, т.к. $\mathbb{R}^n$ представимо в виде $\mathbb{R}^n = \bigcup\limits_{d = 1}^{\infty}{[-d ,\ d)}, \text{ где } d =(d_1, ..., d_n) \in \N^n$.
+\end{remark}
+    \begin{definition}Применим к $\PP_n$ конструкцию продолжения по Каратеодори и получим верхнюю меру:
+    \[
+    \mu^*_n(E) := \inf \Bigg\{\sum\limits_{j = 1}^{\infty}{\mu(P_j)}:{\{P_j\} \subset \PP,\ E \subset \bigcup\limits_{j = 1}^{\infty}{P_j}} \Bigg\} \text{--- верхняя мера Лебега в } \R^n. 
+    \label{def:mu}
+    \]
+    \end{definition}
+    \begin{definition}
+        Минимальная $\sigma$-алгебра, порожденная полукольцом ячеек $\PP_n$, называется борелевской сигма алгеброй $\B(\R^n)$ в $\R^n$
+    \end{definition}
+\begin{definition}
+        Примерим рассуждения предыдущего параграфа к мере $\mu$ на полукольце $\PP_n$ ячеек. Мы получим верхнюю меру $\mu^*$, которая породит  $\MM_n$ --- класс всех измеримых множеств в $\R^n$. Мы доказывали, что продолжение по Каратеодори на борелевской сигма алгебре единственно. Минимальная сигма алгебра содержится в сигма алгебре измеримых $\Longrightarrow \B(\R^n) \subset \MM_n$
+\end{definition}
+
+    \begin{definition}
+        Сужение $\mu^*$ на $\MM_n$ мы будем обозначать $\LL^n$
+    \end{definition}
+
+\begin{remark}
+     Базовые свойства $\mathcal{L}^n$ и $\MM_n$:
+ \begin{enumerate}
+     \item $\forall$ открытые множества в $\R^n$ измерим, т.е. содержатся в $\MM_n$
+     \item $\forall$ замкнутые множества  в $\R^n$ измерим, т.е. содержатся в $\MM_n$
+     \item $\forall A \in \MM_n\ \mathcal{L}^n(A) < +\infty $. \hyperlink{envelope}{Из теоремы про envelope} $\Longrightarrow \exists B,\ C \in \mathcal{B}(\mathbb{R}^n)$ т.ч. $B \subset A \subset C$ и $\mathcal{L}^n(C \backslash B) = 0$. Следовательно, любое измеримое есть борелевское с точностью до множества меры 0.
+     \item Счетное объединение измеримых по Лебегу множеств меры 0 является множеством меры 0, в частности, любое не более, чем счетное подмножество в $\mathbb{R}^n$ имеет меру 0. Это следует из счетной полуаддитивности.
+     \item $\mathcal{L}^n$ --- полная мера.
+ \end{enumerate}
+\end{remark}

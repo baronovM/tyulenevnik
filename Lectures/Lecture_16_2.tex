@@ -1,0 +1,40 @@
+\subsection{Геометрический смысл дивергенции}
+\begin{theorem}
+    Пусть дано гладкое поле $\overline{a} \in C^1(G, \R^3)$, где $G$~---~непустое открытое множество. Тогда для произвольного $x \in G$ верно следующее: \[\div \overline{a}(x) = \lim\limits_{r \rightarrow +0} \dfrac{1}{4/3\pi r^3} \cdot \iint\limits_{S_r(x)}(\overline{a}, \overline{ds})\]
+\end{theorem}
+\begin{proof}
+    При всех достаточно малых $r > 0$ шар $B_r(x) \subset G$. По теореме Остроградского-Гаусса \[\iint\limits_{S_r(x)} (\overline{a}, \overline{ds}) = \iiint\limits_{B_r(x)}\div \overline{a}(y)dy\]
+    С другой стороны, \[\div \overline{a}(x) = \dfrac{1}{4/3\pi r^3}\iint\limits_{B_r(x)}\div \overline{a}(x)dy\]
+    В силу непрерывности $\div \overline{a}$: \[\biggr|\div\overline{a}(x) - \dfrac{1}{4/3 \pi r^3}\iint\limits_{S_r(x)}(\overline{a}, \overline{ds})\biggr| = \dfrac{1}{4/3 \pi r^3}\biggr| \iiint\limits_{B_r(x)}\div\overline{a}(x)dy - \iiint\limits_{B_r(x)}\div\overline{a}(y)dy\biggr| \leq \]\[\leq \dfrac{1}{4/3 \pi r^3}\iiint\limits_{B_r(x)}|\div\overline{a}(x) - \div\overline{a}(y)|dy \leq \sup\limits_{y \in B_r(x)}|\div\overline{a}(x) - \div\overline{a}(y)| \rightarrow 0, r \rightarrow +0\]
+\end{proof}
+\begin{definition}
+    Пусть $G \subset \R^3$~---~непустая область. Поле $\overline{a} \in C(G, \R^3)$ называется соленоидальным в области $G$, если \[\iint\limits_\Sigma (\overline{a}, \overline{ds}) = 0\]
+    Для всякой замкнутой кусочно-гладкой $\Sigma$, лежащей в $G$, т.е. такой поверхности, что существует $\Omega \subset \R^3$~---~ограниченная область такая, что $\partial \Omega = \Sigma$
+\end{definition}
+\begin{question}
+    Как связаны следующие утверждения?
+    \begin{enumerate}
+        \item Поле $\overline{a}$ имеет нулевую дивергенцию в $G$
+        \item Поле $\overline{a}$ соленоидально в $G$
+    \end{enumerate}
+\end{question}
+\begin{lemma}
+    Очевидно, что из соленоидальности следует бездивергентность
+\end{lemma}
+\begin{proof}
+    Используем теорему о геометрическом смысле дивергенции.
+\end{proof}
+\begin{example}
+    Контрпримером для $1) \Rightarrow 2)$ служит кулоновское поле \[\overline{a} = \dfrac{\overline{r}}{r^3}\]
+    Его дивергенция равна 0 в $\R^3 \setminus \{0\}$, но при этом \[\iint\limits_{S_r(0)} (\overline{a}, \overline{ds}) = 4\pi \neq 0\]
+    А значит поле несоленоидально.
+\end{example}
+\begin{definition}
+    Будем называть область $G \subset \R^3$ объёмно односвязной, если всякая замкнутая кусочно-гладкая поверхность $\Sigma \subset G$ ограничивает область $\Omega$ такую, что $\Sigma = \partial \Omega$ и $\Omega \subset G$.
+\end{definition}
+\begin{lemma}
+    Если есть гладкое поле, которое бездивергентно в объёмно-односвязной области, то это поле соленоидально
+\end{lemma}
+\begin{proof}
+    Для поверхности $\Sigma$ существует $\Omega$, т.ч. $\partial \Omega = \Sigma$ и $\Omega \subset G$. Тогда, используя теорему Остроградского-Гаусса, мы получаем, что $\iint\limits_\Sigma (\overline{a}, \overline{ds}) = 0$.
+\end{proof}
