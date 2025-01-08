@@ -56,7 +56,9 @@ jobs:
 
       - name: Debug_оutput DOWNLOAD_URL
         run: echo "DOWNLOAD_URL=$DOWNLOAD_URL"
-
+        
+      - name: Ensure permissions for _site directory
+        run: chmod -R u+w ./_site
 
       - name: Replace placeholder with download URL
         run: |
