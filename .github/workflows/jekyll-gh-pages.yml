@@ -66,7 +66,9 @@ jobs:
             echo "Error: DOWNLOAD_URL is empty"
             exit 1
           fi
+          echo "date=$(date +'%m-%d-%H:%M:%S')" >> $GITHUB_ENV
           find ./_site -type f -name "*.html" -exec sed -i "s|{{LATEST_RELEASE_DOWNLOAD_URL}}|$DOWNLOAD_URL|g" {} +
+          find ./_site -type f -name "*.html" -exec sed -i "s|{{LATEST_RELEASE_DATE}}|${{ env.date }}|g" {} +
 
 
       - name: Upload artifact
