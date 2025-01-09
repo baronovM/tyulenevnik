@@ -41,7 +41,7 @@ jobs:
         id: vars
         run: |
           echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
-          echo "date_and_time=$(date +'%m-%d_%H:%M')" >> $GITHUB_ENV
+          echo "date_and_time=$(date +'%m-%d_%H-%M')" >> $GITHUB_ENV
           echo "sha8=$(echo ${GITHUB_SHA} | cut -c1-8)" >> $GITHUB_ENV
 
       - name: Download artifacts
@@ -56,12 +56,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: result-${{ env.date }}-${{ env.sha8 }}
-          release_name: Tyulenevnik (version ${{ env.date_and_time }})
+          release_name: Тюленёвник (version ${{ env.date_and_time }})
           draft: false
           prerelease: false
 
-      - name: Rename PDF with Russian letters
-        run: mv ./result.pdf ./Теория_Меры_Уважаемый_${{ env.date_and_time }}.pdf
+      # - name: Rename PDF with Russian letters
+      #   run: mv ./result.pdf ./Теория_Меры_Уважаемый_${{ env.date_and_time }}.pdf
 
       - name: Upload PDF asset
         uses: actions/upload-release-asset@v1
@@ -69,6 +69,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./Теория_Меры_Уважаемый_${{ env.date_and_time }}.pdf
-          asset_name: Теория_Меры_Уважаемый_${{ env.date_and_time }}.pdf
+          asset_path: ./result.pdf
+          asset_name: Measure Theory, Respected ${{ env.date_and_time }}.pdf
           asset_content_type: application/pdf

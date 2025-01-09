@@ -61,7 +61,7 @@ jobs:
         run: sudo chown -R $USER:$USER ./_site
 
       - name: Variable
-        run: echo "date=$(date +'%m-%d_%H:%M')" >> $GITHUB_ENV
+        run: echo "date=$(date +'%m.%d, в %H:%M')" >> $GITHUB_ENV
 
       - name: Replace placeholder with download URL
         run: |
@@ -69,6 +69,7 @@ jobs:
             echo "Error: DOWNLOAD_URL is empty"
             exit 1
           fi
+          find ./_site -type f -name "*.html" -exec sed -i "s|<h1>Идёт обновление</h1>||g" {} +
           find ./_site -type f -name "*.html" -exec sed -i "s|{{LATEST_RELEASE_DOWNLOAD_URL}}|$DOWNLOAD_URL|g" {} +
           find ./_site -type f -name "*.html" -exec sed -i "s|{{LATEST_RELEASE_DATE}}|${{ env.date }}|g" {} +
 
