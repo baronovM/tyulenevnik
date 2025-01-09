@@ -40,7 +40,8 @@ jobs:
       - name: Variables
         id: vars
         run: |
-          echo "date=$(date +'%m-%d-%H:%M:%S')" >> $GITHUB_ENV
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+          echo "date_and_time=$(date +'%m-%d-%H:%M:%S')" >> $GITHUB_ENV
           echo "sha8=$(echo ${GITHUB_SHA} | cut -c1-8)" >> $GITHUB_ENV
 
       - name: Download artifacts
@@ -55,7 +56,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: result-${{ env.date }}-${{ env.sha8 }}
-          release_name: Tyulenevnik (version ${{ env.date }})
+          release_name: Tyulenevnik (version ${{ env.date_and_time }})
           draft: false
           prerelease: false
 
@@ -66,5 +67,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./result.pdf
-          asset_name: Теория Меры, Уважаемый (${{ env.date }}).pdf
+          asset_name: Теория Меры, Уважаемый (${{ env.date_and_time }}).pdf
           asset_content_type: application/pdf
