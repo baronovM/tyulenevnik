@@ -67,7 +67,7 @@
 \end{lemma}
 \begin{proof}
     Для производной простой гладкой поверхности поле нормалей выглядит как \[\overline{n}(\overline{r}) = \pm\dfrac{\overline{r}'_u \times \overline{r}'_v}{|\overline{r}'_u \times \overline{r}'_v|}\]
-    Знак выбирается в зависимости от изначальной ориентации поверхности. Then, \[
+    Знак выбирается в зависимости от изначальной ориентации поверхности. Тогда \[
     \iint\limits_S (\overline{F}, \overline{ds}) = \iint\limits_{S}(\overline{F}, \overline{n})ds = \iint\limits_G (\overline{F}(\overline{r}(u, v)), \overline{n}(\overline{r}(u, v)))|\overline{r}'_u \times \overline{r}'_v|dudv = \]\[ =  \pm\iint\limits_G (\overline{F}(\overline{r}(u, v)), \overline{r}'_u(u, v) \times \overline{r}'_v(u, v))dudv = \pm \iint\limits_G \begin{vmatrix}
         P & Q & R \\ x'_u & y'_u & z'_u \\ x'_v & y'_v & z'_v
     \end{vmatrix} dudv
@@ -148,7 +148,7 @@
 \end{definition}
 
 \begin{theorem}
-    Пусть $G$~---~ сильно элементарная область в $\R^3_{xyz}$. Пусть $\partial G$~---~кусочно-гладкая поверхность, ориентированная полем внешних нормалей. Пусть $\overline{F} \in C^1(\overline{G}, \R^3)$. Then, \[\iiint\limits_{G} \div \overline{F} dxdydz = \iint\limits_{\partial G^+} (\overline{F}, \overline{ds})\]
+    Пусть $G$~---~ сильно элементарная область в $\R^3_{xyz}$. Пусть $\partial G$~---~кусочно-гладкая поверхность, ориентированная полем внешних нормалей. Пусть $\overline{F} \in C^1(\overline{G}, \R^3)$. Тогда \[\iiint\limits_{G} \div \overline{F} dxdydz = \iint\limits_{\partial G^+} (\overline{F}, \overline{ds})\]
 \end{theorem}
 \begin{proof}
     Пусть \[\overline{F} = \begin{pmatrix}
