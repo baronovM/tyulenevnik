@@ -1,16 +1,16 @@
 \begin{proposition}[Однородность интеграла Лебега]
-    Пусть $f \in \widetilde{L_1}(E, \mu)$. Тогда $\forall a \in \R \hookrightarrow$ \[\int\limits_E afd\mu = a\int\limits_E fd\mu\]
+    Пусть $f \in \widetilde{L_1}(E, \mu)$. Тогда $\forall a \in \R \hookrightarrow$ \[\int\limits_E afd\mu = a\int\limits_E fd\mu.\]
 \end{proposition}
 \begin{proof}
-    Пусть $a \geq 0$. Тогда $f = f_+ - f_-$, и $af = af_+ - af_-$. Тогда из положительной однородности интеграла Лебега для неотрицательных функций следует \[a\int\limits_E f_+d\mu = \int\limits_E af_+d\mu\]
-    \[a\int\limits_E f_-d\mu = \int\limits_E af_-d\mu\]
-    Но, Тогда \[\int\limits_E afd\mu = a\int\limits_E f_+d\mu - a\int\limits_E f_-d\mu = a\int\limits_E fd\mu\]
-    Если же $a < 0$, то в силу уже доказанной положительной однородности нам достаточно рассмотреть случай $a = -1$. Тогда $(-f)_+ = f_-, (-f)_- = f_+$. Значит, \[\int\limits_E (-f)d\mu = \int\limits_E (-f)_+d\mu - \int\limits_E (-f)_-d\mu = -(\int\limits_E f_+d\mu - \int\limits_E f_-d\mu) = -\int\limits_E fd\mu\]
+    Пусть $a \geq 0$. Тогда $f = f_+ - f_-$, и $af = af_+ - af_-$. Тогда из положительной однородности интеграла Лебега для неотрицательных функций следует \[a\int\limits_E f_+d\mu = \int\limits_E af_+d\mu;\]
+    \[a\int\limits_E f_-d\mu = \int\limits_E af_-d\mu.\]
+    Поэтому \[\int\limits_E afd\mu = a\int\limits_E f_+d\mu - a\int\limits_E f_-d\mu = a\int\limits_E fd\mu.\]
+    Если же $a < 0$, то в силу уже доказанной положительной однородности нам достаточно рассмотреть случай $a = -1$. Тогда $(-f)_+ = f_-, (-f)_- = f_+$. Значит, \[\int\limits_E (-f)d\mu = \int\limits_E (-f)_+d\mu - \int\limits_E (-f)_-d\mu = -(\int\limits_E f_+d\mu - \int\limits_E f_-d\mu) = -\int\limits_E fd\mu.\]
     Утверждение доказано.
 \end{proof}
 \begin{corollary}
-    Очевидно, что если $f_1, \ldots f_N \in \widetilde{L_1}(E, \mu)$ и даны $\alpha_1, \ldots, \alpha_N \in \R$, то \[\sum\limits_{i = 1}^N \alpha_if_i \in \widetilde{L_1}(E, \mu)\]
-    И, более того, \[\int\limits_E \sum\limits_{i = 1}^N \alpha_if_i d\mu = \sum\limits_{i = 1}^N \alpha_i \int\limits_E f_i d\mu\]
+    Очевидно, что, если $f_1, \ldots f_N \in \widetilde{L_1}(E, \mu)$ и даны $\alpha_1, \ldots, \alpha_N \in \R$, то \[\sum\limits_{i = 1}^N \alpha_if_i \in \widetilde{L_1}(E, \mu).\]
+    Более того, \[\int\limits_E \sum\limits_{i = 1}^N \alpha_if_i d\mu = \sum\limits_{i = 1}^N \alpha_i \int\limits_E f_i d\mu.\]
 \end{corollary}
 
 \subsection{Интеграл Лебега как функция множества}
@@ -69,10 +69,10 @@
 \end{proof}
 
 \begin{theorem}[Теорема Лебега (о мажорируемой сходимости)]
-    Пусть дана $\{f_n\}$~---~последовательность измеримых функций, п.в. сходящаяся к $f$. Пусть $\exists g$~---~неотрицательная измеримая функция т.ч. 
+    Пусть дана $\{f_n\}$~---~последовательность измеримых  на X функций, п.в. сходящаяся к $f$. Пусть $\exists g$~---~неотрицательная измеримая функция т.ч. 
     \begin{itemize}
         \item $g \in \widetilde{L_1}(X, \mu)$
-        \item $g$~---~мажоранта последовательности $f_n$, т.е. $\forall n \in \N \hookrightarrow |f_n| \leq g$ почти всюду.
+        \item $g$~---~мажоранта последовательности $\{f_n\}_{n=1}^{\infty}$, т.е. $\forall n \in \N \hookrightarrow |f_n| \leq g$ почти всюду на X.
     \end{itemize}
     Тогда 
     \begin{itemize}
@@ -84,11 +84,12 @@
 
 \end{theorem}
 \begin{proof}
-    Доопределим $f$ 0 в точках, где не существует $\lim\limits_{n \rightarrow +\infty} f_n(x)$. Тогда мы получаем измеримость $f$ в обычном смысле (строго говоря, до этого она была измеримой лишь в широком смысле). Поскольку $|f_n| \leq g$ почти всюду, то $f_n$~---~интегрируема по Лебегу, поскольку $\int\limits_X |f_n|d\mu \leq \int\limits_X gd\mu < +\infty$. Переходя к пределу в неравенстве мы получим интегрируемость и $f$. \\ Пусть теперь $h_n = \sup\limits_{k \geq n} |f - f_k|$. Тогда $h_n$~---~ неотрицательная измеримая функция, монотонно сходящаяся к 0 п.в. Тогда $g_n = 2g - h_n$~---~ неубывающая (в силу невозрастания $h_n$) последовательность неотрицательных функций, поскольку $2g - |f - f_k| \geq 2g - |f| - |f_k| \geq 0$. Тогда применяя теорему Леви мы получаем \[\lim\limits_{n \rightarrow +\infty} \int\limits_X g_nd\mu = \int\limits_X \lim\limits_{n \rightarrow +\infty} g_nd\mu = \int\limits_X 2gd\mu\]
-    А следовательно \[\lim\limits_{n \rightarrow +\infty} \int\limits_X \sup\limits_{k \geq n} |f - f_k|d\mu = 0\]
-    Следовательно, $\lim\limits_{n \rightarrow +\infty} \int\limits_X |f - f_n|d\mu = 0 \Rightarrow \lim\limits_{n \rightarrow +\infty} \int\limits_X f - f_nd\mu = 0 \Rightarrow \int\limits_X fd\mu = \lim\limits_{n\rightarrow +\infty} \int\limits_X f_nd\mu$, что и требовалось доказать.
+    Положим $f(x) = 0$ в точках, где не существует $\lim\limits_{n \rightarrow +\infty} f_n(x)$. Тогда мы получаем измеримость $f$ в обычном смысле (строго говоря, до этого она была измеримой лишь в широком смысле). Поскольку $|f_n| \leq g$ почти всюду, то $f_n$~---~интегрируема по Лебегу, поскольку $\int\limits_X |f_n|d\mu \leq \int\limits_X gd\mu < +\infty$. Используя лемму Фату, получим интегрируемость $f$. \\
+    Пусть теперь $h_n = \sup\limits_{k \geq n} |f - f_k|$, $n \in \mathbb{N}$. Тогда $h_n$~---~ неотрицательная измеримая на X функция, при этом п-ть ${\{h_n\}}_{n=1}^{\infty}$ монотонно сходится к 0 п.в. Тогда $g_n = 2g - h_n$~---~ неубывающая (в силу невозрастания $h_n$) последовательность неотрицательных функций, поскольку $2g - |f - f_k| \geq 2g - |f| - |f_k| \geq 0$. Тогда применяя теорему Леви мы получаем \[\lim\limits_{n \rightarrow +\infty} \int\limits_X g_nd\mu = \int\limits_X \lim\limits_{n \rightarrow +\infty} g_nd\mu = \int\limits_X 2gd\mu.\]
+    Отсюда заключаем, что \[\lim\limits_{n \rightarrow +\infty} \int\limits_X \sup\limits_{k \geq n} |f - f_k|d\mu = 0.\]
+    Следовательно, $\lim\limits_{n \rightarrow +\infty} \int\limits_X |f - f_n|d\mu = 0 \Rightarrow \lim\limits_{n \rightarrow +\infty} \int\limits_X (f - f_n)d\mu = 0 \Rightarrow \int\limits_X fd\mu = \lim\limits_{n\rightarrow +\infty} \int\limits_X f_nd\mu$, что и требовалось доказать.
 \end{proof}
 
 \begin{note}
-    Условие мажорируемости нельзя отбросить: пусть $f_n = n\chi_{[0, 1/n]}$. Тогда $\lim\limits_{n \rightarrow +\infty} f_n = 0$, и интеграл от 0 равен 0. Но $\lim\limits_{n \rightarrow +\infty} \int\limits_{\R} f_nd\LL^1 = 1, 1 \neq 0$.
+    Условие мажорируемости нельзя отбросить: пусть $f_n = n\chi_{[0, 1/n]}$. Тогда $\lim\limits_{n \rightarrow +\infty} f_n = 0$ всюду, кроме 0, и интеграл от 0 равен 0. Но $\lim\limits_{n \rightarrow +\infty} \int\limits_{\R} f_nd\LL^1 = 1, 1 \neq 0$.
 \end{note}
