@@ -42,29 +42,48 @@
 
 \subsection{Точки Лебега локально интегрируемых функций}
 \begin{definition}
-    Будем говорить что $f \in \Tilde{L}_1^{loc}(\R^n)$ и называть её локально интегрируемой по Лебегу, если $\forall R > 0 \  f \in \Tilde{L}_1(B_R(0))$
+    Будем говорить что $f \in \Tilde{L}_1^{loc}(\R^n)$ и называть её локально интегрируемой по Лебегу, если $\forall R > 0 \  f \in \Tilde{L}_1(B_R(0)).$
 \end{definition}
 \begin{definition}
-    Пусть $f \in \Tilde{L}_1^{loc}(\R^n)$. Тогда будем называть $x^* \in \R^n$ точкой Лебега функции $f$, если \[\lim\limits_{r \rightarrow +0} \dfrac{1}{\LL^n(B_r(x^*))}\int\limits_{B_r(x^*)} |f(y) - f(x^*)|dy = 0\]
+    Пусть $f \in \Tilde{L}_1^{loc}(\R^n)$. Тогда будем называть $x^* \in \R^n$ точкой Лебега функции $f$, если \[\lim\limits_{r \rightarrow +0} \dfrac{1}{\LL^n(B_r(x^*))}\int\limits_{B_r(x^*)} |f(y) - f(x^*)|dy = 0.\]
 \end{definition}
 \begin{note}
     В каждой точке Лебега \[f(x^*) = \lim\limits_{r \rightarrow +0} \dfrac{1}{\LL^n(B_r(x^*))} \int\limits_{B_r(x^*)} f(y)dy\]
+    
+    Однако обратное неверно, см. Дьяченко Ульянов "Действительный анализ в задачах"
 \end{note}
 \begin{note}
     Введём следующее обозначение: \[\dashint_{B_r(x^*)} \ldots = \dfrac{1}{\LL^n(B_r(x^*))} \int\limits_{B_r(x^*)} \ldots \]
 \end{note}
 \begin{lemma}
-    Пусть $(X, \MM, \mu)$~---~пространство с мерой. Тогда, если $f \in \Tilde{L}_1(X)$, то существует простая $f_\epsilon$, что \[\int\limits_X |f - f_\epsilon|d\mu \leq \epsilon\]
+    Пусть $(X, \MM, \mu)$~---~пространство с мерой. Тогда, если $f \in \Tilde{L}_1(X)$, то существует простая $f_\epsilon$, что \[\int\limits_X |f - f_\epsilon|d\mu \leq \epsilon.\]
 \end{lemma}
 \begin{proof}
-    Если $f \geq 0$, то это очевидное следствие из определений интеграла и супремума. Если же она знаконепостоянна, то мы разбиваем её на две части~---~$f_+$ и $f_i$, и для каждую из них аппроксимируем.
+    Если $f \geq 0$, то это очевидное следствие из определений интеграла и супремума. Если же она знакопеременна, то мы разбиваем её на две части~---~$f_+$ и $f_-$, и для каждой из них аппроксимируем. То есть, по определению интеграла неотрицательной функции и супремума:
+    \[
+    \forall \epsilon \; \exists \text{ простая } f_{+_\epsilon}: \int\limits_X |f_+ - f_{+_\epsilon}|d\mu \leq \frac{\epsilon}{2}
+    ;\]
+    \[
+    \forall \epsilon \; \exists \text{ простая } f_{-_\epsilon}: \int\limits_X |f_- - f_{-_\epsilon}|d\mu \leq \frac{\epsilon}{2}
+    ;\]
+    \[
+    f_\epsilon(x) = \begin{cases*}
+    	f_{+_\epsilon}(x), & \text{если } $f(x) \geq 0$ \\
+    	-f_{-_\epsilon}(x), & \text{если } $f(x) < 0$
+    \end{cases*}
+    .\]
+Тогда
+	\[
+	\int\limits_X |f - f_\epsilon|d\mu = \int\limits_{X(f \geq 0)} |f_+ - f_{+_\epsilon}| d\mu + \int\limits_{X(f < 0)} |-f_- + f_{-_\epsilon}|d\mu \leq \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+	.\]
+    
 \end{proof}
 \begin{definition}[Максимальная функция Харди-Литтлвуда]
-    Пусть $f \in \Tilde{L}_1^{lop}(\R^n)$. Определим $M[f](x)$ как \[M[f](x) = \sup\limits_{r > 0}\dashint_{B_r(x)} |f(y)|dy\]    
+    Пусть $f \in \Tilde{L}_1^{loc}(\R^n)$. Определим $M[f](x)$ как \[M[f](x) := \sup\limits_{r > 0}\dashint_{B_r(x)} |f(y)|dy\].
 \end{definition}
 \begin{note}
     Заметим измеримость максимальной функции на $\R^n$. При фиксированном $r > 0$ функция \[x \mapsto \dashint_{B_r(x)}|f(y)|dy\]
-    непрерывна и при фиксированном $x$ \[r \mapsto \dashint_{B_r(x)}|f(y)|dy\] непрерывна как функция $r$
+    непрерывна, а при фиксированном $x$ функция \[r \mapsto \dashint_{B_r(x)}|f(y)|dy\] непрерывна как функция $r$.	
     Поэтому $M[f]$ можно вычислять, беря супремум лишь в рациональных точках.
 \end{note}
 \begin{note}
