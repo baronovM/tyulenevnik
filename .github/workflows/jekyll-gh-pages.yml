@@ -61,7 +61,7 @@ jobs:
         run: sudo chown -R $USER:$USER ./_site
 
       - name: Variable
-        run: echo "date=$(date +'%m.%d, в %H:%M')" >> $GITHUB_ENV
+        run: echo "date=$(date --date='+3 hours' +'%m.%d, в %H:%M')" >> $GITHUB_ENV
 
       - name: Replace placeholder with download URL
         run: |
