@@ -1,6 +1,9 @@
-name: Build and deploy latex sources to GitHub Pages
+name: Build latex sources
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
 
