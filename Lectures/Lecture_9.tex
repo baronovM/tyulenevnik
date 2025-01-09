@@ -1,10 +1,10 @@
 \section{Произведение мер и кратные интегралы}
 \subsection{Теорема о монотонном классе}
 \begin{definition}
-    Систему подмножеств $\M$ множества $X$ называют \textit{монотонным классом}, если 
+    Систему подмножеств $\M$ множества $X$ называют \textit{монотонным классом}, если:
     \begin{itemize}
-        \item $\forall \{A_i\} \subset \M$: $\ldots \subset A_i \subset A_{i + 1} \subset \ldots \hookrightarrow \bigcup\limits_{i = 1}^\infty A_i \in \M$ (Расширяющаяся последовательность) 
-        \item $\forall \{B_j\} \subset \M$: $\ldots \supset B_j \supset B_{j + 1} \supset \ldots \hookrightarrow \bigcap\limits_{j = 1}^\infty B_j \in \M$ (Сужающаяся последовательность)
+        \item $\forall \{A_i\} \subset \M$: $A_1 \subset \ldots \subset A_i \subset A_{i + 1} \subset \ldots \hookrightarrow \bigcup\limits_{i = 1}^\infty A_i \in \M$ (Расширяющаяся последовательность);
+        \item $\forall \{B_j\} \subset \M$: $B_1 \subset \ldots \supset B_j \supset B_{j + 1} \supset \ldots \hookrightarrow \bigcap\limits_{j = 1}^\infty B_j \in \M$ (Сужающаяся последовательность).
     \end{itemize}
 \end{definition}
 \begin{reminder}
@@ -22,12 +22,12 @@
     Очевидна и монотонность $\M_A$. Возьмем расширяющуюся последовательность $B_1 \subset B_2 \subset \ldots B_n \subset \ldots \{ B_n \} \subset \M_A$. Тогда если $B_i$ это расширяющаяся последовательность и $\{B_i\} \subset \M_A$, то очевидно и $\{B_i \cap A\}$ расширяющаяся последовательность но по определению монотонного класса их объединение лежит в $\M_A$. Если взять дополнения $B_i^c$ то докажем для сужающейся последовательности.\\
     По построению $\M_A \subset\M(A)$. Но он и сам является монотонным классом. А следовательно, из минимальности $\M(\A)$, $\M_A = \M(\A)$ и это верно $\forall A \in \A$.\\
     Пусть $A = X$. Тогда $\forall B \in \M(\A) \hookrightarrow B^c \in \M(\A)$, т.е. минимальный монотонный класс симметричен. \\
-    Пусть $E \in \M(\A)$. \[\cN_E = \{C \in \M(\A) \mid C \cap E \in \M(\A)\}\]
+    Пусть $E \in \M(\A)$. Рассмотрим систему множеств \[\cN_E = \{C \in \M(\A) \mid C \cap E \in \M(\A)\}\]
     Заметим, что $\A \subset \cN_E$, по аналогичным соображениям $\cN_E$~---~монотонный класс и $\cN_E$~---~симметричная система подмножеств $X$.\\
-    Тогда $\cN_E = \M(\A)$ и это верно $\forall E \in \M(\A)$, а значит $\M(\A)$ замкнуто относительно пересечения. Тогда $\M(\A)$ замкнуто и относительно объединения, а значит $\M(\A)$~---~алгебра. Но, Тогда поскольку любое объединение в алгебре реализуется как объединение возрастающей (а пересечение -- как пересечение убывающей) последовательности множеств, то $\M(\A)$~---~$\sigma$-алгебра. Но минимальная точно лежит в нем $\M(A) \supset \MM(A)$, и искомое утверждение получено. В условии теоремы был дан произвольный монотонный класс. Не обязательно минимальный. Поэтому включение в одну сторону
+    Тогда $\cN_E = \M(\A)$ и это верно $\forall E \in \M(\A)$, а значит $\M(\A)$ замкнуто относительно пересечения. Тогда $\M(\A)$ замкнуто и относительно объединения, а значит $\M(\A)$~---~алгебра. Но, тогда, поскольку любое объединение в алгебре реализуется как объединение возрастающей (а пересечение -- как пересечение убывающей) последовательности множеств, то $\M(\A)$~---~$\sigma$-алгебра. Но минимальная точно лежит в нем $\M(A) \supset \MM(A)$, и искомое утверждение получено. В условии теоремы был дан произвольный монотонный класс. Не обязательно минимальный. Поэтому включение $\supset$ доказано.
 \end{proof}
 \begin{reminder}
-    Пусть $\PP$~---~полукольцо подмножеств множества $X$, $\mu$~---~мера на $\PP$. Тогда внешней мерой называем \[\mu^* = \inf \biggl\{\sum\limits_{j = 1}^\infty \mu(P_j) \mid E \subset \bigcup\limits_j P_j, \{P_j\} \subset \PP\biggr\}\]
+    Пусть $\PP$~---~полукольцо подмножеств множества $X$, $\mu$~---~мера на $\PP$. Тогда верхней мерой называем \[\mu^* = \inf \biggl\{\sum\limits_{j = 1}^\infty \mu(P_j) \mid E \subset \bigcup\limits_j P_j, \{P_j\} \subset \PP\biggr\}\]
     Далее вводится измеримость по Каратеодори: $A$~---~измеримо, если \[\forall E \subset X: \mu^*(E) = \mu^*(E \cap A) + \mu^*(E \cap A^c)\]
     Измеримые множества образуют $\sigma$-алгебру $\MM_{\mu}$, на которой $\mu^* |_{\MM_{\mu}}$~---~счетно-аддитивная мера, причём $\mu^*|_\PP = \mu$, причём продолжение единственно на $\MM(\PP)$. Важно что $\MM(\PP)$ не то же самое что  $\MM_{\mu}$. В $\R^n$ есть неборелевские измеримые по Лебегу. И, вообще говоря, $\MM_{\mu}$ шире, к примеру в $\R^n$ есть неборелевские множества, измеримые по Лебегу.
 \end{reminder}
@@ -36,24 +36,24 @@
 \end{lemma}
 \begin{proof}
     $E$~---~измеримое, то есть $\mu^*(E) = \mu(E)$.
-    Тогда $\forall n \in \N \ \exists \{P_{n, j}\}$: $\mu^*(E) \leq \sum\limits_{j = 1}^\infty \mu(P_{n, j}) + 1/n$. Определим тогда $C = \bigcap\limits_{n = 1}^\infty\bigcup\limits_{j = 1}^\infty P_{n, j}$. В силу монотонности и непрерывности меры сверху $C$~---~искомое. Заметим, что $C \setminus E = e \in \MM_\mu$ и $\mu(e) = 0$. Тогда есть $\Tilde{B} \in \MM(\PP)$: $e = \bigcap\limits_n\bigcup\limits_j Q_{n, j}, \{Q_{n, j}\} \subset \PP$ и $\mu(\Tilde{B}) = 0$. Тогда $B = C \setminus \Tilde{B}$~---~искомое.
+    Тогда $\forall n \in \N \ \exists \{P_{n, j}\}$: $\mu^*(E) \leq \sum\limits_{j = 1}^\infty \mu(P_{n, j}) + 1/n$. Определим тогда $C = \bigcap\limits_{n = 1}^\infty\bigcup\limits_{j = 1}^\infty P_{n, j}$. В силу монотонности и непрерывности меры сверху $C$~---~искомое. Заметим, что $C \setminus E = e \in \MM_\mu$ и $\mu(e) = 0$. Тогда есть $\Tilde{B} \in \MM(\PP)$: $\Tilde{B} = \bigcap\limits_n\bigcup\limits_j Q_{n, j}, \{Q_{n, j}\} \subset \PP$ и $\mu(\Tilde{B}) = 0$. Тогда $B = C \setminus \Tilde{B}$~---~искомое.
 \end{proof}
 \subsection{Произведение мер и принцип Кавельери}
-Мы уже познакомились с произведением мер на полукольцах. Но теперь мы хотим более общую конструкцию, произведение мер на измеримых пространствах
-Пусть далее зафиксированы два пространства с полными $\sigma$-конечными мерами $(X, \MM, \mu)$ и $(Y, \NN, \nu)$. Мы хотим построить $\mu\otimes\nu$ на $X\times Y$
+Мы уже познакомились с произведением мер на полукольцах. Но теперь мы хотим более общую конструкцию: произведение мер на измеримых пространствах.
+Пусть далее зафиксированы два пространства с полными $\sigma$-конечными мерами $(X, \MM, \mu)$ и $(Y, \NN, \nu)$. Мы хотим построить $\mu\otimes\nu$ на $X\times Y$.
 \begin{fact}
-    Справедливы следующие теоретико-множественные утверждения. \\ Пусть $A, A' \subset X; \ B, B' \subset Y$.
+    Справедливы следующие теоретико-множественные утверждения. \\ Пусть $A, A' \subset X \text{ и } \ B, B' \subset Y$. Тогда:
     \begin{itemize}
-        \item $A'\times B' \subset A \times B \Longleftrightarrow (A' \subset A) \wedge (B' \subset B)$
-        \item $(A \setminus A') \times B = (A \times B) \setminus (A' \times B)$
-        \item $A \times (B \setminus B') = (A \times B) \setminus (A \times B')$
+        \item $A'\times B' \subset A \times B \Longleftrightarrow (A' \subset A) \wedge (B' \subset B)$l
+        \item $(A \setminus A') \times B = (A \times B) \setminus (A' \times B)$;
+        \item $A \times (B \setminus B') = (A \times B) \setminus (A \times B')$.
     \end{itemize}
     Пусть $A_1, \ldots, A_n \subset X$ и $B_1, \ldots B_n \subset Y$. Тогда 
     \begin{itemize}
-        \item $\biggl(\bigcup\limits_{n = 1}^\infty A_n \biggr) \times B = \bigcup\limits_{n = 1}^\infty \biggl(A_n \times B\biggr)$
-        \item $A \times \biggl(\bigcup\limits_{n = 1}^\infty B_n \biggr) = \bigcup\limits_{n = 1}^\infty \biggl(A \times B_n\biggr)$
-        \item $\biggl(\bigcap\limits_{n = 1}^\infty A_n \biggr) \times B = \bigcap\limits_{n = 1}^\infty \biggl(A_n \times B\biggr)$
-        \item $A \times \biggl(\bigcap\limits_{n = 1}^\infty B_n \biggr) = \bigcap\limits_{n = 1}^\infty \biggl(A \times B_n\biggr)$
+        \item $\biggl(\bigcup\limits_{n = 1}^\infty A_n \biggr) \times B = \bigcup\limits_{n = 1}^\infty \biggl(A_n \times B\biggr)$;
+        \item $A \times \biggl(\bigcup\limits_{n = 1}^\infty B_n \biggr) = \bigcup\limits_{n = 1}^\infty \biggl(A \times B_n\biggr)$;
+        \item $\biggl(\bigcap\limits_{n = 1}^\infty A_n \biggr) \times B = \bigcap\limits_{n = 1}^\infty \biggl(A_n \times B\biggr)$;
+        \item $A \times \biggl(\bigcap\limits_{n = 1}^\infty B_n \biggr) = \bigcap\limits_{n = 1}^\infty \biggl(A \times B_n\biggr)$.
 
         
     \end{itemize}
