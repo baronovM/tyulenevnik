@@ -3,20 +3,21 @@
     Пусть сейчас и далее фиксировано некоторое пространство с мерой $(X, \MM, \mu)$.
 \end{reminder}
 \begin{reminder}
-    Если $g$~---~неотрицательная измеримая функция на $E \in \MM$, то $\int\limits_E gd\mu = \sup\limits_{\phi} \int\limits_E \phi d\mu$, где супремум берётся по простым функциям $\phi$, таким что $\phi \leq g$ на $E$.
+    Если $g$~---~неотрицательная измеримая функция на $E \in \MM$, то $\int\limits_E gd\mu = \sup\limits_{0 \leq \phi \leq g} \int\limits_E \phi d\mu$, где супремум берётся по простым функциям $\phi$, таким что $0 \leq \phi \leq g$ на $E$.
 \end{reminder}
 
 \begin{proposition}[Монотонность по функциям]
-    Пусть $E \in \MM$, $f, g$~---~неотрицательные измеримые функции. Тогда если $f \leq g$ на $E$, то $\int\limits_E fd\mu \leq \int\limits_E gd\mu$.
+    Пусть $E \in \MM$, $f, g$~---~неотрицательные измеримые функции. Тогда, если $f \leq g$ на $E$, то $\int\limits_E fd\mu \leq \int\limits_E gd\mu$.
 \end{proposition}
 \begin{proof}
-    Пусть $\psi, h$~---~две простые функции: $\psi \leq h$ на $E$. У них есть допустимые разбиения $X$. Заметим, что если мы попарно пересечём множества разбиения для $\psi$ с множествами разбиения для $h$, то мы получим общее допустимое разбиение $\{A_i\}_{i = 1}^N$ для этих функций: $\psi = \sum\limits_{i = 1}^N a_i\chi_{A_i},\text{ аналогично } h = \sum\limits_{i = 1}^N b_i\chi_{A_i}$. Тогда, зная, что $\forall k \in \{1,\dots, N\} \hookrightarrow a_k \leq b_k$, получаем:\[\int\limits_{E} \psi d\mu = \sum\limits_{i = 1}^N a_i \mu(E \cap A_i) \leq \sum\limits_{i = 1}^N b_i \mu(E \cap A_i) = \int\limits_E h d \mu.\] Теперь рассмотрим общий случай. Пусть у нас $\psi$~---~произвольная неотрицательная простая функция такая, что $\psi \leq f$ на $E$. В тоже время, $f \leq g$ по условию. Тогда \[\int\limits_E fd\mu = \sup\limits_{0 \leq \psi \leq f}\int\limits_E \psi d\mu \leq \sup\limits_{0 \leq h \leq g} \int\limits_{E} h d\mu = \int\limits_{E}g d\mu,\] где супремум берётся по всем таким простым функциям.
+    Пусть $\psi, h$~---~две простые функции: $\psi \leq h$ на $E$. У них есть допустимые разбиения $X$. Заметим, что если мы попарно пересечём множества разбиения для $\psi$ с множествами разбиения для $h$, то мы получим общее допустимое разбиение $\{A_i\}_{i = 1}^N$ для этих функций: $\psi = \sum\limits_{i = 1}^N a_i\chi_{A_i},\text{ аналогично } h = \sum\limits_{i = 1}^N b_i\chi_{A_i}$. Тогда, зная, что $\forall k \in \{1,\dots, N\} \hookrightarrow a_k \leq b_k$, получаем:\[\int\limits_{E} \psi d\mu = \sum\limits_{i = 1}^N a_i \mu(E \cap A_i) \leq \sum\limits_{i = 1}^N b_i \mu(E \cap A_i) = \int\limits_E h d \mu.\] Теперь рассмотрим общий случай. Пусть у нас $\psi$~---~произвольная неотрицательная простая функция такая, что $\psi \leq f$ на $E$. В тоже время, $f \leq g$ по условию. Тогда \[\int\limits_E fd\mu = \sup\limits_{0 \leq \psi \leq f}\int\limits_E \psi d\mu \leq \sup\limits_{0 \leq h \leq g} \int\limits_{E} h d\mu = \int\limits_{E}g d\mu,\] где супремум берётся по всем функциям $\phi$ и $h$.
 \end{proof}
 \begin{proposition}
     Пусть множество $E$: $\mu(E) = 0$. Тогда $\int\limits_E fd\mu = 0$.
 \end{proposition}
 \begin{proof}
-    Для простой функции это очевидно по определению интеграла. В общем же случае \[\int\limits_E gd\mu = \sup\limits_{\phi \leq g} \int\limits_E \phi d \mu = 0.\]
+    Для простой функции это очевидно по определению интеграла. В общем случае для неотрицательной функции $g$: \[\int\limits_E gd\mu = \sup\limits_{ 0 \leq \phi \leq g} \int\limits_E \phi d \mu = 0.\]
+    В общем случае $g = g_+ - g_-$.
 \end{proof}
 \begin{proposition}
     Пусть $E \in \MM$. Тогда $\int\limits_E fd\mu = \int\limits_X f \cdot\chi_Ed\mu$.
@@ -24,14 +25,14 @@
 \begin{proof}
     Покажем, что для простых функций это так. Пусть $\psi$~---~простая, а $\{A_i\}_{i = 1}^N$~---~допустимое разбиение для $\psi$. Тогда \[\chi_E\psi = \sum\limits_{i = 1}^N a_i\chi_{A_i}\chi_E = \sum\limits_{i = 1}^N a_i\chi_{A_i \cap E} + 0 \cdot \chi_{X \setminus E}.\] Значит, \[\int\limits_X \chi_E \psi d\mu = \sum\limits_{k = 1}^N a_k \mu(A_k \cap E) + 0\mu(X \setminus E) = \sum\limits_{k = 1}^N a_k\mu(A_k \cap E) = \int\limits_E \psi d \mu.\]
     Пусть $\psi$~---~простая: $0 \leq \psi \leq f$ на $E$. Обозначим это условие $(*)$. Пусть $h$~---~простая, и $0 \leq h \leq \chi_E f$ на $X$.
-    Заметим, что $h = \chi_E h$. Значит, верно следующее: \[\int\limits_X hd\mu = \int\limits_X \chi_E h d\mu = \int\limits_E hd\mu \leq \int\limits_E fd\mu\]
-    Теперь если мы возьмём $\sup$ по всем таким $h$:
-    \[\int\limits_X \chi_E fd\mu = \sup\limits_h \int\limits_X hd\mu \leq \int\limits_E fd\mu\]
+    Заметим, что $h = \chi_E h$. Значит, в силу монотонности интеграла, верно следующее: \[\int\limits_X hd\mu = \int\limits_X \chi_E h d\mu = \int\limits_E hd\mu \leq \int\limits_E fd\mu.\]
+    Теперь если мы возьмём $\sup$ по всем таким $h$, то получим:
+    \[\int\limits_X \chi_E fd\mu = \sup\limits_{0\leq h \leq \c hi_E f} \int\limits_X hd\mu \leq \int\limits_E fd\mu.\]
     Рассмотрим произвольную $\psi$, удовлетворяющую условию $(*)$:
-    \[\int\limits_E \psi d\mu = \int\limits_X \chi_E\psi d\mu \leq \int\limits_X \chi_E fd\mu\]
+    \[\int\limits_E \psi d\mu = \int\limits_X \chi_E\psi d\mu \leq \int\limits_X \chi_E fd\mu.\]
     Возьмём супремум по всем таким функциям таким $\psi$:
-    \[\int\limits_E fd\mu = \sup\limits_\psi \int\limits_E \psi d\mu \leq \int\limits_X \chi_E fd\mu\]
-    Значит \[\int\limits_E fd\mu = \int\limits_X \chi_Efd\mu\]
+    \[\int\limits_E fd\mu = \sup\limits_\psi \int\limits_E \psi d\mu \leq \int\limits_X \chi_E fd\mu.\]
+    Значит, имеем равенство: \[\int\limits_E fd\mu = \int\limits_X \chi_Efd\mu.\]
 \end{proof}
 \begin{corollary}[Монотонность по множеству]
     Пусть $A, B \in \MM, A \subset B$, $f: X \rightarrow [0, +\infty]$~---~измеримая. Тогда \[\int\limits_A fd\mu = \int\limits_X f\chi_Ad\mu \leq \int\limits_X f\chi_Bd\mu = \int\limits_B fd\mu\]
@@ -39,12 +40,12 @@
 
 \hypertarget{beppo_levi}{}
 \begin{theorem}[Беппо Леви]
-    Пусть дана последовательность $\{f_n\}$ неотрицательных измеримых на $X$ функций: $f_n \leq f_{n + 1}$ на $X$, сходящаяся к функции $f = \lim\limits_{n \rightarrow +\infty} f_n$ Тогда верно следующее: \[\lim\limits_{n \rightarrow +\infty} \int\limits_X f_nd\mu = \int\limits_X \lim\limits_{n \rightarrow +\infty} f_n d\mu = \int\limits_X fd\mu\]
+    Пусть дана последовательность $\{f_n\}$ неотрицательных измеримых на $X$ функций: $f_n \leq f_{n + 1}$ на $X$, сходящаяся $\mu-$п.в. на $X$ к функции $f$. Тогда верно следующее: \[\lim\limits_{n \rightarrow +\infty} \int\limits_X f_nd\mu = \int\limits_X \lim\limits_{n \rightarrow +\infty} f_n d\mu = \int\limits_X fd\mu.\]
 \end{theorem}
 \begin{proof}
     Пусть $L_n = \int\limits_X f_nd\mu$. Заметим, что $\{L_n\}$~---~монотонно не убывает в $[0, +\infty]$. Значит, $\exists \lim\limits_{n\rightarrow+\infty} L_n = \sup\limits_n L_n = L$. Поскольку $\forall n \in \N \hookrightarrow f \geq f_n$, значит: \[\int\limits_X fd\mu \geq \int\limits_X f_nd\mu\]
-    Т.е. \[\int\limits_X fd\mu \geq L = \lim\limits_{n \rightarrow +\infty} \int\limits_X f_nd\mu\]
-    Теперь необходимо показать включение в обратную сторону. Зафиксируем $\theta \in (0, 1)$. Пусть $g$~---~произвольная неотрицательная простая функция, т.ч. $0 \leq g \leq f$ на $X$.\\ Рассмотрим $X_n = X(f_n \geq \theta g)$. Заметим, что $ \forall n \in \N \ldots \subset X_n \subset X_{n + 1} \subset \ldots$. В тоже время, $\bigcup\limits_{n = 1}^\infty X_n = X$, поскольку множестве нулей функции $g$ заведомо исчерпывается. Если $g(x) > 0$, то т.к. $g \leq f \Rightarrow \theta g < f$. Т.к. $\lim\limits_{n\rightarrow +\infty}f_n = f$, значит с некоторого $N \hookrightarrow f_N(x) > \theta g(x) \Rightarrow x \in X_N$, поэтому $\bigcup\limits_{n = 1}^\infty X_n = X$. \\
+    Следовательно, \[\int\limits_X fd\mu \geq L = \lim\limits_{n \rightarrow +\infty} \int\limits_X f_nd\mu\]
+    Теперь необходимо показать обратное неравенство. Зафиксируем $\theta \in (0, 1)$. Пусть $g$~---~произвольная неотрицательная простая функция, т.ч. $0 \leq g \leq f$ на $X$.\\ Рассмотрим $X_n = X(f_n \geq \theta g)$. Заметим, что $ \forall n \in \N \ldots \subset X_n \subset X_{n + 1} \subset \ldots$. В тоже время, $\bigcup\limits_{n = 1}^\infty X_n = X$, поскольку множестве нулей функции $g$ заведомо исчерпывается. Если $g(x) > 0$, то так как $g \leq f \Rightarrow \theta g < f$. Так как $\lim\limits_{n\rightarrow +\infty}f_n = f$, значит с некоторого $N \hookrightarrow f_N(x) > \theta g(x) \Rightarrow x \in X_N$, поэтому $\bigcup\limits_{n = 1}^\infty X_n = X$. \\
     Тогда $\forall A \in \MM \hookrightarrow A = \bigcup\limits_{n = 1}^\infty A \cap X_n$. В силу непрерывности снизу мы получаем, что $\forall A \in \MM$ \[\mu(A) = \lim\limits_{n \rightarrow +\infty} \mu(A \cap X_n) (*)\]
     Т.е. \[\int\limits_X f_nd\mu \geq \int\limits_{X_n} f_nd\mu \geq \int\limits_{X_n} \theta g d\mu = \theta \sum\limits_{k = 1}^N a_k\mu(A_k \cap X_n)\]
     Устремим $n$ в бесконечность:
