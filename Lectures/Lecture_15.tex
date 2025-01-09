@@ -47,7 +47,7 @@
     Теорема Кельвина-Стокса справедлива при более слабом условии: $\overline{r} \in C^1(\overline{G}, \R^3)$.
 \end{note}
 \begin{theorem}[Кельвин-Стокс для кусочной-гладкой поверхности]
-    Пусть $S \in \R^3$~---~кусочно-гладкая поверхность. Пусть $\partial S^+$~---~ориентированный положительно относительно $S$ край, состоящий из конечного числа простых кусочно-гладких кривых. Пусть задано открытое $\Omega \supset S$ и в нём $\overline{a} \in C^1(\Omega, \R^3)$. Then \[\iint\limits_S (\rot \overline{a}, \overline{ds}) = \int\limits_{\partial S^+} (\overline{a}, \overline{dr})\]
+    Пусть $S \in \R^3$~---~кусочно-гладкая поверхность. Пусть $\partial S^+$~---~ориентированный положительно относительно $S$ край, состоящий из конечного числа простых кусочно-гладких кривых. Пусть задано открытое $\Omega \supset S$ и в нём $\overline{a} \in C^1(\Omega, \R^3)$. Тогда \[\iint\limits_S (\rot \overline{a}, \overline{ds}) = \int\limits_{\partial S^+} (\overline{a}, \overline{dr})\]
 \end{theorem}
 \begin{proof}
     Используя замечание и предыдущую теорему для каждого куска мы получаем формулу Стокса. Далее, суммируя по всем кускам мы получим необходимое. Ключевой момент~---~при суммировании циркуляций для соседних кусков циркуляция по общему краю равна 0, в силу противоположных ориентаций.
@@ -56,14 +56,14 @@
 \section{Элементы теории поля}
 \subsection{Геометрическое определение ротации}
 \noindent 
-    \begin{minipage}{0.65\textwidth}
+    \begin{minipage}{0.75\textwidth}
    \begin{theorem}
     Пусть в непустой области $\Omega \subset R^3$ задано гладкое поле $\overline{a} \in C^1 (\Omega, \R^3)$. Тогда $\forall \overline{r}_0 \in \Omega$ справедливо следующее равенство: \[ (\overline{n}, \rot \overline{a}(\overline{r}_0)) = \lim\limits_{\delta \rightarrow +0} \dfrac{1}{\pi \delta^2} \int\limits_{\partial S^+_\delta(\overline{r}_0)} (\overline{a}, \overline{dr}).\]
     Где $\overline{n}$~---~вектор, задающий положительную ориентацию, $S^+_\delta$~---~окружность радиуса $\delta > 0$ лежащая в плоскости, проходящая через $\overline{r}_0$ перпендикулярно вектору $\overline{n}$. Ориентация $\partial S^+_\delta(\overline{r}_0)$ согласована с $\overline{n}$.
 \end{theorem}
        
     \end{minipage}
-    \begin{minipage}{0.35\textwidth}
+    \begin{minipage}{0.25\textwidth}
     \includegraphics[width=\textwidth]{images/rotor777.png}
     \end{minipage}
 

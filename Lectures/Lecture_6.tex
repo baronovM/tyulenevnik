@@ -231,13 +231,13 @@
 \end{note}
 
 \begin{lemma}[Неравенство Минковского]
-    Пусть $f, g \in \widetilde{L_p}$. Тогда $f + g \in \widetilde{L_p}$ и $\|f + g\|_p \leq \|f\|_p + \|g\|_p$
+    Пусть $f, g \in \widetilde{L_p} (E)$. Тогда $f + g \in \widetilde{L_p} (E)$ и $\|f + g\|_p \leq \|f\|_p + \|g\|_p$.
 \end{lemma}
 \begin{proof}
-    Т.к. $|f + g|^p \leq (2\max (|f|, |g|))^p \leq 2^p(|f|^p + |g|^p)$, то и $\int |f + g|^p d\mu < +\infty$, а значит $f + g \in \widetilde{L_p}$. Тогда \[\int |f + g|^p d\mu = \int |f + g||f + g|^{p - 1}d\mu \leq \]\[  \leq \int (|f| + |g|)|f + g|^{p - 1}d\mu = \int |f||f + g|^{p - 1}d\mu + \int |g||f + g|^{p - 1}d\mu = \int |f||f + g|^{p/p'}d\mu + \int |g||f + g|^{p/p'} d\mu \leq \]  \hyperlink{gyolder}{По неравенству Гёльдера} с показателем $p, p':$ \[
-    \leq \left(\int |f|^pd\mu \right)^{1/p} \left(\int |f + g|^p \right)^{1/p'} + \left(\int |g|^pd\mu \right)^{1/p} \left(\int |f + g|^p \right)^{1/p'}
+    Так как $|f + g|^p \leq (2\max (|f|, |g|))^p \leq 2^p(|f|^p + |g|^p)$, то и $\int\limits_{E} |f + g|^p d\mu < +\infty$, а значит $f + g \in \widetilde{L_p} (E)$. Тогда \[\int\limits_{E} |f + g|^p d\mu = \int\limits_{E} |f + g||f + g|^{p - 1}d\mu \leq \]\[  \leq \int\limits_{E} (|f| + |g|)|f + g|^{p - 1}d\mu = \int\limits_{E} |f||f + g|^{p - 1}d\mu + \int\limits_{E} |g||f + g|^{p - 1}d\mu = \int\limits_{E} |f||f + g|^{p/p'}d\mu + \int\limits_{E} |g||f + g|^{p/p'} d\mu \leq \]  \hyperlink{gyolder}{По неравенству Гёльдера} с показателем $p, p':$ \[
+    \leq \left(\int\limits_{E} |f|^pd\mu \right)^{1/p} \left(\int |f + g|^p \right)^{1/p'} + \left(\int\limits_{E} |g|^pd\mu \right)^{1/p} \left(\int\limits_{E} |f + g|^p \right)^{1/p'}.
     \]
-    Теперь, поскольку $1/p + 1/p' = 1$, то если мы поделим на $(\int |f + g|^p)^{1/p'}$ обе части, то мы получим необходимое неравенство.
+    Теперь, поскольку $1/p + 1/p' = 1$, то если мы поделим на $(\int\limits_{E} |f + g|^p)^{1/p'} < +\infty$ обе части, то мы получим необходимое неравенство.
 \end{proof}
 
 \begin{definition}
