@@ -1,42 +1,42 @@
 \subsection{Сравнение интегралов Лебега и Римана}
 \begin{theorem}
-    Пусть $f \in \mathcal{R}([a, b])$. Тогда $f \in \Tilde{L}_1([a, b])$. Более того, верно следующее: \[ \int\limits_a^b f(x)dx = \int\limits_{[a, b]}fd\LL^1\]
+    Пусть $f \in \mathcal{R}([a, b])$. Тогда $f \in \Tilde{L}_1([a, b])$. Более того, верно следующее: \[ \int\limits_a^b f(x)dx = \int\limits_{[a, b]}f(x)d\LL^1(x).\]
 \end{theorem}
 \begin{proof}
-    Пусть фиксировано некоторое натуральное $n$. Разобьём $[a, b]$ на $2^n$ равных частей. Тогда обозначим за $x_k$ и $\Delta_k$: \[x_k = a + \dfrac{k}{2^n}(b - a), k = \overline{0, 2^n}; \quad \Delta_k = [x_k, x_{k + 1}], k = \overline{0, 2^n - 2}, \Delta_{2^n - 1} = [x_{2^n - 1}, x_{2^n}]\] 
-    Теперь рассмотрим следующие последовательности функций: \[\underline{f}_n = \sum\limits_{k = 0}^{2^n} \inf\limits_{x \in \Delta_k} f\cdot \chi_{\Delta_k} \quad \overline{f}_n = \sum\limits_{k = 0}^{2^n} \sup\limits_{x \in \Delta_k} f\cdot \chi_{\Delta_k}\]
-    Их монотонность~---~$\overline{f}_{n + 1} \leq \overline{f}_n$ и $\underline{f}_{n + 1} \geq \underline{f}_n$~---~очевидна. Также введём для $\underline{f}_n$ и $\overline{f}_n$ обозначения: \[m_{k, n} = \inf\limits_{\Delta_k} f \quad M_{k, n} = \sup\limits_{\Delta_k} f \]
-    Применим теорему Леви (поскольку $\overline{f}_n$ и $\underline{f}_n$~---~измеримые) к $g_n = \overline{f}_n - \overline{f}_1$: \[\exists \lim\limits_{n \rightarrow +\infty} \int\limits_{[a, b]}g^nd\LL^1 = \int\limits_{[a, b]}\lim\limits_{n \rightarrow +\infty} g_nd\LL^1 = \int\limits_{[a, b]}gd\LL^1\]
-    Тогда, поскольку $g_n = \overline{f}_n - \overline{f}_1$, то $g = \overline{f} - \overline{f}_1$ и в силу линейности мы получаем \[\lim\limits_{n \rightarrow +\infty} \int\limits_{[a, b]} \overline{f}_nd\LL^1 = \int\limits_{[a, b]}\overline{f}d\LL^1\]
-    Аналогичными рассуждениями можно получить для $\underline{f} = \lim\limits_{n \rightarrow +\infty}\underline{f}_n$ следующее: \[\lim\limits_{n \rightarrow +\infty} \int\limits_{[a, b]}\underline{f}_nd\LL^1 = \int\limits_{[a, b]}\underline{f}d\LL^1\]
-    Обозначим $S_{T_n}$ и $s_{T_n}$ верхнюю и нижнюю суммы Дарбу для разбиения отрезка $[a, b]$ на $2^n$ равных частей. Очевидно, что выполняются следующие неравенства: \[s_{T_n} \leq \int\limits_{[a, b]}\overline{f}_nd\LL^1 = \sum\limits_{k = 0}^{2^n - 1}M_{k, n}\dfrac{1}{2^n} \leq S_{T_n} \quad S_{T_n} \geq \int\limits_{[a, b]} \underline{f}_n d\LL^1 = \sum\limits_{k = 0}^{2^n - 1} m_{k, n}\dfrac{1}{2^n} \geq s_{T_n}\]
-    Из интегрируемости по Риману следует существование предела сумм Дарбу, равного интегралу Римана $\int\limits_a^b f(x)dx$. Значит \[\int\limits_{[a, b]}\overline{f}d\LL^1 = \int\limits_{[a, b]}\underline{f}d\LL^1 = \int\limits_a^bf(x)dx\]
-    Но, в тоже время, $\underline{f} \leq f \leq \overline{f}$. Значит $\int\limits_{[a, b]}\overline{f} - fd\LL^1 = 0$. Из неотрицательности $\overline{f} - f$ следует, что $\overline{f} = f$ п.в. Тогда \[\int\limits_{[a, b]}fd\LL^1 = \int\limits_{[a, b]}\overline{f}d\LL^1 = \int\limits_a^bf(x)dx\]
+    Пусть фиксировано некоторое натуральное $n$. Разобьём $[a, b]$ на $2^n$ равных частей. Тогда обозначим за $x_k$ и $\Delta_k$: \[x_k = a + \dfrac{k}{2^n}(b - a), k = \overline{0, 2^n}; \quad \Delta_k = [x_k, x_{k + 1}], k = \overline{0, 2^n - 2}, \Delta_{2^n - 1} = [x_{2^n - 1}, x_{2^n}].\] 
+    Теперь рассмотрим следующие последовательности функций: \[\underline{f}_n = \sum\limits_{k = 0}^{2^n} \inf\limits_{x \in \Delta_k} f\cdot \chi_{\Delta_k} \quad \overline{f}_n = \sum\limits_{k = 0}^{2^n} \sup\limits_{x \in \Delta_k} f\cdot \chi_{\Delta_k}.\]
+    Монотонность этих последовательностей  ~---~$\overline{f}_{n + 1} \leq \overline{f}_n$ и $\underline{f}_{n + 1} \geq \underline{f}_n$~---~очевидна. Также введём для $\underline{f}_n$ и $\overline{f}_n$ обозначения: \[m_{k, n} = \inf\limits_{\Delta_k} f \quad M_{k, n} = \sup\limits_{\Delta_k} f. \]
+    Применим теорему Леви (поскольку $\overline{f}_n$ и $\underline{f}_n$~---~измеримые) к $g_n = \overline{f}_n - \overline{f}_1$: \[\exists \lim\limits_{n \rightarrow +\infty} \int\limits_{[a, b]}g^nd\LL^1 = \int\limits_{[a, b]}\lim\limits_{n \rightarrow +\infty} g_nd\LL^1 = \int\limits_{[a, b]}gd\LL^1.\]
+    Тогда, поскольку $g_n = \overline{f}_n - \overline{f}_1$, то $g = \overline{f} - \overline{f}_1$ и в силу линейности мы получаем \[\lim\limits_{n \rightarrow +\infty} \int\limits_{[a, b]} \overline{f}_nd\LL^1 = \int\limits_{[a, b]}\overline{f}d\LL^1.\]
+    Аналогичными рассуждениями можно получить для $\underline{f} = \lim\limits_{n \rightarrow +\infty}\underline{f}_n$ следующее: \[\lim\limits_{n \rightarrow +\infty} \int\limits_{[a, b]}\underline{f}_nd\LL^1 = \int\limits_{[a, b]}\underline{f}d\LL^1.\]
+    Обозначим $S_{T_n}$ и $s_{T_n}$ верхнюю и нижнюю суммы Дарбу для разбиения отрезка $[a, b]$ на $2^n$ равных частей. Очевидно, что выполняются следующие неравенства: \[s_{T_n} \leq \int\limits_{[a, b]}\overline{f}_nd\LL^1 = \sum\limits_{k = 0}^{2^n - 1}M_{k, n}\dfrac{1}{2^n} \leq S_{T_n} ;\quad S_{T_n} \geq \int\limits_{[a, b]} \underline{f}_n d\LL^1 = \sum\limits_{k = 0}^{2^n - 1} m_{k, n}\dfrac{1}{2^n} \geq s_{T_n}.\]
+    Из интегрируемости по Риману следует существование предела сумм Дарбу, равного интегралу Римана $\int\limits_a^b f(x)dx$. Значит \[\int\limits_{[a, b]}\overline{f}d\LL^1 = \int\limits_{[a, b]}\underline{f}d\LL^1 = \int\limits_a^bf(x)dx.\]
+    Но, в тоже время, $\underline{f} \leq f \leq \overline{f}$. Значит $\int\limits_{[a, b]}(\overline{f} - f)d\LL^1 = 0$. Из неотрицательности $\overline{f} - f$ следует, что $\overline{f} = f$ п.в. Тогда \[\int\limits_{[a, b]}fd\LL^1 = \int\limits_{[a, b]}\overline{f}d\LL^1 = \int\limits_a^bf(x)dx.\]
 \end{proof}
 \begin{example}
     $\chi_{[0, 1] \cap \Q}$ не интегрируема по Риману, но интегрируема по Лебегу.
 \end{example}
 \begin{example}[?]
-    Пусть ${r_k}$~---~нумерация рациональных чисел на $[0, 1]$. Пусть выбрано некоторое $\delta \in (0, 1)$. Определим функцию $f$ как \[f = \sum\limits_{k = 1}^\infty \chi_{(r_k - \frac{\delta}{2^k}, r_k + \frac{\delta}{2^k})}\]
-    Функция $f \notin \mathcal{R}([-1, 2])$, но $f \in \Tilde{L}_1([-1, 2])$. Пусть \[G = \bigcup\limits_{k = 1}^\infty (r_k - \dfrac{\delta}{2^k}, r_k + \dfrac{\delta}{2^k})\]
+    Пусть ${r_k}$~---~нумерация рациональных чисел на $[0, 1]$. Пусть выбрано некоторое $\delta \in (0, 1)$. Определим функцию $f$ равенством \[f = \sum\limits_{k = 1}^\infty \chi_{(r_k - \frac{\delta}{2^k}, r_k + \frac{\delta}{2^k})}.\]
+    Функция $f \notin \mathcal{R}([-1, 2])$, но $f \in \Tilde{L}_1([-1, 2])$. Пусть \[G = \bigcup\limits_{k = 1}^\infty (r_k - \dfrac{\delta}{2^k}, r_k + \dfrac{\delta}{2^k}).\]
      Множество $F = [0, 1] \setminus G$~---~множество положительной меры, и множество точек разрыва всегда его содержит, а значит функция $f$ неинтегрируема по Риману в силу критерия Лебега. При этом, в отличии от функции Дирихле, $f$ нельзя поправить на множество нулевой меры так, чтобы она стала интегрируемой по Риману. 
 \end{example}
 \begin{example}
     Пусть $f$ задана как \begin{equation*}
     f = 
         \begin{cases}
-        \dfrac{1}{\sqrt{x}}, & x \in (0, 1] \\
+        \dfrac{1}{\sqrt{x}}, & x \in (0, 1]; \\
         0, & x \notin (0, 1]
         \end{cases}
     \end{equation*}
-    Она интегрируема в несобственном смысле по Риману и интегрируема по Лебегу на $(0, 1]$. Определим последовательность функций $f_n$ как \begin{equation*}
+    Она интегрируема в несобственном смысле по Риману на $(0, 1]$ и интегрируема по Лебегу на $[0, 1]$. Определим последовательность функций $f_n$ как \begin{equation*}
     f_n = 
         \begin{cases}
-         \dfrac{1}{\sqrt{x}}, & x \in [\frac{1}{n}, 1] \\ 
+         \dfrac{1}{\sqrt{x}}, & x \in [\frac{1}{n}, 1]; \\ 
          0, & x \notin [\frac{1}{n}, 1]
         \end{cases}
     \end{equation*}
-    Поскольку $f_n \in \mathcal{R}([0, 1])$, то $f_n \in \LL_1([0, 1])$ и интегралы Римана и Лебега совпадают. Но т.к. $f = \lim\limits_{n \rightarrow +\infty} f_n$ и $f_n$~---~монотонны, то применяя теорему Леви мы получаем \[\int\limits_{[0, 1]}fd\LL^1 = \lim\limits_{n \rightarrow +\infty} f_nd\LL^1 = \int\limits_0^1 f(x)dx\]
+    Поскольку $f_n \in \mathcal{R}([0, 1])$, то $f_n \in \LL_1([0, 1])$ и интегралы Римана и Лебега совпадают. Но т.к. $f = \lim\limits_{n \rightarrow +\infty} f_n$ и последовательность $\{f_n\}$ монотонна, то применяя теорему Леви мы получаем \[\int\limits_{[0, 1]}fd\LL^1 = \lim\limits_{n \rightarrow +\infty} \int\limits_{[0, 1]}f_nd\LL^1 = \int\limits_0^1 f(x)dx.\]
 \end{example}
 
 
