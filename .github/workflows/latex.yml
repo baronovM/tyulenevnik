@@ -61,7 +61,7 @@ jobs:
           prerelease: false
 
       - name: Rename PDF with Russian letters
-        run: mv ./result.pdf ./Теория_Меры_Уважаемый_(${{ env.date_and_time }}).pdf
+        run: mv ./result.pdf ./Теория_Меры_Уважаемый_${{ env.date_and_time }}.pdf
 
       - name: Upload PDF asset
         uses: actions/upload-release-asset@v1
@@ -69,6 +69,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./Теория_Меры_Уважаемый_(${{ env.date_and_time }}).pdf
-          asset_name: Теория_Меры_Уважаемый_(${{ env.date_and_time }}).pdf
+          asset_path: ./Теория_Меры_Уважаемый_${{ env.date_and_time }}.pdf
+          asset_name: Теория_Меры_Уважаемый_${{ env.date_and_time }}.pdf
           asset_content_type: application/pdf
