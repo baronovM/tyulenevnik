@@ -254,8 +254,12 @@
 \end{note}
 
 \begin{theorem}[Неравенство Чебышева]
-    Пусть даны положительные $p$ и $t$ и интегрируемая по Лебегу на $X$ функция $f$. Тогда если $E_t = \{x \in X \mid |f| \geq t\}$, то \[\mu(E_t) \leq \frac{1}{t^p}\int\limits_X |f|^pd\mu.\]
+    Пусть даны положительные $p$ и $t$ и заданная на $X$ функция $f$. Тогда если $E_t = \{x \in X \mid |f| \geq t\}$, то \[\mu(E_t) \leq \frac{1}{t^p}\int\limits_X |f|^pd\mu.\]
 \end{theorem}
 \begin{proof}
     \[t^p\mu(E_t) = \int\limits_{E_t} t^pd\mu \leq \int\limits_{E_t} |f|^pd\mu \leq \int\limits_{X}|f|^pd\mu.\]
 \end{proof}
+
+\begin{remark}
+    Принадлежность $f$ пространству $\widetilde{L_p} (E)$ не необходима, так как тогда в правой части $+\infty$ и неравенство тривиально.
+\end{remark}
