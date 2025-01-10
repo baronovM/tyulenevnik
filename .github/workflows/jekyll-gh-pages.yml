@@ -73,7 +73,7 @@ jobs:
             echo "Error: DOWNLOAD_URL is empty"
             exit 1
           fi
-          find ./_site -type f -name "*.html" -exec sed -i "s|<h1>Идёт обновление</h1>||g" {} +
+          find ./_site -type f -name "*.html" -exec sed -i "s|<h1>Идёт обновление. Обычно это занимает около 3 минут</h1>||g" {} +
           find ./_site -type f -name "*.html" -exec sed -i "s|<p>Так как сейчас идёт обновление, файл, отображаемый снизу, может отставать от актуальной версии</p>||g" {} +
           find ./_site -type f -name "*.html" -exec sed -i "s|{{LATEST_RELEASE_DOWNLOAD_URL}}|$DOWNLOAD_URL|g" {} +
           find ./_site -type f -name "*.html" -exec sed -i "s|{{LATEST_RELEASE_DATE}}|${{ env.date }}|g" {} +
