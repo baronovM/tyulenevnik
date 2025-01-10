@@ -46,7 +46,9 @@
     Пусть $L_n = \int\limits_X f_nd\mu$. Заметим, что $\{L_n\}$~---~монотонно не убывает в $[0, +\infty]$. Значит, $\exists \lim\limits_{n\rightarrow+\infty} L_n = \sup\limits_n L_n = L$. Поскольку $\forall n \in \N \hookrightarrow f \geq f_n$, значит: \[\int\limits_X fd\mu \geq \int\limits_X f_nd\mu.\]
     Следовательно, \[\int\limits_X fd\mu \geq L = \lim\limits_{n \rightarrow +\infty} \int\limits_X f_nd\mu.\]
     Теперь необходимо показать обратное неравенство. Зафиксируем $\theta \in (0, 1)$. Пусть $g$~---~произвольная неотрицательная простая функция, т.ч. $0 \leq g \leq f$ на $X$.\\ Рассмотрим $X_n = X(f_n \geq \theta g)$. Заметим, что $ \forall n \in \N \hookrightarrow \ldots \subset X_n \subset X_{n + 1} \subset \ldots$. В тоже время, $\bigcup\limits_{n = 1}^\infty X_n = X$. Действительно, множество, где $g = 0$ заведомо исчерпывается. Если $g(x) > 0$, то так как $g \leq f \Rightarrow \theta g < f$. Так как $\lim\limits_{n\rightarrow +\infty}f_n = f$, значит с некоторого $N \hookrightarrow f_N(x) > \theta g(x) \Rightarrow x \in X_N$, поэтому $\bigcup\limits_{n = 1}^\infty X_n = X$. \\
-    Тогда $\forall A \in \MM \hookrightarrow A = \bigcup\limits_{n = 1}^\infty A \cap X_n$. В силу непрерывности меры снизу мы получаем, что $\forall A \in \MM$ \[\mu(A) = \lim\limits_{n \rightarrow +\infty} \mu(A \cap X_n) (*)\]
+    Тогда $\forall A \in \MM \hookrightarrow A = \bigcup\limits_{n = 1}^\infty A \cap X_n$. В силу непрерывности меры снизу мы получаем, что $\forall A \in \MM$ \begin{equation*}
+        \mu(A) = \lim\limits_{n \rightarrow +\infty} \mu(A \cap X_n) \quad(*)
+    \end{equation*}
     Т.е. \[\int\limits_X f_nd\mu \geq \int\limits_{X_n} f_nd\mu \geq \int\limits_{X_n} \theta g d\mu = \theta \sum\limits_{k = 1}^N a_k\mu(A_k \cap X_n).\]
     Устремим $n$ в бесконечность и воспользуемся $(*)$:
     \[L = \lim\limits_{n \rightarrow +\infty} \int\limits_X f_nd\mu \geq \theta\sum\limits_{k = 1}^N a_k\mu(A_k \cap X) = \theta\int\limits_{X} gd\mu.\]
@@ -106,7 +108,7 @@
     Для интеграла по Риману, утверждение выше неверно.
 \end{note}
 \begin{proposition}
-    Пусть $f$~---~интегрируемая по Лебегу функция на $E$. Тогда $$|\int\limits_E fd\mu| \leq \int\limits_E |f|d\mu.$$
+    Пусть $f$~---~интегрируемая по Лебегу функция на $E$. Тогда $$\biggr|\int\limits_E fd\mu\biggr| \leq \int\limits_E |f|d\mu.$$
 \end{proposition}
 \begin{proof} Используя неравенство треугольника для определения интеграла от модуля функции
     \[\Bigg|\int\limits_E fd\mu\Bigg| = \Bigg|\int\limits_{E} f_+d\mu - \int\limits_E f_-d\mu\Bigg| \leq \Bigg|\int\limits_E f_+d\mu\Bigg| + \Bigg|\int\limits_E f_-d\mu\Bigg| = \int\limits_E f_+d\mu + \int\limits_E f_-d\mu = \int\limits_E |f|d\mu.\]

@@ -14,23 +14,24 @@
 \end{corollary}
 
 \subsection{Интеграл Лебега как функция множества}
+В этом параграфе фиксировано пространство с полной $\sigma$-конечной мерой $(X, \MM, \mu)$.
 \begin{proposition}[Аддитивность интеграла Лебега по множеству]
-    Пусть $E = \bigcup\limits_{i = 1}^N E_i$, где $\{E_i\} \subset \MM$. Тогда для произвольной измеримой функции верно следующее: \[f \in \widetilde{L_1}(E, \mu) \Longleftrightarrow \forall i \hookrightarrow f \in \widetilde{L_1}(E_i, \mu)\]
-    Более того, если $E = \bigsqcup\limits_{i = 1}^N$, то \[\int\limits_{E} fd\mu = \sum\limits_{i = 1}^N \int\limits_{E_i} fd\mu\]
+    Пусть $E = \bigcup\limits_{i = 1}^N E_i$, где $\{E_i\}_{i = 1}^N \subset \MM$. Тогда для произвольной измеримой функции верно следующее: \[f \in \widetilde{L_1}(E, \mu) \Longleftrightarrow \forall i \in \overline{1, N} \hookrightarrow f \in \widetilde{L_1}(E_i, \mu).\]
+    Более того, если $E = \bigsqcup\limits_{i = 1}^N E_i$, то \[\int\limits_{E} fd\mu = \sum\limits_{i = 1}^N \int\limits_{E_i} fd\mu.\]
 \end{proposition}
 \begin{proof}
-    В силу равносильности интегрируемости функции интегрируемости модуля функции, следующее неравенство нам даёт первое утверждение: \[|f|\chi_{E_i} \leq |f|\chi_E \leq |f|\sum\limits_{i = 1}^N \chi_{E_i}\]
-    Если же $E = \bigsqcup E_i$, то $f \chi_E = f \sum\limits_{i = 1}^N \chi_{E_i}$. Интегрирование этого равенства даёт нам утверждение задачи.
+    В силу равносильности интегрируемости функции интегрируемости модуля функции, следующее неравенство нам даёт первое утверждение: \[|f|\chi_{E_i} \leq |f|\chi_E \leq |f|\sum\limits_{i = 1}^N \chi_{E_i}.\]
+    Если же $E = \bigsqcup_{i = 1}^N E_i$, то $f \chi_E = f \sum\limits_{i = 1}^N \chi_{E_i}$. Интегрирование этого равенства с учётом уже доказанной линейности по функциям даёт нам утверждение задачи.
 \end{proof}
 
 \begin{theorem}[Счётная аддитивность интеграла Лебега]
-    Пусть $\{E_i\}_{i = 1}^\infty \subset \MM$ и $E_i \cap E_j \neq \emptyset \Rightarrow i = j$. Тогда для любой неотрицательной функции $f$, измеримой на объединении верно следующее равенство: \[\int\limits_{\bigsqcup\limits_{i = 1}^\infty E_i} fd\mu = \sum\limits_{i = 1}^\infty \int\limits_{E_i} fd\mu\]
+    Пусть $\{E_i\}_{i = 1}^\infty \subset \MM$ и $E_i \cap E_j = \emptyset$ при $i \neq j$. Тогда для любой неотрицательной функции $f$, измеримой на $E = \bigsqcup\limits_{i = 1}^\infty E_i$ верно следующее равенство: \[\int\limits_{E} fd\mu = \sum\limits_{i = 1}^\infty \int\limits_{E_i} fd\mu.\]
 \end{theorem}
 \begin{proof}
-    Без ограничения общности мы можем продолжить $f$ на $X \setminus \bigsqcup\limits_{i = 1}^\infty E_i$ нулем. Введём функцию "срезки" первых $N$ элементов: \[f^N(  x) = \sum\limits_{i = 1}^N \chi_{E_i}f(x)\]
-    В силу конечной аддитивности по множеству верно следующее: \[\int\limits_E f^Nd\mu = \sum\limits_{i = 1}^N \int\limits_{E_i} fd\mu\]
-    Заметим, что $f^N \leq f^{N + 1}$, $\lim\limits_{N \ra \infty} f^N = f$ а значит допустимо применение теоремы Леви: \[\lim\limits_{n \rightarrow +\infty} \int\limits_{E} f^nd\mu = \int\limits_E \lim\limits_{n \rightarrow +\infty} f^n d\mu\]
-    Т.е. \[\int\limits_E fd\mu = \lim\limits_{n \rightarrow +\infty} \sum\limits_{i = 1}^n \int\limits_{E_i} fd\mu = \sum\limits_{i = 1}^\infty \int\limits_{E_i} fd\mu\]
+    Без ограничения общности мы можем продолжить $f$ на $X \setminus \bigsqcup\limits_{i = 1}^\infty E_i$ нулем. Введём функцию <<срезки>> первых $N$ элементов: \[f^N(  x) = \sum\limits_{i = 1}^N \chi_{E_i}f(x).\]
+    В силу конечной аддитивности по множеству \[\int\limits_E f^Nd\mu = \sum\limits_{i = 1}^N \int\limits_{E_i} fd\mu.\]
+    Заметим, что $f^N \leq f^{N + 1} \  \forall N \in \N$, а значит допустимо применение теоремы Леви: \[\lim\limits_{n \rightarrow +\infty} \int\limits_{E} f^nd\mu = \int\limits_E \lim\limits_{n \rightarrow +\infty} f^n d\mu = \int\limits_E fd\mu.\]
+    Следовательно \[\int\limits_E fd\mu = \lim\limits_{n \rightarrow +\infty} \sum\limits_{i = 1}^n \int\limits_{E_i} fd\mu = \sum\limits_{i = 1}^\infty \int\limits_{E_i} fd\mu.\]
     Что и требовалось доказать.
 \end{proof}
 
@@ -39,32 +40,30 @@
 \end{corollary}
 
 \begin{corollary}
-    Если $f \in \widetilde{L_1}(X, \mu)$, то интеграл Лебега непрерывен сверху и снизу, как функция множества, т.е. если \[A = \bigcup\limits_{i = 1}^\infty A_i, \{A_i\} \subset \MM, \ldots \subset A_i \subset A_{i + 1} \subset \ldots\]
-    то \[\int\limits_A fd\mu = \lim\limits_{n \rightarrow +\infty} \int\limits_{A_n} fd\mu\]
-    И, если \[B = \bigcap\limits_{i = 1}^\infty B_i, \{B_i\} \subset \MM, \ldots \supset B_i \supset B_{i + 1} \supset \ldots\]
-    то \[\int\limits_B fd\mu = \lim\limits_{n \rightarrow +\infty} \int\limits_{B_n} fd\mu\]
+    Если $f \in \widetilde{L_1}(X, \mu)$, то интеграл Лебега непрерывен сверху и снизу, как функция множества, т.е. если \[A = \bigcup\limits_{i = 1}^\infty A_i, \{A_i\} \subset \MM, \ldots \subset A_i \subset A_{i + 1} \subset \ldots \quad \text{то} \quad\int\limits_A fd\mu = \lim\limits_{n \rightarrow +\infty} \int\limits_{A_n} fd\mu.\]
+    И, если \[B = \bigcap\limits_{i = 1}^\infty B_i, \{B_i\} \subset \MM, \ldots \supset B_i \supset B_{i + 1} \supset \ldots \quad \text{то} \quad \int\limits_B fd\mu = \lim\limits_{n \rightarrow +\infty} \int\limits_{B_n} fd\mu.\]
 \end{corollary}
 \begin{proof}
     Утверждение очевидно из определения интеграла Лебега и непрерывности сверху и снизу конечных мер, порождаемых $f_+$ и $f_-$.
 \end{proof}
 
 \begin{theorem}[Абсолютная непрерывность интеграла Лебега]
-    Пусть $f \in \widetilde{L_1}(X, \mu)$. Тогда $\forall \epsilon > 0 \ \exists \delta(\epsilon)$ т.ч. $\forall E \in \MM : \mu(E) < \delta \hookrightarrow$ \[\int\limits_{E} |f|d\mu < \epsilon\]
+    Пусть $f \in \widetilde{L_1}(X, \mu)$. Тогда $\forall \epsilon > 0 \ \exists \delta(\epsilon)$ т.ч. $\forall E \in \MM : \mu(E) < \delta \hookrightarrow$ \[\int\limits_{E} |f|d\mu < \epsilon.\]
 \end{theorem}
 \begin{proof}
     Шаг 1. Заметим, что утверждение задачи для $f = \chi_E$ очевидно: мы можем просто взять $\delta(\epsilon) = \epsilon$. Случай простой функции сводится к случаю харфункции. \\
-    Шаг 2. Пусть теперь $f$~---~неотрицательная измеримая функция, интегрируемая по Лебегу. По определению, $\forall \epsilon > 0 \exists \psi$~---~простая, т.ч. $\int\limits_X \mid f - \psi \mid d\mu < \frac{\epsilon}{2}$. Получается $\forall \epsilon > 0  \exists \delta(\frac{\epsilon}{2}): \forall E \in \MM  \mu(E) < \delta(\frac{\epsilon}{2}) \hookrightarrow$ \[\int\limits_E fd\mu = \int\limits_{E} |f - \psi|  d\mu + \int\limits_E \psi d\mu < \epsilon,\]
-     поскольку $\int\limits_{E}f - \psi d\mu \leq \int\limits_{X}(f - \psi)d\mu < \frac{\epsilon}{2}$ и $\int\limits_{E}\psi d\mu < \frac{\epsilon}{2}$.
+    Шаг 2. Пусть теперь $f$~---~неотрицательная измеримая функция, интегрируемая по Лебегу. По определению, $\forall \epsilon > 0 \  \exists \psi$~---~простая, т.ч. $\int\limits_X |f - \psi| d\mu < \frac{\epsilon}{2}$. С другой стороны, $\forall \epsilon > 0 \ \exists \delta(\frac{\epsilon}{2}) \forall E \in \MM: \mu(E) < \delta(\frac{\epsilon}{2}) \hookrightarrow \int\limits_E \psi d\mu < \frac{\epsilon}{2}$, а значит \[\int\limits_E fd\mu = \int\limits_{E} |f - \psi|  d\mu + \int\limits_E \psi d\mu < \epsilon,\]
+     поскольку $0 \leq \int\limits_{E}(f - \psi)d\mu \leq \int\limits_{X}(f - \psi)d\mu < \frac{\epsilon}{2}$.
 \end{proof}
 
 \begin{proposition}
-    Пусть $f \in \widetilde{L_1}(X, \mu)$. Тогда $\forall \epsilon > 0 \ \exists A \in \MM$ конечной меры: \[\int\limits_{X \setminus A} |f|d\mu < \epsilon\]
+    Пусть $f \in \widetilde{L_1}(X, \mu)$. Тогда $\forall \epsilon > 0 \ \exists A \in \MM$ конечной меры: \[\int\limits_{X \setminus A} |f|d\mu < \epsilon.\]
 \end{proposition}
 \begin{proof}
-    Известно, что $f \in \widetilde{L_1}(X, \mu) \Longleftrightarrow |f| \in \widetilde{L_1}(X, \mu) \Longleftrightarrow \int\limits_X |f|d\mu < \infty$. Обозначим \[X_n = \{x \in X \mid |f(x)| \geq \frac{1}{n}\}, A_n = X\setminus X_n. - \text{ точки где } |f(x)| < \frac{1}{n}\]
-    Очевидно, что $\ldots \subset A_{n + 1} \subset A_n \subset \ldots$. Множество $A = \bigcap\limits_{n = 1}^\infty A_n$ является множеством нулей $|f|$. В силу непрерывности меры сверху: \[0 = \int\limits_A |f|d\mu = \lim\limits_{n \rightarrow +\infty} \int\limits_{A_n} |f|d\mu = \lim\limits_{n \rightarrow +\infty} \int\limits_{X \setminus X_n} |f|d\mu\]
-    Что, по сути и доказывает утверждение: \[\forall \epsilon > 0  \ \exists N \ \forall n \geq N \hookrightarrow \int\limits_{X \setminus X_n} |f|d\mu < \epsilon\]
-    То есть $\forall \epsilon > 0 A_\epsilon = X_{N(\epsilon)}$~---~подходит. Осталось показать, что $\mu(X_n) \leq +\infty$ это по сути неравенство Чебышевого: \[\frac{\mu(X_n)}{n} = \int\limits_{X_n} \frac{1}{n}d\mu \leq \int\limits_{X_n} |f|d\mu \leq \int\limits_{X} |f|d\mu < +\infty\]
+    Известно, что $f \in \widetilde{L_1}(X, \mu) \Longleftrightarrow |f| \in \widetilde{L_1}(X, \mu) \Longleftrightarrow \int\limits_X |f|d\mu < \infty$. Обозначим \[X_n = \{x \in X \mid |f(x)| \geq \frac{1}{n}\}, A_n = X\setminus X_n. - \text{ точки где } |f(x)| < \frac{1}{n}.\]
+    Очевидно, что $\ldots \subset A_{n + 1} \subset A_n \subset \ldots$. Множество $A = \bigcap\limits_{n = 1}^\infty A_n$ является множеством нулей $|f|$. В силу непрерывности меры сверху: \[0 = \int\limits_A |f|d\mu = \lim\limits_{n \rightarrow +\infty} \int\limits_{A_n} |f|d\mu = \lim\limits_{n \rightarrow +\infty} \int\limits_{X \setminus X_n} |f|d\mu.\]
+    Полученное равенство, по сути и доказывает утверждение: \[\forall \epsilon > 0  \ \exists N(\epsilon): \ \forall n \geq N \hookrightarrow \int\limits_{X \setminus X_n} |f|d\mu < \epsilon.\]
+    То есть $\forall \epsilon > 0 \  A_\epsilon = X_{N(\epsilon)}$~---~подходит. Осталось показать, что $\mu(X_n) < +\infty$. Действительно, \[\frac{\mu(X_n)}{n} = \int\limits_{X_n} \frac{1}{n}d\mu \leq \int\limits_{X_n} |f|d\mu \leq \int\limits_{X} |f|d\mu < +\infty.\]
     Из чего следует требуемое.
 \end{proof}
 

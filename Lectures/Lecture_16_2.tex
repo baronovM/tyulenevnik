@@ -1,6 +1,6 @@
 \subsection{Геометрический смысл дивергенции}
 \begin{theorem}
-    Пусть дано гладкое поле $\overline{a} \in C^1(G, \R^3)$, где $G$~---~непустое открытое множество. Тогда для произвольного $x \in G$ верно следующее: \[\div \overline{a}(x) = \lim\limits_{r \rightarrow +0} \dfrac{1}{4/3\pi r^3} \cdot \iint\limits_{S_r(x)}(\overline{a}, \overline{ds})\]
+    Пусть дано гладкое поле $\overline{a} \in C^1(G, \R^3)$, где $G$~---~непустое открытое множество. Тогда для произвольного $x \in G$ верно следующее: \[\div \overline{a}(x) = \lim\limits_{r \rightarrow +0} \dfrac{1}{4/3\pi r^3} \iint\limits_{S_r(x)}(\overline{a}, \overline{ds})\]
 \end{theorem}
 \begin{proof}
     При всех достаточно малых $r > 0$ шар $B_r(x) \subset G$. По теореме Остроградского-Гаусса \[\iint\limits_{S_r(x)} (\overline{a}, \overline{ds}) = \iiint\limits_{B_r(x)}\div \overline{a}(y)dy\]
@@ -8,8 +8,8 @@
     В силу непрерывности $\div \overline{a}$: \[\biggr|\div\overline{a}(x) - \dfrac{1}{4/3 \pi r^3}\iint\limits_{S_r(x)}(\overline{a}, \overline{ds})\biggr| = \dfrac{1}{4/3 \pi r^3}\biggr| \iiint\limits_{B_r(x)}\div\overline{a}(x)dy - \iiint\limits_{B_r(x)}\div\overline{a}(y)dy\biggr| \leq \]\[\leq \dfrac{1}{4/3 \pi r^3}\iiint\limits_{B_r(x)}|\div\overline{a}(x) - \div\overline{a}(y)|dy \leq \sup\limits_{y \in B_r(x)}|\div\overline{a}(x) - \div\overline{a}(y)| \rightarrow 0, r \rightarrow +0\]
 \end{proof}
 \begin{definition}
-    Пусть $G \subset \R^3$~---~непустая область. Поле $\overline{a} \in C(G, \R^3)$ называется соленоидальным в области $G$, если \[\iint\limits_\Sigma (\overline{a}, \overline{ds}) = 0\]
-    Для всякой замкнутой кусочно-гладкой $\Sigma$, лежащей в $G$, т.е. такой поверхности, что существует $\Omega \subset \R^3$~---~ограниченная область такая, что $\partial \Omega = \Sigma$
+    Пусть $G \subset \R^3$~---~непустая область. Поле $\overline{a} \in C(G, \R^3)$ называется \textit{соленоидальным} в области $G$, если \[\iint\limits_\Sigma (\overline{a}, \overline{ds}) = 0.\]
+    Для всякой замкнутой кусочно-гладкой $\Sigma$, лежащей в $G$, то есть такой поверхности, что существует $\Omega \subset \R^3$~---~ограниченная область такая, что $\partial \Omega = \Sigma$
 \end{definition}
 \begin{question}
     Как связаны следующие утверждения?

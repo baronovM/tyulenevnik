@@ -37,12 +37,12 @@
 \begin{definition}
     Будем говорить, что $S = \overline{r}(\overline{G})$~---~\textit{простая гладкая поверхность}, если:
     \begin{enumerate}
-        \item[$\bullet$] $G$~---~область, граница которой является простым кусочно-гладким контуром(те замкнутая кривая без самопересечений кроме начала и конца, параметризация непрерывная и кусочно непрерывно дифференцируема и не имеет не более чем конечное число особых точек)
+        \item[$\bullet$] $G$~---~область, граница которой является простым кусочно-гладким контуром (то есть замкнутая кривая без самопересечений кроме начала и конца, параметризация непрерывная и кусочно непрерывно дифференцируема и не имеет не более чем конечное число особых точек);
         \item[$\bullet$] $\overline{r}: \overline{G} \rightarrow S$~---~гомеоморфизм;
         \item[$\bullet$] $\overline{r} \in C^1(\overline{G}, \R^3)$;
         \item[$\bullet$] $[\overline{r}'_u \times \overline{r}'_v] \neq 0$ всюду на $\overline{G}$ (частные производные продолжаются на границу по непрерывности).
     \end{enumerate}
-    Параметры $u, v$ можно рассматривать как внутренние координаты точек поверхности. Фиксируя одну из координат, мы получаем два семейства координатных кривых, покрывающих поверхность координатной сеткой
+    Параметры $u, v$ можно рассматривать как внутренние координаты точек поверхности. Фиксируя одну из координат, мы получаем два семейства координатных кривых, покрывающих поверхность координатной сеткой.
 \end{definition}
 \begin{note}
     Верхняя половина сферы является простой гладкой поверхностью, а вот вся сфера уже не является простой гладкой поверхностью. Для этого придумали кусочно гладкую поверхность, см. далее
@@ -59,10 +59,10 @@
     Пусть $G \subset \R^n$~---~открыто и непусто, $\Omega \subset \R^m$~---~открыто и непусто. $F: G \rightarrow \Omega$ дифференцируемо в точке $x^0 \in G, H: \Omega \rightarrow \R^d$ дифференцируемо в точке $y^0 = F(x^0) \in \Omega$. Тогда для композиции $\phi = H \circ F$, якобиан будет равен: $J_\phi(x^0) = \D(H \circ F)(x^0) = \D H(F(x^0)) \D F(x^0)$, а $\frac{\partial \phi_i}{\partial x_j} = \sum \limits_{k = 1}^m \frac{\partial H_i}{\partial y_k} \cdot \frac{\partial F_k}{\partial x_j}, i \in \{1, \dots, d\}, j \in \{1, \dots, n\}$
 \end{reminder}
 \begin{lemma}
-    Касательная плоскость и вектор нормали не зависят от выбора допустимой параметризации
+    Касательная плоскость и вектор нормали не зависят от выбора допустимой параметризации.
 \end{lemma}
 \begin{proof}
-    Пусть $\overline{\rho}$ и $\overline{r}$~---~две допустимые параметризации. Тогда \[\overline{\rho}(\alpha, \beta) = \overline{r}(u(\alpha, \beta), v(\alpha, \beta))\]
+    Пусть $\overline{\rho}$ и $\overline{r}$~---~две допустимые параметризации. Тогда \[\overline{\rho}(\alpha, \beta) = \overline{r}(u(\alpha, \beta), v(\alpha, \beta)).\]
     Тогда по теореме о дифференцировании композиции:
     \begin{equation*}
     \begin{cases}
@@ -90,7 +90,7 @@
 
 
 \begin{note}
-    Всякая простая гладкая поверхность ориентируема, причём она имеет ровно две ориентации, которые задаются как \[\overline{n}_\pm = \pm \dfrac{[\overline{r}'_u \times \overline{r}'_v]}{|[\overline{r}'_u \times \overline{r}'_v]|}\]
+    Всякая простая гладкая поверхность ориентируема, причём она имеет ровно две ориентации, которые задаются как \[\overline{n}_\pm = \pm \dfrac{[\overline{r}'_u \times \overline{r}'_v]}{|[\overline{r}'_u \times \overline{r}'_v]|}.\]
 \end{note}
 \begin{corollary}
     Ориентация простой гладкой поверхности не зависит от выбора допустимой параметризации.
@@ -100,14 +100,14 @@
 \begin{minipage}{0.6\textwidth}
 \begin{definition}[Ориентация края]
     Пусть есть простая гладкая (а значит ориентируемая) поверхность $S$ с допустимой параметризацией $\overline{r}: \overline{G} \rightarrow \R^3$. Пусть $\partial  G = \{\rho(t) \mid t \in [t_1, t_2]\}$~---~простой кусочно-гладкий контур; $\overline{v} = \overline{\rho}'(t) \neq 0$. По определению, $\partial  S = \overline{r}(\partial G)$. Тогда касательный вектор $\overline{\tau}$ к краю $\partial S$: \[\overline{\tau}(t_0) = \dfrac{d}{dt}\overline{r}(\overline{\rho(t)})|_{t = t_0} = \overline{r}'_u \Big(u(t_0), v(t_0)\Big)u'(t_0) + \overline{r}'_v \Big(u(t_0), v(t_0) \Big)v'(t_0)\]
-    Пусть \[\overline{\xi}(h) = \rho(t_0) + h\overline{n}(t_0)\]
+    Пусть \[\overline{\xi}(h) = \rho(t_0) + h\overline{n}(t_0),\]
     
 \end{definition}
 \end{minipage}
 \begin{minipage}{0.4\textwidth}
 \includegraphics[width=\textwidth]{images/pov_orientation.png}
 \end{minipage}
-Где $\overline{n}$~---~вектор внутренней нормали. Тогда, введём вектор $\overline{\beta}$ как \[\beta(t_0) = (\overline{r} \circ \overline{\xi})'_h|_{h = 0} = \overline{r}'_un_u + \overline{r}'_vn_v\]
+где $\overline{n}$~---~вектор внутренней нормали. Тогда введём вектор $\overline{\beta}$ как \[\beta(t_0) = (\overline{r} \circ \overline{\xi})'_h|_{h = 0} = \overline{r}'_un_u + \overline{r}'_vn_v.\]
 \begin{definition}
     Будем говорить, что край $\partial S$ простой гладкой поверхности ориентирован относительно неё положительно, если в любой точке гладкости края тройка векторов $(\overline{\tau}, \overline{\beta}, \overline{n})$~---~правая. Неформально, у нас есть поле нормалей поверхностей, обходя край, область будет слева
 
@@ -115,9 +115,9 @@
     
 \begin{lemma}[Достаточное условие ориентируемости края поверхности]
 Пусть заданы правые базисы в $\R^2_{uv}$ и $\R^3_{xyz}$. Пусть $\partial G$ положительно ориентирована относительно области $G$.\begin{enumerate}
-    \item Пусть $S = \overline{r}(\overline{G})$~---~простая гладкая поверхность
-    \item $\partial S$ ориентирован согласованно с ориентацией $\partial G$.
-    \item Пусть $S$ ориентирована полем $\overline{n} = \frac{\overline{r}'_u \times \overline{r}'_v}{|\overline{r}'_u \times \overline{r}'_v|}$
+    \item Пусть $S = \overline{r}(\overline{G})$~---~простая гладкая поверхность;
+    \item $\partial S$ ориентирован согласованно с ориентацией $\partial G$;
+    \item Пусть $S$ ориентирована полем $\overline{n} = \frac{\overline{r}'_u \times \overline{r}'_v}{|\overline{r}'_u \times \overline{r}'_v|}$.
 \end{enumerate}  
     Тогда $\partial S$ ориентирован положительно относительно $S$. (Если нарушить только условие 2 или 3, то будет отрицательно ориентирован, а если оба сразу, то положительно)
 \end{lemma}
@@ -125,7 +125,7 @@
     Из условия правости базиса на поверхности следует, что если $\rho(t_0)$~---~точка гладкости границы $G$, то $\overline{v}, \overline{N}$~---~правая двойка, то есть \[
         \det \begin{pmatrix}
             u'(t_0) & N_u \\ v'(t_0) & N_v
-        \end{pmatrix} > 0
+        \end{pmatrix} > 0.
     \]
     Касательный вектор к поверхности записывается как \[\overline{\tau}(t_0) = \dfrac{d}{dt} \overline{r}(u(t), v(t))|_{t = t_0} = \overline{r}'_u \Big(u(t_0), v(t_0)\Big)u'(t_0) + \overline{r}'_v \Big(u(t_0), v(t_0) \Big)v'(t_0)\]
     А вектор бинормали как \[\overline{\beta}(t_0) = \dfrac{d}{dt} \overline{r}(t_0 + \overline{N}t)|_{t = 0} = \overline{r}'_u \Big(u(t_0), v(t_0)\Big)N_u + \overline{r}'_v \Big(u(t_0), v(t_0)\Big)N_v\]
@@ -157,12 +157,12 @@
 \end{definition}
 
 \subsection{Поверхностные интегралы I рода}
-Физичекий смысл --- это вычисление массы тела с распределеним плотности $f(\overline{r})$ 
+Физический смысл --- это вычисление массы тела с распределением плотности $f(\overline{r})$.
 \begin{definition}
-    Пусть $S = \overline{r}(\overline{G})$~---~простая гладкая поверхность. Пусть $f$: $S \rightarrow \R$: $f \in C(S, \R)$. Тогда \textit{поверхностным интегралом первого рода} будем называть \[\iint\limits_S f(\overline{r})ds := \iint\limits_G f(\overline{r}(u, v))|[\overline{r}'_u \times \overline{r}'_v]|dudv\]
+    Пусть $S = \overline{r}(\overline{G})$~---~простая гладкая поверхность. Пусть $f$: $S \rightarrow \R$: $f \in C(S, \R)$. Тогда \textit{поверхностным интегралом первого рода} будем называть \[\iint\limits_S f(\overline{r})ds := \iint\limits_G f(\overline{r}(u, v))|[\overline{r}'_u \times \overline{r}'_v]|dudv.\]
 \end{definition}
 \begin{definition}
-    \textit{Площадью} простой гладкой поверхности будем по определению называть \[\iint\limits_S 1ds = \iint\limits_G |[\overline{r}'_u \times \overline{r}'_v]|dudv\]
+    \textit{Площадью} простой гладкой поверхности будем по определению называть \[\iint\limits_S 1ds = \iint\limits_G |[\overline{r}'_u \times \overline{r}'_v]|dudv.\]
 \end{definition}
 %где был че виедл
 %на сфере, диффеоморфизмы

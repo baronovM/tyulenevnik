@@ -1,11 +1,11 @@
 \begin{lemma}
-    Пусть простая гладкая поверхность $S = \bigcup\limits_{i = 1}^N S_i$~---~объединение простых гладких поверхностей, пересекающихся только по краям, $f \in C(S, \R)$. Тогда \[\iint\limits_S fds = \sum\limits_{i = 1}^N \iint\limits_{S_i} fds\]
+    Пусть простая гладкая поверхность $S = \bigcup\limits_{i = 1}^N S_i$~---~объединение простых гладких поверхностей, пересекающихся только по краям, $f \in C(S, \R)$. Тогда \[\iint\limits_S fds = \sum\limits_{i = 1}^N \iint\limits_{S_i} fds.\]
 \end{lemma}
 \begin{proof}
     Очевидно следует из определения и аддитивности интеграла.
 \end{proof}
 \begin{definition}
-    Пусть $S = \overline{r}(\overline{G})$~---~кусочно-гладкая поверхность. Пусть $f \in C(S, \R)$. Тогда если $S = \bigcup\limits_{i = 1}^N S_i$, то по определению \[\iint\limits_S fds = \sum\limits_{i = 1}^N \iint\limits_{S_i} fds\]
+    Пусть $S = \overline{r}(\overline{G})$~---~кусочно-гладкая поверхность. Пусть $f \in C(S, \R)$. Тогда если $S = \bigcup\limits_{i = 1}^N S_i$, то по определению \[\iint\limits_S fds = \sum\limits_{i = 1}^N \iint\limits_{S_i} fds.\]
 \end{definition}
 \begin{fact}[Доказательство оставлено в качестве упражнения]
     Определение корректно, и доказательство аналогично доказательству корректности интеграла Лебега от простых функций.
@@ -23,10 +23,10 @@
     Где $\overline{R} = \overline{r} \circ w$.
 \end{proof}
 \begin{lemma}
-    Пусть \[S = \{\overline{r}(x, y) = \begin{pmatrix}
+    Пусть \[S = \left\{\overline{r}(x, y) = \begin{pmatrix}
         x \\ y \\ z(x, y)
-    \end{pmatrix} \mid (x, y) \in \overline{G} \}\]
-    Для некоторой $z \in C^1(\overline{G}, \R)$. Тогда \[\iint\limits_S f(x, y, z)ds = \iint\limits_G f(x, y, z(x, y))\sqrt{1 + (z'_x)^2 + (z'_y)^2}dxdy\]
+    \end{pmatrix} \mid (x, y) \in \overline{G} \right\}\]
+    Для некоторой $z \in C^1(\overline{G}, \R)$. Тогда \[\iint\limits_S f(x, y, z)ds = \iint\limits_G f(x, y, z(x, y))\sqrt{1 + (z'_x)^2 + (z'_y)^2}dxdy.\]
 \end{lemma}
 \begin{proof}
     Поскольку \[
@@ -36,11 +36,11 @@
         0 \\ 1 \\ z'_y
     \end{pmatrix}
     \]
-    Тогда $|[\overline{r}'_x \times \overline{r}'_y]| = \sqrt{|\overline{r}'_x|^2|\overline{r}'_y|^2 - (\overline{r}'_x\cdot \overline{r}'_y)^2} = \sqrt{1 + (z'_x)^2 + (z'_y)^2}$
+    Тогда $|[\overline{r}'_x \times \overline{r}'_y]| = \sqrt{|\overline{r}'_x|^2|\overline{r}'_y|^2 - (\overline{r}'_x\cdot \overline{r}'_y)^2} = \sqrt{1 + (z'_x)^2 + (z'_y)^2}$.
 \end{proof}
 
 \subsection{Поверхностный интеграл II рода}
-Физический смысл --- это поток векторного поля через поверхность в направлении, задаваемой нормалью
+Физический смысл --- это поток векторного поля через поверхность в направлении, задаваемой нормалью.
 \begin{definition}
     Пусть $S = \overline{r}(\overline{G})$~---~кусочно-гладкая поверхность, ориентированная полем единичных нормалей $\overline{n}$. Пусть $\overline{F} \in C(S, \R^3)$ и \[
     \overline{F} = 
@@ -49,7 +49,7 @@
     \end{pmatrix}
     \]
     Тогда определим интеграл второго рода как \[
-    \iint\limits_S (\overline{F}, \overline{ds}) = \iint\limits_S Pdydz + Qdzdx + Rdxdy := \iint\limits_S (\overline{F}, \overline{n})ds
+    \iint\limits_S (\overline{F}, \overline{ds}) = \iint\limits_S Pdydz + Qdzdx + Rdxdy := \iint\limits_S (\overline{F}, \overline{n})ds.
     \]
 \end{definition}
 \begin{lemma}
@@ -66,17 +66,17 @@
     Определяется $\pm$ по ориентации поверхности. Пусть $\overline{r}_0 = \overline{r}(u_0, v_0) \in S$. Если $\overline{n}(\overline{r}_0)$ и $[\overline{r}'_u(u_0, v_0) \times \overline{r}'_v(u_0, v_0)]$ сонаправлены, то <<+>>, иначе -- <<->>.
 \end{lemma}
 \begin{proof}
-    Для производной простой гладкой поверхности поле нормалей выглядит как \[\overline{n}(\overline{r}) = \pm\dfrac{\overline{r}'_u \times \overline{r}'_v}{|\overline{r}'_u \times \overline{r}'_v|}\]
+    Для производной простой гладкой поверхности поле нормалей выглядит как \[\overline{n}(\overline{r}) = \pm\dfrac{\overline{r}'_u \times \overline{r}'_v}{|\overline{r}'_u \times \overline{r}'_v|}.\]
     Знак выбирается в зависимости от изначальной ориентации поверхности. Тогда \[
     \iint\limits_S (\overline{F}, \overline{ds}) = \iint\limits_{S}(\overline{F}, \overline{n})ds = \iint\limits_G (\overline{F}(\overline{r}(u, v)), \overline{n}(\overline{r}(u, v)))|\overline{r}'_u \times \overline{r}'_v|dudv = \]\[ =  \pm\iint\limits_G (\overline{F}(\overline{r}(u, v)), \overline{r}'_u(u, v) \times \overline{r}'_v(u, v))dudv = \pm \iint\limits_G \begin{vmatrix}
         P & Q & R \\ x'_u & y'_u & z'_u \\ x'_v & y'_v & z'_v
-    \end{vmatrix} dudv
+    \end{vmatrix} dudv.
     \]
 \end{proof}
 \hypertarget{graph_gaus}{}
 \begin{theorem}
     Пусть $G \subset \R^2_{xy}$~---~область с границей, являющейся простым гладким кусочно гладким контуром и $z \in C^1(\overline{G})$ и $S = \graph z$. Пусть $S^+$~---~поверхность $S$, ориентированная полем нормалей $\overline{n} = (n_x \  n_y \  n_z)^T$ таким, что $n_z \geq 0$. Тогда \[
-    \iint\limits_{S^+} f(x, y, z)dxdy = \iint\limits_G f(x, y, z(x, y))dxdy
+    \iint\limits_{S^+} f(x, y, z)dxdy = \iint\limits_G f(x, y, z(x, y))dxdy.
     \]
 \end{theorem}
 \begin{proof}
@@ -92,7 +92,7 @@
     Тогда используя предыдущую лемму и то, что $\overline{F} = (0 \ 0 \ f)^T$, то мы получаем, что \[
     \iint\limits_S fdxdy = \iint\limits_G \begin{vmatrix}
         0 & 0 & f \\ 1 & 0 & z'_x \\ 0 & 1 & z'_y
-    \end{vmatrix}dxdy =  \iint\limits_G f(x, y, z(x, y))dxdy
+    \end{vmatrix}dxdy =  \iint\limits_G f(x, y, z(x, y))dxdy.
     \]
 \end{proof}
 
@@ -104,7 +104,7 @@
         \end{pmatrix}
     \]
     Он действует следующим образом: \[
-        \nabla(\sum\limits_i \alpha_i p_i) = \sum\limits_i \alpha_i \nabla p_i
+        \nabla\left(\sum\limits_i \alpha_i p_i\right) = \sum\limits_i \alpha_i \nabla p_i
     \]
     (Если $\alpha_i$~---~константы) \\
     Набла удовлетворяет правилу Лейбница: \[

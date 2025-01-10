@@ -42,54 +42,60 @@
 
 \subsection{Точки Лебега локально интегрируемых функций}
 \begin{definition}
-    Будем говорить что $f \in \Tilde{L}_1^{loc}(\R^n)$ и называть её локально интегрируемой по Лебегу, если $\forall R > 0 \  f \in \Tilde{L}_1(B_R(0))$
+    Будем говорить что $f \in \widetilde{L}_1^{loc}(\R^n)$ и называть её локально интегрируемой по Лебегу, если $\forall R > 0 \  f \in \widetilde{L}_1(B_R(0), \LL^n)$.
 \end{definition}
 \begin{definition}
-    Пусть $f \in \Tilde{L}_1^{loc}(\R^n)$. Тогда будем называть $x^* \in \R^n$ точкой Лебега функции $f$, если \[\lim\limits_{r \rightarrow +0} \dfrac{1}{\LL^n(B_r(x^*))}\int\limits_{B_r(x^*)} |f(y) - f(x^*)|dy = 0\]
+    Пусть $f \in \Tilde{L}_1^{loc}(\R^n)$. Тогда будем называть $x^* \in \R^n$ точкой Лебега функции $f$, если \[\lim\limits_{r \rightarrow +0} \dfrac{1}{\LL^n(B_r(x^*))}\int\limits_{B_r(x^*)} |f(y) - f(x^*)|dy = 0.\]
 \end{definition}
 \begin{note}
-    В каждой точке Лебега \[f(x^*) = \lim\limits_{r \rightarrow +0} \dfrac{1}{\LL^n(B_r(x^*))} \int\limits_{B_r(x^*)} f(y)dy\]
+    В каждой точке Лебега \[f(x^*) = \lim\limits_{r \rightarrow +0} \dfrac{1}{\LL^n(B_r(x^*))} \int\limits_{B_r(x^*)} f(y)dy.\]
+    Обратное неверно.
 \end{note}
 \begin{note}
     Введём следующее обозначение: \[\dashint_{B_r(x^*)} \ldots = \dfrac{1}{\LL^n(B_r(x^*))} \int\limits_{B_r(x^*)} \ldots \]
 \end{note}
 \begin{lemma}
-    Пусть $(X, \MM, \mu)$~---~пространство с мерой. Тогда, если $f \in \Tilde{L}_1(X)$, то существует простая $f_\epsilon$, что \[\int\limits_X |f - f_\epsilon|d\mu \leq \epsilon\]
+    Пусть $(X, \MM, \mu)$~---~пространство с мерой. Тогда, если $f \in \widetilde{L}_1(X, \mu)$, то существует простая $f_\epsilon$, что \[\int\limits_X |f - f_\epsilon|d\mu \leq \epsilon\]
 \end{lemma}
 \begin{proof}
-    Если $f \geq 0$, то это очевидное следствие из определений интеграла и супремума. Если же она знаконепостоянна, то мы разбиваем её на две части~---~$f_+$ и $f_i$, и для каждую из них аппроксимируем.
+    Если $f \geq 0$, то это очевидное следствие из определений интеграла и супремума. Если же она знакопеременна, то мы разбиваем её на две части~---~$f_+$ и $f_-$, и каждую из них аппроксимируем простыми функциями $g_+$ и $g_-$ соответственно: \[
+        \int\limits_X (f_+ - g_+)d\mu < \dfrac{\epsilon}{2} \quad \text{и} \quad \int\limits_X (f_- - g_-)d\mu < \dfrac{\epsilon}{2}.
+    \]
+    Пусть $g = g_+ - g_-$. Тогда \[
+        \int\limits_{X}|f - g|d\mu = \int\limits_{X}|(f_+ - g_+) - (f_- - g_-)|d\mu \leq \int\limits_{X}(f_+ - g_+)d\mu + \int\limits_{X}(f_- - g_-)d\mu < \epsilon.
+    \]
 \end{proof}
 \begin{definition}[Максимальная функция Харди-Литтлвуда]
-    Пусть $f \in \Tilde{L}_1^{lop}(\R^n)$. Определим $M[f](x)$ как \[M[f](x) = \sup\limits_{r > 0}\dashint_{B_r(x)} |f(y)|dy\]    
+    Пусть $f \in \widetilde{L}_1^{loc}(\R^n)$. Определим $M[f](x)$ как \[M[f](x) := \sup\limits_{r > 0}\dashint_{B_r(x)} |f(y)|dy.\]    
 \end{definition}
 \begin{note}
     Заметим измеримость максимальной функции на $\R^n$. При фиксированном $r > 0$ функция \[x \mapsto \dashint_{B_r(x)}|f(y)|dy\]
-    непрерывна и при фиксированном $x$ \[r \mapsto \dashint_{B_r(x)}|f(y)|dy\] непрерывна как функция $r$
+    непрерывна и при фиксированном $x$, а функция \[r \mapsto \dashint_{B_r(x)}|f(y)|dy\] непрерывна как функция $r$.
     Поэтому $M[f]$ можно вычислять, беря супремум лишь в рациональных точках.
 \end{note}
 \begin{note}
-    Заметим, что если $J = \int\limits_{\R^n} |f(x)|dx > 0$, то $M[f] \notin \Tilde{L}_1(\R^n)$. При достаточно большой $\|x\|$ верно следующее: \[M[f](x) \geq \dfrac{1}{\LL^n(B_{2\|x\|(x)})}\int\limits_{B_{2\|x\|(x)}}|f(y)|dy \geq \dfrac{C}{\|x\|^n}J \]
+    Заметим, что если $J = \int\limits_{\R^n} |f(x)|dx > 0$, то $M[f] \notin \widetilde{L}_1(\R^n)$. При достаточно большой $\|x\|$ верно следующее: \[M[f](x) \geq \dfrac{1}{\LL^n(B_{2\|x\|(x)})}\int\limits_{B_{2\|x\|(x)}}|f(y)|dy \geq \dfrac{C}{\|x\|^n}J.\]
+    Якобиан замены в $n$-мерных полярных координатах содержит $\|x\|^{n - 1}$ в качестве радиальной части, поэтому интеграл от $\frac{CJ}{\|x\|^n}$ по $\R^n$ равен $+\infty$.
 \end{note}
 \begin{lemma}
-    Пусть $f \in \Tilde{L}_1(\R^n)$. Тогда \[\forall t > 0 \ 
- \LL^n(E_t) \leq \dfrac{5^n}{t}\int\limits_{\R^n}fd\LL^n\]
+    Пусть $f \in \widetilde{L}_1(\R^n)$. Тогда \[\forall t > 0 \hookrightarrow  \LL^n(E_t) \leq \dfrac{5^n}{t}\int\limits_{\R^n}fd\LL^n.\]
  Где $E_t = \{x \in \R^n \mid M[f](x) > t\}$.
 \end{lemma}
 \begin{proof}
-    По определению $E_t$ для каждой точки $x \in E_t$ существует шар $B_r(x)$ т.ч. \[\dashint_{B_r(x)}|f(y)|dy \geq t\]
-    Что равносильно \[\LL^n(B_r(x)) \leq \dfrac{1}{t}\int\limits_{B_r(x)}|f(y)|dy\]
-    Тогда радиусы всех таких шаров, покрывающих точки $E_t$, равномерно ограничены. Пусть теперь $R > 0$~---~произвольное действительное число. Обозначим за \[E_t^R = E_t \cap B_R(0)\]
-    Полученное таким образом $E_t^R$~---~ограничено. В силу $5B$-леммы Витали существует не более чем счётный набор дизъюнктных шаров $\{B_k\}$ такой, что \[\bigcup\limits_{k = 1}^\infty 5B_k \supset E_t^R\]
-    Тогда \[\LL^n(E_t^R) \leq \sum\limits_{k = 1}^\infty \LL^n(5B_k) \leq \dfrac{5^n}{t}\sum\limits_{k = 1}^\infty \int\limits_{B_k}|f(y)|dy \leq \dfrac{5^n}{t}\int\limits_{\R^n}|f(y)|dy\]
-    (Последний переход получен из дизъюнктности набора шаров $\{B_k\}$ и монотонности интеграла). Теперь, в силу того, что оценка не зависит от $R$ мы возьмём супремум по $R$ и получим требуемое утверждение.
+    По определению $E_t$ для каждой точки $x \in E_t$ существует шар $B_r(x)$ т.ч. \[\dashint_{B_r(x)}|f(y)|dy \geq t.\]
+    Следовательно, \[\LL^n(B_r(x)) \leq \dfrac{1}{t}\int\limits_{B_r(x)}|f(y)|dy.\]
+    Тогда радиусы всех таких шаров, покрывающих точки $E_t$, равномерно ограничены. Пусть теперь $R > 0$~---~произвольное действительное число. Положим \[E_t^R = E_t \cap B_R(0).\]
+    Полученное таким образом множество $E_t^R$~---~ограничено. В силу $5B$-леммы Витали существует не более чем счётный набор дизъюнктивных шаров $\{B_k\}$ такой, что \[\bigcup\limits_{k = 1}^\infty 5B_k \supset E_t^R.\]
+    Тогда \[\LL^n(E_t^R) \leq \sum\limits_{k = 1}^\infty \LL^n(5B_k) \leq \dfrac{5^n}{t}\sum\limits_{k = 1}^\infty \int\limits_{B_k}|f(y)|dy \leq \dfrac{5^n}{t}\int\limits_{\R^n}|f(y)|dy.\]
+    (Последний переход получен из дизъюнктивности набора шаров $\{B_k\}$ и монотонности интеграла). Теперь, в силу того, что оценка не зависит от $R$ мы возьмём супремум по $R$ и получим требуемое утверждение.
 \end{proof}
 \begin{theorem}
-    Пусть $f \in \Tilde{L}_1^{loc}(\R^n)$. Тогда п.в. $x \in \R^n$ является точкой Лебега функции $f$.
+    Пусть $f \in \widetilde{L}_1^{loc}(\R^n)$. Тогда п.в. $x \in \R^n$ является точкой Лебега функции $f$.
 \end{theorem}
-\begin{proof}
-    Пусть $f = \chi_E, E \in \MM^n$. Тогда по теореме о точках плотности, п.в. $x$~---~точка плотности. Тогда,
+\begin{proof} \underline{Шаг 1.}
+    Пусть $f = \chi_E, E \in \MM^n$. Тогда,
     \begin{equation*}
-        |f(y) - y(x)| = |\chi_E(y) - \chi_E(x)| = \begin{cases}
+        |f(y) - f(x)| = |\chi_E(y) - \chi_E(x)| = \begin{cases}
             \chi_E(y), & x \notin E \\
             1 - \chi_E(y), & x \in E
         \end{cases}
@@ -98,19 +104,21 @@
     \begin{equation*}
     \dashint_{B_r(x)}|f(y) - f(x)|dy = 
     \begin{cases}
-        1 - \dfrac{\LL^n(E \cap B_r(x))}{\LL^n(B_r(x))} & x \in E \\
-        \dfrac{\LL^n(E \cap B_r(x))}{\LL^n(B_r(x))}, & x \notin E
+        1 - \dfrac{\LL^n(E \cap B_r(x))}{\LL^n(B_r(x))} & x \in E; \\
+        \dfrac{\LL^n(E \cap B_r(x))}{\LL^n(B_r(x))}, & x \notin E.
     \end{cases}
     \end{equation*}
-    Правая часть п.в. стремится к 0 при $r \rightarrow +0$, поскольку п.в. точки -- точки плотности (для $E$ или для дополнения $E$ соответственно). Таким образом для харфункций утверждение доказано. Очевидно, что утверждение остаётся справедливым и для простых функций. Пусть теперь $f \in \Tilde{L}_1^{loc}(\R^n)$. Достаточно доказать, что $\forall R > 0$ утверждение выполняется для $\chi_{B_R(0)}f$. Поэтому без ограничения общности мы можем считать $f \in \Tilde{L}_1(\R^n)$. Зафиксируем $t > 0$. Покажем что $\LL^n(E_t(f)) = 0$, где \[E_t(f) = \{x \in \R^n \mid \limsup\limits_{r \rightarrow +0} \dashint_{B_r(x)}|f(y) - f(x)|dy > t\}\]
-    Поскольку \[\limsup\limits_{r \rightarrow +0} \dashint_{B_r(x)}|f(y) - f(x)|dy \leq |f(x)| + \limsup\limits_{r \rightarrow +0}\dashint_{B_r(x)}|f(y)|dy \leq |f(x)| + M[f](x)\]
-    То $E_t(f) \subset E_t^1(f) \cup E_t^2(f), E_t^1(f) = \{x \in \R^n \mid |f(x)| > t/2\}, E_t^2(f) = \{x \in \R^n \mid M[f](x) > t/2\}$. Согласно неравенству Чебышева \[\LL^n(E^1_t(f)) \leq \dfrac{2}{t}\int\limits_{\R^n} |f(y)|dy\]
-    \[\LL^n(E^2_t(f)) \leq 2 \cdot \dfrac{5^b}{t} \int\limits_{\R^n} |f(y)|dy\]
-    Из полуаддитивности внешней меры следует \[\lambda^*(E_t(f)) \leq \dfrac{C}{t}\int\limits_{\R^n}|f(y)|dy\] 
-    Пусть $h$~---~произвольная простая функция, аппроксимирующая $f$ с точностью до $\epsilon$. Тогда \[F_{f,h} = |f(y) - f(x)| - |h(y) - h(x)| \leq R_{f, h} = |f(y) - f(x) - (h(y) - h(x))| \leq |f(y) - f(x)| + |h(y) - h(x)| = G_{f, h}\]
-    Усреднив неравенство: \[\dashint_{B_r(x)} F_{f, h}(y)dy \leq \dashint_{B_r(x)}R_{f, h}(y)dy \leq \dashint_{B_r(x)}G_{f, h}(y)dy\]
-    Перейдём к верхнему пределу при $r \rightarrow +0$ и получим, что \[\limsup\limits_{r \rightarrow +0}\dashint_{B_r(x)}|f(y) - f(x)|dy = \limsup\limits_{r \rightarrow +0} \dashint_{B_r(x)} |f(y) - h(y) - (f(x) - h(x))|\]
-    для всякой простой $h$. То есть \[\lambda^*(E_t(f - h)) = \lambda^*(E_t(f)) \leq \dfrac{C}{t}\int\limits_{\R^n}|f(y) - h(y)|dy\]
+    Правая часть п.в. стремится к 0 при $r \rightarrow +0$, поскольку п.в. точки -- точки плотности (для $E$ или для дополнения $E$ соответственно). Таким образом для харфункций утверждение доказано. \\ \underline{Шаг 2.} Очевидно, что утверждение остаётся справедливым и для простых функций. \\ \underline{Шаг 3.}Пусть теперь $f \in \Tilde{L}_1^{loc}(\R^n)$. Достаточно доказать, что $\forall R > 0$ утверждение выполняется для $\chi_{B_R(0)}f$. Поэтому без ограничения общности мы можем считать $f \in \widetilde{L}_1(\R^n)$. Зафиксируем $t > 0$. Покажем что $\LL^n(E_t(f)) = 0$, где \[E_t(f) = \{x \in \R^n \mid \limsup\limits_{r \rightarrow +0} \dashint_{B_r(x)}|f(y) - f(x)|dy > t\}.\]
+    Заметим, что \[\limsup\limits_{r \rightarrow +0} \dashint_{B_r(x)}|f(y) - f(x)|dy \leq |f(x)| + \limsup\limits_{r \rightarrow +0}\dashint_{B_r(x)}|f(y)|dy \leq |f(x)| + M[f](x)\]
+    Очевидно, что $E_t(f) \subset E_t^1(f) \cup E_t^2(f)$, где \[E_t^1(f) := \{x \in \R^n \mid |f(x)| > t/2\}, E_t^2(f) := \{x \in \R^n \mid M[f](x) > t/2\}.\] Согласно неравенству Чебышева \[\LL^n(E^1_t(f)) \leq \dfrac{2}{t}\int\limits_{\R^n} |f(y)|dy.\]
+    С другой стороны, в силу леммы 5.5 
+    \[\LL^n(E^2_t(f)) \leq 2 \cdot \dfrac{5^b}{t} \int\limits_{\R^n} |f(y)|dy.\]
+    Из полуаддитивности внешней меры следует \[\lambda^*(E_t(f)) \leq \dfrac{C}{t}\int\limits_{\R^n}|f(y)|dy.\] 
+    \underline{Шаг 4.}
+    Пусть $h$~---~произвольная простая функция, аппроксимирующая $f$ с точностью до $\epsilon$. Тогда \[F_{f,h}(y) := |f(y) - f(x)| - |h(y) - h(x)| \leq R_{f, h}(y) := |f(y) - f(x) - (h(y) - h(x))| \leq |f(y) - f(x)| + |h(y) - h(x)| =: G_{f, h}(y)\]
+    Усреднив неравенство: \[\dashint_{B_r(x)} F_{f, h}(y)dy \leq \dashint_{B_r(x)}R_{f, h}(y)dy \leq \dashint_{B_r(x)}G_{f, h}(y)dy.\]
+    Перейдём к верхнему пределу при $r \rightarrow +0$ и получим, что в силу шага 3 \[\limsup\limits_{r \rightarrow +0}\dashint_{B_r(x)}|f(y) - f(x)|dy = \limsup\limits_{r \rightarrow +0} \dashint_{B_r(x)} |f(y) - h(y) - (f(x) - h(x))|dy.\]
+    для всякой простой $h$. То есть \[\lambda^*(E_t(f - h)) = \lambda^*(E_t(f)) \leq \dfrac{C}{t}\int\limits_{\R^n}|f(y) - h(y)|dy.\]
     Поскольку правая часть может быть сколь угодно малой, то $\lambda^*(E_t(f)) = 0$, что и завершает доказательство.
 \end{proof}
 
