@@ -95,7 +95,7 @@
 \end{proof}
 \subsection{Конкретная замена переменной в интеграле Лебега}
 \begin{reminder}
-    Пусть $U \subset \R^n, V \subset \R^m$~---~ открытые множества. Будем говорить, что $U$ и $V$ диффеоморфны, если существует диффеоморфизм $F$: $U \mapsto V$, то есть $F$~---~взаимооднозначное отображение $U$ на $V$, такое что $F \in C^1(U, V)$ и  $F^{-1} \in C^1(V, U)$. Если требовать именно непрерывную дифференцируемость, то такой диффеоморфизм называется гладким
+    Пусть $U \subset \R^n, V \subset \R^m$~---~ открытые множества. Будем говорить, что $U$ и $V$ диффеоморфны, если существует диффеоморфизм $F$: $U \mapsto V$, то есть $F$~---~взаимооднозначное отображение $U$ на $V$, такое что $F \in \DIF(U, V)$ и  $F^{-1} \in \DIF(V, U)$. Если требовать именно непрерывную дифференцируемость, то такой диффеоморфизм называется гладким
 \end{reminder}
 Будем считать фиксированными открытые множества $G, G' \subset \R^m$ и некоторое отображение $\Phi \in C^1(G, G')$, являющееся диффеоморфизмом $G$ на $G'$.
 \begin{theorem}
@@ -111,7 +111,7 @@
     Разобьём каждую сторону $Q$ пополам. Те на $2^m$ равных кубических частей. По принципу Дирихле хотя бы для одной части $Q_1$ из них подобное неравенство тоже должно выполняться: \[C\LL^m(Q_1) < \Phi_\#\LL^m(Q_1)\]
     Повторяя это построение для $Q_1$, построим такую последовательность вложенных кубических ячеек \[G \supset \overline{Q} \supset \overline{Q_1} \supset \ldots \supset \overline{Q_n} \supset \ldots\]
     что \[C\LL^m(Q_n) < \Phi_\#\LL^m(Q_n)\]
-    По теореме Кантора $\exists a \in \bigcap\limits_{n \in \N} \overline{Q_n}$. Пусть $L = D_a\Phi$ ~---~ линейное и обратимое отображение. Поскольку по условию $\Phi$~---~диффеоморфизм, $L$~---~обратимо, и так как $a \in \overline{Q}$, то $|\det L| = |J_\Phi(a)| < C$. Рассмотрим вспомогательное отображение которое линейно приближает окрестность точки $a$: \[\Psi(x) = a + L^{-1}(\Phi(x) - \Phi(a))\]
+    По теореме Кантора $\exists a \in \bigcap\limits_{n \in \N} \overline{Q_n}$. Пусть $L = D_a\Phi$ ~---~ линейное и обратимое отображение. Поскольку по условию $\Phi$~---~диффеоморфизм, $L$~---~обратимо, и так как $a \in \overline{Q}$, то $|\det L| = |J_\Phi(a)| < C$. Рассмотрим вспомогательное линейное отображение: \[\Psi(x) = a + L^{-1}(\Phi(x) - \Phi(a)), \quad x\in \R^m\]
     Около точки $a$ отображение стремится к тождественному: \[\Psi(x) = x + o(x - a), x \rightarrow a\]
     Поэтому $\forall \epsilon > 0 \  \exists $ такой малый шар $B_{\delta(\epsilon)}(a)$, центрированный в $a$, что \[\forall x \in B \hookrightarrow \|\Psi(x) - x\| \leq \dfrac{\epsilon}{\sqrt{m}}\|x - a\| \]
     По построению $a \in \overline{Q_n}$ для всякого $n$ и $\overline{Q_n} \subset B$ для достаточно больших $n$. Тогда поскольку $\|x - a\| \leq \sqrt{m}h$ (где $h$~---~длина ребра куба $Q_n, x \in Q_n$), то $\|\Psi(x) - x\| \leq \epsilon h$ и аналогичное верно для всех координат разности $\Psi(x) - x$ а значит $\Psi(x)$ принадлежит кубу с длиной ребра $\leq(1 + 2\epsilon)h$. Тогда: \[\LL^m(\Psi(Q_n)) \leq \LL^m((1 + 2\epsilon)Q_n) \leq (1 + 2\epsilon)^mh^m = (1 + 2\epsilon)^m\LL^m(Q_n)\]
@@ -123,7 +123,7 @@
 \end{proof}
 \begin{corollary}
     Из непрерывности $|J_\Phi|$ и предыдущей теоремы следует, что \[|J_\Phi(a)| = \lim\limits_{A \rightarrow a} \dfrac{\LL^m(\Phi(A))}{\LL^m(A)}\]
-    Где под пределом мы понимаем $\forall \epsilon > 0 \exists \delta > 0 \forall A \in \MM^m \wedge A \subset B_\delta(a) \wedge \LL^m(A) > 0 \hookrightarrow |\frac{\LL^m(\Phi(A))}{\LL^m(A)} - |J_\Phi(a)|| < \epsilon$.
+    Где под пределом мы понимаем \[\forall \epsilon > 0 \exists \delta > 0 \forall A \in \MM^m \wedge A \subset B_\delta(a) \wedge \LL^m(A) > 0 \hookrightarrow |\frac{\LL^m(\Phi(A))}{\LL^m(A)} - |J_\Phi(a)|| < \epsilon.\]
 \end{corollary}
 \begin{theorem}
     Пусть $\Phi$~---~диффеоморфизм $G$ на $G'$. Тогда для любой измеримой неотрицательной функции $f$ на $G'$ верно следующее: \[\int\limits_{G'} fdy = \int\limits_G f \circ \Phi \cdot |J_\Phi|dx\]

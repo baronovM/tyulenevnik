@@ -29,14 +29,14 @@
 Физический смысл ~---~ это работа силы вдоль траектории.
 
 \begin{definition}
-    Пусть $\Gamma = \{r(t) \mid t \in [a, b]\}$~---~ориентированная кривая, параметризованная кусочно-гладкой $r: [a, b] \rightarrow \R^n$. Пусть $
-    \overline{F} \in C(\Gamma, \R^n)$. Тогда \textit{криволинейным интегралом II-го рода} будем называть \[\int\limits_\Gamma (\overline{F}, \overline{dr}) = \int\limits_a^b \langle \overline{F}(r(t)), \overline{r}'(t) \rangle dt\]
+    Пусть $\Gamma = \{\overline{r}(t) \mid t \in [a, b]\} \subset \R^n$~---~ориентированная кривая, параметризованная кусочно-гладкой $r: [a, b] \rightarrow \R^n$. Пусть $
+    \overline{F} \in C(\Gamma, \R^n)$. Тогда \textit{криволинейным интегралом II-го рода} $f$ по $\Gamma$ будем называть \[\int\limits_\Gamma (\overline{F}, \overline{dr}) := \int\limits_a^b \langle \overline{F}(r(t)), \overline{r}'(t) \rangle dt\]
 \end{definition}
 \begin{lemma}
-    Криволинейный интеграл II не зависит от выбора допустимой параметризации (сохраняющей ориентацию).
+    Криволинейный интеграл II рода не зависит от выбора допустимой параметризации (сохраняющей ориентацию).
 \end{lemma}
 \begin{proof}
-    Пусть $\rho(\tau(t)) = r(t)$~---~репараметризация $\Gamma$, $\tau: [a, b] \rightarrow [\alpha, \beta]$~---~гладкая строго возрастающая функция. Тогда \[\int\limits_\alpha^\beta \langle F(\rho(\tau)), \rho'(\tau)\rangle d\tau = \int\limits_a^b \langle F(\rho(\tau(t))), \rho'(\tau) \rangle \tau'(t) dt = \int\limits_a^b \langle F(r(t)), r'(t) \rangle dt\]
+    Пусть $\rho(\tau(t)) = r(t)$~---~репараметризация $\Gamma$, $\tau: [a, b] \rightarrow [\alpha, \beta]$~---~$C^1$-гладкая строго возрастающая функция. Тогда \[\int\limits_\alpha^\beta \langle F(\rho(\tau)), \rho'(\tau)\rangle d\tau = \int\limits_a^b \langle F(\rho(\tau(t))), \rho'(\tau) \rangle \tau'(t) dt = \int\limits_a^b \langle F(r(t)), r'(t) \rangle dt.\]
 \end{proof}
 \begin{lemma}
     Криволинейный интеграл II рода изменяет знак на противоположный при изменении ориентации.
