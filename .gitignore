@@ -1,0 +1,8 @@
+*.aux
+*.log
+*.out
+*.pdf
+*.synctex.gz
+*.toc
+!sem3/main.pdf
+!sem4/main.pdf
