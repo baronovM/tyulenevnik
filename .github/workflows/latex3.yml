@@ -24,11 +24,11 @@ jobs:
         root_file: main.tex
         continue_on_error: true
         working_directory: ./sem3
-        args: -jobname=result -pdf -f -file-line-error -interaction=nonstopmode
+        args: -jobname=result3 -pdf -f -file-line-error -interaction=nonstopmode
         compiler: latexmk
 
     - name: Upload PDF document
       uses: actions/upload-artifact@v4
       with:
-        name: result3
-        path: sem3/result.pdf
+        name: sem3_result
+        path: sem3/result3.pdf

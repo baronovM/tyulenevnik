@@ -49,7 +49,7 @@ jobs:
           start_date_3=$(gh run list --workflow latex3.yml --json conclusion,createdAt -q '[.[] | select(.conclusion == "success")][0].createdAt')
           echo "Start date of sem3 workflow: $start_date_3"
           echo "date3=$start_date_3" >> $GITHUB_ENV
-          gh run download $run_id_3 --name result3.pdf
+          gh run download $run_id_3 --name sem3_result
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -59,7 +59,7 @@ jobs:
           start_date_4=$(gh run list --workflow latex4.yml --json conclusion,createdAt -q '[.[] | select(.conclusion == "success")][0].createdAt')
           echo "Start date of sem4 workflow: $start_date_4"
           echo "date4=$start_date_4" >> $GITHUB_ENV
-          gh run download $run_id_4 --name result4.pdf
+          gh run download $run_id_4 --name sem4_result
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
