@@ -1,0 +1,34 @@
+name: Build sem4
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'sem4/**'
+      - '!sem4/**.pdf'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v4
+
+    - name: Build document
+      uses: dante-ev/latex-action@2021-A
+      with:
+        root_file: main.tex
+        continue_on_error: true
+        working_directory: ./sem4
+        args: -jobname=result -pdf -f -file-line-error -interaction=nonstopmode
+        compiler: latexmk
+
+    - name: Upload PDF document
+      uses: actions/upload-artifact@v4
+      with:
+        name: result4
+        path: sem4/result.pdf
