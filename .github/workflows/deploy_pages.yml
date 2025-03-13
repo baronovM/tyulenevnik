@@ -21,7 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  get-pdf-and-build-pages:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
