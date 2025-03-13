@@ -48,7 +48,8 @@ jobs:
           run_id_3=$(gh run list --workflow latex3.yml --json databaseId,conclusion -q '[.[] | select(.conclusion == "success")][0].databaseId')
           start_date_3=$(gh run list --workflow latex3.yml --json conclusion,createdAt -q '[.[] | select(.conclusion == "success")][0].createdAt')
           echo "Start date of sem3 workflow: $start_date_3"
-          echo "date3=$start_date_3" >> $GITHUB_ENV
+          echo "dtime3=$(date -d "$start_date_3 +3 hours" +"%m.%d, в %H:%M")" >> $GITHUB_ENV
+          echo "dtime3_plain=$(date -d "$start_date_3 +3 hours" +"%m-%d_%H-%M")" >> $GITHUB_ENV
           gh run download $run_id_3 --name sem3_result
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -58,17 +59,20 @@ jobs:
           run_id_4=$(gh run list --workflow latex4.yml --json databaseId,conclusion -q '[.[] | select(.conclusion == "success")][0].databaseId')
           start_date_4=$(gh run list --workflow latex4.yml --json conclusion,createdAt -q '[.[] | select(.conclusion == "success")][0].createdAt')
           echo "Start date of sem4 workflow: $start_date_4"
-          echo "date4=$start_date_4" >> $GITHUB_ENV
+          echo "dtime4=$(date -d "$start_date_4 +3 hours" +"%m.%d, в %H:%M")" >> $GITHUB_ENV
+          echo "dtime4_plain=$(date -d "$start_date_4 +3 hours" +"%m-%d_%H-%M")" >> $GITHUB_ENV
           gh run download $run_id_4 --name sem4_result
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Rename artifacts
+      - name: Generate names
         run: |
-          echo "name3=Теория_Меры_Уважаемый_${{ env.date3 }}.pdf" >> $GITHUB_ENV
-          echo "name4=Гармонический_Анализ_${{ env.date4 }}.pdf" >> $GITHUB_ENV
-          mv result3.pdf ${{ env.name3 }}.pdf
-          mv result4.pdf ${{ env.name4 }}.pdf
+          echo "name3=Measure_Theory__Respected__${{ env.dtime3_plain }}.pdf" >> $GITHUB_ENV
+          echo "name4=Harmonic_analysis_${{ env.dtime4_plain }}.pdf" >> $GITHUB_ENV
+      - name: Rename files
+        run: |
+          mv result3.pdf ${{ env.name3 }}
+          mv result4.pdf ${{ env.name4 }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -88,9 +92,9 @@ jobs:
           find ./_site -type f -name "*.html" -exec sed -i "s|<h1>Идёт обновление. Обычно это занимает около 3 минут</h1>||g" {} +
           find ./_site -type f -name "*.html" -exec sed -i "s|<p>Так как сейчас идёт обновление, файл, доступный по кнопке выше и отображаемый снизу, может отставать от актуальной версии</p>||g" {} +
           find ./_site -type f -name "part3.html" -exec sed -i "s|sem3/main.pdf|${{ env.name3 }}|g" {} +
-          find ./_site -type f -name "part3.html" -exec sed -i "s|{{LATEST_RELEASE_DATE}}|${{ env.date3 }}|g" {} +
+          find ./_site -type f -name "part3.html" -exec sed -i "s|{{LATEST_RELEASE_DATE}}|${{ env.dtime3 }}|g" {} +
           find ./_site -type f -name "index.html" -exec sed -i "s|sem4/main.pdf|${{ env.name4 }}|g" {} +
-          find ./_site -type f -name "index.html" -exec sed -i "s|{{LATEST_RELEASE_DATE}}|${{ env.date4 }}|g" {} +
+          find ./_site -type f -name "index.html" -exec sed -i "s|{{LATEST_RELEASE_DATE}}|${{ env.dtime4 }}|g" {} +
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
