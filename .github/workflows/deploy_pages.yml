@@ -64,11 +64,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Rename artifacts
-      run: |
-        echo "name3=Теория_Меры_Уважаемый_${{ env.date3 }}.pdf" >> $GITHUB_ENV
-        echo "name4=Гармонический_Анализ_${{ env.date4 }}.pdf" >> $GITHUB_ENV
-        mv result3.pdf ${{ env.name3 }}.pdf
-        mv result4.pdf ${{ env.name4 }}.pdf
+        run: |
+          echo "name3=Теория_Меры_Уважаемый_${{ env.date3 }}.pdf" >> $GITHUB_ENV
+          echo "name4=Гармонический_Анализ_${{ env.date4 }}.pdf" >> $GITHUB_ENV
+          mv result3.pdf ${{ env.name3 }}.pdf
+          mv result4.pdf ${{ env.name4 }}.pdf
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
