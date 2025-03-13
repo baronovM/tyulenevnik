@@ -107,6 +107,8 @@
 \DeclareMathOperator*{\esssup}{ess\,sup}
 % привееет
 
+\newcommand{\incirc}[1]{\stackMath\mathbin{\stackinset{c}{0ex}{c}{0ex}{#1}{\bigcirc}}}
+
 
 \def\Xint#1{\mathchoice
     {\XXint\displaystyle\textstyle{#1}}%
@@ -235,8 +237,17 @@
 \usepackage{titleps}
 \newpagestyle{main}{
 	\setheadrule{0.4pt}
-	\sethead{Интеграл Лебега и Теория поля}{}{\hyperlink{intro}{\;Назад к содержанию}}
+	\sethead{Гармонический анализ}{}{\hyperlink{intro}{\;Назад к содержанию}}
  	\setfootrule{0.4pt}                       
 	\setfoot{ФПМИ МФТИ, \today}{}{\thepage} 
 }
 \pagestyle{main}  
+
+
+
+
+\numberwithin{equation}{subsection}
+
+
+
+
