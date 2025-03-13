@@ -31,4 +31,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: sem4_result
-        path: sem4/result.pdf
+        path: sem4/result4.pdf
