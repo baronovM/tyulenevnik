@@ -67,7 +67,7 @@ jobs:
 
       - name: Generate names
         run: |
-          echo "name3=Measure_Theory__Respected__${{ env.dtime3_plain }}.pdf" >> $GITHUB_ENV
+          echo "name3=Теория_Меры__Уважаемый__${{ env.dtime3_plain }}.pdf" >> $GITHUB_ENV
           echo "name4=Harmonic_analysis_${{ env.dtime4_plain }}.pdf" >> $GITHUB_ENV
       - name: Rename files
         run: |
