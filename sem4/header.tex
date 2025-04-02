@@ -1,12 +1,12 @@
 \documentclass[a4paper,12pt]{article}
 %%% Работа с русским языком
-\usepackage{cmap}					% поиск в PDF
-\usepackage{mathtext} 				% русские буквы в фомулах
-\usepackage[T2A]{fontenc}			% кодировка
-\usepackage[utf8]{inputenc}			% кодировка исходного текста
-\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage{cmap}                   % поиск в PDF
+\usepackage{mathtext}               % русские буквы в фомулах
+\usepackage[T2A]{fontenc}           % кодировка
+\usepackage[utf8]{inputenc}         % кодировка исходного текста
+\usepackage[english,russian]{babel} % локализация и переносы
 
-	
+    
 \usepackage[normalem]{ulem}
 
 %размеры полей
@@ -146,13 +146,13 @@
 
 
 \newcommand{\imp}[2]{
-	(#1\,\,$\ra$\,\,#2)\,\,
+    (#1\,\,$\ra$\,\,#2)\,\,
 }
 \newcommand{\System}[1]{
-	\left\{\begin{aligned}#1\end{aligned}\right.
+    \left\{\begin{aligned}#1\end{aligned}\right.
 }
 \newcommand{\Root}[2]{
-	\left\{\!\sqrt[#1]{#2}\right\}
+    \left\{\!\sqrt[#1]{#2}\right\}
 }
 
 \renewcommand\labelitemi{$\triangleright$}
@@ -225,21 +225,21 @@
 % Настройка оглавления и ссылок
 \usepackage[unicode]{hyperref}
 \hypersetup{
-	unicode=true,            % русские буквы в раздела PDF
-	colorlinks=true,       	 % Цветные ссылки вместо ссылок в рамках
-	linkcolor=blue, % Внутренние ссылки
-	citecolor=green,         % Ссылки на библиографию
-	filecolor=magenta,       % Ссылки на файлы
-	urlcolor=olive,       % Ссылки на URL
+    unicode=true,            % русские буквы в раздела PDF
+    colorlinks=true,         % Цветные ссылки вместо ссылок в рамках
+    linkcolor=blue, % Внутренние ссылки
+    citecolor=green,         % Ссылки на библиографию
+    filecolor=magenta,       % Ссылки на файлы
+    urlcolor=olive,       % Ссылки на URL
 }
 
 % Колонтикулы
 \usepackage{titleps}
 \newpagestyle{main}{
-	\setheadrule{0.4pt}
-	\sethead{Гармонический анализ}{}{\hyperlink{intro}{\;Назад к содержанию}}
- 	\setfootrule{0.4pt}                       
-	\setfoot{ФПМИ МФТИ, \today}{}{\thepage} 
+    \setheadrule{0.4pt}
+    \sethead{Гармонический анализ}{}{\hyperlink{intro}{\;Назад к содержанию}}
+    \setfootrule{0.4pt}                       
+    \setfoot{ФПМИ МФТИ, \today}{}{\thepage} 
 }
 \pagestyle{main}  
 
