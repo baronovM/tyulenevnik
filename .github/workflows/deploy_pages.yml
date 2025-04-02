@@ -49,7 +49,7 @@ jobs:
           start_date_3=$(gh run list --workflow latex3.yml --json conclusion,createdAt -q '[.[] | select(.conclusion == "success")][0].createdAt')
           echo "Start date of sem3 workflow: $start_date_3"
           echo "dtime3=$(date -d "$start_date_3 +3 hours" +"%m.%d, в %H:%M")" >> $GITHUB_ENV
-          echo "dtime3_plain=$(date -d "$start_date_3 +3 hours" +"%m-%d_%H-%M")" >> $GITHUB_ENV
+          echo "dtime3_plain=$(date -d "$start_date_3 +3 hours" +"%m.%d %H:%M")" >> $GITHUB_ENV
           gh run download $run_id_3 --name sem3_result
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -60,15 +60,15 @@ jobs:
           start_date_4=$(gh run list --workflow latex4.yml --json conclusion,createdAt -q '[.[] | select(.conclusion == "success")][0].createdAt')
           echo "Start date of sem4 workflow: $start_date_4"
           echo "dtime4=$(date -d "$start_date_4 +3 hours" +"%m.%d, в %H:%M")" >> $GITHUB_ENV
-          echo "dtime4_plain=$(date -d "$start_date_4 +3 hours" +"%m-%d_%H-%M")" >> $GITHUB_ENV
+          echo "dtime4_plain=$(date -d "$start_date_4 +3 hours" +"%m.%d %H:%M")" >> $GITHUB_ENV
           gh run download $run_id_4 --name sem4_result
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate names
         run: |
-          echo "name3=Теория_Меры__Уважаемый__${{ env.dtime3_plain }}.pdf" >> $GITHUB_ENV
-          echo "name4=Harmonic_analysis_${{ env.dtime4_plain }}.pdf" >> $GITHUB_ENV
+          echo "name3=Теория Меры, Уважаемый (версия от ${{ env.dtime3_plain }}).pdf" >> $GITHUB_ENV
+          echo "name4=Том и джерри. Начало (версия от ${{ env.dtime4_plain }}).pdf" >> $GITHUB_ENV
       - name: Rename files
         run: |
           mv result3.pdf ${{ env.name3 }}
