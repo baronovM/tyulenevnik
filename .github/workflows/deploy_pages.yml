@@ -71,8 +71,8 @@ jobs:
           echo "name4=Том и джерри. Начало (версия от ${{ env.dtime4_plain }}).pdf" >> $GITHUB_ENV
       - name: Rename files
         run: |
-          mv result3.pdf ${{ env.name3 }}
-          mv result4.pdf ${{ env.name4 }}
+          mv result3.pdf "${{ env.name3 }}"
+          mv result4.pdf "${{ env.name4 }}"
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
