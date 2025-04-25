@@ -52,11 +52,44 @@ $$
 
 Отметим, однако, что формально, при $k \in \mathbb{N}$ коэффициенты
 $$
-a_{k}(f):=\frac{1}{l}\int\limits_{-l}^{l}f(x)\sin(\frac{\pi k x}{l})\,dx, \quad b_{k}(f):=\frac{1}{l}\int\limits_{-l}^{l}f(x)\cos(\frac{\pi k x}{l})\,dx
+a_{k}(f):=\frac{1}{l}\int\limits_{-l}^{l}f(x)\cos(\frac{\pi k x}{l})\,dx, \quad b_{k}(f):=\frac{1}{l}\int\limits_{-l}^{l}f(x)\sin(\frac{\pi k x}{l})\,dx
 $$
 имеют смысл для $f \in L_{1}([-l,l])$.
 
+\begin{note}
+    Здесь и далее $a_k, b_k$ это коффиценты перед косинусом и синусом соответсвенно, а $c_k$ перед компелксной экспонентой.
+\end{note}
+
 \subsection{Строгая теория}
+
+\begin{definition}
+    Гильбертово пространство — это вещественное линейное пространство \( H \), на котором задано скалярное произведение
+\[
+\langle \cdot, \cdot \rangle : H \times H \to \mathbb{R},
+\]
+удовлетворяющее следующим аксиомам для всех \( x, y, z \in H \) и \( \alpha \in \mathbb{R} \):
+\begin{enumerate}
+    \item \( \langle x, y \rangle = \langle y, x \rangle \) (симметричность),
+    \item \( \langle \alpha x + y, z \rangle = \alpha \langle x, z \rangle + \langle y, z \rangle \) (линейность по первому аргументу),
+    \item \( \langle x, x \rangle \geq 0 \), причём \( \langle x, x \rangle = 0 \iff x = 0 \) (положительная определённость).
+\end{enumerate}
+При этом пространство \( H \) считается \textbf{полным} по норме, индуцированной внутренним произведением:
+\[
+\|x\| = \sqrt{\langle x, x \rangle}.
+\]
+То есть всякая фундаментальная последовательность в \( H \) сходится в \( H \).
+\end{definition}
+
+\begin{definition}
+    (Топологический базис или базис Шаудера)
+    Пусть у нас есть $X$ - л.н.п, будем говорить что система ненулевых векторов $\{e_n\}_{n=1}^{\infty}$ является базисом Шаудера пространства X, если:
+    \[
+    \forall x \in X \exists! \{\alpha_k\}_{k=1}^{\infty} \in \R \hookrightarrow \| x - \sum_{k=1}^{N} \alpha_k(x) e_k\| \to 0, N \to \infty
+    \]
+    То есть $x = \sum\limits_{k=1}^{\infty} \alpha_k(x) e_k$. Из единсвтенности в определнии следует линейная лезависимость системы векторов.
+\end{definition}
+
+
 
 Без ограничения общности будем работать с элементами $f \in L_{1}([-\pi,\pi])$. Каждому такому элементу можно сопоставить формальный ряд Фурье по стандартной тригонометрической системе
 $$
@@ -96,11 +129,18 @@ $$
 
 2) $D_{n}$ -- четная $2\pi$-периодическая функция.
 
-
 \subsection{Теорема Римана--Лебега}
 
 Докажем теперь важную теорему Римана--Лебега об осцилляции.
+\begin{note}
+    (От редакторов) Эту теорему более наглядной делает ее более простая версия, без компелксных экспонент, а с тригонометрическими функциями, тогда мы понимаем что $y=\omega$ это "частота колебаний" нашего синуса:
 
+Функция \( f \) абсолютно интегрируема на конечном или бесконечном интервале \( (a, b) \). Тогда
+\[
+\lim_{\omega \to \infty} \int_a^b f(x) \cos(\omega x)\,dx = \lim_{\omega \to \infty} \int_a^b f(x) \sin(\omega x)\,dx = 0.
+\]
+\end{note}
+    
 \begin{theorem}
 Пусть $E \subset \mathbb{R}^{n}$--измеримое по Лебегу множество и $f \in L_{1}(E)$. Тогда
 \begin{equation}
@@ -120,6 +160,7 @@ $$
 2|I(y)| = \Bigl|\int\limits_{\mathbb{R}^{n}}(f(x)-f(x-h(y)))e^{i<x,y>}\,dx\Bigr| \le \int\limits_{\mathbb{R}^{n}}|f(x)-f(x-h(y))|\,dx \to 0, \quad \|y\| \to +\infty.
 \end{equation}
 Теорема доказана.
+
 
 \begin{corollary}
 Если $f \in L_{1}([-\pi,\pi])$, то 
