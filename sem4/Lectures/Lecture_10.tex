@@ -1,0 +1,504 @@
+\subsection{Интеграл Дирихле}
+
+\[
+    \int\limits_0^{+\infty} \frac{\sin x}{x} \, dx \text{ ~---~ интеграл Дирихле}
+\]
+
+\begin{note}
+Понимаем как собственный интеграл Лебега
+\end{note}
+
+\begin{theorem}
+\[
+    \int\limits_0^{+\infty} \frac{\sin x}{x} \, dx = \frac{\pi}{2}
+\]
+
+\end{theorem}
+
+\begin{proof}
+
+\noindent
+
+Сделаем регуляризацию (добавим множитель, чтобы сделать интеграл собственным)
+    
+Рассмотрим функцию:
+
+\[
+F(x, y) := \frac{\sin x}{x} \cdot e^{-x y},
+\]
+
+$x, y \in [0, +\inf)$
+
+\[
+F(x, 0) = \frac{\sin x}{x},
+\]
+Доопределим в нуле:
+\[
+F(0, 0) = 1,  
+\]
+
+Тогда функция непрерывна на $[0, +\inf) ^2$
+
+Рассмотрим интеграл:
+\[
+D := \int\limits_0^{+\infty}F(x, y) \,d x
+\]
+
+Сначала действуем формально (продифферинцируем):
+
+\[
+    D'(y) = \int\limits_0^{+\infty} \frac{d}{dy} \left( e^{-x y} \right) \cdot \frac{\sin x}{x} \, dx = - \int\limits_0^{+\infty} e^{-x y} \cdot \sin x \, dx
+\]
+
+Из формулы Эйлера $e^{ix} = i \sin x + \cos x$:
+
+\[
+D'(y) = -\mathrm{Im} \int\limits_0^{+\infty} e^{-xy} \cdot e^{ix} \, dx
+= -\mathrm{Im} \int\limits_0^{+\infty} e^{-x(i - y)}\, dx
+= -\mathrm{Im} \left( \left. \frac{e^{-x(i - y)}}{i - y} \right|_0^{+\infty} \right) = -\mathrm{Im}\left( 0 - \frac{1}{i-y}\right) =
+\]
+
+\[
+= \mathrm{Im} \left( \frac{1}{i - y} \right) = \mathrm{Im} \left( \frac{-i - y}{1 + y^2} \right)
+= \frac{-1}{y^2 + 1}
+\] 
+
+Итого:
+\[
+D'(y) = \frac{-1}{y^2 + 1}, y > 0
+\]
+
+\[
+\forall\, y_1, y_2 > 0 \quad \text{при } y_2 > y_1 \quad
+D(y_2) - D(y_1) = \int\limits_{y_1}^{y_2} D'(y) \, dy
+= - \int\limits_{y_1}^{y_2} \frac{1}{y^2 + 1} \, dy = \arctan{y_1} - \arctan{y_2}
+\]
+
+При $y_2 \to +\infty$:
+
+\[
+D(y_2) = \int\limits_0^{+\infty} \frac{\sin x}{x} \cdot e^{-x y_2} \, dx
+\]
+Возьмем под модуль:
+
+\[
+\left| D(y_2) \right| 
+= \left| \int\limits_0^{+\infty} \frac{\sin x}{x} \cdot e^{-x y_2} \, dx \right|
+\leq \int\limits_0^{+\infty} e^{-x y_2} \, dx
+= \frac{1}{y_2} \longrightarrow +0, \quad y_2 \to +\infty
+\]
+
+
+
+Перейдем к приделу, когда $y_2 \rightarrow + \infty,  y_1 \rightarrow +0$: 
+
+\[
+- \lim_{y_1 \to +0} D(y_1) = -\frac{\pi}{2} \Rightarrow \lim_{y_1 \to +0} D(y_1) = \frac{\pi}{2}
+\]
+
+\begin{note}
+Если доказать, что $D(y)$ непрерывен в нуле справа, т.е. что $\lim_{y \to +0} D(y) = D(0)$, то получим искомое
+\end{note}
+
+Покажем, что \( D(y) \) — непрерывна и существует \( D'(y) \), \( \forall y > 0 \).
+
+Зафиксируем произвольные \( y_1, y_2 \), такие что \( 0 < y_1 < y < y_2 \)
+
+\begin{center}
+\begin{tikzpicture}
+    \draw[->] (-0.5,0) -- (6,0); % ось
+    \foreach \x/\label in {0/0, 1.5/\(y_1\), 2.5/\(y\), 4/\(y_2\)} {
+        \draw[thick] (\x,0.1) -- (\x,-0.1) node[below] {\label};
+    }
+    \draw[->, thick, blue] (1.5,0.2) -- (2.5,0.2); % стрелка y1 -> y
+    \draw[->, thick, blue] (4,0.2) -- (2.5,0.2);   % стрелка y2 <- y
+\end{tikzpicture}
+\end{center}
+
+
+\begin{note}
+Чтобы можно было дифференцировать по $y$, достаточно проверить, что интеграл $D(y)$ сходится $\forall y > 0$ и что $- \int\limits_0^{+\infty} \sin x \cdot e^{-x y} \, dx$ сходится равномероно по $y$.
+\end{note}
+
+Очевидно, что $ \sin x \cdot e^{-x y}$ непрерывна на $[y_1, y_2] \times [0, +\infty)$.
+
+$\frac{\sin{x}}{x}\cdot e^{-x y}$, доопределенная в нуле тоже непрерывна на $[y_1, y_2] \times [0, +\infty)$.
+
+
+\[
+\left| \frac{\sin x}{x} \cdot e^{-x y} \right| \leq e^{-x y}
+\]
+
+\[
+ \Rightarrow \frac{\sin x}{x} \cdot e^{-x y} \in L_1([0, +\infty)) \quad \text{(принадлежит $L_1$ как функция от } x\text{) \,} \forall y > 0
+\]
+
+\[
+\Rightarrow D(x) \, \text{сходится} \, \forall y > 0
+\]
+
+
+
+
+Назовем $J(y) = - \int\limits_1^{+\infty} \frac{\sin x}{x}  e^{-x y} \, dx$. (от 1 потому что так будет проще применить признак Дирихле)
+
+Покажем, что $J(y)$ сходится равномерно по $y$ на $[y_1, y_2]$
+
+
+\noindent
+
+Воспользуемся признаком Дирихле:
+\begin{enumerate}
+
+
+    \item 
+
+\[
+\sup_{y > 0} \sup_{A} \left| \int_{1}^{A} \sin x \, dx \right| \leq 2 
+\]
+
+    \item 
+\[
+\frac{e^{-x \cdot y}}{x} \downarrow 0, \quad x \to +\infty \quad \forall y > 0
+\]
+
+    \item 
+\[
+0 \leq \frac{e^{-x y}}{x} \leq \frac{e^{-x \cdot y_1}}{x} \rightarrow 0, x \rightarrow + \infty\, \forall y \in [0, y_2], \forall x > 1 \Rightarrow
+\]
+
+
+\[
+\sup_{y \in [0, y_2]} e^{-x y} \to 0, \ x \to +\infty.
+\]
+
+
+$\Rightarrow$ В силу признака Дирихле $ \int_{1}^{+\infty} \frac{\sin x}{x} \, e^{-x y} \, dx $ сходится равномерно по $y$
+
+В силу признака Вейерштрасса 
+$
+\int_{0}^{+\infty} \sin x \, e^{-x y} \, dx \quad \text{сходится равномерно по } y \in [y_1, y_2]
+$
+
+\[
+|\sin x \, e^{-x y}| \leq e^{-x \cdot y_1}, \quad \int_{0}^{+\infty} e^{-x \cdot y_1} \, dx \quad - \text{сход.}
+\]
+
+
+
+\end{enumerate}
+
+
+Это доказывает, что можно дифференцировать интеграл по параметру при любом $y > 0$
+
+\setlength{\parskip}{10pt}
+
+
+$\int_{1}^{+\infty} \frac{\sin x}{x} \, e^{-x y} \, dx $ сходится равномерно по $y$ 
+
+$\Rightarrow  \int_{0}^{+\infty} \frac{\sin x}{x} e^{-x y} \, dx \quad \text{сходится равномерно по } y \in [0, y_2] \quad \forall y_2 > 0. $
+
+\begin{note}
+Мы доказали от 1 до $+\infty$. Но интеграл от 0 до $+\infty$ отличается минимально:
+\end{note}
+\[
+\text{На } [0, 1] \times [0, y_2] \text{ функция } F(x, y) = \frac{\sin x}{x} e^{-x y} \text{ непрерывна по совокупности переменных.}
+\]
+
+\[
+\Rightarrow \text{Следующие утверждения эквивалентны:}
+\]
+
+\begin{enumerate}
+    \item \(\int\limits_0^{+\infty} \frac{\sin x}{x} \, e^{-x y} \, dx \) сходится равномерно по \( y \) на множестве \( [0, y_2] \).
+    
+    \item \(\int\limits_1^{+\infty} \frac{\sin x}{x} \, e^{-x y} \, dx \) сходится равномерно по \( y \) на множестве \( [0, y_2] \).
+\end{enumerate}
+
+\setlength{\parskip}{10pt}
+
+
+\begin{enumerate}
+    \item $\int\limits_0^{+\infty} \frac{\sin x}{x} \, e^{-x y} \, dx$ сход. равномерно по $y$ на $[0, y_2 ] \forall y_2>0$
+
+    \item $\frac{\sin x}{x} = \lim_{y \to +0} e^{-x y} \frac{\sin x}{x}$
+
+
+    \item В силу непрерывности $F$: $\frac{\sin x}{x} \mathrel{\substack{\leftleftarrows \\ [0, t]}} e^{-x y} \frac{\sin x}{x} \forall t >0$
+    
+\end{enumerate}
+
+Из этого в совокупности следует:
+\[
+\int\limits_0^{t} e^{-x y} \frac{\sin x}{x} \, dx 
+\longrightarrow 
+\int\limits_0^{t} \frac{\sin x}{x} \, dx \quad \forall\, t > 0
+\]
+
+
+Выполнены все условия теоремы о переходе к пределу по параметру в несобственном интеграле %тут неплохо бы ссылка сделать
+\[
+\Rightarrow \exists \lim_{y \to +0} \int\limits_0^{+\infty} \frac{\sin x}{x} \, e^{-x y} \, dx 
+= \int\limits_0^{+\infty} \frac{\sin x}{x} \, dx,
+\]
+А это и означает непрерывность функции $D$ в нуле справа.
+
+
+$\Rightarrow$ все переходы в настоящем доказательстве обоснованы $\Rightarrow$ интеграл Дирихле полностью посчитан
+
+\end{proof}
+
+
+\subsection{Преобразование Фурье}
+
+\begin{definition}
+Пусть $f \in L_1^{loc}(\mathbb{R}).$ 
+
+\setlength{\parskip}{10pt}
+
+Тогда $\mathcal{F}[f]_{(x)} := \operatorname{V.P.}\frac{1}{\sqrt{2\pi}} \int\limits_{\mathbb{R}} e^{-ixy} \, f(y) \, dy, \quad x \in \mathbb{R}.$
+\end{definition}
+
+\begin{note}
+\textbf{V.P.} (от фран. \textit{Valeur Principale}) — интеграл в смысле главного значения.
+\[
+\operatorname{V.P.}\int\limits_{\mathbb{R}} e^{-ixy} \, f(y) \, dy := \lim_{A \to +\infty} \int\limits_{-A}^{A} f(y) \, e^{-ixy} \, dy
+\]
+\end{note}
+
+Обратное преобразование Фурье:
+\[
+\mathcal{F}^{-1} \left[ f \right](y) := \operatorname{V.P.} \frac{1}{\sqrt{2 \pi}} \int\limits_{\mathbb{R}} e^{ixy} f(y) \, dy
+\]
+
+\begin{note}
+\[
+\text{Если  }f \in L_1(\mathbb{R}), \text{ то } \int_{\mathbb{R}} f(x) \, dx = \operatorname{V.P.} \int_{\mathbb{R}} f(x) \, dx
+\]
+\end{note}
+
+
+Ключевое отличие от несобственного интеграла Лебега:
+Пределы интегрирования берутся симметрично.
+
+В обычном несобсвтенном интеграле имеем незавсимые друг от друга пределы $A_1$ и $A_2$:
+
+\[
+\int\limits_{\mathbb{R}} e^{-ixy} \, f(y) \, dy 
+= \int\limits_{-\infty}^{+\infty} f(y) \, e^{-ixy} \, dy
+= \lim_{\substack{A_1 \to +\infty \\ A_2 \to -\infty}} \int\limits_{A_2}^{A_1} f(y) \, e^{-ixy} \, dy
+\]
+
+\begin{example}
+
+Пусть $g$ - произвольная нечетная функция на $\mathbb{R}$. $g \in L_1^{loc}(\mathbb{R})$
+
+\[
+\operatorname{V.P.} \int\limits_{-\infty}^{+\infty} g(y) \, dy = 0.
+\]
+(а интеграл Лебега, и даже несобственный интеграл Лебега может не существовать)
+
+\end{example}
+
+\begin{question}
+
+\[
+\text{Когда }\mathcal{F}^{-1} \left[\mathcal{F} \left[f \right]\right] = \mathcal{F} \left[\mathcal{F}^{-1} \left[f \right]\right] = f \, ?
+\]
+\end{question}
+
+На первый взгляд кажется, что всегда. Однако не все так просто.
+
+
+\[
+\text{Пусть }I_A [f](x) := \int\limits_{-A}^{A} \mathcal{F}[f](y) \, e^{ixy} \, dy, \quad \forall A > 0.
+\]
+
+\begin{lemma}[Ключевая]\label{lem:key}
+Пусть $f \in L_1(\mathbb{R})$ и $x \in \mathbb{R}$. Тогда $\forall A > 0$ справедливо равенство:
+\[
+I_A \left[ f \right](x) = \int\limits_{-\infty}^{+\infty} f(x - t) \frac{\sin(At)}{\pi t} \, dt.
+\]
+\end{lemma}
+
+\begin{proof}
+
+Заметим, что $F(y, u) = f(u)e^{i(x-u)y}$ интегрируема на множестве $(-A, A) \times \mathbb{R}$ при любом фиксированном $x \in \mathbb{R}$. По $y$ значения меняются от $-A$ до $A$, а по $u$ - по всей числовой прямой. $|F(y, u)| \leq |f(u)|$, а она интегрируема в полосе, потому что полоса ~---~ это конечный промежуток
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Pictures/graph1.png}
+    \label{fig:graph1}
+\end{figure}
+
+$\Rightarrow$ по теореме Фубини:
+\[
+I_{A}\bigl[f\bigr](x)
+= \frac{1}{\sqrt{2\pi}}
+\int_{\mathbb{R}}
+\Biggl(
+\int_{-A}^{A} f(u)\,e^{\,i\,(x - u)\,y}\,dy
+\Biggr)\,du
+= \frac{1}{2\pi}
+\int_{\mathbb{R}}
+f(u)\,
+\Biggl[
+\int_{-A}^{A}
+\cos(x - u)\,y\,dy
+\Biggr]
+\,du = 
+\]
+
+\[
+= \frac{1}{2\pi}
+\int_{\mathbb{R}}
+f(u)\,
+\frac{2 \sin A(x - u)}{x - u}
+\,du
+=
+\int_{\mathbb{R}}
+f(u)\,
+\frac{\sin A(x - u)}{\pi\,(x - u)}
+\,du = \left\{
+    x - u = t
+\right\} = 
+\int_{\mathbb{R}} 
+f(x - t) 
+\frac{\sin(At)}{\pi t} \, dt
+\]
+
+\end{proof}
+
+\subsection{Интеграл Фурье}
+
+\begin{definition}
+    Пусть $f \in L_1^{loc}(\mathbb{R})$.
+\[
+\text{Если } \exists \lim_{A \to +\infty} I_A[f](x) \text{ при } x \in \mathbb{R}, \text{ то говорят, что $\exists$ интеграл Фурье функции } f 
+\]
+
+\begin{center}
+    По сути интеграл Фурье совпадает с $F^{-1}[F[f]].$
+\end{center}
+\end{definition}
+
+\begin{theorem}
+    Пусть \( \tilde{f} \in L_1(-\pi, \pi) \) и \(2\pi\)-периодична.
+
+    Пусть \( f \in L_1(\mathbb{R}) \) и совпадает с \( \widetilde{f} \) в некоторой окрестности точки \( \underline{x} \in \mathbb{R} \). Тогда интеграл Фурье в точке \(\underline{x}\) сходится к \(\widetilde{f}\) в этой точке. \(\Leftrightarrow\) ряд Фурье функции \(\widetilde{f}\) сходится в точке \(\underline{x}\).
+
+    Более того, в случае сходимости справедливо равенство:
+\[
+\frac{1}{\sqrt{2\pi}}\,\operatorname{V.P.}
+\int\limits_{-\infty}^{+\infty}
+\mathcal{F}[f](y)\,e^{\,i x\,y}\,dy
+\;=\;
+\sum_{n\in\mathbb{Z}}
+c_{n}\bigl(\widetilde{f}\bigr)\,e^{\,i n x}
+\]
+\end{theorem}
+
+
+\begin{proof}
+
+Докажем, что 
+\[
+I_A \bigl[f\bigr](\underline{x}) - S_{[A]}\bigl[\widetilde{f}\bigr](\underline{x}) \longrightarrow 0, \quad A \to +\infty, \text{ где $[A]$ - целая часть числа $A$}
+\]
+
+Из ключевой леммы (\ref{lem:key}) следует, что $I_A[f](\underline{x}) = \int\limits_{\mathbb{R}} f(\underline{x} - t) \frac{\sin(At)}{\pi t} \, dt$
+
+Предположим, что $f \equiv \widetilde{f}  
+    \text{ в } U_\delta(\underline{x})$ 
+
+\[
+I_A \left[ f \right](\underline{x}) = \int\limits_{-S}^{0} f(\underline{x} - t) \cdot \frac{\sin(At)}{\pi t} \, dt + O(1), \quad A \to +\infty
+\]
+
+Это следует из теоремы Риммана об осцилляции % тут ссылка тоже можно вставить (сказано, что на 1 лекции)
+
+
+С другой имеем формулу: % тут ссылка со 2 лекции 
+
+
+\[
+S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\underline{x} - t) \frac{\sin(nt)}{\pi t} \, dt + \varepsilon_n \left[\widetilde{f}\right](\underline{x})
+\]
+
+По теореме Риммана об осцилляции: % ссылка со 2 лекции
+\[
+S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\underline{x} - t) \frac{\sin(nt)}{\pi t} \, dt + \varepsilon_n \left[\widetilde{f}\right](\underline{x}) = \int\limits_{-\delta}^{\delta} \widetilde{f}(\underline{x} - t) \frac{\sin(nt)}{\pi t} \, dt + O(1), \quad n \rightarrow +\infty
+\]
+
+
+\[
+\text{Если $A = n$, то }I_A \bigl[f\bigr](\underline{x}) - S_{[A]}\bigl[\widetilde{f}\bigr](\underline{x}) \longrightarrow 0 \text{ 
+очевидно доказано}
+\]
+
+В общем случае, окгда $A$ ~---~ нецелое, можем посмотреть на целую часть $A$
+
+(вспомним, что $I_A$ ~---~ это интеграл от преобразования Фурье).
+
+\[
+\left| I_A \left[ f \right] (\underline{x}) - I_{[A]} \left[ f \right] (\underline{x}) \right| 
+\leq 
+\int\limits_{A-1}^{A} \left| \mathcal{F} [f](y) \right| \, dy + 
+\int\limits_{A}^{A+1} \left| \mathcal{F} [f](y) \right| \, dy
+\]
+
+\[
+\leq 2 \sup_{|y| \geq A-1} \left| \mathcal{F} [f](y) \right| \longrightarrow 0, \quad A \rightarrow +\infty
+\]
+
+Действительно, по теореме Риммана обосцилляции 
+\[
+\mathcal{F} \left[ f \right](y) \longrightarrow 0, \quad y \rightarrow +\infty,
+\]
+
+\[
+\mathcal{F} \left[ f \right](y)  = \frac{1}{\sqrt{2 \pi}} \int\limits_{\mathbb{R}} f(y) \, e^{-ixy} \, dy \longrightarrow 0, y \longrightarrow \infty
+\]
+
+\[
+\text{Так как }  f \in L_1(\mathbb{R}) \text{ по усл, имеем право брать обычный Лебеговский интеграл}
+\]
+В итоге по неравенству треугольника:
+\[
+\begin{aligned}
+\bigl|I_{A}[f](\underline{x}) - S_{[A]}[f](\underline{x})\bigr|
+&\le
+\bigl|I_{A}[f](\underline{x}) - I_{[A]}[f](\underline{x})\bigr|\\
+&\quad
++\,\bigl|I_{[A]}[f](\underline{x}) - S_{[A]}[f](\underline{x})\bigr|.
+\end{aligned}
+\]
+
+Первое слогаемое $\bigl|I_{A}[f](\underline{x}) - I_{[A]}[f](\underline{x})\bigr| \rightarrow
+ 0, A \rightarrow +\infty$ так как мы только что доказали следующее:
+ \[
+\leq 2 \sup_{|y| \geq A-1} \left| \mathcal{F} [f](y) \right| \longrightarrow 0, \quad A \rightarrow +\infty
+\]
+
+Второе слогаемое тоже $\bigl|I_{[A]}[f](\underline{x}) - S_{[A]}[f](\underline{x})\bigr| \rightarrow 0, A \rightarrow +\infty$, так как при целых $A$ $I_A[f](\underline{x}) = S_n[\widetilde{f}(x)]$ с точностью до $o(1)$, потому что $f = \widetilde{f}$ в $\delta$-окрестности $\underline{x}$
+
+
+\end{proof}
+
+\begin{corollary}
+Все признаки поточечной сходимости рядов Фурье переносятся и на интеграл Фурье (т е от функции требуются такие же условия локального поведения)
+\end{corollary}
+
+\begin{example}
+Если \( f \in L_1(\mathbb{R}) \) и 
+$f \in BV(U_{\delta}(\underline{x})) \quad \text{при} \; \delta > 0.$
+Тогда
+$F^{-1}\left[\mathcal{F}[f]\right](\underline{x}) = f(\underline{x}).$
+
+Аналогично для условия Дини и условия Гёльдера.
+
+\end{example}
+
+ 
+
+
