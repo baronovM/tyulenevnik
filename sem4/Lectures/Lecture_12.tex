@@ -77,7 +77,7 @@
         1 = |\int_{B_\epsilon(0)} f_{\delta}(x) w_{\epsilon}(x) dx| \leq \int_{B_\epsilon(0)}|f_\delta(x)|dx \ra 0, \epsilon \ra +0,
     \]
 поскольку $f_\delta$ локально интегрируема и
-$\meas (\B_\varepsilon(0)) \ra0$ при $\epsilon \ra\ 0$.\\ В неравенстве противоречие, указывающее на, что $f_{\delta} \notin L_1^{loc}(\R^n)$.
+$\mes (\B_\varepsilon(0)) \ra0$ при $\epsilon \ra\ 0$.\\ В неравенстве противоречие, указывающее на, что $f_{\delta} \notin L_1^{loc}(\R^n)$.
 \end{proof}
 \begin{definition}
     Пусть есть $\{\lambda_m\} \subset D'(\R^n)$ и есть $\lambda \in D'(\R^n)$.
@@ -96,9 +96,12 @@ $\meas (\B_\varepsilon(0)) \ra0$ при $\epsilon \ra\ 0$.\\ В неравенс
     Тогда $f_n \xrightarrow{D'} \delta, n \ra +\infty$. Покажем это. \\
     Пусть $\phi \in D(\R)$. $f_n - \delta$ действует на $\phi$ следующим образом:
     \[
-    |\lgl f_n - \delta, \phi \rgl | = |\int_{-1/2n}^{1/2n}n \phi(x)dx - \phi(0)| =
-    |\int_{-1/2n}^{1/2n}n(\phi(x) - \phi(0))dx|. \tag{\ast}
+    \left| \left\langle f_n - \delta,\, \phi \right\rangle \right| 
+    = \left| \int_{-1/2n}^{1/2n} n \phi(x)\, dx - \phi(0) \right| 
+    = \left| \int_{-1/2n}^{1/2n} n \left( \phi(x) - \phi(0) \right)\, dx \right|.
+    \tag{*}
     \]
+
     По теореме Лагранжа:
     \[\exists \epsilon \in (0, x): \phi(x) - \phi(0) = x \cdot  \phi'(\epsilon) \leq x \cdot (\underset{-\frac{1}{2n} \leq \epsilon \leq \frac{1}{2n}}{\max} \phi'(\epsilon)) \leq x \cdot \max \phi'(\epsilon).\]
 
@@ -124,7 +127,7 @@ $\meas (\B_\varepsilon(0)) \ra0$ при $\epsilon \ra\ 0$.\\ В неравенс
     \begin{note}
         Стоит заметить, что второе условие из первого не следует, в силу возможности <<взаимного погашения>> друг друга положительной и отрицательной частей при сколь угодно больших $x$.
     \end{note}
-    Тогда она является регуляризацией $\delta$ $(f_m \xrightarrow[D'(\R)]{} \delta,$ $m \ra \+\infty)$.
+    Тогда она является регуляризацией $\delta$ $(f_m \xrightarrow[D'(\R)]{} \delta, \ m \ra +\infty)$.
 \end{theorem}
 \begin{proof}
     Рассмотрим следующий интеграл с переменным верхним пределом:
