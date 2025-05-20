@@ -42,10 +42,14 @@
     $\forall \epsilon > 0$ найдем $\delta(\epsilon)$ такое, что $I_1(\delta) < \frac{\epsilon}{2}$. Затем, при фиксированном $\delta(\epsilon)$ выберем $N(\epsilon) \in \N$ таким, что $\forall n > N(\epsilon) \ I_2(\delta) \le \frac{\epsilon}{2}$. \newline 
     Итого, получается, $\forall \epsilon > 0 \ \exists N(\delta(\epsilon)) = \tilde{N}(\epsilon)$ такой, что $\forall n > \tilde{N}(\epsilon) \hookrightarrow I_n < \epsilon$.
 \end{proof}
-
 \begin{definition}
-    Функция $T_n(x) = c_0 + \sum\limits_{k = 0}^{n} a_k \cos(kx) + \sum\limits_{k = 0}^{n} \sin (kx)$ называется тригонометрическим полиномом степени $n$, если $|a_n| + |b_n| \neq 0$.
+    Функция
+    \[
+        T_n(x) = a_0 + \sum_{k=1}^{n}\bigl(a_k\cos(kx) + b_k\sin(kx)\bigr)
+    \]
+    называется тригонометрическим полиномом степени \(n\), если $|a_n| + |b_n| \neq 0.$
 \end{definition}
+
 
 \begin{corollary}[Первая теорема Вейерштрасса]
     Пусть $f \in C([-\pi, \pi]])$ и $f(-\pi) = f(\pi)$. Тогда, $\forall \epsilon > 0 \ \exists$ тригонометрический полином $T_{\epsilon}$ такой, что $||f - T_{\epsilon}||_{C([-\pi, \pi])} \le \epsilon$.
@@ -103,7 +107,7 @@
      + v(a + 0) \int\limits_{a}^{\zeta} e^{-ixy} dx + v(b - 0) \int\limits_{\zeta}^{b} e^{-ixy} dx.
     $$
     Ключевое наблюдение: если $f \in BV(\R)$ и интрегрируема, то $f(x) \rightarrow 0, x \rightarrow \infty$. \newline
-    Пусть $f \nrightarrow 0$. Тогда $\exists С > 0$ такой, что $\forall \delta > 0 \ \exists \ x : |f(x)| > C$. Но при этом, $f \in L_1(\R)$, так как интегрируема. Тогда, $\exists \ \tilde{x} : |\tilde{x}| > \delta \  |f(\tilde{x})| < \frac{C}{2}$. Получаем противоречие, так как можно получить бесконечный набор точек $\{x_n\}$ и $\{\tilde{x}_n\}$, которые мы набираем по описанному выше условию. \newline
+    Пусть $f \nrightarrow 0$. Тогда $\exists C > 0$ такой, что $\forall \delta > 0 \ \exists \ x : |f(x)| > C$. Но при этом, $f \in L_1(\R)$, так как интегрируема. Тогда, $\exists \ \tilde{x} : |\tilde{x}| > \delta \  |f(\tilde{x})| < \frac{C}{2}$. Получаем противоречие, так как можно получить бесконечный набор точек $\{x_n\}$ и $\{\tilde{x}_n\}$, которые мы набираем по описанному выше условию. \newline
     Ограничим: 
     $$
     \left| \int\limits_{a}^{\xi} e^{-ixy} dx \right| < \frac{2}{|y|} \hspace{100pt} \left| \int\limits_{\xi}^{b} e^{-ixy} dx \right| < \frac{2}{|y|}
@@ -129,7 +133,7 @@
 \end{theorem}
 
 \begin{corollary}
-    Пусть функция $f: \R \rightarrow \R$ ~---~ $2\pi$-периодическая, такая, что $f^{(k - 1)} \in AC([-\pi, \pi])$. Пусть $f^{(k)}$ почти всюду может быть изменена на множестве меры ноль таким образом, что $f^(k) \in BV([-\pi, \pi])$. Тогда $c_n(f) = \frac{1}{2\pi} \int\limits_{-\pi}^{\pi} f(x) e^{-inx} dx = O\left(\frac{1}{n^{k + 1}}\right)$.
+    Пусть функция $f: \R \rightarrow \R$ ~---~ $2\pi$-периодическая, такая, что $f^{(k - 1)} \in AC([-\pi, \pi])$. Пусть $f^{(k)}$ почти всюду существует и может быть изменена на множестве меры нуль таким образом, что $f^{(k)} \in BV([-\pi, \pi])$. Тогда $c_n(f) = \frac{1}{2\pi} \int\limits_{-\pi}^{\pi} f(x) e^{-inx} dx = O\left(\frac{1}{n^{k + 1}}\right)$.
 \end{corollary}
 
 \begin{proof}
