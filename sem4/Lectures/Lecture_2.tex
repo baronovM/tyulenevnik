@@ -86,7 +86,7 @@ $$
     \[
     \forall x \in X \exists! \{\alpha_k\}_{k=1}^{\infty} \in \R \hookrightarrow \| x - \sum_{k=1}^{N} \alpha_k(x) e_k\| \to 0, N \to \infty
     \]
-    То есть $x = \sum\limits_{k=1}^{\infty} \alpha_k(x) e_k$. Из единсвтенности в определнии следует линейная лезависимость системы векторов.
+    То есть $x = \sum\limits_{k=1}^{\infty} \alpha_k(x) e_k$. Из единственности в определнии следует линейная независимость системы векторов.
 \end{definition}
 
 
@@ -109,19 +109,21 @@ $$
 
 Заметим, что
 \begin{equation}
+\label{eqq.6}
 \begin{split}
-&S_{n}[f](x)=\frac{1}{2\pi}\int\limits_{-\pi}^{\pi}f(t)\,dt + \frac{1}{\pi}\sum\limits_{k=1}^{n}\int\limits_{-\pi}^{\pi}f(t)\cos(kt)\cos(kx)\,dt +
-\frac{1}{\pi}\sum\limits_{k=1}^{n}\int\limits_{-\pi}^{\pi}f(t)\sin(kt)\sin(kx)\,dt\\
-&=\frac{1}{\pi}\int\limits_{-\pi}^{\pi}f(t)(\frac{1}{2}+\sum\limits_{k=1}^{n}\cos(k(t-x)))\,dt =\int\limits_{-\pi}^{\pi}f(t)D_{n}(t-x)\,dt,
+S_n[f](x) &= \frac{1}{2\pi} \int\limits_{-\pi}^{\pi} f(t)\,dt 
++ \frac{1}{\pi} \sum\limits_{k=1}^{n} \int\limits_{-\pi}^{\pi} f(t) \cos(kt) \cos(kx)\,dt 
++ \frac{1}{\pi} \sum\limits_{k=1}^{n} \int\limits_{-\pi}^{\pi} f(t) \sin(kt) \sin(kx)\,dt \\
+&= \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(t) \left( \frac{1}{2} + \sum\limits_{k=1}^{n} \cos(k(t - x)) \right) dt 
+= \int\limits_{-\pi}^{\pi} f(t) D_n(t - x)\,dt,
 \end{split}
 \end{equation}
-где $D_{n}$ -- ядро Дирихле, то есть
+где \( D_n \) — ядро Дирихле:
 \begin{equation}
-\begin{split}
-&D_{n}(x):=\frac{1}{2}+\sum\limits_{k=1}^{n}\cos(kx) = \frac{1}{2\sin(\frac{x}{2})}\Bigl[\sin\Bigl(\frac{x}{2}\Bigr)+\sum\limits_{k=1}^{n}\sin\Bigl(k(x+\frac{1}{2})\Bigr)-\sin\Bigl(k(x-\frac{1}{2})\Bigr)\Bigr]\\
-&=\frac{\sin(n+\frac{1}{2})x}{2\pi\sin(\frac{x}{2})}.
-\end{split}
+\label{eqq.7}
+D_n(x) := \frac{1}{\pi} \left( \frac{1}{2} + \sum\limits_{k=1}^{n} \cos(kx) \right) = \frac{1}{\pi} \cdot \frac{\sin\left( \left(n + \frac{1}{2}\right) x \right)}{2 \sin\left( \frac{x}{2} \right)}.
 \end{equation}
+
 
 Свойства ядра Дирихле:
 
@@ -133,7 +135,7 @@ $$
 
 Докажем теперь важную теорему Римана--Лебега об осцилляции.
 \begin{note}
-    (От редакторов) Эту теорему более наглядной делает ее более простая версия, без компелксных экспонент, а с тригонометрическими функциями, тогда мы понимаем что $y=\omega$ это "частота колебаний" нашего синуса:
+    (От редакторов) Эту теорему более наглядной делает ее более простая версия, без комплексных экспонент, а с тригонометрическими функциями, тогда мы понимаем что $y=\omega$ это "частота колебаний" нашего синуса:
 
 Функция \( f \) абсолютно интегрируема на конечном или бесконечном интервале \( (a, b) \). Тогда
 \[
@@ -144,6 +146,7 @@ $$
 \begin{theorem}
 Пусть $E \subset \mathbb{R}^{n}$--измеримое по Лебегу множество и $f \in L_{1}(E)$. Тогда
 \begin{equation}
+\label{Th.Riemann_Lebesgue}
 I(y):=\int\limits_{E}f(x)e^{i<x,y>}\,dx \to 0, \quad \|y\| \to +\infty.
 \end{equation}
 \end{theorem}
@@ -167,6 +170,7 @@ $$
 $$
 \lim\limits_{k \to \infty}a_{k}(f) = \lim\limits_{k \to \infty}b_{k}(f) = \lim\limits_{k \to \infty}c_{k}(f) = 0.
 $$
+
 \end{corollary}
 
 \subsection{Вторая теорема о среднем}
@@ -263,5 +267,3 @@ G(\xi) = \frac{1}{f(a)}\int_{a}^{b}f(x)g(x)\,dx.
 \end{equation}
 
 Теорема полностью доказана.
-
-%\end{document}
