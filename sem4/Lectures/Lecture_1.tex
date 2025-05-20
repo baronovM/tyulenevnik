@@ -89,7 +89,7 @@ $$ \forall \epsilon > 0 \  \exists N (\epsilon) \in \N: \forall n \geq N, \foral
 		\]\[
 			\forall \epsilon > 0\; \exists M \in \N: \forall n, m \geq M \emb \|x^n - x^m\| < \frac{\epsilon}{2}.
 		\]\[
-			\forall \epsilon > 0\; \exists N := \max\{L, M\} \in \N: \forall n \geq N	 \emb \| x - x^n \| \leq \| x - x^{N_m}\| + \| x^{N_m} - x^n\| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.
+			\forall \epsilon > 0\; \exists N := \max\{L, M\} \in \N: \forall n \geq N	 \emb \| x - x^n \| \leq \| x - x^{N_M}\| + \| x^{N_M} - x^n\| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.
 		\]
 \end{proof}
 \begin{theorem}
@@ -120,7 +120,7 @@ $$ \forall \epsilon > 0 \  \exists N (\epsilon) \in \N: \forall n \geq N, \foral
 	Положим $F(x) := \sum\limits_{k=1}^\infty f_k(x)$, эта функция корректно определена $\mu$-п.в. При этом $\mu$ ~---~ полная мера (меру считаем полной, если не было оговорено обратного). \[
 		F(x) = \lim_{n \ra \infty} \sum_{k=1}^{n} f_k(x), \text{ этот предел существует для $\mu$-п.в. } x\in X.
 	\]
-	Остаётся доказать, что $\left\|F - \sum\limits_{k=1}^\infty f_k \right\|_p \ra 0, n \ra \infty$. Обозначим $n$-ый член этой последовательности как $J_n$.
+	Остаётся доказать, что $\left\|F - \sum\limits_{k=1}^n f_k \right\|_p \ra 0, n \ra \infty$. Обозначим $n$-ый член этой последовательности как $J_n$.
 	% Тут -----------------------------
 	\[
 		J_n = \left( \int\limits_X \bigg|\sum_{k=n+1}^\infty f_k(x) \bigg|^p d\mu(x) \right)^{1/p}
