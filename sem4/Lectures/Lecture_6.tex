@@ -102,24 +102,24 @@
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    Импликация $1) \Rightarrow 2)$ очевидна в силу теоремы о единственности: $\alpha_k$ будут просто коэффициентами Фурье своей суммы. \\
-    Импликация $2) \Rightarrow 3)$ очевидна в силу неравенства Бесселя. \\
-    Покажем что $3) \Rightarrow 1)$.
+    Импликация $1) \Rightarrow 2)$ очевидна в силу теоремы о единственности: если $f = \sum_{k=1}^{\infty}\alpha_k e_k$, то $\forall k \in \N \hookrightarrow\alpha_k = \alpha_k(f)$. То есть $\alpha_k$ будут просто коэффициентами Фурье своей суммы. \\
+    Импликация $2) \Rightarrow 3)$ Следует в силу неравенства Бесселя. \\
+    Покажем что $3) \Rightarrow 1)$. (Именно тут нужна Гильбертовость, полнота пространства).
     Пусть, без ограничения общности, $m$ и $n$~---~натуральные и $m > n$.
     Тогда
     \begin{equation*}
-        \bigr\langle \sum\limits_{k = n}^{m} \alpha_k e_k, \sum\limits_{k = n}^m \alpha_k e_k \bigr\rangle = \big\|\sum\limits_{k = n}^m \alpha_k e_k\big\|.
+        \bigr\langle \sum\limits_{k = n}^{m} \alpha_k e_k, \sum\limits_{k = n}^m \alpha_k e_k \bigr\rangle = \big\|\sum\limits_{k = n}^m \alpha_k e_k\big\|^2.
     \end{equation*}
     В силу ортогональности системы и Критерия Коши сходимости числового ряда
     \[
-        \sum\limits_{k = n}^m |\alpha_k|^2\|e_k\|^2 \rightarrow 0, n, m \ra +\infty.
+        \sum\limits_{k = n}^m |\alpha_k|^2 \cdot\|e_k\|^2 \rightarrow 0, n, m \ra +\infty.
     \]
     Тогда последовательность частичных сумм ряда фундаментальна и он сходится к $f \in H$, поскольку $H$~---~полно.
     Импликация доказана.
 \end{proof}
 \begin{definition}
     Пусть $E = (E,  \|\cdot\|)$~---~ЛНП.
-    Система векторов $\{e_n\}_{n = 1}^{+\infty}$ называется полной в $E$, если $\forall f \ \forall \epsilon > 0 \exists c_1, \ldots, c_n \in \R$
+    Система векторов $\{e_n\}_{n = 1}^{+\infty}$ называется полной в $E$, если $\forall f \in E \ \forall \epsilon > 0 \exists c_1, \ldots, c_n \in \R$
     такая, что $\|f - \sum\limits_{k = 1}^n c_k e_k\| < \epsilon$.
 \end{definition}
 \begin{note}
@@ -136,7 +136,7 @@
 \end{note}
 \begin{definition}
     Пусть $E = (E, \langle \cdot, \cdot \rangle)$~---~евклидово пространство.
-    Ортоональная система $\{e_n\}_{n = 1}^{+\infty}$ называется замкнутой, если из ортогональности $f$ каждому $e_k$ следует то, что $f = 0$.
+    Ортогональная система $\{e_n\}_{n = 1}^{+\infty}$ называется замкнутой, если из ортогональности $f$ каждому $e_k$ следует то, что $f = 0$.
 \end{definition}
 \begin{theorem}[<<Основная>> теорема.]
     Пусть $H = (H, \langle \cdot, \cdot \rangle)$~---~гильбертово пространство.
@@ -185,7 +185,7 @@
     Зафиксируем $f \in H$.
     Из неравенства Бесселя следует:
     \[
-        \sum\limits_{k = 1}^{+\infty} |\alpha_k(f)|\|e_k\|^2 \leq \|f\|^2 < +\infty.
+        \sum\limits_{k = 1}^{+\infty} |\alpha_k(f)|^2\cdot\|e_k\|^2 \leq \|f\|^2 < +\infty.
     \]
     По теореме Рисса-Фишера ряд $\sum\limits_{k = 1}^{+\infty} \alpha_k(f) e_k$ сходится к некоторому элементу $S \in H$.
     Заметим, что $\langle S, e_k \rangle = \alpha_k(f) \langle e_k, e_k \rangle$~---~по теореме о единственности.
