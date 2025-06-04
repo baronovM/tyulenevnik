@@ -119,21 +119,69 @@ $$||f - f_h|| \leq ||f - g|| + ||g - g_h|| + ||f_h - g_h|| \ \forall g \in L_p(\
     \end{enumerate}
 \end{proof}
 
-\subsection{Аппроксимативная едининца}
-
+\subsection{Аппроксимативная единица.}
 \begin{definition}
-    Назовем семейство функций $\{w_t(x)\}_{t\in(0, +\infty)}$ аппроксимативной единицей, если $\forall t > 0:$
-    \begin{enumerate}
-        \item $$w_t(x) \geq 0, \forall x \in \R^n$$
-        \item $$\int_{\R^n}w_t(x) dx = 1$$
-        \item $$\forall \delta > 0 \lim_{t \rightarrow +0} \int_{\R^n \setminus B_{\delta}(0)} w_t(x) dx = 0$$
-    \end{enumerate}
+    Семейство функций $\{w_t\}_{t \in (0, +\infty)}$ называется аппроксимативной единицей если
+    \begin{itemize}
+        \item $\forall t \in (0, +\infty) \hookrightarrow w_t \geq 0$.
+        \item $\forall t \in (0, +\infty) \hookrightarrow \int_{\R^n} w_t d\LL^n = 1$
+        \item Выполнено фокусирующее свойство: \[\forall \delta > 0  \exists \lim\limits_{t \ra +0} \int_{\R^n \setminus B_\delta(0)} w_{t}d\LL^n = 0.\]
+    \end{itemize}
 \end{definition}
-
-\begin{example}
-    Соболевской шапкой назовем следующую функцию:
-    $$\psi(x) = \begin{cases}
-        e^{-\frac{1}{1-||x||^2}}, \  x \in(-1, 1) \\
-        0, \ x \notin (-1, 1)
-    \end{cases}$$
+\begin{example}[Соболевская аппроксимативная единица]
+    Соболевской <<шапкой>> будем называть функцию
+    \[
+        \psi(x) = \begin{cases}
+                      \exp\biggr({-\dfrac{1}{1 - \|x^2\|}}\biggr), & \|x\| < 1 \\
+                      0, & \text{ иначе.}
+        \end{cases}
+    \]
+    Функция $\psi \in C^{+\infty}$ и её носитель -- замкнутый единичный шар. \\
+    Пусть $\int_{\R^n} \psi(x)dx = c$. \\
+    Обозначим за $w = \psi/c$.
+    Тогда $w$ -- неотрицательная, бесконечно гладкая функция с компактным носителем и единичным интегралом по всему пространству. \\
+    Положим по определению $w_\epsilon(x) = w(x/\epsilon)/\epsilon^n$.
+    Семейство функций $\{w_\epsilon\}_{\epsilon \in (0, +\infty)}$ является аппроксимативной единицей.
 \end{example}
+\begin{corollary}
+    Пусть $f \in L_p(\R^n)$.
+    Усреднением $f$ по Соболеву будем называть функцию $f_\epsilon = f * w_\epsilon$.
+    По предыдущей теореме, $f_\epsilon$ -- всюду корректно определённая равномерно непрерывная функция.
+\end{corollary}
+\begin{note}
+    Далее в курсе будет доказано, что $f_\epsilon \in C^{+\infty}$.
+\end{note}
+\begin{theorem}
+    Пусть $p \in [1, +\infty)$ и $f \in L_p(\R^n)$. Тогда
+    \[
+        \forall \epsilon > 0 \exists h \in C^{+\infty}_0(\R^n) \hookrightarrow \|f - h\|_p \leq \epsilon.
+    \]
+\end{theorem}
+\begin{proof}
+    Зафиксируем $\epsilon > 0$.
+    В силу свойств интеграла Лебега
+    \[
+        \exists R > 0 \hookrightarrow \biggr(\int_{\R^n \setminus B_R(0)}|f|^p(x)dx \biggr)^{1/p} < \epsilon.
+    \]
+    Рассмотрим $g = \chi_{B_R(0)}f$.
+    Тогда при достаточно малых $\delta$ верно, что
+    \[
+        \|g * w_\delta - g\|_p < \epsilon.
+    \]
+    Поскольку $\supp w_\delta \subset \overline{B}_\delta(0)$ и $\supp g * w_\delta \subset \overline{B}_{R + \delta}(0)$. \\
+    И тогда, по замечанию, $g * w_\delta \in C^{+\infty}_0(\R^n)$. \\
+    Осталось показать что $\|g * w_\delta - g\|_p \ra 0, \delta \ra +0$.
+    По определению свёртки:
+    \begin{multline*}
+        \biggr(\int_{\R^n} |g * w_\delta(x) - g(x)|^pdx \biggr)^{1/p} = \biggr(\int_{\R^n} \biggr|\int_{\R^n} g(x - y)w_{\delta}(y)dy - 1 \cdot g(x)\biggr|^p dx \biggr)^{1/p} =
+        \\ = \biggr(\int_{\R^n} \biggr|\int_{\R^n} g(x - y)w_\delta(y)dy - \int_{\R^n}g(x)w_\delta(y)dy \biggr|^p dx \biggr)^{1/p} = \biggr(\int_{\R^n}\biggr|\int_{\R^n} (g(x - y) - g(y))w_{\delta}(y)dy\biggr|^p dx\biggr)^{1/p} \leq \\
+        \leq \biggr( \int_{\R^n} \biggr( \int_{\R^n} |g(x - y) - g(x)|w_{\delta}^{1/p}(y)w_{\delta}^{1/p'}(y)dy \biggr)^p dx  \biggr)^{1/p} \leq
+        \\ \leq \biggr(\int_{\R^n} \biggr(\int_{\R^n} |g(x - y) - g(x)|^p w_\delta(y)dy \biggr)dx \biggr)^{1/p} \cdot \biggr(\int_{\R^n} w_{\delta}^{p'/p'}(y)dy\biggr)^{p/p'} = \\
+        = \biggr(\int_{\R^n} \biggr( \int_{\R^n} |g(x - y) - g(x)|^p w_\delta(y)dy \biggr) dx \biggr)^{1/p} \leq \biggr(\int_{\R^n}  w_\delta(y) \int_{\R^n}|g(x - y) - g(x)|^p dx dy\biggr)^{1/p}.
+    \end{multline*}
+    В силу непрерывности интеграла Лебега по сдвигу $\int_{\R^n} |g(x - y) - g(x)|^p dx \ra 0. y \ra 0$, а значит
+    \[
+        \forall \epsilon > 0 \exists \delta(\epsilon) > 0 \forall \|y\| < \delta(\epsilon) \hookrightarrow \int_{\R^n} |g(x - y) - g(x)|^p dx < \epsilon.
+    \]
+    Из чего и следует требуемая оценка.
+\end{proof}
