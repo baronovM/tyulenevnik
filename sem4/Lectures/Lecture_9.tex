@@ -1,4 +1,4 @@
-\subsubsection{Интегрирование несобственного интеграла по параметру.}
+\subsection{Интегрирование несобственного интеграла по параметру.}
 \begin{theorem}
     Пусть $Y = (Y, \NN, \nu)$ -- пространство конечной меры и задана
     \[
@@ -38,7 +38,7 @@
     (Последняя сходимость получается из равномерной сходимости интеграла, то есть $\sup\limits_{y \in Y} |\int_t^b f(x, y)dx| \ra 0, t \ra b - 0$). \\
     Что и показывает необходимое нам равенство.
 \end{proof}
-\subsubsection{Дифференцирование несобственного интеграла по параметру.}
+\subsection{Дифференцирование несобственного интеграла по параметру.}
 \begin{theorem}
     Пусть $f \in C([a, b) \times \lceil c, d \rfloor)$ и $\forall (x, y) \in [a, b) \times \lceil c, d \rfloor$ существует $f'_y(x, y)$ и, более того, $f'_y \in C([a, b) \times \lceil c, d \rfloor)$.
     Пусть $\int_a^{\ra b} f'_y(x, y)dx$ равномерно сходится на $\lceil c, d \rfloor$, а $\int_a^{\ra b} f(x, y)dx$ сходится всюду поточечно. \\
@@ -112,16 +112,16 @@
     Эти два следствия уже возникали ранее, второе -- доказано в секции про аппроксимативные единицы.
 \end{note}
 
-\subsubsection{Равномерная сходимость интегралов по параметру.}
+\subsection{Равномерная сходимость интегралов по параметру.}
 \begin{theorem}[Признак Дирихле.]
-    Пускай есть некоторый $[a, b)$ (конечный или бесконечный) и параметрическое множество $Y$ абстрактной природы.
-    Пусть даны функции $g, f: [a, b) \to Y \ra \R$ такие, что
-    \begin{itemize}
-        \item $\forall y \in Y \hookrightarrow f(\cdot, y) \in C([a, b))$ и $g(\cdot, Y) \in C^1([a, b))$.
-        \item $g(x, y) \underset{Y}{\rr} 0, x \ra b - 0$.
-        \item $\exists x_0 \in (a, b): g'_x(x, y) \leq 0 \forall x > x_0$ и $\forall y \in Y$.
-        \item Равномерная ограниченность первообразной: $M = \sup\limits_{y \in Y} \sup\limits_{b' \in (a, b)} \biggr|\int_a^{b'}f(x, y)dx\biggr| < +\infty$.
-    \end{itemize}
+    Пусть $-\infty <  a <  b \leq + \infty$, $Y$~---~параметрическое множество.
+    Пусть функции $f, g$: $[a, b) \times Y \to \mathbb{R}$:
+    \begin{enumerate}
+        \item $\forall y \in Y \hookrightarrow f(\cdot, y) \in C([a, b))$ и $g(\cdot, Y) \in C^1([a, b))$;
+        \item $g(x, y) \underset{Y}{\rr} 0$, $x \rightarrow b - 0$.
+        \item $\exists x_0 \in (a, b): g'_x(x, y) \leq 0\  \forall x > x_0$ и $\forall y \in Y$.
+        \item Равномерная ограниченность первообразной: $\displaystyle M = \sup\limits_{y \in Y} \sup\limits_{b' \in (a, b)} \biggr|\int_a^{b'}f(x, y)dx\biggr| < +\infty$.
+    \end{enumerate}
     Тогда \[
               \int_a^{\ra b} f(x, y)g(x, y)dx.
     \]
@@ -152,11 +152,17 @@
     \end{multline*}
     Что и даёт нам равномерную сходимость интеграла.
 \end{proof}
-\begin{theorem}[Признак Вейерштрасса] % аккуратно переформулировать
-    Пусть задан полуинтервал $[a, b)$, абстрактное параметрическое множество $Y$ и функция $f: [a, b) \times Y \to \R$ такая, что $\forall y \in Y \forall b' \in (a, b) \hookrightarrow f \in L_1([a, b'])$.
-    Пусть $\exists g \in L_1([a, b))$ такая, что $g \geq 0$ п.в. на $[a, b)$.
-    Пусть $\forall y \in Y \hookrightarrow |f(x, y)| \leq g(x)$.
-    Тогда $\int_a^{\ra b} f(x, y)dx$ равномерно сходится по $Y$.
+
+\begin{theorem}[Признак Вейерштрасса]
+    Пусть $-\infty < a < b \leq +\infty$, $Y$~---~абстрактное параметрическое множество. Пусть
+    \begin{enumerate}
+        \item[$\bullet$] $f$: $[a, b) \times Y \to \mathbb{R}$: $\forall y \in Y \hookrightarrow f \in L_1 ([a, b']) \ \forall b' \in (a, b)$;
+        \item[$\bullet$] $\exists g \in L_1 ([a, b)),$ $g \geq 0$ почти всюду на $[a, b)$: $|f(x, y)| \leq g(x)$ $\forall y \in Y$ при почти всех $x \in [a, b)$.
+    \end{enumerate}
+    Тогда \[
+              \int_a^{\ra b} f(x, y) \text{d}x.
+    \]
+    равномерно сходится на множестве $Y$.
 \end{theorem}
 \begin{proof}
     Из условия существования мажоранты и абсолютной непрерывности интеграла Лебега:
@@ -166,17 +172,16 @@
     И таким образом мы и получаем равномерную сходимость интеграла.
 \end{proof}
 \begin{theorem}[Критерий Коши]
-    Пусть $Y$ -- параметрическое множество и $[a, b)$ -- полуинтервал.
-    Пусть $\forall y \in Y \forall b' \in (a, b) \hookrightarrow f(\cdot, y) \in L_1([a, b'])$.
+    Пусть $-\infty < a < b \leq +\infty$, $Y$~---~абстрактное параметрическое множество. Пусть $\forall y \in Y \ \forall b' \in (a, b) \hookrightarrow f(\cdot, y) \in L_1([a, b'])$.
     Тогда следующие утверждения эквивалентны:
-    \begin{itemize}
-        \item $J(y) = \int_a^{\ra b} f(x, y)dx$ равномерно сходится на $Y$
-        \item $\forall \epsilon > 0 \exists b(\epsilon) \in (a, b) \forall b', b'' \forall y \in Y \in (b(\epsilon), b) \hookrightarrow$
+    \begin{enumerate}
+        \item[$\bullet$] $\displaystyle J(y) = \int_a^{\ra b} f(x, y)dx$ равномерно сходится на $Y$;
+        \item[$\bullet$] $\forall \epsilon > 0 \ \exists b(\epsilon) \in (a, b) \ \forall b', b'' \in (b(\epsilon), b) \ \forall y \in Y \hookrightarrow$
         \[
             \biggr|\int_{b'}^{b''} f(x, y)dx \biggr| < \epsilon.
         \]
-    \end{itemize}
-\end{theorem} % Чуток поправить потом как-нибудь.
+    \end{enumerate}
+\end{theorem}
 \begin{proof}
     Пусть есть равномерная сходимость интеграла. \\
     Тогда $\forall \epsilon > 0 \exists b(\epsilon/2) \in (a, b)$:
