@@ -101,6 +101,31 @@ $$
 
 Теорема доказана.
 
+\begin{corollary}[Принцип локализации для рядов Фурье]
+	Пусть даны $2\pi$-периодические функции $f, g \in L_1([-\pi, \pi])$. Тогда, если для некоторой точки $x$ $\exists \delta > 0$ такой, что для $f|_{(x - \delta, x + \delta)} \equiv g|_{(x - \delta, x + \delta)}$, то ряды Фурье этих функций в точке $x$ сходятся и расходятся одновременно.
+\end{corollary}
+\begin{theorem}[Признак Дини]
+	Пусть дана $2\pi$-периодическая функция $f \in L_1([-\pi, \pi])$ и для некоторой точки $x$ существуют $\delta \in (0, \pi)$ и $S \in \R$ такие, что \[
+																																							\int_0^\delta |f(x + u) + f(x - u) - 2S|\dfrac{du}{u} < +\infty.
+	\]
+	то ряд Фурье функции $f$ сходится в точке $x$ к $S$.
+\end{theorem}
+\begin{proof}
+	В силу критерия сводимости ряда Фурье в точке, необходимо и достаточно показать \[
+																						\lim\limits_{n \rightarrow +\infty} \int_0^\delta \biggr(\dfrac{f(x + u) + f(x - u)}{2} - S\biggr)\dfrac{\sin nu}{u}du = 0.
+	\]
+	Поскольку \begin{multline*}
+				  \biggr|\int_0^\delta \biggr(\dfrac{f(x + u) + f(x - u)}{2} - S\biggr)\dfrac{\sin nu}{u}du\biggr| \leq \\ \leq \dfrac{1}{2}\int_0^\delta |f(x + u) + f(x - u) - 2S|\dfrac{|\sin nu|}{u}du \leq \\ \leq \dfrac{1}{2}\int_0^\delta \dfrac{|f(x + u) + f(x - u) - 2S|}{u}du < +\infty.
+	\end{multline*}
+	То если мы зафиксируем $\epsilon > 0$ в силу абсолютной непрерывности интеграла Лебега найдётся $\delta(\epsilon)$ такой, что \[
+																																	  \dfrac{1}{2}\int_0^\delta |f(x + u) + f(x - u) - 2S|\dfrac{du}{u} < \dfrac{\epsilon}{2}.
+	\]
+	А значит по теореме Римана-Лебега \[
+										  \int_{\delta(\epsilon)}^\delta \dfrac{f(x + u) + f(x - u) - 2S}{u}\sin nu\cdot du \rightarrow 0, n \rightarrow +\infty.
+	\]
+	Поскольку данные оценки верны для любого $\epsilon$, то теорема доказана.
+\end{proof}
+
 Теперь установим признак Дирихле--Жордана.
 
 \begin{theorem}
