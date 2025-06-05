@@ -19,16 +19,16 @@
 \begin{proof} Разобьем доказательство на шаги:
 
 \begin{enumerate}
-    \item Пусть $f = I_{G},$ где множество $G$ имеет конечную меру. Тогда из определения верхней меры следует:
-    $$\forall \varepsilon > 0 \ \exists \{P_{k}\}_{k = 1}^{\infty} : \ \lambda^n(G) + \varepsilon \geq \sum_{k  =1}^{\infty}\lambda(P_k).$$
+    \item Пусть $f = \chi_{G},$ где множество $G$ имеет конечную меру. Тогда из определения верхней меры следует:
+    $$\forall \varepsilon > 0 \ \exists \{P_{k}\}_{k = 1}^{\infty} : \ \LL^n(G) + \varepsilon \geq \sum_{k  =1}^{\infty}\LL(P_k).$$
     Теперь из сходимости ряда мер ячеек следует, что можно взять такой большой номер $N:$
-    $$\sum_{k = N + 1}^{\infty} \lambda^n(P_k) < \varepsilon.$$
+    $$\sum_{k = N + 1}^{\infty} \LL^n(P_k) < \varepsilon.$$
     По теореме о дизъюнктном представлении в полукольце существует набор непересекающихся $\{Q_l\}_{l = 1}^{m}: \ P_1 \cup \ldots \cup P_N = \bigsqcup_{l = 1}^mQ_l.$ Обозначим за $A = \bigcup_{i = 1}^{\infty} P_k,  B = P_1 \cup \ldots \cup P_N.$ Тогда  
-    $$I_{B} = \sum_{l = 1}^{m}I_{Q_l}.$$
-    Возьмем в качестве приближающей ступенчатой функции $I_{B}.$ Осталось доказать, что она приближает с точностью до $\varepsilon$ по норме.
-    $$||f - h||_{L_p} = \left( \int_{\R^n} |I_G(x) - I_B(x)|^p dx\right)^{\frac{1}{p}} \leq$$
-    $$\leq \left( \int_{\R^n} |I_G(x) - I_A(x)|^p dx\right)^{\frac{1}{p}} + \left( \int_{\R^n} |I_A(x) - I_B(x)|^p dx\right)^{\frac{1}{p}} = $$
-    $$= \left( \lambda^n(A \setminus G)\right)^{\frac{1}{p}} + \left( \lambda^n(A \setminus B) \right)^{\frac{1}{p}} \leq 2\varepsilon^{\frac{1}{p}}.$$
+    $$\chi_{B} = \sum_{l = 1}^{m}\chi_{Q_l}.$$
+    Возьмем в качестве приближающей ступенчатой функции $\chi_{B}.$ Осталось доказать, что она приближает с точностью до $\varepsilon$ по норме.
+    $$||f - h||_{L_p} = \left( \int_{\R^n} |\chi_G(x) - \chi_B(x)|^p dx\right)^{\frac{1}{p}} \leq$$
+    $$\leq \left( \int_{\R^n} |\chi_G(x) - \chi_A(x)|^p dx\right)^{\frac{1}{p}} + \left( \int_{\R^n} |\chi_A(x) - \chi_B(x)|^p dx\right)^{\frac{1}{p}} = $$
+    $$= \left( \LL^n(A \setminus G)\right)^{\frac{1}{p}} + \left( \LL^n(A \setminus B) \right)^{\frac{1}{p}} \leq 2\varepsilon^{\frac{1}{p}}.$$ 
     \item Если $f$ -- простая, то есть линейная комбинация индикаторов множеств конечной меры, явно сводится к пункту $1$ с помощью неравенства треугольника.
     \item $f \in L_p(E)$ произвольная, тогда из определения интеграла Лебега можно ее приблизить простой с точностью до $\varepsilon / 2, $а простые мы уже умеем приближать ступенчатыми с точностью до $\varepsilon / 2.$ Осталось применить неравенство треугольника и требуемое будет доказано.
 \end{enumerate}
@@ -49,8 +49,8 @@ $$||f - f_h|| \leq ||f - g|| + ||g - g_h|| + ||f_h - g_h|| \ \forall g \in L_p(\
     $$||f_h - g_h|| = \int_{\R^n}|f(x - h) - g(x - h)| dx = \{\text{выполним замену переменной } t = x - h\}=$$
     $$= \int_{\R^n} |f(t) - g(t)| dt = ||f - g||$$
     Тогда в качестве $g$ возьмем ступенчатую функцию, которая приближает $f.$ Осталось теперь доказать, что $g$ можно приблизить $g_h.$ Из теоремы о дизъюнктном представлении следует, что $g$ можно представить в виде:
-    $$g(x) = \sum_{k = 1}^{n}a_k I_{Q_k}(x), \ Q_k -\text{ячейка}$$
-    $$||g - g_h||_p \leq \sum_{k = 1}^{n} |a_k| \cdot ||I_{Q_k} - I_{Q_k + h}||$$
+    $$g(x) = \sum_{k = 1}^{n}a_k \chi_{Q_k}(x), \ Q_k -\text{ячейка}$$
+    $$||g - g_h||_p \leq \sum_{k = 1}^{n} |a_k| \cdot ||\chi_{Q_k} - \chi_{Q_k + h}||$$
     Что стремится к нулю при $h \longrightarrow 0.$
 \end{proof}
 
@@ -76,7 +76,7 @@ $$||f - f_h|| \leq ||f - g|| + ||g - g_h|| + ||f_h - g_h|| \ \forall g \in L_p(\
 \begin{theorem}
     Пусть $f, g \in L_1(\R^n).$ Тогда
     \begin{enumerate}
-        \item Для $\lambda-$почти всех $x \in \R^n$ корректно определена функция (будет называть ее сверткой) $f*g(x) := \int_{\R^n}f(x - y)g(y) dy.$
+        \item Для $\LL-$почти всех $x \in \R^n$ корректно определена функция (будет называть ее сверткой) $f*g(x) := \int_{\R^n}f(x - y)g(y) dy.$
         \item $f* g$ измерима в широком смысле.
         \item $f * g \in L_1(\R^n)$
         \item $||f * g||_{L_1} \leq ||f||_{L_1} \cdot ||g||_{L_1}$
