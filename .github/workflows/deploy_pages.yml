@@ -27,6 +27,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Check installed locales
+        run: locale -a
+
       - name: Wait for LaTeX compilation Workflows
         run: |
           while true; do
@@ -48,8 +51,16 @@ jobs:
           run_id_3=$(gh run list --workflow latex3.yml --json databaseId,conclusion -q '[.[] | select(.conclusion == "success")][0].databaseId')
           start_date_3=$(gh run list --workflow latex3.yml --json conclusion,createdAt -q '[.[] | select(.conclusion == "success")][0].createdAt')
           echo "Start date of sem3 workflow: $start_date_3"
-          echo "dtime3=$(date -d "$start_date_3 +3 hours" +"%m.%d, в %H:%M")" >> $GITHUB_ENV
+
+          rus_full="$(LC_TIME=ru_RU.UTF-8 date -d "$start_date_3 +3 hours" +"%-d %B, в %H:%M")"
+          # rus_plain="$(LC_TIME=ru_RU.UTF-8 date -d "$start_date_3 +3 hours" +"%-d %B %H:%M")"
+
+          # echo "dtime3=$(date -d "$start_date_3 +3 hours" +"%m.%d, в %H:%M")" >> $GITHUB_ENV
           echo "dtime3_plain=$(date -d "$start_date_3 +3 hours" +"%m.%d %H:%M")" >> $GITHUB_ENV
+
+          echo "dtime3=$rus_full" >> $GITHUB_ENV
+          # echo "dtime3_plain=$rus_plain" >> $GITHUB_ENV
+
           gh run download $run_id_3 --name sem3_result
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -59,8 +70,16 @@ jobs:
           run_id_4=$(gh run list --workflow latex4.yml --json databaseId,conclusion -q '[.[] | select(.conclusion == "success")][0].databaseId')
           start_date_4=$(gh run list --workflow latex4.yml --json conclusion,createdAt -q '[.[] | select(.conclusion == "success")][0].createdAt')
           echo "Start date of sem4 workflow: $start_date_4"
-          echo "dtime4=$(date -d "$start_date_4 +3 hours" +"%m.%d, в %H:%M")" >> $GITHUB_ENV
+
+          rus_full="$(LC_TIME=ru_RU.UTF-8 date -d "$start_date_4 +3 hours" +"%-d %B, в %H:%M")"
+          # rus_plain="$(LC_TIME=ru_RU.UTF-8 date -d "$start_date_4 +3 hours" +"%-d %B %H:%M")"
+
+          # echo "dtime4=$(date -d "$start_date_4 +3 hours" +"%m.%d, в %H:%M")" >> $GITHUB_ENV
           echo "dtime4_plain=$(date -d "$start_date_4 +3 hours" +"%m.%d %H:%M")" >> $GITHUB_ENV
+
+          echo "dtime4=$rus_full" >> $GITHUB_ENV
+          # echo "dtime4_plain=$rus_plain" >> $GITHUB_ENV
+
           gh run download $run_id_4 --name sem4_result
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
