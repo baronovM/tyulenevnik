@@ -215,3 +215,46 @@ $$
     Значит и $c_0(F) = 0$ и тогда $c_k(F) = 0 \  \forall k \in \Z$ и $F \equiv 0$.
     Поэтому и $f = F' = 0$.
 \end{proof}
+
+\subsection{Полнота тригонометрической системы в $L_2([-\pi, \pi])$}
+\begin{theorem}
+    Система тригонометрических полиномов $\{1, \sin nx, \cos nx\}_{n = 1}^{+\infty}$ полна в пространстве $L_2([-\pi, \pi])$.
+\end{theorem}
+\begin{proof}
+    Пусть $f \in L_2([-\pi, \pi])$.
+    Зафиксируем $\epsilon > 0$.
+    Известно, что пространство $C_0^\infty([-\pi, \pi])$ плотно в $L_p([-\pi, \pi])$ при $p \in [1, +\infty)$.
+    Значит существует такая $h_\epsilon \in C_0^\infty([-\pi, \pi])$, что выполнено следующее:
+    \[
+        \|h_\epsilon - f\|_2 < \frac{\epsilon}{3}.
+    \]
+    Пусть есть некоторое $\delta \in (0, \pi)$ и функцию $h_\epsilon^\delta$, которая определяется как
+    \[
+        h_{\epsilon}^{\delta}(x) =
+        \begin{cases}
+            h_{\epsilon}(x), & |x| < |\pi - \delta|, \\
+            \text{ линейно убывает (или возрастает) от 0 в} -\pi \text{ до } h_\epsilon(-\pi + \delta), & x \in [-\pi, -\pi + \delta] \\
+            \text{ линейно убывает (или возрастает) от } h_\epsilon(\pi - \delta) \text{ в } \pi - \delta \text{ до } 0 \text{ при } x = \pi, & x \in [\pi - \delta, \pi].
+        \end{cases}
+    \]
+    Такая функция лежит в пространстве $C^*([-\pi, \pi])$ -- непрерывных $2\pi$-периодических функций с равномерной нормой.
+    Пусть $M = \max\limits_{\R} |h_\epsilon|$.
+    Оценим разность норм $h_\epsilon$ и $h_\epsilon^\delta$:
+    \[
+        \|h_\epsilon - h_\epsilon^\delta\|_2 \leq = \sqrt {\int_{-\pi}^{\pi} |h_\epsilon - h_\epsilon^\delta|^2 dx} \leq \sqrt{2 \delta \cdot (2M)^2} = 2M\sqrt {2\delta}.
+    \]
+    Нам необходимо показать существование такого $\delta$, что $2M \sqrt {2\delta} \leq \frac{\epsilon}{3}$.
+    Нам подойдёт всякая $\delta$ такая, что
+    \[
+        \delta < \frac{\epsilon^2}{2(6M)^2}.
+    \]
+    В то же время, по теореме Фейера, существует тригонометрический полином $T$ такой, что \[\|h_\epsilon^\delta - T\|_C \leq \frac{\epsilon}{3\sqrt {2\pi}}.\]
+    Оценим $2$-норму их разности:
+    \[
+        \|h_\epsilon^\delta - T\|_2 \leq \sqrt {\int_{-\pi}^{\pi} (\sup|h_\epsilon^\delta - T|)^2dx} = \sqrt {2\pi}\|h_\epsilon^\delta - T\|_C \leq \dfrac{\epsilon}{3}.
+    \]
+    Применение неравенства треугольника даёт нам утверждение теоремы:
+    \[
+        \|f - T\|_2 \leq \|f - h_\epsilon\|_2 + \|h_\epsilon - h_\epsilon^\delta\|_2 + \|h_\epsilon^\delta - T\|_2 < \epsilon.
+    \]
+\end{proof}
