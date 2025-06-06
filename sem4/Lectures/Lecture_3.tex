@@ -4,6 +4,7 @@
 Он бесполезен с практической точки зрения, поскольку по сути является переформулировкой определения. С другой стороны, такая формулировка окажется полезной при доказательстве конкретных
 признаков сходимости рядов Фурье. 
 
+\textbf{Абстрактный критерий сходимости.}
 
 \subsection{Абстрактный критерий сходимости.}
 
@@ -37,6 +38,7 @@ $$
 Нетрудно видеть, что $g$  -- нечетная на $(-\pi,\pi)$ и монотонно убывает. Поэтому, $|g(u)| \le 2/\pi$ при всех $u \in (-\pi,\pi)$.
 \end{proof}
 
+Лемма доказана.
 
 \begin{theorem}[ ``абстрактный'' критерий сходимости ряда Фурье в точке]
 	\label{Th.abstract_criterion}
@@ -48,6 +50,8 @@ $$
 	\end{equation}
 \end{theorem}
 \begin{proof} Нам будет удобно сделать несколько шагов.
+
+\textit{Доказательство.} Нам будет удобно сделать несколько шагов.
 
 \textit{Шаг 1.}
 В силу леммы \ref{Lm.convenient_form}  мы можем переписать \eqref{eqq.19} в виде
@@ -181,9 +185,9 @@ $$
 \begin{note}
     Признаки Дини и Дирихле Жордана не сравнимы.
     \begin{example}
-        
+
 \[
-f(x) = 
+f(x) =
 \begin{cases}
 \displaystyle \frac{1}{\left| \ln \frac{x}{2\pi} \right|}, & 0 < x \leq \pi, \\
 0, & x = 0, \\
@@ -205,13 +209,13 @@ f(-x), & -\pi \leq x < 0.
     every axis plot post/.style={thick}
 ]
 \addplot [
-    domain=0.01:3.14, 
-    samples=200, 
+    domain=0.01:3.14,
+    samples=200,
 ] {1/abs(ln(x/(2*3.1415)))};
 
 \addplot [
-    domain=-3.14:-0.01, 
-    samples=200, 
+    domain=-3.14:-0.01,
+    samples=200,
 ] {1/abs(ln(abs(x)/(2*3.1415)))};
 
 \addplot+[
@@ -222,20 +226,20 @@ f(-x), & -\pi \leq x < 0.
 \end{tikzpicture}
 
 Понятно, что$
-f \in BV([-\pi, \pi]) \cap C([-\pi, \pi]) 
+f \in BV([-\pi, \pi]) \cap C([-\pi, \pi])
 \quad \Rightarrow$ а значит работает признак Дирихле–Жордана.
 Но признак Дини не работает:
 
 \[
 \int_0^\delta \frac{\left| f(x+t) + f(x-t) - 2f(x) \right|}{t} \, dt
-= 2 \int_0^\delta \frac{f(t)}{t} \, dt 
+= 2 \int_0^\delta \frac{f(t)}{t} \, dt
 = 2 \int_0^\delta \frac{dt}{|\ln \left( \frac{t}{2\pi} \right)|} = +\infty
 \]
-        
+
     \end{example}
     \begin{example}
         \[
-\Psi(x) = 
+\Psi(x) =
 \begin{cases}
 \sqrt{x} \cdot \sin\left( \dfrac{1}{x} \right), & x \in (0, \pi], \\
 0, & x = 0, \\
@@ -244,14 +248,14 @@ f \in BV([-\pi, \pi]) \cap C([-\pi, \pi])
 \]
 
 
-$\Psi \notin BV((-\delta, \delta)) \quad \forall \delta > 0 
+$\Psi \notin BV((-\delta, \delta)) \quad \forall \delta > 0
 \quad \Rightarrow$
 признак Дирихле–Жордана нельзя использовать.
 
 \[
 \text{Проверим сходимость:} \quad
-2 \int_0^{\delta} \frac{|\Psi(t)|}{t} \, dt 
-\leq 2 \int_0^{\delta} \frac{dt}{\sqrt{t}} 
+2 \int_0^{\delta} \frac{|\Psi(t)|}{t} \, dt
+\leq 2 \int_0^{\delta} \frac{dt}{\sqrt{t}}
 < +\infty
 \]
 Признак Дини работает

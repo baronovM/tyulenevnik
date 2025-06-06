@@ -30,23 +30,23 @@
 \end{enumerate}
 
 
-Тогда $\ff \in L_1(X)$ и можно переставлять местами предел и интеграл. 
+Тогда $\ff \in L_1(X)$ и можно переставлять местами предел и интеграл.
 
 \begin{proof}
 	Т.к. определения предела по Коши и по Гейне эквивалентны в метрических пространствах, нам достаточно показать, что $\forall \{y_n\} \subset Y \bs y_0$ такой, что $\lim_{n \ra \infty} y_n = y_0$, выполнено \[
 	\exists \lim\limits_{n \ra \infty} J(y_n) = \int\limits_{X} \ff(x) d\mu(x). \tag{*}
 	\label{pidp:lim_heine}
 	\]
-	
+
 	Итак, пусть $\{y_n\}$ сходится к $y_0$. Тогда $\exists N \in \N$, т.ч. $y_n \in \mathring{B}_\delta(y_0) \quad \forall n \geq N$.
-	
+
 	Определим последовательность функций $g_k(x) := f(x, y_{k + N})$, тогда по 2 условию из формулировки теоремы верно
 	$$\left| g_k(x) \right| \leq g(x) \quad \forall x \in \widetilde{X}.$$
-	
+
 	Также по условию 1 выполнено
-	
+
 	$$\exists \lim\limits_{k \ra \infty}g_k(x) = \ff(x) \quad \forall x \in \widetilde{X}.$$
-	
+
 	Тогда по теореме Лебега о мажорируемой сходимости получим \eqref{pidp:lim_heine}, но так как последовательность была выбрана произвольно, значит доказано для любой.
 \end{proof}
 
@@ -91,7 +91,7 @@ $$\int\limits^{+\infty}_0 \frac{\sin x}{x} d x$$
 \begin{enumerate}
     \item $\forall b' \in (a, \, b) \quad \ff \in L_1([a, \, b'])$
     \item $\forall b' \in (a, \, b) \quad \exists\lim\limits_{y \ra y_0} \int\limits^{b'}_a f(t, y) dt = \int\limits^{b'}_a \ff(t) dt$
-    \item Пусть $\int\limits_a^{\ra b} f(t, y) dt$ сходится равномерно по параметру $y$. 
+    \item Пусть $\int\limits_a^{\ra b} f(t, y) dt$ сходится равномерно по параметру $y$.
 \end{enumerate}
 
 
