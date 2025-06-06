@@ -200,6 +200,36 @@ S_n[f](x) &= \frac{1}{2\pi} \int\limits_{-\pi}^{\pi} f(t)\,dt
 D_n(x) := \frac{1}{\pi} \left( \frac{1}{2} + \sum\limits_{k=1}^{n} \cos(kx) \right) = \frac{1}{\pi} \cdot \frac{\sin\left( \left(n + \frac{1}{2}\right) x \right)}{2 \sin\left( \frac{x}{2} \right)}.
 \end{equation}
 
+
+\begin{tikzpicture}
+  \begin{axis}[
+    domain=-4:4,
+    samples=1000,
+    xmin=-4, xmax=4,
+    ymin=-1, ymax=2.5,
+    axis lines=middle,
+    xlabel={$x$},
+    ylabel={$D_n(x)$},
+    xtick={-3.14,0,3.14},
+    xticklabels={$-\pi$,$0$,$\pi$},
+    ytick=\empty,
+    enlargelimits=false,
+    clip=false,
+    xscale=1.0,
+    yscale=1.0,
+    width=16cm,
+    height=9cm,
+    title={\text{График ядра Дирихле при } $n=5$}
+  ]
+    \addplot [blue, thick, domain=-4:4, samples=1000]
+      {1/(2*pi)*sin((2*5 + 1)*deg(x)/2)/sin(deg(x)/2)};
+    \node at (axis cs:0,1.75) [anchor=south west] {$\frac{2n+1}{2\pi}$};
+  \end{axis}
+\end{tikzpicture}
+
+
+
+
 \begin{definition}
     Для $\mathcal{L}\text{-почти всех } x \in \mathbb{R}^n$ корректно определена функция, которую мы называем свёрткой:
 \[
