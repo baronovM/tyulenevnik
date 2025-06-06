@@ -1,4 +1,3 @@
-\subsection{Признаки поточечной сходимости рядов Фурье (продолжение).}
 \begin{definition}
     Будем говорить, что точка $x_0$ функции $f: \R \to \R$ является регулярной, если в ней $\exists f(x_0 \pm 0)$ и $\exists f'_\pm(x_0)$.
 \end{definition}
@@ -7,7 +6,7 @@
 \end{corollary}
 \begin{proof}
     Для доказательства в силу признака Дини достаточно проверить, что $\exists \delta > 0$ такое, что \[
-                                                                                                          \int_0^\delta |f(x_0 + u) - f(x_0 + 0) + f(x_0 - u) - f(x_0 - 0)|\dfrac{du}{u} < +\infty.
+                                                                                                          \int_0^\delta \bigg|f(x_0 + u) - f(x_0 + 0) + f(x_0 - u) - f(x_0 - 0)\bigg|\dfrac{du}{u} < +\infty.
     \]
     Поскольку \[
                   \dfrac{f(x_0 + u) - f(x_0 + 0)}{u} \rightarrow f'_+(x_0), u \rightarrow +0 \quad  \dfrac{f(x_0 - u) - f(x_0 - 0)}{u} \rightarrow f'_-(x_0), u \rightarrow +0.
@@ -18,6 +17,13 @@
     \]
     А значит выполнено условие Дини и ряд сходится к полусумме односторонних пределов.
 \end{proof}
+
+\begin{fact}
+        Для любой непрерывной $2\pi$ периодической функции ее ряд Фурье сходится к ней почти всюду(следует из теоремы Карлесона)
+\end{fact}
+
+
+
 \begin{example}[Шварц]
     Существует непрерывная $2\pi$-периодическая функция такая, что её ряд Фурье расходится в нуле. \\
     Определим функцию $f$ как \[
@@ -27,7 +33,12 @@
                                       \dfrac{1}{\sqrt{k}}\sin n_kt & t \in [t_k, t_{k - 1}], k = 2, \ldots.
                                   \end{cases}
     \]
-    где $n_k = 2^{k!}$, $t_1 = \pi$ и $t_k = \frac{2\pi}{n_k}, k > 1$. Определим $J_n[f]$ как \[
+    где $n_k = 2^{k!}$, $t_1 = \pi$ и $t_k = \frac{2\pi}{n_k}, k > 1$.
+    \begin{center}
+            \includegraphics[width=1\linewidth]{Pictures/Shwartz.png}
+    \end{center}
+    
+    Определим $J_n[f]$ как \[
                                                                                                   J_n[f](0) = \int_0^\pi \dfrac{\sin nt}{t}f(t)dt.
     \]
     Исследуем поведение $J_n[f]$ на гармониках $n_k$:
@@ -63,6 +74,9 @@
 \end{example}
 % Пересмотреть, дополнить <<неформальность>>.
 \subsection{Суммы Фейера.}
+Неформальная идея. При рассмотрении обычных числовых рядов, возникала ситуация $1 + (-1) + 1 + (-1) + 1  + \dots$ это расходящийся ряд, так как нет предела частичных сумм. Но вот если мы рассмотрим $\Sigma_n = \frac{S_1 +\dots +S_n}{n} \to \frac{1}{2}$. С рядами Фурье часто происходит также. Поэтому мы рассматриваем ряды Фейера, как аналог $\Sigma_n$.
+
+
 \begin{definition}
     Пусть дана $2\pi$-периодическая $f \in L_1([-\pi, \pi])$. Суммой Фейера для $f$ будем называть \[
                                                                                                        \sigma_n[f] = \dfrac{1}{n}\sum\limits_{i = 0}^{n - 1} S_i[f].
@@ -106,10 +120,11 @@
     Будем говорить, что для $\alpha \in (0, 1)$ функция лежит в $H^\alpha(\R)$ (т.е. удовлетворяет условию Гёльдера с показателем $\alpha$) если \[
                                                                                                                                                      \exists C > 0 \forall x', x'' \in \R \hookrightarrow |f(x') - f(x'')| \leq C|x' - x''|^\alpha.
     \]
+    При $\alpha = 1$ это условие Липшица.
 \end{definition}
 \begin{theorem}
     Пусть дана $2\pi$-периодическая $f \in H^\alpha(\R), \alpha \in (0, 1)$. Тогда ряд Фурье $f$ сходится к ней равномерно на $\R$. Более того, \[
-                                                                                                                                                    \biggr|S_n[f](x) - f(x)\biggr| \leq C \cdot \dfrac{\ln n}{n^\alpha} \quad \forall n \in \N, \forall x \in \R.
+                                                                                                                                                    \biggr|S_n[f](x) - f(x)\biggr| \leq C C_\alpha \cdot \dfrac{\ln n}{n^\alpha} \quad \forall n \in \N, \forall x \in \R.
     \]
 \end{theorem}
 \begin{proof}

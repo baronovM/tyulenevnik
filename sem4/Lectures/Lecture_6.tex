@@ -49,7 +49,6 @@
     \end{minipage}
 
 
-
 \end{note}
 \begin{theorem}[О единственности]
     Пусть $E = (E, \langle \cdot, \cdot \rangle)$~---~евклидово пространство и $f \in E$. Пусть $\{e_n\}_{n = 1}^{+\infty}$~---~ортогональная система в $E$ и $f = \sum\limits_{k = 1}^{+\infty} \alpha_k e_k$, где сходимость ряда понимается в смысле нормы. Тогда $\alpha_k = \alpha_k (f)$ $\forall k \in \mathbb{N}$.
@@ -94,7 +93,6 @@
 \[
 \sum_{k=1}^\infty \left( \alpha_k (f) \right)^2 \| e_k\|^2 \leq \|f\|^2.
 \]
-
 \end{corollary}
 \begin{proof}
     В силу предыдущей леммы и неотрицательности нормы $\forall n \in \N \hookrightarrow$
@@ -120,13 +118,13 @@
         \item[$\bullet$] Импликация $1) \Rightarrow 2)$ следует в силу теоремы о единственности, то есть если $\displaystyle f = \sum_{k=1}^{\infty}\alpha_k e_k$, то $\alpha_k = \alpha_k(f)$ $\forall k \in \mathbb{N}$ (этот некоторый элемент и будет разложенный $f$).
         \item[$\bullet$] Импликация $2) \Rightarrow 3)$ следует в силу неравенства Бесселя;
         \item[$\bullet$] Осталась импликация $3) \Rightarrow 1)$. Именно тут и нужна будет Гильбертовость (то есть полнота).\\
-    Пусть $m$, $n \in \mathbb{N}$ и $m > n$.
-    Рассмотрим
-    \begin{equation*}
-        \left\langle \sum\limits_{k = n}^{m} \alpha_k e_k, \sum\limits_{k = n}^m \alpha_k e_k \right\rangle = \left\|\sum\limits_{k = n}^m \alpha_k e_k\right\|^2.
-    \end{equation*}
-    Раскроем скалярное произведение. В силу ортогональности системы и Критерия Коши сходимости числового ряда получаем: $$\displaystyle \sum\limits_{k = n}^m |\alpha_k|^2 \cdot\|e_k\|^2 \rightarrow 0,\quad  n, m \rightarrow +\infty.$$
-    Тогда последовательность $\displaystyle \{ S_n\} = \bigg\{ \sum_{k = 1}^{n} \alpha_k e_k\bigg\}_{n = 1}^{+\infty}$~---~фундаментальна в $H$, а $H$ полно $\Longrightarrow \exists f \in H$: $\displaystyle f = \lim_{n \to \infty} \sum_{k = 1}^{n} \alpha_k e_k$, то есть ряд сходится к некоторому элементу.
+        Пусть $m$, $n \in \mathbb{N}$ и $m > n$.
+        Рассмотрим
+        \begin{equation*}
+            \left\langle \sum\limits_{k = n}^{m} \alpha_k e_k, \sum\limits_{k = n}^m \alpha_k e_k \right\rangle = \left\|\sum\limits_{k = n}^m \alpha_k e_k\right\|^2.
+        \end{equation*}
+        Раскроем скалярное произведение. В силу ортогональности системы и Критерия Коши сходимости числового ряда получаем: $$\displaystyle \sum\limits_{k = n}^m |\alpha_k|^2 \cdot\|e_k\|^2 \rightarrow 0,\quad  n, m \rightarrow +\infty.$$
+        Тогда последовательность $\displaystyle \{ S_n\} = \bigg\{ \sum_{k = 1}^{n} \alpha_k e_k\bigg\}_{n = 1}^{+\infty}$~---~фундаментальна в $H$, а $H$ полно $\Longrightarrow \exists f \in H$: $\displaystyle f = \lim_{n \to \infty} \sum_{k = 1}^{n} \alpha_k e_k$, то есть ряд сходится к некоторому элементу.
     \end{enumerate}
 \end{proof}
 
