@@ -1,10 +1,9 @@
 \section{Сходимость ряда Фурье в точке.}
 
-Мы начнём с формулировки общего критерия сходимости, не требующего знания конкретных свойств регулярности функций. Поэтому мы называем его ``абстрактным''. 
+Мы начнём с формулировки общего критерия сходимости, не требующего знания конкретных свойств регулярности функций. Поэтому мы называем его ``абстрактным''.
 Он бесполезен с практической точки зрения, поскольку по сути является переформулировкой определения. С другой стороны, такая формулировка окажется полезной при доказательстве конкретных
-признаков сходимости рядов Фурье. 
+признаков сходимости рядов Фурье.
 
-\textbf{Абстрактный критерий сходимости.}
 
 \subsection{Абстрактный критерий сходимости.}
 
@@ -38,8 +37,6 @@ $$
 Нетрудно видеть, что $g$  -- нечетная на $(-\pi,\pi)$ и монотонно убывает. Поэтому, $|g(u)| \le 2/\pi$ при всех $u \in (-\pi,\pi)$.
 \end{proof}
 
-Лемма доказана.
-
 \begin{theorem}[ ``абстрактный'' критерий сходимости ряда Фурье в точке]
 	\label{Th.abstract_criterion}
 	Пусть $f:\mathbb{R} \to \mathbb{R}$ является $2\pi$-периодичной, и $f \in L_{1}([-\pi,\pi])$.
@@ -50,8 +47,6 @@ $$
 	\end{equation}
 \end{theorem}
 \begin{proof} Нам будет удобно сделать несколько шагов.
-
-\textit{Доказательство.} Нам будет удобно сделать несколько шагов.
 
 \textit{Шаг 1.}
 В силу леммы \ref{Lm.convenient_form}  мы можем переписать \eqref{eqq.19} в виде
@@ -93,8 +88,8 @@ $$
 \begin{equation}
 	\label{eqq.27}
 	\begin{split}
-		&\int\limits_{-\pi}^{\pi}\Bigl[\frac{f(x+u)+f(x-u)}{2}-S\Bigr]\frac{\sin(nu)}{\pi u}\,du = 2\int\limits_{0}^{\delta}\Bigl[\frac{f(x+u)+f(x-u)}{2}-S\Bigr]\frac{\sin(nu)}{\pi u}\,du\\ 
-		& + 2\int\limits_{\delta}^{\pi}\Bigl[\frac{f(x+u)+f(x-u)}{2}-S\Bigr]\frac{\sin(nu)}{\pi u}\,du\\ 
+		&\int\limits_{-\pi}^{\pi}\Bigl[\frac{f(x+u)+f(x-u)}{2}-S\Bigr]\frac{\sin(nu)}{\pi u}\,du = 2\int\limits_{0}^{\delta}\Bigl[\frac{f(x+u)+f(x-u)}{2}-S\Bigr]\frac{\sin(nu)}{\pi u}\,du\\
+		& + 2\int\limits_{\delta}^{\pi}\Bigl[\frac{f(x+u)+f(x-u)}{2}-S\Bigr]\frac{\sin(nu)}{\pi u}\,du\\
 		&= 2\int\limits_{0}^{\delta}\Bigl[\frac{f(x+u)+f(x-u)}{2}-S\Bigr]\frac{\sin(nu)}{\pi u}\,du + o(1), \quad n \to \infty.
 	\end{split}
 \end{equation}
@@ -171,7 +166,7 @@ $$
 Отсюда и из \eqref{eq.int_estimate} имеем $|I_{n}^{1}| < \varepsilon/2$.
 
 
-\textit{Шаг 4.} 
+\textit{Шаг 4.}
 В силу теоремы Римана--Лебега \ref{Th.Riemann_Lebesgue} имеем существование такого числа $N_{\varepsilon}:=N(\delta(\varepsilon)) \in \mathbb{N}$, что при $n \geq N_{\varepsilon}$
 \begin{equation}
 	\notag
