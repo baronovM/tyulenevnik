@@ -3,7 +3,7 @@
 
 \subsection{Собственные интегралы зависящие от параметра}
 
-\definition Пусть $X = (X, \MM, \mu)$ - пространство с мерой, $Y$ - параметрическое множество, $f : X \times Y \ra \overline{\R}$ функция, такая что $\forall y \in Y$ она будет интегрируемой, то есть $f \in L_1(X)$, тогда введём функцию $J(y) := \int\limits_X f(x, y) d\mu(x) \in \overline{\R}$ - собственный интеграл Лебега, зависящий от параметра.
+\definition Пусть $X = (X, \MM, \mu)$ - пространство с мерой, $Y$ - параметрическое множество, $f : X \times Y \ra \overline{\R}$ функция, такая что $\forall y \in Y$ она будет интегрируемой, то есть $f \in L_1(X)$, тогда введём функцию $J(y) := \int\limits_X f(x, y) d\mu(x) \in \overline{\R}$ - собственный интеграл Лебега, зависящий от параметра. \label{pidp}
 \\
 Нас будут интересовать следующие вопросы:
 \begin{itemize}
@@ -19,33 +19,40 @@
 
 Ответом на этот вопрос фактически является Теорема Фубини.
 
-\theorem Пусть дополнительно известно, что $Y = (Y, \NN, \nu)$ - пространство с мерой, а также $f \in L_1\left[ (X \times Y, \MM \otimes \NN, \mu \otimes \nu) \right]$. Тогда $J$ интегрируема на $Y$ и справедлива формула: $$\int\limits_Y J(y)d\nu(y) = \int\limits_Y \left( \int\limits_X f(x,y)d\mu(x) \right) d\nu(y) = \iint\limits_{X \times Y} f(x,y) d \mu\otimes\nu(x, y) = \int\limits_X \left( \int\limits_Y f(x, y) d\nu(y) \right) d\mu(x)$$
+\theorem Пусть дополнительно известно, что $Y = (Y, \NN, \nu)$ ~---~ пространство с мерой, а также $f \in L_1\left[ (X \times Y, \MM \otimes \NN, \mu \otimes \nu) \right]$. Тогда $J$ интегрируема на $Y$ и справедлива формула: $$\int\limits_Y J(y)d\nu(y) = \int\limits_Y \left( \int\limits_X f(x,y)d\mu(x) \right) d\nu(y) = \iint\limits_{X \times Y} f(x,y) d \mu\otimes\nu(x, y) = \int\limits_X \left( \int\limits_Y f(x, y) d\nu(y) \right) d\mu(x)$$
 
 \subsubsection{Когда можно переходить к пределу по параметру?}
 
-\theorem Пусть дополнительно известно, что $Y = (Y, d)$ - метрическое пространство. $y_0$ - предельная точка в $Y$, а также пусть $\exists \widetilde{X} \subset X$, т.ч. $\mu(X \bs \widetilde{X}) = 0$, а также:
+\theorem Рассмотрим собственный интеграл, зависящий от параметра (опр. \ref{pidp}), и пусть дополнительно известно, что $Y = (Y, d)$ ~---~ метрическое пространство. $y_0$ - предельная точка в $Y$, а также пусть $\exists \widetilde{X} \subset X$, т.ч. $\mu(X \bs \widetilde{X}) = 0$, а также:
 \begin{enumerate}
-    \item $\forall x \in \widetilde{X} \quad \exists \lim\limits_{y \ra y_0} f(x, y) = \overline{f}(x)$
+    \item $\forall x \in \widetilde{X} \quad \exists \lim\limits_{y \ra y_0} f(x, y) = \ff(x)$
     \item $\exists g(x) \in L_1(X)$ т.ч. при некотором $\delta > 0 \quad \left| f(x,y)\right| \leq g(x) \quad \forall x \in \widetilde{X}$ и $\forall y \in \mathring{B}_\delta(y_0)$
 \end{enumerate}
 
 
-Тогда $\overline{f} \in L_1(X)$ и можно переставлять местами предел и интеграл. 
+Тогда $\ff \in L_1(X)$ и можно переставлять местами предел и интеграл. 
 
-\proof Т.к. определения предела по Коши и по Гейне эквивалентны в метрических пространствах, нам достаточно показать, что $\forall \{y_n\} \subset Y \bs y_0$, т.ч. $y \ra y_0, \quad n \ra \infty$ выполнено, что
-$$(*) \qquad \exists \lim\limits_{n \ra \infty} J(y_n) = \int\limits_{X} \overline{f}(x) d\mu(x)$$.
-
-Т.к. $\{y_n\}$ сходится у $y_0$, то $\exists N \in \N$, т.ч. $y_n \in \mathring{B}_\delta(y_0) \quad \forall n \geq N$.
-
-Тогда определим последовательность функций $g_k(x) := f(x, y_{k + N})$, тогда по условию 1 теоремы, почти всюду
-$$\exists \lim\limits_{k \ra \infty}g_k(x) = \overline{f}(x) \quad \forall x \in \widetilde{X}$$
-и более того, в силу условия 2, верно
-$$\left| g_k(x) \right| \leq g(x) \quad \forall x \in \widetilde{X}$$
-Тогда по теореме Лебега получим формулу (*), но т.к. последовательность выбрана произвольно, значит доказано для любой. $\qed$
+\begin{proof}
+	Т.к. определения предела по Коши и по Гейне эквивалентны в метрических пространствах, нам достаточно показать, что $\forall \{y_n\} \subset Y \bs y_0$ такой, что $\lim_{n \ra \infty} y_n = y_0$, выполнено \[
+	\exists \lim\limits_{n \ra \infty} J(y_n) = \int\limits_{X} \ff(x) d\mu(x). \tag{*}
+	\label{pidp:lim_heine}
+	\]
+	
+	Итак, пусть $\{y_n\}$ сходится к $y_0$. Тогда $\exists N \in \N$, т.ч. $y_n \in \mathring{B}_\delta(y_0) \quad \forall n \geq N$.
+	
+	Определим последовательность функций $g_k(x) := f(x, y_{k + N})$, тогда по 2 условию из формулировки теоремы верно
+	$$\left| g_k(x) \right| \leq g(x) \quad \forall x \in \widetilde{X}.$$
+	
+	Также по условию 1 выполнено
+	
+	$$\exists \lim\limits_{k \ra \infty}g_k(x) = \ff(x) \quad \forall x \in \widetilde{X}.$$
+	
+	Тогда по теореме Лебега о мажорируемой сходимости получим \eqref{pidp:lim_heine}, но так как последовательность была выбрана произвольно, значит доказано для любой.
+\end{proof}
 
 \subsubsection{Когда можно дифференцировать по параметру?}
 
-\theorem Пусть дополнительно известно, что $Y = \lceil c, \, d\rfloor$ - промежуток, точка $y_0 \in \lceil c, \, d\rfloor$, а также пусть $f : X \times Y \ra \overline{\R}$ т.ч. $\exists \widetilde{X} \subset X : \mu(X \bs \widetilde{X}) = 0$ и $\exists f'_y(x, y) \quad \forall x \in \widetilde{X} \quad \forall y \in Y$. Пусть $f'_y$ удовлетворяет условию $(L)$ в окрестности точки $y_0$. Тогда функция $J$ дифференцируема в точке $y_0$ и справедлива формула:
+\theorem Рассмотрим собственный интеграл, зависящий от параметра (опр. \ref{pidp}), и пусть дополнительно известно, что $Y = \lceil c, \, d\rfloor$ ~---~ промежуток, точка $y_0 \in \lceil c, \, d\rfloor$, а также пусть $f : X \times Y \ra \overline{\R}$ т.ч. $\exists \widetilde{X} \subset X : \mu(X \bs \widetilde{X}) = 0$ и $\exists f'_y(x, y) \quad \forall x \in \widetilde{X} \quad \forall y \in Y$. Пусть $f'_y$ удовлетворяет условию $(L)$ в окрестности точки $y_0$. Тогда функция $J$ дифференцируема в точке $y_0$ и справедлива формула:
 $$\frac{d J}{d y}(y_0) = \frac{d}{d y} \int\limits_X f(x, y) d \mu(x) \Bigg|_{y=y_0} = \int\limits_X f'_y(x, y_0) d \mu(x).$$
 
 \proof Фиксируем $h \in \R$ такой, что $y_0 + h \in \lceil c, \, d \rfloor$. Тогда распишем производную по определению
@@ -78,20 +85,20 @@ $$\int\limits^{+\infty}_0 \frac{\sin x}{x} d x$$
 
 \subsubsection{Когда можно переходить к пределу по параметру?}
 
-\definition Будем говорить, что $\int\limits^{\ra b}_{a} f(t, y) dt$ сходится равномерно по $y \in Y$, если $\forall y \in Y$ он сходится и при этом $\sup \left| \int\limits^{\ra b}_{b'} f(t, y) dt \right| \ra 0, \; b' \ra b - 0$
+\definition Будем говорить, что $\int\limits^{\ra b}_{a} f(t, y) dt$ сходится равномерно по $y \in Y$, если $\forall y \in Y$ он сходится и при этом $\sup\limits_{y \in Y} \left| \int\limits^{\ra b}_{b'} f(t, y) dt \right| \ra 0, \; b' \ra b - 0$
 
-\theorem Пусть дополнительно известно, что $Y$ - метрическое пространство, а $y_0 \in Y$ - предельная точка. Пусть $f : Y \times [a, \, b) \ra \overline{\R}$, т.ч. почти всюду на $[a, \, b) \quad \exists \lim\limits_{y \ra y_0}f(t, y) =: \overline{f}(t)$. Пусть также выполнены следующие условия:
+\theorem Пусть дополнительно известно, что $Y$ ~---~ полное метрическое пространство, а $y_0 \in Y$ - предельная точка. Пусть $f : Y \times [a, \, b) \ra \overline{\R}$, т.ч. почти всюду на $[a, \, b) \quad \exists \lim\limits_{y \ra y_0}f(t, y) =: \ff(t)$. Пусть также выполнены следующие условия:
 \begin{enumerate}
-    \item $\forall b' \in (a, \, b) \quad \overline{f} \in L_1([a, \, b'])$
-    \item $\forall b' \in (a, \, b) \quad \exists\lim\limits_{y \ra y_0} \int\limits^{b'}_a f(t, y) dt = \int\limits^{b'}_a \overline{f}(t) dt$
+    \item $\forall b' \in (a, \, b) \quad \ff \in L_1([a, \, b'])$
+    \item $\forall b' \in (a, \, b) \quad \exists\lim\limits_{y \ra y_0} \int\limits^{b'}_a f(t, y) dt = \int\limits^{b'}_a \ff(t) dt$
     \item Пусть $\int\limits_a^{\ra b} f(t, y) dt$ сходится равномерно по параметру $y$. 
 \end{enumerate}
 
 
-Тогда $\exists \lim\limits_{y \ra y_0} \int \limits^{\ra b}_a f(t, y) dt = \int\limits^{\ra b}_{a} \overline{f}(t)dt$ (*).
+Тогда $\exists \lim\limits_{y \ra y_0} \int \limits^{\ra b}_a f(t, y) dt = \int\limits^{\ra b}_{a} \ff(t)dt$ (*).
 
 \proof Зафиксируем $\varepsilon > 0$, тогда из условия 2 $\Ra \exists\delta(\varepsilon) > 0$  т.ч. $\forall y \in \mathring{B}_\delta (y_0)$ выполняется
-$$(\vee) \qquad \left| \int\limits_a^{b'}f(t, y) dt - \int\limits_a^{b'}\overline{f}(t) dt \right| < \frac{\varepsilon}{4}$$
+$$(\vee) \qquad \left| \int\limits_a^{b'}f(t, y) dt - \int\limits_a^{b'}\ff(t) dt \right| < \frac{\varepsilon}{4}$$
 
 Заметим, что из условия 3 $\Ra \forall \varepsilon \quad \exists b(\varepsilon) \in (a, \, b)$, т.ч. $\forall y \in Y$ выполнено
 $$\left| \int\limits_{b(\varepsilon)}^{\ra b} f(t, y) dt \right| < \frac{\varepsilon}{4}$$
@@ -100,21 +107,21 @@ $$\left| \int\limits_{b(\varepsilon)}^{\ra b} f(t, y) dt \right| < \frac{\vareps
 $$\left| \int\limits_a^{\ra b}f(t, y') dt - \int\limits_a^{\ra b} f(t, y'')dt \right| \leq \left| \int\limits_{b(\varepsilon)}^{\ra b} f(t, y')dt \right| + \left| \int\limits_{b(\varepsilon)}^{\ra b} f(t, y'')dt \right| + \left| \int\limits_a^{b(\varepsilon)}f(t, y') dt - \int\limits_a^{b(\varepsilon)} f(t, y'')dt \right|$$
 
 Учитывая результаты полученные выше
-$$\left| \int\limits_{b(\varepsilon)}^{\ra b} f(t, y')dt \right| + \left| \int\limits_{b(\varepsilon)}^{\ra b} f(t, y'')dt \right| + \left| \int\limits_a^{b(\varepsilon)}f(t, y') dt - \int\limits_a^{b(\varepsilon)} f(t, y'')dt \right| < \frac{3}{4}\varepsilon < \varepsilon$$
+$$\left| \int\limits_{b(\varepsilon)}^{\ra b} f(t, y')dt \right| + \left| \int\limits_{b(\varepsilon)}^{\ra b} f(t, y'')dt \right| + \left| \int\limits_a^{b(\varepsilon)}f(t, y') dt - \int\limits_a^{b(\varepsilon)} f(t, y'')dt \right| < \varepsilon$$
 
 Условие Коши выполнено, значит предел существует.
 
 Теперь покажем справедливость (*)
 
 $(\vee) \Ra \forall \varepsilon > 0$ выполняется
-$$\left| \int\limits^{b(\varepsilon)}_a \overline{f}(t) dt - \lim\limits_{y \ra y_0} J(y) \right| \leq \left| \int\limits^{b(\varepsilon)}_a \overline{f}(t) dt - \int\limits^{\ra b}_a \overline{f}(t, y) dt \right| + \left| \int\limits^{\ra b}_a \overline{f}(t, y) dt - \lim\limits_{y \ra y_0} J(y) \right| \qquad \forall y \in B_\delta(y_0)$$
+$$\left| \int\limits^{b(\varepsilon)}_a \ff(t) dt - \lim\limits_{y \ra y_0} J(y) \right| \leq \left| \int\limits^{b(\varepsilon)}_a \ff(t) dt - \int\limits^{\ra b}_a \ff(t, y) dt \right| + \left| \int\limits^{\ra b}_a \ff(t, y) dt - \lim\limits_{y \ra y_0} J(y) \right| \qquad \forall y \in B_\delta(y_0)$$
 
-Из показанного выше известна оценка $\left| \int\limits^{\ra b}_a \overline{f}(t, y) dt - \lim\limits_{y \ra y_0} J(y) \right| < \varepsilon$. Для первого слагаемого оценка получается следующим образом
-$$\left| \int\limits^{b(\varepsilon)}_a \overline{f}(t) dt - \int\limits^{\ra b}_a \overline{f}(t, y) dt \right| \leq \left| \int\limits_a^{b(\varepsilon)}\overline{f}(t, y) dt - \int\limits_a^{b(\varepsilon)}\overline{f}(t) dt\right| + \left| \int\limits_{b(\varepsilon)}^{\ra b} f(t, y) dt \right| < \frac{\varepsilon}{2}$$
+Из показанного выше известна оценка $\left| \int\limits^{\ra b}_a \ff(t, y) dt - \lim\limits_{y \ra y_0} J(y) \right| < \varepsilon$. Для первого слагаемого оценка получается следующим образом
+$$\left| \int\limits^{b(\varepsilon)}_a \ff(t) dt - \int\limits^{\ra b}_a \ff(t, y) dt \right| \leq \left| \int\limits_a^{b(\varepsilon)}\ff(t, y) dt - \int\limits_a^{b(\varepsilon)}\ff(t) dt\right| + \left| \int\limits_{b(\varepsilon)}^{\ra b} f(t, y) dt \right| < \frac{\varepsilon}{2}$$
 
 Значит в результате получим
 
-$$\left| \int\limits^{b(\varepsilon)}_a \overline{f}(t) dt - \lim\limits_{y \ra y_0} J(y) \right| < 2 \varepsilon$$
+$$\left| \int\limits^{b(\varepsilon)}_a \ff(t) dt - \lim\limits_{y \ra y_0} J(y) \right| < 2 \varepsilon$$
 
 Что доказывает требуемое равенство. $\qed$
 
