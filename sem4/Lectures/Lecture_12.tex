@@ -16,13 +16,13 @@
     В силу линейности интеграла Лебега функционал $\lambda_f$~-- линейный функционал. \\
     Осталось проверить непрерывность $\lambda_f$ относительно $D$-сходимости. \\
     % Пусть $\{\phi_m\}$~-- последовательность в $D(\R^n)$ такая, что $\phi_m \xrightarrow{D} \phi$.
-    Пусть $\{\phi_m\} \subset D(\R^n): \phi_m \xrightarrow{D} \phi$, $m \ra +\infty$.  
+    Пусть $\{\phi_m\} \subset D(\R^n): \phi_m \xrightarrow{D} \phi$, $m \ra +\infty$.
     \\
     Поскольку носители <<не расползаются>>, существует $B_R(0): \text{supp} \phi \subset B_R(0), \forall m \in \N \text{supp} \phi_m \subset B_R(0)$.
     В частности, также, $\sup\limits_{x \in \R^n}|\phi_m(x) - \phi(x)| \ra 0, m \ra +\infty$ (по определению сходимости в $D$).
     Тогда
     \begin{multline*}
-        |\langle \lambda_f, \phi_m - \phi \rangle | = |\int_{\R^n} f(x)(\phi_m(x) - \phi(x))dx| \leq \int_{B_R(0)} |f(x)||\phi_m(x) - \phi(x)| \leq \\ \leq \sup |\phi_m - \phi| \int_{B_R(0)} |f(x)|dx \ra 0, m \ra +\infty.
+        |\langle \lambda_f, \phi_m - \phi \rangle | = \left|\int_{\R^n} f(x)(\phi_m(x) - \phi(x))dx\right| \leq \int_{B_R(0)} \left|f(x)\right|\left|\phi_m(x) - \phi(x)\right| \leq \\ \leq \sup |\phi_m - \phi| \int_{B_R(0)} |f(x)|dx \ra 0, m \ra +\infty.
     \end{multline*}
     А значит $\lambda_f$~-- действительно непрерывный линейный функционал $\Rightarrow \lambda_f \in D'(\R^n)$.
 \end{proof}
@@ -30,19 +30,16 @@
     Эта лемма показывает, что мы можем воспринимать $L_1^{loc}(\R^n)$ как подпространство $D'(\R^n)$. \\
     Вложение строгое, это будет продемонстрировано ниже.
 \end{note}
-\begin{definition}[Сингулярный функционал]
-Функционал, который нельзя реализовать по 
-\hyperref[lambda_f_functional]{формуле}, будем называть сингулярным.
-\end{definition}
+
 
 \begin{remark}
-Иногда мы будем рассматривать функцию, необязательно принадлежащую $L_1^{loc}(\R^n)$, как функционал, определяемый \hyperref[lambda_f_functional]{формулой}.    
+    Иногда мы будем рассматривать функцию, необязательно принадлежащую $L_1^{loc}(\R^n)$, как функционал, определяемый \hyperref[lambda_f_functional]{формулой}.
 \end{remark}
 
 \begin{example}[Сингулярный функционал]
     Дельта-функция Дирака задаётся своим действием над любой $\phi \in \D(\R^n):$
     \[
-    \langle \delta, \phi \rangle := \phi(0),
+        \langle \delta, \phi \rangle := \phi(0),
     \]
     определяя тем самым сингулярный функционал, что мы сейчас и докажем.
 \end{example}
@@ -53,17 +50,17 @@
     Сначала покажем, что $\delta \in D'(\R^n)$:
     \begin{itemize}
         \item линейность: $\forall$ функций $a, b$ $\forall \alpha, \beta \in \R \hookrightarrow (\alpha a + \beta b)(0) = \alpha \cdot a(0) + \beta \cdot b(0)$
-        \item непрерывность: из равномерной сходимости следует поточечная сходимость 
+        \item непрерывность: из равномерной сходимости следует поточечная сходимость
     \end{itemize}
-    Теперь покажем, что $\delta \notin L_1^{loc}(\R^n)$. 
-    Предположим, что существует $f_\delta \in L_1^{loc}(\R^n)$ такая, что $\forall \phi \in D(\R^n)$:
+    Теперь покажем, что $\delta \notin L_1^{loc}(\R^n)$. Будем делать от противного:\\
+    Предположим, что $\exists f_\delta \in L_1^{loc}(\R^n)$: $\forall \phi \in D(\R^n)$:
     \[
         \phi(0) = (f_\delta, \phi) = \int_{\R^n} f_{\delta}(x) \phi(x) dx.
     \]
     Вспомним о соболевской аппроксимативной единице:
     \[
         w(x) = \begin{cases}
-                   \exp(-\dfrac{1}{1 - |x|^2}),\ x \in \B_1(0); \\
+                   \exp\left(-\dfrac{\|x\|}{1 - \|x\|^2}\right),\ x \in \B_1(0); \\
                    0,\ \text{иначе},
         \end{cases}
     \]
@@ -74,14 +71,14 @@
     \]
     Так как $\forall x \hookrightarrow w(x) \leq 1$:
     \[
-        1 = |\int_{B_\epsilon(0)} f_{\delta}(x) w_{\epsilon}(x) dx| \leq \int_{B_\epsilon(0)}|f_\delta(x)|dx \ra 0, \epsilon \ra +0,
+        1 = \left|\int_{B_\epsilon(0)} f_{\delta}(x) w_{\epsilon}(x) dx\right| \leq \int_{B_\epsilon(0)}|f_\delta(x)|dx \ra 0, \epsilon \ra +0,
     \]
-поскольку $f_\delta$ локально интегрируема и
-$\mes (\B_\varepsilon(0)) \ra0$ при $\epsilon \ra\ 0$.\\ В неравенстве противоречие, указывающее на, что $f_{\delta} \notin L_1^{loc}(\R^n)$.
+    поскольку $f_\delta$ локально интегрируема и
+    $\mes (\B_\varepsilon(0)) \ra0$ при $\epsilon \ra\ 0$.\\ В неравенстве противоречие, указывающее на, что $f_{\delta} \notin L_1^{loc}(\R^n)$.
 \end{proof}
 \begin{definition}
-    Пусть есть $\{\lambda_m\} \subset D'(\R^n)$ и есть $\lambda \in D'(\R^n)$.
-    Будем говорить что $\lambda_m \xrightarrow{D'} \lambda, m \ra +\infty$, если
+    Пусть $\{\lambda_m\} \subset D'(\R^n)$ и $\lambda \in D'(\R^n)$.
+    Будем говорить что $\lambda_m \xrightarrow[D']{} \lambda, m \ra +\infty$, если
     \[
         \forall \phi \in D(\R^n) \hookrightarrow \langle \lambda_m, \phi \rangle \ra \langle \lambda, \phi \rangle, m \ra +\infty.
     \]
@@ -89,17 +86,17 @@ $\mes (\B_\varepsilon(0)) \ra0$ при $\epsilon \ra\ 0$.\\ В неравенс�
 \begin{example}
     Рассмотрим следующую последовательность функционалов:
     \[
-        \forall n \in \N \quad f_n(x) = \begin{cases} n, x \in (-1/2n, 1/2n) \\
-                                            0, \text{ иначе.}
+        \forall n \in \N \quad f_n(x) = \begin{cases} n, x \in \left(-\frac{1}{2n}, \frac{1}{2n}\right) \\
+        0, \text{ иначе.}
         \end{cases}
     \]
     Тогда $f_n \xrightarrow{D'} \delta, n \ra +\infty$. Покажем это. \\
     Пусть $\phi \in D(\R)$. $f_n - \delta$ действует на $\phi$ следующим образом:
     \[
-    \left| \left\langle f_n - \delta,\, \phi \right\rangle \right| 
-    = \left| \int_{-1/2n}^{1/2n} n \phi(x)\, dx - \phi(0) \right| 
-    = \left| \int_{-1/2n}^{1/2n} n \left( \phi(x) - \phi(0) \right)\, dx \right|.
-    \tag{*}
+        \left| \left\langle f_n - \delta,\, \phi \right\rangle \right|
+        = \left| \int_{-1/2n}^{1/2n} n \phi(x)\, dx - \phi(0) \right|
+        = \left| \int_{-1/2n}^{1/2n} n \left( \phi(x) - \phi(0) \right)\, dx \right|.
+        \tag{*}
     \]
 
     По теореме Лагранжа:
@@ -107,23 +104,26 @@ $\mes (\B_\varepsilon(0)) \ra0$ при $\epsilon \ra\ 0$.\\ В неравенс�
 
     Тогда ($\ast$) можно продолжить как:
     \[
-    |\langle f_n - \delta, \phi \rangle | \leq \int_{-1/2n}^{1/2n} n |x \max \phi'(\epsilon) dx| = n |\max \phi'(\epsilon)| \dfrac{1}{2} \left( \left| \dfrac{1}{2n} \right|^2 - \left| \dfrac{-1}{2n} \right|^2 \right) = \dfrac{|\max \phi'(\epsilon)|}{4n} \ra 0, n \ra +\infty
+        |\langle f_n - \delta, \phi \rangle | \leq \int_{-1/2n}^{1/2n} n |x \max \phi'(\epsilon) dx| = n |\max \phi'(\epsilon)| \dfrac{1}{2} \left( \left| \dfrac{1}{2n} \right|^2 - \left| \dfrac{-1}{2n} \right|^2 \right) = \dfrac{|\max \phi'(\epsilon)|}{4n} \ra 0, n \ra +\infty
     \]
-     Что нам и хотелось показать.
+    Что нам и хотелось показать.
 
 \end{example}
-\begin{note}
-    Если $\lambda$~-- сингулярное распределение и $\exists \{f_m\} \in L_1^{loc}(\R^n) : f_m \xrightarrow[D'(\R^n)]{} \lambda$, $m \ra +\infty$, то $\{f_m\}$ называется регуляризацией $\lambda$.
-\end{note}
+\begin{definition}
+    Если $\lambda$~---~сингулярное распределение и $\exists \{f_m\} \in L_1^{loc}(\R^n)$: $f_m \xrightarrow[D'(\R^n)]{} \lambda$, $m \ra +\infty$, то $\{f_m\}$ называется регуляризацией $\lambda$.
+\end{definition}
 \begin{theorem}
     Пусть задана последовательность $\{f_m\} \subset L_1^{loc}(\R)$ такая, что:
     \begin{enumerate}
-        \item $\forall m \in \N \hookrightarrow \int_{\R} f_m(x) dx = 1$ (интеграл, вообще говоря, несобственный Лебеговский).
-        
-        \item $\exists C > 0 : |\int_a^b f_m(x)dx| \leq C$ $\forall a, b \in \overline{\R}$ $\forall m \in \N$.
-        
-        \item $\forall \epsilon > 0 \hookrightarrow \int_{\R \setminus (-\epsilon, \epsilon)} |f_m(t)|dt \ra 0, m \ra +\infty$ (от техающих: на лекции было без модуля, $(\star)$ содержит пояснение, почему без какого-либо изменения изначальное доказательство не работает).
+        \item $\displaystyle \forall m \in \N \hookrightarrow \int_{\R} f_m(x) dx = 1$ (интеграл, вообще говоря, несобственный Лебеговский).
+
+        \item $\displaystyle \exists C > 0 : \left|\int_a^b f_m(x)dx\right| \leq C$ $\forall a, b \in \overline{\R}$ $\forall m \in \N$.
+
+        \item $\displaystyle \forall \epsilon > 0 \hookrightarrow \int_{\R \setminus (-\epsilon, \epsilon)} |f_m(t)|dt \ra 0, m \ra +\infty$
     \end{enumerate}
+    \begin{remark}
+        От техающих: на лекции пункт $3$ был без модуля, $(\star)$ содержит пояснение, почему без какого-либо изменения изначальное доказательство не работает)
+    \end{remark}
     \begin{note}
         Стоит заметить, что второе условие из первого не следует, в силу возможности <<взаимного погашения>> друг друга положительной и отрицательной частей при сколь угодно больших $x$.
     \end{note}
@@ -141,10 +141,10 @@ $\mes (\B_\varepsilon(0)) \ra0$ при $\epsilon \ra\ 0$.\\ В неравенс�
     \]
     \\
     $\forall x > 0 \hookrightarrow[x, +\infty) \subset (-\infty, -\epsilon] \cup [\epsilon, +\infty) = \R \backslash(-\epsilon, \epsilon)$, где $\epsilon = \dfrac{x}{2}$. Следовательно,
-    \[ |1 - F_m(x)| = 
-    |\int_x^{+\infty} f_m(t)dt| \leq \int_x^{+\infty} |f_m(t)|dt \leq \int_{\R \setminus (-\epsilon, \epsilon)} |f_m(x)|dx \ra 0, m \ra +\infty, 
+    \[ |1 - F_m(x)| =
+    |\int_x^{+\infty} f_m(t)dt| \leq \int_x^{+\infty} |f_m(t)|dt \leq \int_{\R \setminus (-\epsilon, \epsilon)} |f_m(x)|dx \ra 0, m \ra +\infty,
     \]
-    где последний предельный переход берётся из третьего условия. ($(\star)$: в исходном утверждении без модуля ничего не обеспечивает отсутствие ситуации, когда $\int_x^{+\infty}f_m(t)dt > \int_{\R \setminus (-\epsilon, \epsilon)} f_m(t)$: на $[\dfrac{x}{2}, x]$ и $[-x, -\dfrac{x}{2}]$ $f_m(x)$ будет нулём; на $[x, +\infty)$ будет затухать с положительным значением функции, а на $(-\infty, -x]$ будет затухать, но с отрицательным значением - это даст взаимную компенсацию для выполнения условия 3 и обеспечит условие 2; на $[-\dfrac{x}{2}, \dfrac{x}{2}]$ будет колоколом, который даст 1 для условия 1).\\
+    где последний предельный переход берётся из третьего условия. ($(\star)$: в исходном утверждении без модуля ничего не обеспечивает отсутствие ситуации, когда $\int_x^{+\infty}f_m(t)dt > \int_{\R \setminus (-\epsilon, \epsilon)} f_m(t)$: на $[\dfrac{x}{2}, x]$ и $[-x, -\dfrac{x}{2}]$ $f_m(x)$ будет нулём; на $[x, +\infty)$ будет затухать с положительным значением функции, а на $(-\infty, -x]$ будет затухать, но с отрицательным значением - это даст взаимную компенсацию для выполнения условия 3 и обеспечит условие 2; на $\left[-\dfrac{x}{2}, \dfrac{x}{2}\right]$ будет колоколом, который даст 1 для условия 1).\\
     Тогда $\forall x > 0$:
     \[
         F_m(x) \ra 1, \ m \ra +\infty.
@@ -152,17 +152,17 @@ $\mes (\B_\varepsilon(0)) \ra0$ при $\epsilon \ra\ 0$.\\ В неравенс�
     Аналогично $\forall x < 0 \hookrightarrow (-\infty, x] \subset (-\infty, -\epsilon] \cup [\epsilon, +\infty) = \R \backslash(-\epsilon, \epsilon)$, где $\epsilon = -\dfrac{x}{2}$. Следовательно,
 
     \[
-    |F_m(x)| = |\int_{-\infty}^x f_m(t)dt| \leq \int_{-\infty}^x |f_m(t)|dt \leq \int_{\R \setminus (-\epsilon, \epsilon)} |f_m(x)|dx \ra 0, m \ra +\infty.
+        |F_m(x)| = \left|\int_{-\infty}^x f_m(t)dt\right| \leq \int_{-\infty}^x |f_m(t)|dt \leq \int_{\R \setminus (-\epsilon, \epsilon)} |f_m(x)|dx \ra 0, m \ra +\infty.
     \]
     Получается,
     \[
-    \forall x > 0 \hookrightarrow F_m(x) \ra 1, m \ra +\infty, \quad \forall x < 0 \hookrightarrow F_m(x) \ra 0, m \ra +\infty.
+        \forall x > 0 \hookrightarrow F_m(x) \ra 1, m \ra +\infty, \quad \forall x < 0 \hookrightarrow F_m(x) \ra 0, m \ra +\infty.
     \]
     То есть $F_m \ra \theta, m \ra +\infty$ (поточечно), где $\theta$ ~--- функция Хевисайда:
     \[
-    \theta(x) = \begin{cases}
-                   0,\quad x < 0; \\
-                   1,\quad x \geq 0.
+        \theta(x) = \begin{cases}
+                        0,\quad x < 0; \\
+                        1,\quad x \geq 0.
         \end{cases}
     \]
     Пусть $\phi \in D(\R)$. Рассмотрим
@@ -171,7 +171,7 @@ $\mes (\B_\varepsilon(0)) \ra0$ при $\epsilon \ra\ 0$.\\ В неравенс�
     \]
     (интегрирование по частям здесь используется без доказательства.)
     Из компактности носителя $\phi$ и ограниченности $F_m$ следует, что первое слагаемое зануляется.\\
-    Так как 
+    Так как
     \begin{itemize}
         \item у $\phi$ компактный носитель,
         \item $F_m \ra \theta, m \ra +\infty$,
@@ -194,33 +194,33 @@ $\mes (\B_\varepsilon(0)) \ra0$ при $\epsilon \ra\ 0$.\\ В неравенс�
     Определение выше~-- корректно в том смысле, что $g\lambda$ действительно лежит в $D'(\R^n)$ и в случае регулярных распределений совпадает с обычным умножением.
 \end{theorem}
 \begin{proof} Функционал, определяемый $(\ast)$, является линейным и корректно определённым, поскольку
-    \begin{itemize}
-        \item $\forall \phi \in D(\R^n) \hookrightarrow g \cdot \phi \in C^{+\infty}(\R^n)$
-        \item является непрерывным: $g \cdot\phi_m \xrightarrow[D(\R^n)]{} g \cdot \phi$, $m \ra +\infty$, ибо  
-        \begin{enumerate}
-            \item $\phi_m \xrightarrow[D(\R^n)]{} \phi$,
-            \item носитель не изменился,
-            \item все носители содержатся в $\B_R(0)$ и в нём $g$ ограничена, как и её производные, но необязательно одной и той же константой.
-        \end{enumerate}
-    \end{itemize}
-    Пусть $\lambda$ ~---~ регулярное распределение.
-    Тогда $\exists f_\lambda \in L_1^{loc}(\R^n):$ 
-    \[
-        \forall \phi \in D(\R^n) \hookrightarrow \langle \lambda, \phi \rangle = \int_{\R^n} f_{\lambda}(x) \phi(x) dx.
-    \]
-    Тогда в силу $(\ast)$:
-    \[
-        \langle g \cdot \lambda, \phi \rangle = \langle\lambda, g \cdot \phi \rangle = \int_{\R^n} f_{\lambda}(x) g(x) \phi(x) dx = \int_{\R^n} (f_\lambda(x) g(x))\phi(x)dx.
-    \]
-    Так как $f_\lambda \cdot g \in L_1^{loc}(\R^n)$, то $\langle g \cdot \lambda, \phi \rangle  = \langle f_\lambda \cdot g, \phi \rangle $, что и даёт нам утверждение теоремы.
+\begin{itemize}
+    \item $\forall \phi \in D(\R^n) \hookrightarrow g \cdot \phi \in C^{+\infty}(\R^n)$
+    \item является непрерывным: $g \cdot\phi_m \xrightarrow[D(\R^n)]{} g \cdot \phi$, $m \ra +\infty$, ибо
+    \begin{enumerate}
+        \item $\phi_m \xrightarrow[D(\R^n)]{} \phi$,
+        \item носитель не изменился,
+        \item все носители содержатся в $\B_R(0)$ и в нём $g$ ограничена, как и её производные, но необязательно одной и той же константой.
+    \end{enumerate}
+\end{itemize}
+Пусть $\lambda$ ~---~ регулярное распределение.
+Тогда $\exists f_\lambda \in L_1^{loc}(\R^n):$
+\[
+    \forall \phi \in D(\R^n) \hookrightarrow \langle \lambda, \phi \rangle = \int_{\R^n} f_{\lambda}(x) \phi(x) dx.
+\]
+Тогда в силу $(\ast)$:
+\[
+    \langle g \cdot \lambda, \phi \rangle = \langle\lambda, g \cdot \phi \rangle = \int_{\R^n} f_{\lambda}(x) g(x) \phi(x) dx = \int_{\R^n} (f_\lambda(x) g(x))\phi(x)dx.
+\]
+Так как $f_\lambda \cdot g \in L_1^{loc}(\R^n)$, то $\langle g \cdot \lambda, \phi \rangle  = \langle f_\lambda \cdot g, \phi \rangle $, что и даёт нам утверждение теоремы.
 \end{proof}
 \begin{example}
     Пусть $g \in C^{+\infty}(\R)$, $\delta$~--- дельта-функция Дирака. Тогда $g\delta = g(0)\delta$.
     \begin{proof}
         \[ \forall \phi \in D(\R^n) \hookrightarrow
-        \langle g \delta, \phi \rangle  = \langle \delta, g \phi \rangle = g(0)\phi(0) = g(0) \langle \delta, \phi \rangle = \langle g(0)\delta, \phi \rangle 
+        \langle g \delta, \phi \rangle  = \langle \delta, g \phi \rangle = g(0)\phi(0) = g(0) \langle \delta, \phi \rangle = \langle g(0)\delta, \phi \rangle
         \]
-    \end{proof} 
+    \end{proof}
 \end{example}
 \begin{definition}
     $\delta_x$~-- сдвинутую дельта-функцию Дирака определим как
@@ -229,7 +229,7 @@ $\mes (\B_\varepsilon(0)) \ra0$ при $\epsilon \ra\ 0$.\\ В неравенс�
     \]
 \end{definition}
 \begin{remark}
-     Сергей Львович Соболев ввёл понятие обобщённой производной.
+    Сергей Львович Соболев ввёл понятие обобщённой производной.
 \end{remark}
 \begin{note}
     Пусть $f \in C^1(\R)$ и $\phi \in C^{+\infty}_0(\R)$. \\
@@ -244,11 +244,11 @@ $\mes (\B_\varepsilon(0)) \ra0$ при $\epsilon \ra\ 0$.\\ В неравенс�
     Пусть $\lambda \in D'(\R^n)$ и $\alpha \in (\N_0)^n$.
     Определим $D^\alpha \lambda$~--- такой функционал, который на любую пробную  функцию $\phi$ ($\phi \in D(\R^n)$), действует по правилу:
     \[
-        \langle D^{\alpha}, \phi \rangle = (-1)^{|\alpha|} \langle \lambda, D^{\alpha}\phi \rangle, 
+        \langle D^{\alpha}, \phi \rangle = (-1)^{|\alpha|} \langle \lambda, D^{\alpha}\phi \rangle,
     \]
-    где 
+    где
     \[
-    D^{\alpha}\phi:= \dfrac{\partial^{|\alpha|\phi(x)}}{\partial x_1^{\alpha_1}\dots\partial x_n^{\alpha_n}}.
+        D^{\alpha}\phi:= \dfrac{\partial^{|\alpha|\phi(x)}}{\partial x_1^{\alpha_1}\dots\partial x_n^{\alpha_n}}.
     \]
 \end{definition}
 \begin{theorem}
