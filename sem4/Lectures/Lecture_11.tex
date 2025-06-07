@@ -52,12 +52,14 @@
     \[e^{-i x y}=e^{-i x (y-t+t)}=e^{-i x t}e^{-i x (y-t)}.\]
     Теперь подставим этом в выражение для Фурье-образа:
     \begin{equation*}
+    	\begin{aligned}
         \mathcal{F}[f*g](x)
         &=\frac1{\sqrt{2\pi}}
-        \int_{\mathbb R}\int_{\mathbb R}e^{-i x t}e^{-i x (y-t)}f(y-t)\,g(t)\,dy\,dt
+        \int_{\mathbb R}\int_{\mathbb R}e^{-i x t}e^{-i x (y-t)}f(y-t)\,g(t)\,dy\,dt\\
         &=\frac1{\sqrt{2\pi}}
         \int_{\mathbb R}g(t)e^{-i x t}
         \Bigl(\int_{\mathbb R}e^{-i x (y-t)}f(y-t)\,dy\Bigr)dt.
+        \end{aligned}
     \end{equation*}
     Внутренний интеграл по $y$ при замене переменной $u=y-t$ даёт
     \[
