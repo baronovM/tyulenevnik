@@ -26,7 +26,7 @@
 \theorem Рассмотрим собственный интеграл, зависящий от параметра (опр. \ref{pidp}), и пусть дополнительно известно, что $Y = (Y, d)$ ~---~ метрическое пространство. $y_0$ - предельная точка в $Y$, а также пусть $\exists \widetilde{X} \subset X$, т.ч. $\mu(X \bs \widetilde{X}) = 0$, а также:
 \begin{enumerate}
     \item $\forall x \in \widetilde{X} \quad \exists \lim\limits_{y \ra y_0} f(x, y) = \ff(x)$
-    \item $\exists g(x) \in L_1(X)$ т.ч. при некотором $\delta > 0 \quad \left| f(x,y)\right| \leq g(x) \quad \forall x \in \widetilde{X}$ и $\forall y \in \mathring{B}_\delta(y_0)$
+    \item $\exists g(x) \in L_1(X)$ т.ч. при некотором $\delta > 0 \quad \left| f(x,y)\right| \leq g(x) \quad \forall x \in \widetilde{X}$ и $\forall y \in \mathring{B}_\delta(y_0)$. Будем называть это условием локальной мажорируемости и обозначать как (L) \label{def:loc_maj}
 \end{enumerate}
 
 
@@ -52,7 +52,7 @@
 
 \subsubsection{Когда можно дифференцировать по параметру?}
 
-\theorem Рассмотрим собственный интеграл, зависящий от параметра (опр. \ref{pidp}), и пусть дополнительно известно, что $Y = \lceil c, \, d\rfloor$ ~---~ промежуток, точка $y_0 \in \lceil c, \, d\rfloor$, а также пусть $f : X \times Y \ra \overline{\R}$ т.ч. $\exists \widetilde{X} \subset X : \mu(X \bs \widetilde{X}) = 0$ и $\exists f'_y(x, y) \quad \forall x \in \widetilde{X} \quad \forall y \in Y$. Пусть $f'_y$ удовлетворяет условию $(L)$ в окрестности точки $y_0$. Тогда функция $J$ дифференцируема в точке $y_0$ и справедлива формула:
+\theorem Рассмотрим собственный интеграл, зависящий от параметра (опр. \ref{pidp}), и пусть дополнительно известно, что $Y = \lceil c, \, d\rfloor$ ~---~ промежуток, точка $y_0 \in \lceil c, \, d\rfloor$, а также пусть $f : X \times Y \ra \overline{\R}$ т.ч. $\exists \widetilde{X} \subset X : \mu(X \bs \widetilde{X}) = 0$ и $\exists f'_y(x, y) \quad \forall x \in \widetilde{X} \quad \forall y \in Y$. Пусть $f'_y$ удовлетворяет \hyperref[def:loc_maj]{условию локальной мажрорируемости $(L)$} в окрестности точки $y_0$. Тогда функция $J$ дифференцируема в точке $y_0$ и справедлива формула:
 $$\frac{d J}{d y}(y_0) = \frac{d}{d y} \int\limits_X f(x, y) d \mu(x) \Bigg|_{y=y_0} = \int\limits_X f'_y(x, y_0) d \mu(x).$$
 
 \proof Фиксируем $h \in \R$ такой, что $y_0 + h \in \lceil c, \, d \rfloor$. Тогда распишем производную по определению
