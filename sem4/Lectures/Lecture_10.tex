@@ -1,3 +1,46 @@
+\subsection{Интеграл Фруллани.}
+\begin{lemma}
+    Пусть $f \in C([0, +\infty))$ и для любого $A > 0 \hookrightarrow$
+    \[
+        \int_A^{+\infty} \dfrac{f(x)}{x}dx
+    \]
+    сходится в несобственном смысле.
+    Тогда $\forall a, b > 0$ справедлива формула Фруллани:
+    \[
+        I = \int_0^{+\infty} \frac{f(ax) - f(bx)}{x}dx = f(0)\ln \frac{b}{a}.
+    \]
+\end{lemma}
+\begin{proof}
+    Поскольку
+    \[
+        I = \lim\limits_{\epsilon \ra +0, E \ra +\infty} \int_{\epsilon}^{E} \dfrac{f(ax) - f(bx)}{x}dx.
+    \]
+    Введём обозначение:
+    \[
+        I(\epsilon, E) = \int_{\epsilon}^{E} \dfrac{f(ax) - f(bx)}{x}dx.
+    \]
+    Поскольку
+    \[
+        I(\epsilon, E) = \int_{\epsilon}^E \dfrac{f(ax)}{x}dx - \int_{\epsilon}^{E} \dfrac{f(bx)}{x}dx = \int_{a\epsilon}^{aE} \dfrac{f(t)}{t}dt - \int_{b\epsilon}^{bE} \dfrac{f(t)}{t}dt = \int_{a\epsilon}^{b\epsilon} \dfrac{f(t)}{t}dt + \int_{bE}^{aE} \dfrac{f(t)}{t}dt = J(\epsilon) + K(E).
+    \]
+    Ключевой момент заключается в том, что $K(E) \ra 0, E \ra +\infty$ -- это следует из критерия Коши сходимости в применении к несобственному интегралу, данному в условии.
+    А $J(\epsilon)$ оценивается как
+    \[
+        J(\epsilon) = \int_{a\epsilon}^{b\epsilon} \dfrac{f(t) - f(0)}{t}dt + \int_{a \epsilon}^{b\epsilon} \dfrac{f(0)}{t}dt = f(0) \ln \frac{b}{a} + \int_{a\epsilon}^{b\epsilon} \dfrac{f(t) - f(0)}{t}dt \ra f(0) \ln \frac{b}{a}.
+    \]
+    Второе слагаемое стремится к 0 из непрерывности $f$:
+    \[
+        \biggr|\int_{a \epsilon}^{b\epsilon} \dfrac{f(0)}{t}dt \biggr| \leq \sup\limits_{t \in [a\epsilon, b \epsilon]}|f(t) - f(0)| \ln \frac{b}{a} \ra 0, \epsilon \ra +0.
+    \]
+\end{proof}
+\begin{example}
+    Рассмотрим интеграл $I = \int_0^1 \frac{x^\alpha - x^\beta}{\ln x}dx$.
+    Сделаем замену $x = e^{-t}$ и получим
+    \[
+        I = -\int_0^{+\infty} \dfrac{e^{-\alpha t} - e^{-\beta t}}{t} e^{-t}dt = \ln \dfrac{a + 1}{b + 1}.
+    \]
+    с использованием формулы Фруллани к функции $f(t) = e^{-t}$.
+\end{example}
 \subsection{Интеграл Дирихле}
 
 \[
