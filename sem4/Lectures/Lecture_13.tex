@@ -60,16 +60,17 @@
 \end{proof}
 \subsection{Пространства $S$ и $S'$.}
 \begin{definition}
-    Определим пространство $S(\R^n)$ -- пространство всех бесконечно дифференцируемых функций, быстро убывающих на бесконечности, то есть:
+    Определим пространство $S(\R^n)$~---~пространство всех бесконечно дифференцируемых функций $\phi$, быстро убывающих на бесконечности, то есть:
     \[
-        \forall l \in \N_0: \|\phi\|_l \equiv \sup\limits_{x \in \R^n} ((1 + |x|)^l \max\limits_{0 \leq |\alpha| \leq l} |D^{\alpha} \phi|) < +\infty.
+        \forall l \in \N_0 \hookrightarrow \|\phi\|_l \equiv \sup\limits_{x \in \R^n} ((1 + |x|)^l \max\limits_{0 \leq |\alpha| \leq l} |D^{\alpha} \phi|) < +\infty,
     \]
-    Вместе со следующей сходимостью:
-    $\phi_l \xrightarrow{S} \phi, l \ra +\infty.$
-    если $\forall l \in \N_0 \hookrightarrow \|\phi - \phi_m\|_l \ra 0, m \ra +\infty$.
+    где $|x| = \sqrt{x_1^2 + \ldots + x_n^2}$.\\
+    C введенной в нем сходимостью:
+    $\phi_m \xrightarrow{S} \phi$, $m \ra +\infty.$
+    если $\forall l \in \N_0 \hookrightarrow \|\phi - \phi_m\|_l \ra 0$, $m \ra +\infty$.
 \end{definition}
 \begin{note}
-    $\forall l \in \N_0$ верно, что $\|\cdot \|_l$ -- действительно норма.
+    $\forall l \in \N_0$ верно, что $\|\cdot \|_l$~---~является нормой.
 \end{note}
 
 \begin{note}[Примечание техающего]
@@ -122,8 +123,9 @@
 \begin{note}
     Таким образом $S(\R^n)$ -- счётнонормированное пространство.
 \end{note}
+
 \begin{theorem}
-    $S(\R^n)$ -- метризуемое пространство, то есть существует метрика $d$ такая, что \[d(\phi_m, \phi) \ra 0 \Longleftrightarrow \phi_m \xrightarrow{S} \phi, m \ra +\infty.\]
+    $S(\R^n)$~---~метризуемое пространство, то есть существует метрика $d$ такая, что \[d(\phi_m, \phi) \ra 0 \Longleftrightarrow \phi_m \xrightarrow{S} \phi, m \ra +\infty.\]
 \end{theorem}
 \begin{proof}
     Пусть $\phi, \psi \in S(\R^n)$.
@@ -227,15 +229,21 @@
 \end{proof}
 \begin{theorem}
     Преобразование Фурье осуществляет линейный изоморфизм $S(\R)$ на $S(\R)$.
-    Более того, $\forall m, n \in \N_0$, справедливы следующие равенства:
+    Более того, $\forall m, n \in \N_0$ справедливы следующие равенства:
     \[
         F\left[\dfrac{d^m \phi}{dx^m}\right](y) = (iy)^m F[\phi](y), \quad \dfrac{d^n F[\phi]}{dy^n}(y) = F[(-ix)^n \phi](y).
     \]
 \end{theorem}
+
+\begin{remark}
+    Для выполнения второй формулы необходимо $\forall k \in \{1, \ldots n\} \hookrightarrow (-ix)^k \phi \in L_1 (\R)$;\\
+    Для выполнения первой~---~$\forall k \in \{1, \ldots m\} \hookrightarrow \cfrac{d^k \phi}{dx^k} \in C(\R)$, $\cfrac{d^k \phi}{dx^k} \in L_1 (\R)$.
+\end{remark}
+
 \begin{proof}
-    Пусть $\phi \in S(\R)$, то, по определению:
+    Пусть $\phi \in S(\R)$. Тогда по определению:
     \[
-        \sup ((1 + |x|)^l \max\limits_{0 \leq k \leq l} |\phi^{(k)}(x)|) = \|\phi\|_l < +\infty \forall l \in \N_0.
+        \sup_{x \in \R} ((1 + |x|)^l \max\limits_{0 \leq k \leq l} |\phi^{(k)}(x)|) = \|\phi\|_l < +\infty \  \forall l \in \N_0.
     \]
     В частности $\forall k \in \N_0 \hookrightarrow \sup\limits_{x \in \R} |x|^k|\phi (x)| < +\infty$.
     Так как
@@ -308,7 +316,7 @@
     Определеним $S'(\R)$ как пространство всех непрерывных (по отношению к сходимости в $S$) линейных функционалов.
 \end{definition}
 \begin{note}
-    Под непрерывностью $\lambda$ имеется в виду
+    Под непрерывностью $\lambda \in S'(\R)$ имеется в виду
     \[ \phi_m \xrightarrow{S} \phi, \;\; m \ra \infty \quad => \quad (\lambda, \phi_m) \ra (\lambda, \phi), \;\; m \ra \infty
     \]
 \end{note}
