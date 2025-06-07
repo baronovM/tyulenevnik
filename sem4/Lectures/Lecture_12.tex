@@ -1,6 +1,6 @@
 
 \begin{remark}
-    Несмотря на то, что пространства $D(\R^n)$ и $D'(\R^n)$ определялось для функций в $\R$, в дальнейшем будем считать что функции имеют областью значений $\Cm$, а в $D'(\R^n)$, соответственно, линейные функционалы в $\Cm$.
+    Несмотря на то, что пространства $\D(\R^n)$ и $\D'(\R^n)$ определялось для функций в $\R$, в дальнейшем будем считать что функции имеют областью значений $\Cm$, а в $\D'(\R^n)$, соответственно, линейные функционалы в $\Cm$.
     И это~-- линейные пространства над полем $\Cm$.
 \end{remark}
 \begin{lemma}
@@ -9,23 +9,23 @@
     \[
         \langle \lambda_f, \phi \rangle= \int_{\R^n} f(x) \phi(x) dx \quad \forall \phi \in \mathcal{D}(\mathbb{R}^n). \label{lambda_f_functional}
     \]
-    Является элементом пространства $D'(\R^n)$.
+    Является элементом пространства $\D'(\R^n)$.
 \end{lemma}
 \begin{proof}
     Действие $\lambda_f$ на $\phi$ имеет смысл в силу компактности носителя $\phi$ и ее непрерывности, а значит, как следствие, ограниченности, а также локальной интегрируемости $f$ (то есть она интегрируема на носителе $\phi$). Значит, такой интеграл вообще корректен. Далее
     \begin{enumerate}
         \item[$\bullet$] В силу линейности интеграла Лебега функционал $\lambda_f$~-- линейный функционал;
-        \item[$\bullet$] Осталось проверить непрерывность $\lambda_f$ относительно $D$-сходимости: \\
+        \item[$\bullet$] Осталось проверить непрерывность $\lambda_f$ относительно $\D$-сходимости: \\
         % Пусть $\{\phi_m\}$~-- последовательность в $D(\R^n)$ такая, что $\phi_m \xrightarrow{D} \phi$.
-        Пусть $\{\phi_m\} \subset D(\R^n)$: $\phi_m \xrightarrow[\mathcal{D}(\mathbb{R}^n)]{} \phi$, $m \ra +\infty$.\\
-        Из определения сходимости носители <<не расползаются>>, то есть
-        $$\exists R > 0\text{: } B_R(0) \text{: } \forall m \in \mathbb{N} \hookrightarrow \text{supp} \phi_m \subset B_R(0)  \text{ и supp} \phi \subset B_R(0).$$
-        В частности, также, $\sup\limits_{x \in \R^n}|\phi_m(x) - \phi(x)| \ra 0, m \ra +\infty$ (по определению сходимости в $D$).
+        \noindent Пусть $\{\phi_m\} \subset \D(\R^n)$: $\phi_m \xrightarrow[\mathcal{D}(\mathbb{R}^n)]{} \phi$, $m \ra +\infty$.\\
+        \noindent Из определения сходимости носители <<не расползаются>>, то есть
+        $$\exists R > 0\text{: } B_R(0) \text{: } \forall m \in \mathbb{N} \hookrightarrow \supp \phi_m \subset B_R(0)  \text{ и } \supp \phi \subset B_R(0).$$
+        \noindent В частности, также, $\sup\limits_{x \in \R^n}|\phi_m(x) - \phi(x)| \ra 0, m \ra +\infty$ (по определению сходимости в $D$).
         Тогда
         \begin{multline*}
-            |\langle \lambda_f, \phi_m - \phi \rangle | = \left|\int_{\R^n} f(x)(\phi_m(x) - \phi(x))dx\right| \leq \int_{B_R(0)} \left|f(x)\right|\left|\phi_m(x) - \phi(x)\right| dx \leq \\ \leq \sup\limits_{x \in \R^n} |\phi_m (x) - \phi (x)| \int_{B_R(0)} |f(x)|dx \ra 0, m \ra +\infty.
+            |\langle \lambda_f, \phi_m - \phi \rangle | = \left|\int\limits_{\R^n} f(x)(\phi_m(x) - \phi(x))dx\right| \leq \int\limits_{B_R(0)} \left|f(x)\right|\left|\phi_m(x) - \phi(x)\right| dx \leq \\ \leq \sup\limits_{x \in \R^n} |\phi_m (x) - \phi (x)| \int\limits_{B_R(0)} |f(x)|dx \ra 0, m \ra +\infty.
         \end{multline*}
-        А значит $\lambda_f$~-- действительно непрерывный линейный функционал $\Rightarrow \lambda_f \in D'(\R^n)$.
+        \noindent А значит $\lambda_f$~-- действительно непрерывный линейный функционал $\Rightarrow \lambda_f \in \D'(\R^n)$.
     \end{enumerate}
 \end{proof}
 
@@ -34,7 +34,7 @@
 \end{remark}
 
 \begin{note}
-    Эта лемма показывает, что можно воспринимать $L_1^{loc}(\R^n)$ как подпространство $D'(\R^n)$. \\
+    Эта лемма показывает, что можно воспринимать $L_1^{loc}(\R^n)$ как подпространство $\D'(\R^n)$. \\
     Вложение строгое, это будет продемонстрировано ниже.
 \end{note}
 
@@ -52,10 +52,10 @@
 \end{remark}
 
 \begin{theorem}
-    $\delta \in D'(\R^n) \setminus L_1^{loc}(\R^n)$.
+    $\delta \in \D'(\R^n) \setminus L_1^{loc}(\R^n)$.
 \end{theorem}
 \begin{proof}
-    Сначала покажем, что $\delta \in D'(\R^n)$:
+    Сначала покажем, что $\delta \in \D'(\R^n)$:
     \begin{enumerate}
         \item[$\bullet$] Линейность:
         \begin{multline*}
@@ -87,8 +87,8 @@
     поскольку $f_\delta$ локально интегрируема и мера $\epsilon$-шара стремится к $0$ при $\epsilon \ra\ 0$.\\ В неравенстве противоречие $1 \to 0$, а значит $f_{\delta} \notin L_1^{loc}(\R^n)$.
 \end{proof}
 \begin{definition}
-    Пусть $\{\lambda_m\} \subset D'(\R^n)$ и $\lambda \in D'(\R^n)$.
-    Будем говорить что $\lambda_m \xrightarrow[D' (\R^n)]{} \lambda, m \ra +\infty$, если
+    Пусть $\{\lambda_m\} \subset \D'(\R^n)$ и $\lambda \in \D'(\R^n)$.
+    Будем говорить что $\lambda_m \xrightarrow[\D' (\R^n)]{} \lambda, m \ra +\infty$, если
     \[
         \forall \phi \in D(\R^n) \hookrightarrow \langle \lambda_m, \phi \rangle \ra \langle \lambda, \phi \rangle, m \ra +\infty.
     \]
@@ -106,20 +106,20 @@
         \end{cases}
     \]
     Тогда $f_n \xrightarrow[D' (\R)]{} \delta, n \ra +\infty$. Покажем это. \\
-    Пусть $\phi \in D(\R)$. Рассмотрим
+    Пусть $\phi \in \D(\R)$. Рассмотрим
     \[
         \left| \left\langle f_n, \phi \rangle - \langle \delta,\, \phi \right\rangle \right|
-        = \left| \int_{-1/2n}^{1/2n} n \phi(x) \, dx - \phi(0) \right|
-        = \left| \int_{-1/2n}^{1/2n} n \left( \phi(x) - \phi(0) \right)\, dx \right|.
+        = \left| \int\limits_{-1/2n}^{1/2n} n \phi(x) \, dx - \phi(0) \right|
+        = \left| \int\limits_{-1/2n}^{1/2n} n \left( \phi(x) - \phi(0) \right)\, dx \right|.
         \tag{*}
     \]
 
-    По теореме Лагранжа о среднем:
+    \noindent По теореме Лагранжа о среднем:
     \[\exists \epsilon \in (0, x)\text{: } \phi(x) - \phi(0) = x \cdot  \phi'(\epsilon) \leq x \cdot \left(\underset{-\frac{1}{2n} \leq \epsilon \leq \frac{1}{2n}}{\max} \phi'(\epsilon)\right) \leq x \cdot \max \phi'(\epsilon).\]
 
-    Тогда ($\ast$) можно продолжить как:
+    \noindent Тогда ($\ast$) можно продолжить как:
     \begin{multline*}
-        \left| \left\langle f_n, \phi \rangle - \langle \delta,\, \phi \right\rangle \right| \leq n \int_{-1/2n}^{1/2n} \left|x \max \phi'(\epsilon) \right| dx = \\ =
+        \left| \left\langle f_n, \phi \rangle - \langle \delta,\, \phi \right\rangle \right| \leq n \int\limits_{-1/2n}^{1/2n} \left|x \max \phi'(\epsilon) \right| dx = \\ =
         n |\max \phi'(\epsilon)| \left( \dfrac{1}{2n} \right)^2 = \dfrac{|\max \phi'(\epsilon)|}{4n} \ra 0, n \ra +\infty.
     \end{multline*}
     Что нам и хотелось показать.
@@ -204,7 +204,7 @@
     что доказывает нашу теорему.
 \end{proof}
 \begin{definition}
-    Пусть $g \in C^{+\infty}(\R^n)$ и $\lambda \in D'(\R^n)$.
+    Пусть $g \in C^{\infty}(\R^n)$ и $\lambda \in D'(\R^n)$.
     Определим произведение $g\cdot\lambda$ как функционал, действующий на $\phi \in D(\R^n)$ следующим образом:
     \[
         \langle g \cdot \lambda, \phi \rangle = \langle \lambda, g \cdot \phi \rangle \quad \tag{$\ast$}
@@ -215,7 +215,7 @@
 \end{theorem}
 \begin{proof} Функционал, определяемый $(\ast)$, является линейным и корректно определённым, поскольку
 \begin{itemize}
-    \item $\forall \phi \in D(\R^n) \hookrightarrow g \cdot \phi \in C^{+\infty}(\R^n)$
+    \item $\forall \phi \in D(\R^n) \hookrightarrow g \cdot \phi \in C^{\infty}(\R^n)$
     \item является непрерывным: $g \cdot\phi_m \xrightarrow[D(\R^n)]{} g \cdot \phi$, $m \ra +\infty$, ибо
     \begin{enumerate}
         \item $\phi_m \xrightarrow[D(\R^n)]{} \phi$,
@@ -235,7 +235,7 @@
 Так как $f_\lambda \cdot g \in L_1^{loc}(\R^n)$, то $\langle g \cdot \lambda, \phi \rangle  = \langle f_\lambda \cdot g, \phi \rangle $, что и даёт нам утверждение теоремы.
 \end{proof}
 \begin{example}
-    Пусть $g \in C^{+\infty}(\R)$, $\delta$~--- дельта-функция Дирака. Тогда $g\delta = g(0)\delta$.
+    Пусть $g \in C^{\infty}(\R)$, $\delta$~--- дельта-функция Дирака. Тогда $g\delta = g(0)\delta$.
     \begin{proof}
         \[ \forall \phi \in D(\R^n) \hookrightarrow
         \langle g \delta, \phi \rangle  = \langle \delta, g \phi \rangle = g(0)\phi(0) = g(0) \langle \delta, \phi \rangle = \langle g(0)\delta, \phi \rangle
