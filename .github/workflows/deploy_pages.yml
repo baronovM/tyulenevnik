@@ -20,22 +20,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Define helper function for outdated check
+      - name: Create outdated-check script
         run: |
-          echo 'check_if_outdated() {
-            latest_commit=$(gh api repos/${{ github.repository }}/commits/main --jq .sha)
-            echo "Current commit: ${{ github.sha }}"
-            echo "Latest commit on main: $latest_commit"
-            if [[ "$latest_commit" != "${{ github.sha }}" ]]; then
-              echo "::notice::This commit is outdated. Exiting."
-              exit 0
-            fi
-          }' >> ~/.bashrc
+          echo '#!/bin/bash
+          latest_commit=$(gh api repos/${{ github.repository }}/commits/main --jq .sha)
+          echo "Current commit: ${{ github.sha }}"
+          echo "Latest commit on main: $latest_commit"
+          if [[ "$latest_commit" != "${{ github.sha }}" ]]; then
+            echo "::notice::This commit is outdated. Exiting."
+            exit 0
+          fi' > ./check-outdated.sh
+          chmod +x ./check-outdated.sh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check if outdated (early)
-        run: |
-          source ~/.bashrc
-          check_if_outdated
+        run: ./check-outdated.sh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -59,9 +59,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check if outdated (after wait)
-        run: |
-          source ~/.bashrc
-          check_if_outdated
+        run: ./check-outdated.sh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -104,9 +102,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check if outdated (after downloading)
-        run: |
-          source ~/.bashrc
-          check_if_outdated
+        run: ./check-outdated.sh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
