@@ -60,7 +60,7 @@
 
 \begin{proof}
 
-\noindent Сделаем регуляризацию, то есть добавим множитель, чтобы из несобственного интеграла получить собственный. 
+\noindent Сделаем регуляризацию, то есть добавим множитель, чтобы из несобственного интеграла получить собственный.
 
 \noindent Рассмотрим функцию:
 
@@ -74,12 +74,12 @@ F(x, 0) = \frac{\sin x}{x},
 
 \noindent Заметим, что $F$ ~---~ непрерывная как функция двух переменных. Доопределим в нуле:
 \[
-F(0, 0) = 1,  
+F(0, 0) = 1,
 \]
 
-\noindent Тогда функция непрерывна на $[0, +\infty) \times [0, +\infty)$. 
+\noindent Тогда функция непрерывна на $[0, +\infty) \times [0, +\infty)$.
 
-Рассмотрим интеграл (зависящий от параметра): 
+Рассмотрим интеграл (зависящий от параметра):
 \[
 D(y) := \int\limits_0^{+\infty}F(x, y) \,d x
 \]
@@ -101,7 +101,7 @@ D'(y) = -\mathrm{Im} \int\limits_0^{+\infty} e^{-xy} \cdot e^{ix} \, dx
 \[
 = \mathrm{Im} \left( \frac{1}{i - y} \right) = \mathrm{Im} \left( \frac{-i - y}{1 + y^2} \right)
 = \frac{-1}{y^2 + 1}
-\] 
+\]
 
 \noindent Итого:
 \[
@@ -123,7 +123,7 @@ D(y_2) = \int\limits_0^{+\infty} \frac{\sin x}{x} \cdot e^{-x y_2} \, dx
 Возьмем под модуль:
 
 \[
-\left| D(y_2) \right| 
+\left| D(y_2) \right|
 = \left| \int\limits_0^{+\infty} \frac{\sin x}{x} \cdot e^{-x y_2} \, dx \right|
 \leq \int\limits_0^{+\infty} e^{-x y_2} \, dx
 = \frac{1}{y_2} \longrightarrow +0, \  y_2 \to +\infty
@@ -131,7 +131,7 @@ D(y_2) = \int\limits_0^{+\infty} \frac{\sin x}{x} \cdot e^{-x y_2} \, dx
 
 
 
-\noindent Перейдем к пределу при $y_2 \rightarrow + \infty,  y_1 \rightarrow +0$: 
+\noindent Перейдем к пределу при $y_2 \rightarrow + \infty,  y_1 \rightarrow +0$:
 
 \[
 - \lim_{y_1 \to +0} D(y_1) = -\frac{\pi}{2} \Rightarrow \lim_{y_1 \to +0} D(y_1) = \frac{\pi}{2}
@@ -188,18 +188,18 @@ D(y_2) = \int\limits_0^{+\infty} \frac{\sin x}{x} \cdot e^{-x y_2} \, dx
 \begin{enumerate}
 
 
-    \item 
+    \item
 
 \[
-\sup_{y > 0} \sup_{A} \left| \int_{1}^{A} \sin x \, dx \right| \leq 2 
+\sup_{y > 0} \sup_{A} \left| \int_{1}^{A} \sin x \, dx \right| \leq 2
 \]
 
-    \item 
+    \item
 \[
 \frac{e^{-x \cdot y}}{x} \downarrow 0, \quad x \to +\infty \quad \forall y > 0
 \]
 
-    \item 
+    \item
 \[
 0 \leq \frac{e^{-x y}}{x} \leq \frac{e^{-x \cdot y_1}}{x} \rightarrow 0, x \rightarrow + \infty\, \forall y \in [0, y_2], \forall x > 1 \Rightarrow
 \]
@@ -212,7 +212,7 @@ D(y_2) = \int\limits_0^{+\infty} \frac{\sin x}{x} \cdot e^{-x y_2} \, dx
 
 \noindent $\Rightarrow$ В силу признака Дирихле $ \int_{1}^{+\infty} \frac{\sin x}{x} \, e^{-x y} \, dx $ сходится равномерно по $y$
 
-\noindent В силу признака Вейерштрасса 
+\noindent В силу признака Вейерштрасса
 $
 \int_{0}^{+\infty} \sin x \, e^{-x y} \, dx \quad \text{сходится равномерно по } y \in [y_1, y_2]
 $
@@ -229,7 +229,7 @@ $
 \noindent Это доказывает, что можно дифференцировать интеграл по параметру при любом $y > 0$
 
 
-\noindent $\int_{1}^{+\infty} \frac{\sin x}{x} \, e^{-x y} \, dx $ сходится равномерно по $y$ 
+\noindent $\int_{1}^{+\infty} \frac{\sin x}{x} \, e^{-x y} \, dx $ сходится равномерно по $y$
 
 \noindent $\Rightarrow  \int_{0}^{+\infty} \frac{\sin x}{x} e^{-x y} \, dx \quad \text{сходится равномерно по } y \in [0, y_2] \quad \forall y_2 > 0. $
 
@@ -240,17 +240,17 @@ $
 \text{На } [0, 1] \times [0, y_2] \text{ функция } F(x, y) = \frac{\sin x}{x} e^{-x y} \text{ непрерывна по совокупности переменных.}
 \]
 
-\noindent Тогда, следующие условия эквивалентны: 
+\noindent Тогда, следующие условия эквивалентны:
 
 \begin{enumerate}
     \item \(\int\limits_0^{+\infty} \frac{\sin x}{x} \, e^{-x y} \, dx \) сходится равномерно по \( y \) на множестве \( [0, y_2] \).
-    
+
     \item \(\int\limits_1^{+\infty} \frac{\sin x}{x} \, e^{-x y} \, dx \) сходится равномерно по \( y \) на множестве \( [0, y_2] \).
 \end{enumerate}
 
-\noindent Равномерную сходимость мы требуем, чтобы обосновать непрерывность в нуле. 
+\noindent Равномерную сходимость мы требуем, чтобы обосновать непрерывность в нуле.
 
-\noindent Запишем условия для перехода к пределу по параметру. 
+\noindent Запишем условия для перехода к пределу по параметру.
 
 \begin{enumerate}
     \item $\int\limits_0^{+\infty} \frac{\sin x}{x} \, e^{-x y} \, dx$ сход. равномерно по $y$ на $[0, y_2 ] \ \forall y_2 > 0.$
@@ -258,29 +258,29 @@ $
     \item $\frac{\sin x}{x} = \lim\limits_{y \to +0} e^{-x y} \frac{\sin x}{x}.$
 
 
-    \item В силу непрерывности: 
+    \item В силу непрерывности:
     $$
     F: e^{-x y} \frac{\sin x}{x} \mathrel{\substack{\rightrightarrows \\ [0, t]}} \dfrac{\sin x}{x}  \ \forall t > 0 \Rightarrow \int\limits_{0}^{t} e^{-xy} \dfrac{\sin x}{x} dx \rightarrow \int\limits_{0}^{t} \dfrac{\sin x}{x} dx \ \forall t > 0.
     $$
-    
+
 \end{enumerate}
 
-\noindent Все эти условия выполнены. Тогда существует предел: 
+\noindent Все эти условия выполнены. Тогда существует предел:
 
 \[
-\int\limits_0^{t} e^{-x y} \frac{\sin x}{x} \, dx 
+\int\limits_0^{t} e^{-x y} \frac{\sin x}{x} \, dx
 \longrightarrow.
 \int\limits_0^{t} \frac{\sin x}{x} \, dx \quad \forall\, t > 0.
 \]
 
 
 \[
-\Rightarrow \exists \lim_{y \to +0} \int\limits_0^{+\infty} \frac{\sin x}{x} \, e^{-x y} \, dx 
+\Rightarrow \exists \lim_{y \to +0} \int\limits_0^{+\infty} \frac{\sin x}{x} \, e^{-x y} \, dx
 = \int\limits_0^{+\infty} \frac{\sin x}{x} \, dx.
 \]
 А это и означает непрерывность функции $D$ в нуле справа.
 
-\noindent Тогда  все переходы в настоящем доказательстве обоснованы и интеграл Дирихле полностью посчитан. 
+\noindent Тогда  все переходы в настоящем доказательстве обоснованы и интеграл Дирихле полностью посчитан.
 
 \end{proof}
 
@@ -304,7 +304,7 @@ $
 \begin{definition}
     Обратное преобразование Фурье определим как
     \[
-        \mathcal{F}[f](x) := \dfrac{1}{\sqrt {2\pi}}\vpint_{\R} f(y)e^{ixy}dy
+        \mathcal{F}^{-1}[f](x) := \dfrac{1}{\sqrt {2\pi}}\vpint_{\R} f(y)e^{ixy}dy
     \]
 \end{definition}
 
@@ -367,7 +367,7 @@ f(u)\,
 \int_{-A}^{A}
 \cos(x - u)\,y\,dy
 \Biggr]
-\,du = 
+\,du =
 \]
 
 \[
@@ -382,9 +382,9 @@ f(u)\,
 \frac{\sin A(x - u)}{\pi\,(x - u)}
 \,du = \left\{
     x - u = t
-\right\} = 
-\int_{\mathbb{R}} 
-f(x - t) 
+\right\} =
+\int_{\mathbb{R}}
+f(x - t)
 \frac{\sin(At)}{\pi t} \, dt
 \]
 
@@ -393,7 +393,7 @@ f(x - t)
 \begin{definition}
     Пусть $f \in L_1^{loc}(\mathbb{R})$.
 \[
-\text{Если } \exists \lim_{A \to +\infty} I_A[f](x) \text{ при } x \in \mathbb{R}, \text{ то говорят, что $\exists$ интеграл Фурье функции } f 
+\text{Если } \exists \lim_{A \to +\infty} I_A[f](x) \text{ при } x \in \mathbb{R}, \text{ то говорят, что $\exists$ интеграл Фурье функции } f
 \]
 
 \begin{center}
@@ -420,15 +420,15 @@ c_{n}\bigl(\widetilde{f}\bigr)\,e^{\,i n x}
 
 \begin{proof}
 
-Докажем, что 
+Докажем, что
 \[
 I_A \bigl[f\bigr](\underline{x}) - S_{[A]}\bigl[\widetilde{f}\bigr](\underline{x}) \longrightarrow 0, \quad A \to +\infty, \text{ где $[A]$ - целая часть числа $A$}
 \]
 
 Из ключевой леммы (\ref{lem:key}) следует, что $I_A[f](\underline{x}) = \int\limits_{\mathbb{R}} f(\underline{x} - t) \frac{\sin(At)}{\pi t} \, dt$
 
-Предположим, что $f \equiv \widetilde{f}  
-    \text{ в } U_\delta(\underline{x})$ 
+Предположим, что $f \equiv \widetilde{f}
+    \text{ в } U_\delta(\underline{x})$
 Заметим, что $\forall S > 0 \hookrightarrow$
 \[
 I_A \left[ f \right](\underline{x}) = \int\limits_{-S}^{S} f(\underline{x} - t) \cdot \frac{\sin(At)}{\pi t} \, dt + o(1), \quad A \to +\infty
@@ -451,7 +451,7 @@ S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\unde
 
 
 \[
-\text{Если $A = n$, то }I_A \bigl[f\bigr](\underline{x}) - S_{[A]}\bigl[\widetilde{f}\bigr](\underline{x}) \longrightarrow 0 \text{ 
+\text{Если $A = n$, то }I_A \bigl[f\bigr](\underline{x}) - S_{[A]}\bigl[\widetilde{f}\bigr](\underline{x}) \longrightarrow 0 \text{
 очевидно доказано}
 \]
 
@@ -460,9 +460,9 @@ S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\unde
 (вспомним, что $I_A$ ~---~ это интеграл от преобразования Фурье).
 
 \[
-\left| I_A \left[ f \right] (\underline{x}) - I_{[A]} \left[ f \right] (\underline{x}) \right| 
-\leq 
-\int\limits_{A-1}^{A} \left| \mathcal{F} [f](y) \right| \, dy + 
+\left| I_A \left[ f \right] (\underline{x}) - I_{[A]} \left[ f \right] (\underline{x}) \right|
+\leq
+\int\limits_{A-1}^{A} \left| \mathcal{F} [f](y) \right| \, dy +
 \int\limits_{A}^{A+1} \left| \mathcal{F} [f](y) \right| \, dy
 \]
 
@@ -507,7 +507,7 @@ S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\unde
 \end{corollary}
 
 \begin{example}
-Если \( f \in L_1(\mathbb{R}) \) и 
+Если \( f \in L_1(\mathbb{R}) \) и
 $f \in BV(U_{\delta}(\underline{x})) \quad \text{при} \; \delta > 0.$
 Тогда
 $F^{-1}\left[\mathcal{F}[f]\right](\underline{x}) = f(\underline{x}).$
@@ -516,6 +516,6 @@ $F^{-1}\left[\mathcal{F}[f]\right](\underline{x}) = f(\underline{x}).$
 
 \end{example}
 
- 
+
 
 

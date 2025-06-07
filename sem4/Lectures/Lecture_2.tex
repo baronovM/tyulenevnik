@@ -30,7 +30,7 @@ c_{n}(x):=\frac{<x,e_{n}>}{<e_{n},e_{n}>}, \quad n \in \mathbb{N}
 называются \textit{коэффициентами Фурье элемента $x$ по системе $\{e_{n}\}_{n=1}^{\infty}$}, а ряд в правой части \eqref{abstract_fourier} -- \textit{рядом Фурье
 элемента $x$ по системе $\{e_{n}\}_{n=1}^{\infty}$}.
 
-Частный случай гильбертова пространства -- $L_{2}([-l,l])$, где $l > 0$ -- фиксированное число. 
+Частный случай гильбертова пространства -- $L_{2}([-l,l])$, где $l > 0$ -- фиксированное число.
 Действительно, скалярное произведение, порождающее $L_{2}$--норму, задается формулой (мы рассматриваем случай комплексного пространства, интеграл от комплекснозначной функции по определению это $\int\limits_E f d\mu := \int\limits_E Re(f)d\mu + i\int\limits_E Im(f)d\mu$ )
 $$
 <f,g>:=\int\limits_{-l}^{l}f(x)\overline{g}(x)\,dx.
@@ -99,31 +99,31 @@ $$
 f \sim \sum\limits_{k \in \mathbb{Z}}c_{k}(f)e^{ikx}.
 $$
 
-При $n \in \mathbb{N}$ рассмотрим оператор $n$-ой частичной суммы ряда Фурье $S_{n}:L_{1}([-\pi,\pi]) \to C([-\pi,\pi])$. При $f \in L_{1}([-\pi,\pi])$ положим
-$$
-S_{n}[f](x):=a_{0}(f)+\sum\limits_{k=1}^{n}a_{k}(f)\cos(kx) + b_{k}(f)\sin(kx).
-$$
+% При $n \in \mathbb{N}$ рассмотрим оператор $n$-ой частичной суммы ряда Фурье $S_{n}:L_{1}([-\pi,\pi]) \to C([-\pi,\pi])$. При $f \in L_{1}([-\pi,\pi])$ положим
+% $$
+% S_{n}[f](x):=a_{0}(f)+\sum\limits_{k=1}^{n}a_{k}(f)\cos(kx) + b_{k}(f)\sin(kx).
+% $$
 \end{proposition}
 
-Заметим, что
-\begin{equation}
-\label{eqq.6}
-\begin{split}
-S_n[f](x) &= \frac{1}{2\pi} \int\limits_{-\pi}^{\pi} f(t)\,dt
-+ \frac{1}{\pi} \sum\limits_{k=1}^{n} \int\limits_{-\pi}^{\pi} f(t) \cos(kt) \cos(kx)\,dt
-+ \frac{1}{\pi} \sum\limits_{k=1}^{n} \int\limits_{-\pi}^{\pi} f(t) \sin(kt) \sin(kx)\,dt \\
-&= \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(t) \left( \frac{1}{2} + \sum\limits_{k=1}^{n} \cos(k(t - x)) \right) dt
-= \int\limits_{-\pi}^{\pi} f(t) D_n(t - x)\,dt,
-\end{split}
-\end{equation}
-где \( D_n \) — ядро Дирихле:
-\begin{equation}
-\label{eqq.7}
-D_n(x) := \frac{1}{\pi} \left( \frac{1}{2} + \sum\limits_{k=1}^{n} \cos(kx) \right) = \frac{1}{\pi} \cdot \frac{\sin\left( \left(n + \frac{1}{2}\right) x \right)}{2 \sin\left( \frac{x}{2} \right)}.
-\end{equation}
+% Заметим, что
+% \begin{equation}
+% \label{eqq.6}
+% \begin{split}
+% S_n[f](x) &= \frac{1}{2\pi} \int\limits_{-\pi}^{\pi} f(t)\,dt
+% + \frac{1}{\pi} \sum\limits_{k=1}^{n} \int\limits_{-\pi}^{\pi} f(t) \cos(kt) \cos(kx)\,dt
+% + \frac{1}{\pi} \sum\limits_{k=1}^{n} \int\limits_{-\pi}^{\pi} f(t) \sin(kt) \sin(kx)\,dt \\
+% &= \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(t) \left( \frac{1}{2} + \sum\limits_{k=1}^{n} \cos(k(t - x)) \right) dt
+% = \int\limits_{-\pi}^{\pi} f(t) D_n(t - x)\,dt,
+% \end{split}
+% \end{equation}
+% где \( D_n \) — ядро Дирихле:
+% \begin{equation}
+% \label{eqq.7}
+% D_n(x) := \frac{1}{\pi} \left( \frac{1}{2} + \sum\limits_{k=1}^{n} \cos(kx) \right) = \frac{1}{\pi} \cdot \frac{\sin\left( \left(n + \frac{1}{2}\right) x \right)}{2 \sin\left( \frac{x}{2} \right)}.
+% \end{equation}
 
 
-Свойства ядра Дирихле:
+% Свойства ядра Дирихле:
 
 \subsection{Теорема Римана--Лебега об осцилляции}
 
@@ -136,7 +136,7 @@ D_n(x) := \frac{1}{\pi} \left( \frac{1}{2} + \sum\limits_{k=1}^{n} \cos(kx) \rig
 \lim_{\omega \to \infty} \int_a^b f(x) \cos(\omega x)\,dx = \lim_{\omega \to \infty} \int_a^b f(x) \sin(\omega x)\,dx = 0.
 \]
 \end{note}
-    
+
 \begin{theorem}
 Пусть $E \subset \mathbb{R}^{n}$--измеримое по Лебегу множество и $f \in L_{1}(E)$. Тогда
 \begin{equation}
@@ -145,7 +145,7 @@ I(y):=\int\limits_{E}f(x)e^{i<x,y>}\,dx \to 0, \quad \|y\| \to +\infty.
 \end{equation}
 \end{theorem}
 \begin{proof}
-    Будем считать функцию $f$ продолженной нулем вне множества $E$. 
+    Будем считать функцию $f$ продолженной нулем вне множества $E$.
 При $y \neq 0$ рассмотрим вектор $h=h(y):=\frac{\pi y}{\|y\|^{2}}$.
 Тогда сделав замену переменной $x=x'-h$ имеем
 $$
@@ -163,7 +163,7 @@ $$
 
 
 \begin{corollary}
-Если $f \in L_{1}([-\pi,\pi])$, то 
+Если $f \in L_{1}([-\pi,\pi])$, то
 $$
 \lim\limits_{k \to \infty}a_{k}(f) = \lim\limits_{k \to \infty}b_{k}(f) = \lim\limits_{k \to \infty}c_{k}(f) = 0.
 $$
@@ -192,7 +192,8 @@ T \colon X \to Y
 \end{definition}
 
 \begin{definition}
-$\forall f \in L_1\left([-\pi, \pi]\right)$ определим оператор частичной суммы ряда Фурье $S_n \colon L_1\left([-\pi, \pi]\right) \to C \left([-\pi, \pi]\right)$.
+$\forall f \in L_1\left([-\pi, \pi]\right)$ определим оператор частичной суммы ряда Фурье\\
+$S_n \colon L_1\left([-\pi, \pi]\right) \to C \left([-\pi, \pi]\right)$.
 
 \[
 S_n[f](x) := a_0(f) + \sum_{k=1}^{n} \alpha_k(f) \cos(kx) + \beta_k(f) \sin(kx)
@@ -205,10 +206,10 @@ S_n[f](x) := a_0(f) + \sum_{k=1}^{n} \alpha_k(f) \cos(kx) + \beta_k(f) \sin(kx)
 \begin{equation}
 \label{eqq.6}
 \begin{split}
-S_n[f](x) &= \frac{1}{2\pi} \int\limits_{-\pi}^{\pi} f(t)\,dt 
-+ \frac{1}{\pi} \sum\limits_{k=1}^{n} \int\limits_{-\pi}^{\pi} f(t) \cos(kt) \cos(kx)\,dt 
+S_n[f](x) &= \frac{1}{2\pi} \int\limits_{-\pi}^{\pi} f(t)\,dt
++ \frac{1}{\pi} \sum\limits_{k=1}^{n} \int\limits_{-\pi}^{\pi} f(t) \cos(kt) \cos(kx)\,dt
 + \frac{1}{\pi} \sum\limits_{k=1}^{n} \int\limits_{-\pi}^{\pi} f(t) \sin(kt) \sin(kx)\,dt= \\
-&= \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(t) \left( \frac{1}{2} + \sum\limits_{k=1}^{n} \cos(k(t - x)) \right) dt 
+&= \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(t) \left( \frac{1}{2} + \sum\limits_{k=1}^{n} \cos(k(t - x)) \right) dt
 = \int\limits_{-\pi}^{\pi} f(t) D_n(t - x)\,dt,
 \end{split}
 \end{equation}
@@ -261,7 +262,7 @@ f * g(x) := \int_{\mathbb{R}^n} f(x - y) g(y) \, dy = \int_{\mathbb{R}^n} g(x - 
 \begin{enumerate}
     \item $D_{n}$ -- четная $2\pi$-периодическая функция;
     \item $\int\limits_{-\pi}^{\pi}D_{n}(x)\,dx=1$
-    \item Продлив функции вне $[-\pi, \pi]$нулем, имеем $S_n[f](x) = \int\limits_{-\pi}^{\pi} f(t) D_n(t - x)\,dt, = D_n*f(x)$
+    \item Продлив функции вне $[-\pi, \pi]$ нулем, имеем $S_n[f](x) = \int\limits_{-\pi}^{\pi} f(t) D_n(t - x)\,dt, = D_n*f(x)$
 \end{enumerate}
 \end{note}
 
@@ -270,7 +271,7 @@ f * g(x) := \int_{\mathbb{R}^n} f(x - y) g(y) \, dy = \int_{\mathbb{R}^n} g(x - 
 
 \subsection{Вторая теорема о среднем}
 
-В этом пункте мы докажем одно вспомогательное утверждение из теории интеграла Римана, которое 
+В этом пункте мы докажем одно вспомогательное утверждение из теории интеграла Римана, которое
 будет очень важно при доказательстве достаточных условий сходимости ряда Фурье в точке.
 
 \begin{theorem}
@@ -288,7 +289,7 @@ f * g(x) := \int_{\mathbb{R}^n} f(x - y) g(y) \, dy = \int_{\mathbb{R}^n} g(x - 
 \label{eqq.average_2}
 \int\limits_{a}^{b}f(x)g(x)\,dx = f(a)\int\limits_{a}^{\xi}g(x)\,dx;
 \end{equation}
- 
+
 б) если $f$ нестрого возрастает, то при некотором $\xi \in [a,b]$
 \begin{equation}
 \label{eqq.average_3}
@@ -298,8 +299,8 @@ f * g(x) := \int_{\mathbb{R}^n} f(x - y) g(y) \, dy = \int_{\mathbb{R}^n} g(x - 
 \end{theorem}
 
 \textit{Доказательство.} Отметим, что $fg \in R([a,b])$, что легко следует из критерия Лебега. Поэтому, левые части формул из определения теоремы \eqref{eqq.average_1}--\eqref{eqq.average_3} имеют смысл.
-    
-Мы докажем лишь формулу \eqref{eqq.average_2}, поскольку \eqref{eqq.average_3} доказывается аналогично, а равенство \eqref{eqq.average_1} легко 
+
+Мы докажем лишь формулу \eqref{eqq.average_2}, поскольку \eqref{eqq.average_3} доказывается аналогично, а равенство \eqref{eqq.average_1} легко
 вытекает из \eqref{eqq.average_2} и \eqref{eqq.average_3}.
 
 \textit{Step 1.}
@@ -332,7 +333,7 @@ $$
 \begin{equation}
 \begin{split}
 \label{eqq.th_2}
-&\Sigma_2(T) = \sum\limits_{i=0}^{n-1}f(x_{i})(G(x_{i+1})-G(x_{i})) = \sum\limits_{i=1}^{n}f(x_{i-1})G(x_{i})-\sum\limits_{i=0}^{n-1}f(x_{i})G(x_{i}))\\ 
+&\Sigma_2(T) = \sum\limits_{i=0}^{n-1}f(x_{i})(G(x_{i+1})-G(x_{i})) = \sum\limits_{i=1}^{n}f(x_{i-1})G(x_{i})-\sum\limits_{i=0}^{n-1}f(x_{i})G(x_{i}))\\
 &= f(x_{n-1})G(b)+
 \sum\limits_{i=1}^{n-1}(f(x_{i-1})-f(x_{i}))G(x_{i}).
 \end{split}
@@ -344,7 +345,7 @@ $$
 \begin{equation}
 \label{eqq.16}
 \begin{split}
-&mf(a) = m \sum\limits_{i=1}^{n-1}(f(x_{i-1})-f(x_{i})) + mf(x_{n-1})\\ 
+&mf(a) = m \sum\limits_{i=1}^{n-1}(f(x_{i-1})-f(x_{i})) + mf(x_{n-1})\\
 &\le  \Sigma_2(T) \le M \sum\limits_{i=1}^{n-1}(f(x_{i-1})-f(x_{i})) + Mf(x_{n-1}) = Mf(a).
 \end{split}
 \end{equation}
@@ -355,8 +356,8 @@ $$
 mf(a) \le \int_{a}^{b}f(x)g(x)\,dx \le Mf(a).
 \end{equation}
 
-\textit{Step 4.} Если $f(a) = 0$, то в силу \eqref{eqq.17} в качестве $\xi$ можно взять любую точку отрезка $[a,b]$. Если $f(a) \neq 0$, то в силу теоремы о промежуточном значении, примененной 
-к непрерывной функции $G$, из \eqref{eqq.17} выводим, что найдется точка $\xi \in [a,b]$, для которой 
+\textit{Step 4.} Если $f(a) = 0$, то в силу \eqref{eqq.17} в качестве $\xi$ можно взять любую точку отрезка $[a,b]$. Если $f(a) \neq 0$, то в силу теоремы о промежуточном значении, примененной
+к непрерывной функции $G$, из \eqref{eqq.17} выводим, что найдется точка $\xi \in [a,b]$, для которой
 \begin{equation}
 G(\xi) = \frac{1}{f(a)}\int_{a}^{b}f(x)g(x)\,dx.
 \end{equation}
