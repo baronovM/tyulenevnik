@@ -37,7 +37,7 @@
     \begin{center}
             \includegraphics[width=1\linewidth]{Pictures/Shwartz.png}
     \end{center}
-    
+
     Определим $J_n[f]$ как \[
                                                                                                   J_n[f](0) = \int_0^\pi \dfrac{\sin nt}{t}f(t)dt.
     \]
@@ -124,7 +124,7 @@
 \end{definition}
 \begin{theorem}
     Пусть дана $2\pi$-периодическая $f \in H^\alpha(\R), \alpha \in (0, 1)$. Тогда ряд Фурье $f$ сходится к ней равномерно на $\R$. Более того, \[
-                                                                                                                                                    \biggr|S_n[f](x) - f(x)\biggr| \leq C C_\alpha \cdot \dfrac{\ln n}{n^\alpha} \quad \forall n \in \N, \forall x \in \R.
+                                                                                                                                                    \biggr|S_n[f](x) - f(x)\biggr| \leq C \cdot \dfrac{\ln n}{n^\alpha} \quad \forall n \in \N, \forall x \in \R.
     \]
 \end{theorem}
 \begin{proof}
@@ -147,14 +147,13 @@
     И отклонение суммы Фейера от функции оценивается как \[
                                                              |\sigma_n[f](x) - f(x)| \leq \dfrac{M}{n^\alpha}.
     \]
-    Пусть $\phi_n = f -\sigma_n[f]$. Тогда \[
-                                               \biggr|S_n[f](x) - f(x)\biggr| = \biggr|S_n[\phi_n](x) - \phi_n(x)\biggr|,
+    Пусть $\phi_n = f -\sigma_n[f]$. Cумма Фейера -- это тригонометрический полином $n$-ой степени, поэтому $S_n[\sigma_n[f]] = \sigma_n[f]$, а значит
+    \[
+    	\big|S_n[\phi_n](x) - \phi_n(x)\big| = \big|S_n[f](x) - \sigma_n(x) - f(x) + \sigma_n(x) \big| = \big|S_n[f](x) - f(x)\big|.
     \]
-    поскольку \[
-                  S_n[\sigma_n[f]] = \sigma_n[f].
-    \]
-    А это верно из того, что сумма Фейера -- это тригонометрический полином $n$-ой степени. Тогда \[
-                                                                                                      \biggr|S_n[f](x) - f(x)\biggr| \leq |S_n[\phi_n](x)| + |\phi_n(x)| = (*)
+
+    Тогда
+    \[                                                                           \big|S_n[f](x) - f(x)\big| \leq \big|S_n[\phi_n](x)\big| + \big|\phi_n(x)\big| = (*)
     \]
     Оценка для $\phi_n$ уже есть выше.
     Для оператора частичной суммы некоторой $2\pi$-периодической функции $g$ мы можем дать следующую оценку:
