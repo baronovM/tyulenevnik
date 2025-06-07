@@ -114,10 +114,10 @@ $$\left| \int\limits_{b(\varepsilon)}^{\ra b} f(t, y')dt \right| + \left| \int\l
 Теперь покажем справедливость (*)
 
 $(\vee) \Ra \forall \varepsilon > 0$ выполняется
-$$\left| \int\limits^{b(\varepsilon)}_a \ff(t) dt - \lim\limits_{y \ra y_0} J(y) \right| \leq \left| \int\limits^{b(\varepsilon)}_a \ff(t) dt - \int\limits^{\ra b}_a \ff(t, y) dt \right| + \left| \int\limits^{\ra b}_a \ff(t, y) dt - \lim\limits_{y \ra y_0} J(y) \right| \qquad \forall y \in B_\delta(y_0)$$
+$$\left| \int\limits^{b(\varepsilon)}_a \ff(t) dt - \lim\limits_{y \ra y_0} J(y) \right| \leq \left| \int\limits^{b(\varepsilon)}_a \ff(t) dt - \int\limits^{\ra b}_a f(t, y) dt \right| + \left| \int\limits^{\ra b}_a f(t, y) dt - \lim\limits_{y \ra y_0} J(y) \right| \qquad \forall y \in B_\delta(y_0)$$
 
-Из показанного выше известна оценка $\left| \int\limits^{\ra b}_a \ff(t, y) dt - \lim\limits_{y \ra y_0} J(y) \right| < \varepsilon$. Для первого слагаемого оценка получается следующим образом
-$$\left| \int\limits^{b(\varepsilon)}_a \ff(t) dt - \int\limits^{\ra b}_a \ff(t, y) dt \right| \leq \left| \int\limits_a^{b(\varepsilon)}\ff(t, y) dt - \int\limits_a^{b(\varepsilon)}\ff(t) dt\right| + \left| \int\limits_{b(\varepsilon)}^{\ra b} f(t, y) dt \right| < \frac{\varepsilon}{2}$$
+Из показанного выше известна оценка $\left| \int\limits^{\ra b}_a f(t, y) dt - \lim\limits_{y \ra y_0} J(y) \right| < \varepsilon$. Для первого слагаемого оценка получается следующим образом
+$$\left| \int\limits^{b(\varepsilon)}_a \ff(t) dt - \int\limits^{\ra b}_a f(t, y) dt \right| \leq \left| \int\limits_a^{b(\varepsilon)}f(t, y) dt - \int\limits_a^{b(\varepsilon)}\ff(t) dt\right| + \left| \int\limits_{b(\varepsilon)}^{\ra b} f(t, y) dt \right| < \frac{\varepsilon}{2}$$
 
 Значит в результате получим
 
@@ -129,7 +129,7 @@ $$\left| \int\limits^{b(\varepsilon)}_a \ff(t) dt - \lim\limits_{y \ra y_0} J(y)
 
 \subsubsection{Когда можно интегрировать по параметру?}
 
-\theorem Пусть дополнительно известно, что $Y = (Y, \NN, \nu)$ - пространство с мерой, а также функция $f: [a, \, b) \times Y \ra \overline{\R}$, такая что 
+\theorem Пусть дополнительно известно, что $Y = (Y, \NN, \nu)$ - пространство с мерой, а также функция $f: [a, \, b) \times Y \ra \overline{\R}$, такая что
 \begin{enumerate}
     \item $\nu(Y) < + \infty$
     \item $\forall b' \in (a, \, b)$ выполнено $f \in L_1([a, \, b'] \times Y, \LL^1 \otimes \nu)$

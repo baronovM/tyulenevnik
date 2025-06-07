@@ -16,16 +16,16 @@
     \begin{enumerate}
         \item[$\bullet$] В силу линейности интеграла Лебега функционал $\lambda_f$~-- линейный функционал;
         \item[$\bullet$] Осталось проверить непрерывность $\lambda_f$ относительно $D$-сходимости: \\
-    % Пусть $\{\phi_m\}$~-- последовательность в $D(\R^n)$ такая, что $\phi_m \xrightarrow{D} \phi$.
-    Пусть $\{\phi_m\} \subset D(\R^n)$: $\phi_m \xrightarrow[\mathcal{D}(\mathbb{R}^n)]{} \phi$, $m \ra +\infty$.\\
-    Из определения сходимости носители <<не расползаются>>, то есть 
-    $$\exists R > 0\text{: } B_R(0) \text{: } \forall m \in \mathbb{N} \hookrightarrow \text{supp} \phi_m \subset B_R(0)  \text{ и supp} \phi \subset B_R(0).$$
-    В частности, также, $\sup\limits_{x \in \R^n}|\phi_m(x) - \phi(x)| \ra 0, m \ra +\infty$ (по определению сходимости в $D$).
-    Тогда
-    \begin{multline*}
-        |\langle \lambda_f, \phi_m - \phi \rangle | = \left|\int_{\R^n} f(x)(\phi_m(x) - \phi(x))dx\right| \leq \int_{B_R(0)} \left|f(x)\right|\left|\phi_m(x) - \phi(x)\right| dx \leq \\ \leq \sup\limits_{x \in \R^n} |\phi_m (x) - \phi (x)| \int_{B_R(0)} |f(x)|dx \ra 0, m \ra +\infty.
-    \end{multline*}
-    А значит $\lambda_f$~-- действительно непрерывный линейный функционал $\Rightarrow \lambda_f \in D'(\R^n)$.
+        % Пусть $\{\phi_m\}$~-- последовательность в $D(\R^n)$ такая, что $\phi_m \xrightarrow{D} \phi$.
+        Пусть $\{\phi_m\} \subset D(\R^n)$: $\phi_m \xrightarrow[\mathcal{D}(\mathbb{R}^n)]{} \phi$, $m \ra +\infty$.\\
+        Из определения сходимости носители <<не расползаются>>, то есть
+        $$\exists R > 0\text{: } B_R(0) \text{: } \forall m \in \mathbb{N} \hookrightarrow \text{supp} \phi_m \subset B_R(0)  \text{ и supp} \phi \subset B_R(0).$$
+        В частности, также, $\sup\limits_{x \in \R^n}|\phi_m(x) - \phi(x)| \ra 0, m \ra +\infty$ (по определению сходимости в $D$).
+        Тогда
+        \begin{multline*}
+            |\langle \lambda_f, \phi_m - \phi \rangle | = \left|\int_{\R^n} f(x)(\phi_m(x) - \phi(x))dx\right| \leq \int_{B_R(0)} \left|f(x)\right|\left|\phi_m(x) - \phi(x)\right| dx \leq \\ \leq \sup\limits_{x \in \R^n} |\phi_m (x) - \phi (x)| \int_{B_R(0)} |f(x)|dx \ra 0, m \ra +\infty.
+        \end{multline*}
+        А значит $\lambda_f$~-- действительно непрерывный линейный функционал $\Rightarrow \lambda_f \in D'(\R^n)$.
     \end{enumerate}
 \end{proof}
 
@@ -57,7 +57,7 @@
 \begin{proof}
     Сначала покажем, что $\delta \in D'(\R^n)$:
     \begin{enumerate}
-        \item[$\bullet$] Линейность: 
+        \item[$\bullet$] Линейность:
         \begin{multline*}
             \forall \phi_1, \phi_2 \in \mathcal{D}(\R^n),\  \forall \alpha, \beta \in \R \hookrightarrow \\ \langle \delta, \alpha \phi_1 + \beta \phi_2 \rangle = (\alpha \phi_1 + \beta \phi_2)(0) = \alpha \phi_1 (0) + \beta \phi_2 (0) = \alpha \langle \delta , \phi_1 \rangle + \beta \langle \delta , \phi_2 \rangle.
         \end{multline*}
@@ -143,11 +143,11 @@
 \end{theorem}
 
 \begin{remark}
-        От техающих: на лекции пункт $3$ был без модуля, $(\star)$ содержит пояснение, почему без какого-либо изменения изначальное доказательство не работает)
-    \end{remark}
-    \begin{note}
-        Стоит заметить, что второе условие из первого не следует, в силу возможности <<взаимного погашения>> друг друга положительной и отрицательной частей при сколь угодно больших $x$.
-    \end{note}
+    От техающих: на лекции пункт $3$ был без модуля, $(\star)$ содержит пояснение, почему без какого-либо изменения изначальное доказательство не работает)
+\end{remark}
+\begin{note}
+    Стоит заметить, что второе условие из первого не следует, в силу возможности <<взаимного погашения>> друг друга положительной и отрицательной частей при сколь угодно больших $x$.
+\end{note}
 
 \begin{proof}
     Рассмотрим следующий интеграл с переменным верхним пределом:

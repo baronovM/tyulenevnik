@@ -21,7 +21,7 @@
     \[
         \int_{\R} f_{\lambda}(x_1, \ldots) \dfrac{\partial \phi}{\partial x_j} dx_j = f_{\lambda}(\ldots)\phi(\ldots)|^{x_j=c}_{x_j=-c} - \int_{\R} \dfrac{\partial f_{\lambda}}{\partial x_j} \phi(x_1, \ldots) dx_j.
     \]
-    При каждой $\hat{x}_j$:  $f_{\lambda}(\ldots)\phi(\ldots)|^{x_j=c}_{x_j=-c} = 0$. То есть 
+    При каждой $\hat{x}_j$:  $f_{\lambda}(\ldots)\phi(\ldots)|^{x_j=c}_{x_j=-c} = 0$. То есть
     \[
         (*) = -\int_{\R^{n - 1}} (f_{\lambda}(\ldots)\phi(\ldots)|^{x_j=c}_{x_j=-c}) d\hat{x}_j + \int_{\R^{n - 1}} d\hat{x}_j \int_{\R} \dfrac{\partial f_{\lambda}}{\partial x_j} \phi(x_1, \ldots) dx_j .
     \]
@@ -66,7 +66,7 @@
     \]
     где $|x| = \sqrt{x_1^2 + \ldots + x_n^2}$.\\
     C введенной в нем сходимостью:
-        $\phi_m \xrightarrow{S} \phi$, $m \ra +\infty.$
+    $\phi_m \xrightarrow{S} \phi$, $m \ra +\infty.$
     если $\forall l \in \N_0 \hookrightarrow \|\phi - \phi_m\|_l \ra 0$, $m \ra +\infty$.
 \end{definition}
 \begin{note}
@@ -74,51 +74,51 @@
 \end{note}
 
 \begin{note}[Примечание техающего]
-Было в качестве упражнения, попробовал доказать сам.
+    Было в качестве упражнения, попробовал доказать сам.
 \end{note}
 
 \begin{proof}
-Проверим три аксиомы нормы.
+    Проверим три аксиомы нормы.
 
-\medskip
-\noindent 1. Неотрицательность и однозначность нуля.
-По определению, \(\|\varphi\|_l\)~--- супремум неотрицательной функции
-\[
-x\;\mapsto\;(1+|x|)^l \max_{0 \le |\alpha|\le l}\bigl|D^\alpha\varphi(x)\bigr|\ge0,
-\]
-поэтому \(\|\varphi\|_l\ge0\). Если \(\|\varphi\|_l=0\), то
-\[
-\sup_{x\in\mathbb{R}^n}(1+|x|)^l\max_{0 \le |\alpha|\le l}|D^\alpha\varphi(x)|=0
-\;\Longrightarrow\;
-\forall x,\;\max_{0 \le |\alpha|\le l}|D^\alpha\varphi(x)|=0,
-\]
-т.~е. \(D^\alpha\varphi(x)\equiv0\) для всех \(0 \le |\alpha|\le l\). При \(\alpha=0\) это даёт \(\varphi\equiv0\).
+    \medskip
+    \noindent 1. Неотрицательность и однозначность нуля.
+    По определению, \(\|\varphi\|_l\)~--- супремум неотрицательной функции
+    \[
+        x\;\mapsto\;(1+|x|)^l \max_{0 \le |\alpha|\le l}\bigl|D^\alpha\varphi(x)\bigr|\ge0,
+    \]
+    поэтому \(\|\varphi\|_l\ge0\). Если \(\|\varphi\|_l=0\), то
+    \[
+        \sup_{x\in\mathbb{R}^n}(1+|x|)^l\max_{0 \le |\alpha|\le l}|D^\alpha\varphi(x)|=0
+        \;\Longrightarrow\;
+        \forall x,\;\max_{0 \le |\alpha|\le l}|D^\alpha\varphi(x)|=0,
+    \]
+    т.~е. \(D^\alpha\varphi(x)\equiv0\) для всех \(0 \le |\alpha|\le l\). При \(\alpha=0\) это даёт \(\varphi\equiv0\).
 
-\medskip
-\noindent 2. Однородность.
-Для любого \(a\in\mathbb{R}\) имеем
-\[
-\|a\varphi\|_l
-=\sup_x(1+|x|)^l\max_{0 \le |\alpha|\le l}\bigl|D^\alpha(a\varphi)(x)\bigr|
-=\sup_x(1+|x|)^l\max_{0 \le |\alpha|\le l}\bigl|a\,D^\alpha\varphi(x)\bigr|
-=|a|\,\|\varphi\|_l.
-\]
+    \medskip
+    \noindent 2. Однородность.
+    Для любого \(a\in\mathbb{R}\) имеем
+    \[
+        \|a\varphi\|_l
+        =\sup_x(1+|x|)^l\max_{0 \le |\alpha|\le l}\bigl|D^\alpha(a\varphi)(x)\bigr|
+        =\sup_x(1+|x|)^l\max_{0 \le |\alpha|\le l}\bigl|a\,D^\alpha\varphi(x)\bigr|
+        =|a|\,\|\varphi\|_l.
+    \]
 
-\medskip
-\noindent 3. Неравенство треугольника.
-Пусть \(\varphi,\psi\in S(\mathbb{R}^n)\). Тогда для каждого \(x\) и каждого \(|\alpha|\le l\)
-\[
-|D^\alpha(\varphi+\psi)(x)|
-\le|D^\alpha\varphi(x)|+|D^\alpha\psi(x)|
-\le\max_{0 \le |\alpha|\le l}|D^\alpha\varphi(x)|+\max_{0 \le |\alpha|\le l}|D^\alpha\psi(x)|.
-\]
-Умножая на \((1+|x|)^l\) и беря супремум по \(x\), получаем
-\[
-\|\varphi+\psi\|_l
-\le\|\varphi\|_l+\|\psi\|_l.
-\]
+    \medskip
+    \noindent 3. Неравенство треугольника.
+    Пусть \(\varphi,\psi\in S(\mathbb{R}^n)\). Тогда для каждого \(x\) и каждого \(|\alpha|\le l\)
+    \[
+        |D^\alpha(\varphi+\psi)(x)|
+        \le|D^\alpha\varphi(x)|+|D^\alpha\psi(x)|
+        \le\max_{0 \le |\alpha|\le l}|D^\alpha\varphi(x)|+\max_{0 \le |\alpha|\le l}|D^\alpha\psi(x)|.
+    \]
+    Умножая на \((1+|x|)^l\) и беря супремум по \(x\), получаем
+    \[
+        \|\varphi+\psi\|_l
+        \le\|\varphi\|_l+\|\psi\|_l.
+    \]
 
-Таким образом, \(\|\cdot\|_l\) удовлетворяет всем трём аксиомам нормы, что и требовалось.
+    Таким образом, \(\|\cdot\|_l\) удовлетворяет всем трём аксиомам нормы, что и требовалось.
 \end{proof}
 \begin{note}
     Таким образом $S(\R^n)$ -- счётнонормированное пространство.
@@ -165,67 +165,67 @@ x\;\mapsto\;(1+|x|)^l \max_{0 \le |\alpha|\le l}\bigl|D^\alpha\varphi(x)\bigr|\g
 \end{note}
 
 \begin{note}[Примечание техающего]
-Было в качестве упражнения, попробовал доказать сам.
+    Было в качестве упражнения, попробовал доказать сам.
 \end{note}
 \begin{proof}
-Проверим три аксиомы метрики.
+    Проверим три аксиомы метрики.
 
-\medskip
-\noindent 1. Неотрицательность и невырожденность.
-Каждое слагаемое 
-\[
-2^{-l}\,\frac{\|\phi-\psi\|_l}{1+\|\phi-\psi\|_l}
-\]
-неотрицательно, следовательно $d(\phi,\psi)\ge0$. Более того, 
-\[
-d(\phi,\psi)=0
-\;\Longrightarrow\;
-\forall l,\;\frac{\|\phi-\psi\|_l}{1+\|\phi-\psi\|_l}=0
-\;\Longrightarrow\;
-\forall l,\;\|\phi-\psi\|_l=0
-\;\Longrightarrow\;
-\phi=\psi.
-\]
+    \medskip
+    \noindent 1. Неотрицательность и невырожденность.
+    Каждое слагаемое
+    \[
+        2^{-l}\,\frac{\|\phi-\psi\|_l}{1+\|\phi-\psi\|_l}
+    \]
+    неотрицательно, следовательно $d(\phi,\psi)\ge0$. Более того,
+    \[
+        d(\phi,\psi)=0
+        \;\Longrightarrow\;
+        \forall l,\;\frac{\|\phi-\psi\|_l}{1+\|\phi-\psi\|_l}=0
+        \;\Longrightarrow\;
+        \forall l,\;\|\phi-\psi\|_l=0
+        \;\Longrightarrow\;
+        \phi=\psi.
+    \]
 
-\medskip
-\noindent 2. Симметричность.
-Поскольку $\|\phi-\psi\|_l=\|\psi-\phi\|_l$, очевидно
-\[
-d(\phi,\psi)=d(\psi,\phi).
-\]
+    \medskip
+    \noindent 2. Симметричность.
+    Поскольку $\|\phi-\psi\|_l=\|\psi-\phi\|_l$, очевидно
+    \[
+        d(\phi,\psi)=d(\psi,\phi).
+    \]
 
-\medskip
-\noindent 3. Неравенство треугольника.
-Обозначим для краткости 
-\[
-f(t)=\frac{t}{1+t},\qquad t\ge0.
-\]
-Функция $f$ возрастает и удовлетворяет неравенству
-\[
-f(a+b)\;\le\;f(a)+f(b),
-\quad a,b\ge0.
-\]
-Действительно, используя
-\(\|\,\phi-\psi\|_l\le\|\phi-\chi\|_l+\|\chi-\psi\|_l\) и возрастание $f$, получаем
-\[
-f\bigl(\|\phi-\psi\|_l\bigr)
-\;\le\;
-f\bigl(\|\phi-\chi\|_l+\|\chi-\psi\|_l\bigr)
-\;\le\;
-f\bigl(\|\phi-\chi\|_l\bigr)
-+f\bigl(\|\chi-\psi\|_l\bigr).
-\]
-Домножая на $2^{-l}$ и суммируя по $l\ge0$, заключаем
-\[
-d(\phi,\psi)
-=\sum_{l=0}^\infty2^{-l}f\bigl(\|\phi-\psi\|_l\bigr)
-\le
-\sum_{l=0}^\infty2^{-l}\Bigl[f\bigl(\|\phi-\chi\|_l\bigr)
-+f\bigl(\|\chi-\psi\|_l\bigr)\Bigr]
-=d(\phi,\chi)+d(\chi,\psi).
-\]
+    \medskip
+    \noindent 3. Неравенство треугольника.
+    Обозначим для краткости
+    \[
+        f(t)=\frac{t}{1+t},\qquad t\ge0.
+    \]
+    Функция $f$ возрастает и удовлетворяет неравенству
+    \[
+        f(a+b)\;\le\;f(a)+f(b),
+        \quad a,b\ge0.
+    \]
+    Действительно, используя
+    \(\|\,\phi-\psi\|_l\le\|\phi-\chi\|_l+\|\chi-\psi\|_l\) и возрастание $f$, получаем
+    \[
+        f\bigl(\|\phi-\psi\|_l\bigr)
+        \;\le\;
+        f\bigl(\|\phi-\chi\|_l+\|\chi-\psi\|_l\bigr)
+        \;\le\;
+        f\bigl(\|\phi-\chi\|_l\bigr)
+        +f\bigl(\|\chi-\psi\|_l\bigr).
+    \]
+    Домножая на $2^{-l}$ и суммируя по $l\ge0$, заключаем
+    \[
+        d(\phi,\psi)
+        =\sum_{l=0}^\infty2^{-l}f\bigl(\|\phi-\psi\|_l\bigr)
+        \le
+        \sum_{l=0}^\infty2^{-l}\Bigl[f\bigl(\|\phi-\chi\|_l\bigr)
+        +f\bigl(\|\chi-\psi\|_l\bigr)\Bigr]
+        =d(\phi,\chi)+d(\chi,\psi).
+    \]
 
-Таким образом, $d$ удовлетворяет всем аксиомам метрики.
+    Таким образом, $d$ удовлетворяет всем аксиомам метрики.
 \end{proof}
 \begin{theorem}
     Преобразование Фурье осуществляет линейный изоморфизм $S(\R)$ на $S(\R)$.
@@ -316,7 +316,7 @@ d(\phi,\psi)
     Определеним $S'(\R)$ как пространство всех непрерывных (по отношению к сходимости в $S$) линейных функционалов.
 \end{definition}
 \begin{note}
-    Под непрерывностью $\lambda \in S'(\R)$ имеется в виду 
+    Под непрерывностью $\lambda \in S'(\R)$ имеется в виду
     \[ \phi_m \xrightarrow{S} \phi, \;\; m \ra \infty \quad => \quad (\lambda, \phi_m) \ra (\lambda, \phi), \;\; m \ra \infty
     \]
 \end{note}
