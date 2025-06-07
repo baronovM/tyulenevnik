@@ -64,7 +64,7 @@ $$F(x, h) = f'_y(x, \xi(x, h)) \qquad \xi(x, h) \in (y_0, \, y_0 + h)$$
 Также верно, что $\xi(x, h) \in \mathring{U}_\delta(y_0) \cap \lceil c, \, d \rfloor$
 
 Так как $f'_y$ удовлетворяет условию $(L)$, если $|h| < \delta$ и $y_0 + h \in \lceil c, \, d \rfloor$, то
-$$\left| F(x, h)\right| = |f'_y(x, h)| \leq g(x)$$
+$$\left| F(x, h)\right| = |f'_y(x, \xi)| \leq g(x)$$
 
 Таким образом, получим, что условие $(L)$ выполнено для функции $F$ в нуле. Значит, применяя предыдущую теорему, получим
 $$\exists \lim\limits_{h \ra 0} \frac{J(y_0 + h) - J(y_0)}{h} = \int\limits_X \lim\limits_{h \ra 0} F(x, h) d \mu (x) = \int\limits_X f'_y(x, y) d \mu(x)$$
