@@ -89,7 +89,7 @@ $$||f - f_h|| \leq ||f - g|| + ||g - g_h|| + ||f_h - g_h|| \ \forall g \in L_p(\
     Подробнее остановимся на втором интеграле, внутренний интеграл преобразуется так(последнее равенсвто получается заменой переменной $t = x-y$):
     $$\int_{\R^n} H(x, y) dx = \int_{\R^n} |f(x - y)| \cdot |g(y)| dx = |g(y)| \int_{\R^n}|f(x - y)|dx = |g(y)| \cdot ||f||_{L_1}$$
     Тогда весь интеграл:
-    $$ \int_{\R^n}\left( \int_{\R^n} H(x, y) dx\right) dy = ||f||_{L_1} \cdot  \int_{\R^n} |g(y) dy = ||f||_{L_1} \cdot ||g||_{L_1} < + \infty$$
+    $$ \int_{\R^n}\left( \int_{\R^n} H(x, y) dx\right) dy = ||f||_{L_1} \cdot  \int_{\R^n} |g(y)| dy = ||f||_{L_1} \cdot ||g||_{L_1} < + \infty$$
     Получили, что $H \in L_1(\R^{2n})$. А если теперь применим теорему Фубини для $F(x, y) = f(x - y) g(y),$ так как выше мы показали, что $F(x, y) \in L_1(\R^{2n}).$ Тогда пункты $1, 2$ из нее сразу следуют. Покажем оставшиеся:
     $$\int_{\R^n}|f*g|(x) dx \leq \int_{\R^n}\left( \int_{\R^n} |f(x - y)| \cdot |g(y)| dy \right) dx = ||f||_{L_1} \cdot ||g||_{L_1}$$
 \end{proof}
@@ -188,8 +188,8 @@ $$||f - f_h|| \leq ||f - g|| + ||g - g_h|| + ||f_h - g_h|| \ \forall g \in L_p(\
 		Тогда $f * w_t$ -- корректно всюду определённая равномерно непрерывная функция. \\
 		Пусть теперь $f \in L_1^{loc}(\R^n)$.
 		Пусть $\supp w_t \subset B(r)$, где $B(r)$ -- некоторый замкнутый шар радиуса $r$ с центром в 0.
-		Положим $H(x) = |f(x - y)||w_t(y)|$.
-		Заметим, что на всяком шаре $B(R) \subset \R^{m}$ функция $H$ интегрируема:
+		Положим $H(x) = \int_{\R^n}|f(x - y)||w_t(y)|$.
+		Заметим, что на всяком шаре $B(R) \subset \R^{n}$ функция $H$ интегрируема:
 		\begin{multline*}
 			\int_{B(R)} H(x)dx = \int_{B(R)} \biggr(\int_{\R^n}|f(x - y)||w_t(y)|dy\biggr)dx = \\ = \int_{B(r)} |g(y)| \biggr(\int_{B(R)} |f(x - y)|dx \biggr) dy \leq \int_{B(r)} |w_t(y)|dy \int_{B(R + r)} |f(z)|dz < +\infty.
 		\end{multline*}

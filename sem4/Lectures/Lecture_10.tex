@@ -386,9 +386,9 @@ I_A \bigl[f\bigr](\underline{x}) - S_{[A]}\bigl[\widetilde{f}\bigr](\underline{x
 
 Предположим, что $f \equiv \widetilde{f}  
     \text{ в } U_\delta(\underline{x})$ 
-
+Заметим, что $\forall S > 0 \hookrightarrow$
 \[
-I_A \left[ f \right](\underline{x}) = \int\limits_{-S}^{0} f(\underline{x} - t) \cdot \frac{\sin(At)}{\pi t} \, dt + O(1), \quad A \to +\infty
+I_A \left[ f \right](\underline{x}) = \int\limits_{-S}^{S} f(\underline{x} - t) \cdot \frac{\sin(At)}{\pi t} \, dt + o(1), \quad A \to +\infty
 \]
 
 Это следует из теоремы Римана об осцилляции % тут ссылка тоже можно вставить (сказано, что на 1 лекции)
@@ -403,7 +403,7 @@ S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\unde
 
 По теореме Римана об осцилляции: % ссылка со 2 лекции
 \[
-S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\underline{x} - t) \frac{\sin(nt)}{\pi t} \, dt + \varepsilon_n \left[\widetilde{f}\right](\underline{x}) = \int\limits_{-\delta}^{\delta} \widetilde{f}(\underline{x} - t) \frac{\sin(nt)}{\pi t} \, dt + O(1), \quad n \rightarrow +\infty
+S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\underline{x} - t) \frac{\sin(nt)}{\pi t} \, dt + \varepsilon_n \left[\widetilde{f}\right](\underline{x}) = \int\limits_{-\delta}^{\delta} \widetilde{f}(\underline{x} - t) \frac{\sin(nt)}{\pi t} \, dt + o(1), \quad n \rightarrow +\infty
 \]
 
 
