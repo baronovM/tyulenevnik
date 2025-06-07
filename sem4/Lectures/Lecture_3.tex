@@ -117,12 +117,12 @@ $$
 				  \biggr|\int_0^\delta \biggr(\dfrac{f(x + u) + f(x - u)}{2} - S\biggr)\dfrac{\sin nu}{u}du\biggr| \leq \\ \leq \dfrac{1}{2}\int_0^\delta |f(x + u) + f(x - u) - 2S|\dfrac{|\sin nu|}{u}du \leq \\ \leq \dfrac{1}{2}\int_0^\delta \dfrac{|f(x + u) + f(x - u) - 2S|}{u}du < +\infty.
 	\end{multline*}
 	То если мы зафиксируем $\epsilon > 0$ в силу абсолютной непрерывности интеграла Лебега найдётся $\delta(\epsilon)$ такой, что \[
-																																	  \dfrac{1}{2}\int_0^{\delta(\epsilon)} |f(x + u) + f(x - u) - 2S|\dfrac{du}{u} < \dfrac{\epsilon}{2}.
+																																	  \dfrac{1}{2}\int_0^\delta |f(x + u) + f(x - u) - 2S|\dfrac{du}{u} < \dfrac{\epsilon}{2}.
 	\]
-	Поскольку по теореме Римана-Лебега \[
+	А значит по теореме Римана-Лебега \[
 										  \int_{\delta(\epsilon)}^\delta \dfrac{f(x + u) + f(x - u) - 2S}{u}\sin nu\cdot du \rightarrow 0, n \rightarrow +\infty.
 	\]
-	И данные оценки верны для любого $\epsilon$, то теорема доказана.
+	Поскольку данные оценки верны для любого $\epsilon$, то теорема доказана.
 \end{proof}
 
 \begin{theorem}[Признак Дирихле--Жордана]
@@ -140,7 +140,7 @@ $$
 В силу теоремы \ref{Th.abstract_criterion} достаточно доказать, что при некотором $\delta > 0$
 \begin{equation}
 	\notag
-	I_{n}:=\int\limits_{0}^{\delta}\frac{\sin(nu)}{u}\bigg[f(x_{0}+u)-f(x+0)\bigg]\,du \to 0, \quad n \to \infty.
+	I_{n}:=\int\limits_{0}^{\delta}\frac{\sin(nu)}{u}\bigg[f(x_{0}+u)-f(x_0+0)\bigg]\,du \to 0, \quad n \to \infty.
 \end{equation}
 
 
@@ -160,8 +160,8 @@ $$
 В силу второй теоремы о среднем имеем
 \begin{equation}
 	\notag
-	I^{1}_{n}:=\int\limits_{0}^{\delta(\varepsilon)}\frac{\sin(nu)}{u}[f(x_{0}+u)-f(x+0)]\,du =
-	[f(x_{0}+\delta)-f(x+0)]\int\limits_{\xi}^{\delta(\varepsilon)}\frac{\sin(nu)}{u}\,du.
+	I^{1}_{n}:=\int\limits_{0}^{\delta(\varepsilon)}\frac{\sin(nu)}{u}[f(x_{0}+u)-f(x_0+0)]\,du =
+	[f(x_{0}+\delta)-f(x_0+0)]\int\limits_{\xi}^{\delta(\varepsilon)}\frac{\sin(nu)}{u}\,du.
 \end{equation}
 Отсюда и из \eqref{eq.int_estimate} имеем $|I_{n}^{1}| < \varepsilon/2$.
 
@@ -170,7 +170,7 @@ $$
 В силу теоремы Римана--Лебега \ref{Th.Riemann_Lebesgue} имеем существование такого числа $N_{\varepsilon}:=N(\delta(\varepsilon)) \in \mathbb{N}$, что при $n \geq N_{\varepsilon}$
 \begin{equation}
 	\notag
-	|I_{n}^{2}|:=\Bigl|\int\limits_{\delta(\varepsilon)}^{\delta}\frac{\sin(nu)}{u}[f(x_{0}+u)-f(x+0)]\,du\Bigr| < \varepsilon/2.
+	|I_{n}^{2}|:=\Bigl|\int\limits_{\delta(\varepsilon)}^{\delta}\frac{\sin(nu)}{u}[f(x_{0}+u)-f(x_0+0)]\,du\Bigr| < \varepsilon/2.
 \end{equation}
 
 \textit{Шаг 5.} Собирая вышеприведенные оценки, получаем, что $|I_{n}| < \varepsilon$ при всех $n \geq N_{\varepsilon}$.

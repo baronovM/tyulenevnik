@@ -243,54 +243,69 @@ $
 
 
 \section{Преобразование Фурье}
+
 \begin{definition}
-Пусть $f \in L_1^{loc}(\R)$.
-Преобразованием Фурье функции $f$ будем называть функцию $\mathcal{F}[f]$, которая $\forall x \in \R$ определяется как
-\[
-    \mathcal{F}[f](x) := \dfrac{1}{\sqrt {2\pi}}\vpint_{\R} f(y)e^{-ixy}dy
-\]
+Пусть $f \in L_1^{loc}(\mathbb{R}).$ 
+
+\setlength{\parskip}{10pt}
+
+Тогда $\mathcal{F}[f](x) := \operatorname{V.P.}\frac{1}{\sqrt{2\pi}} \int\limits_{\mathbb{R}} e^{-ixy} \, f(y) \, dy, \quad x \in \mathbb{R}.$
 \end{definition}
 
 \begin{note}
-\textbf{v.p.} (от фран. \textit{Valeur Principale}) — интеграл в смысле главного значения по Коши.
+\textbf{V.P.} (от фран. \textit{Valeur Principale}) — интеграл в смысле главного значения.
 \[
-\vpint_{\mathbb{R}} f(y) e^{-ixy}dy := \lim_{A \to +\infty} \int\limits_{-A}^{A} f(y)e^{-ixy}dy.
+\operatorname{V.P.}\int\limits_{\mathbb{R}} e^{-ixy} \, f(y) \, dy := \lim_{A \to +\infty} \int\limits_{-A}^{A} f(y) \, e^{-ixy} \, dy.
 \]
 \end{note}
 
-\begin{definition}
-    Обратное преобразование Фурье определим как
-    \[
-        \mathcal{F}[f](x) := \dfrac{1}{\sqrt {2\pi}}\vpint_{\R} f(y)e^{ixy}dy
-    \]
-\end{definition}
+Обратное преобразование Фурье:
+\[
+\mathcal{F}^{-1} \left[ f \right](x) := \operatorname{V.P.} \frac{1}{\sqrt{2 \pi}} \int\limits_{\mathbb{R}} e^{ixy} f(y) \, dy
+\]
 
 \begin{note}
-    Для интегрируемых на всей числовой прямой функций интеграл в смысле главного значения совпадает c обычным интегралом Лебега.
+\[
+\text{Если  }f \in L_1(\mathbb{R}), \text{ то } \int_{\mathbb{R}} f(x) \, dx = \operatorname{V.P.} \int_{\mathbb{R}} f(x) \, dx
+\]
 \end{note}
 
-\begin{note}
-    Ключевым отличием интеграла в смысле главного значения от несобственного интеграла Лебега являются симметричные пределы интегрирования.
-    Нетрудно заметить, что интеграл в смысле главного значения от любой нечётной функции $g \in L_1^{loc}(\R)$ будет равен 0:
-    \[
-        \forall A \in \R \hookrightarrow \int_{-A}^{A} g dx = 0 \Ra \vpint_{\R} gdx = 0.
-    \]
-\end{note}
-\subsection{Интеграл Фурье}
+
+Ключевое отличие от несобственного интеграла Лебега:
+Пределы интегрирования берутся симметрично.
+
+В обычном несобсвтенном интеграле имеем незавсимые друг от друга пределы $A_1$ и $A_2$:
+
+\[
+\int\limits_{\mathbb{R}} e^{-ixy} \, f(y) \, dy 
+= \int\limits_{-\infty}^{+\infty} f(y) \, e^{-ixy} \, dy
+= \lim_{\substack{A_1 \to +\infty \\ A_2 \to -\infty}} \int\limits_{A_2}^{A_1} f(y) \, e^{-ixy} \, dy
+\]
+
+\begin{example}
+
+Пусть $g$ - произвольная нечетная функция на $\mathbb{R}$. $g \in L_1^{loc}(\mathbb{R})$
+
+\[
+\operatorname{V.P.} \int\limits_{-\infty}^{+\infty} g(y) \, dy = 0.
+\]
+(а интеграл Лебега, и даже несобственный интеграл Лебега может не существовать)
+
+\end{example}
+
 \begin{question}
-Нас будет интересовать вопрос -- для каких функций обратное преобразование Фурье действительно является обратным преобразованием, то есть
+
 \[
-    \mathcal{F}^{-1}[\mathcal{F}[f]] = \mathcal{F}[\mathcal{F}^{-1}[f]] = f.
+\text{Когда }\mathcal{F}^{-1} \left[\mathcal{F} \left[f \right]\right] = \mathcal{F} \left[\mathcal{F}^{-1} \left[f \right]\right] = f \, ?
 \]
-На первый взгляд кажется, что всегда.
-Однако не все так просто.
 \end{question}
-\begin{definition}
-    Для всякого $A > 0$ введём следующее обозначение:
-    \[
-        I_A[f](x) = \dfrac{1}{\sqrt {2\pi}} \int_{A}^{A} \mathcal{F}[f](y)e^{ixy}dy
-    \]
-\end{definition}
+
+На первый взгляд кажется, что всегда. Однако не все так просто.
+
+
+\[
+\text{Пусть }I_A [f](x) := \frac{1}{\sqrt{2\pi}}\int\limits_{-A}^{A} \mathcal{F}[f](y) \, e^{ixy} \, dy, \quad \forall A > 0.
+\]
 
 \begin{lemma}[Ключевая]\label{lem:key}
 Пусть $f \in L_1(\mathbb{R})$ и $x \in \mathbb{R}$. Тогда $\forall A > 0$ справедливо равенство:
@@ -347,6 +362,8 @@ f(x - t)
 
 \end{proof}
 
+\subsection{Интеграл Фурье}
+
 \begin{definition}
     Пусть $f \in L_1^{loc}(\mathbb{R})$.
 \[
@@ -365,8 +382,8 @@ f(x - t)
 
     Более того, в случае сходимости справедливо равенство:
 \[
-\frac{1}{\sqrt{2\pi}}\,\vpint
-_{-\infty}^{+\infty}
+\frac{1}{\sqrt{2\pi}}\,\operatorname{V.P.}
+\int\limits_{-\infty}^{+\infty}
 \mathcal{F}[f](y)\,e^{\,i x\,y}\,dy
 \;=\;
 \sum_{n\in\mathbb{Z}}
@@ -391,17 +408,17 @@ I_A \bigl[f\bigr](\underline{x}) - S_{[A]}\bigl[\widetilde{f}\bigr](\underline{x
 I_A \left[ f \right](\underline{x}) = \int\limits_{-S}^{0} f(\underline{x} - t) \cdot \frac{\sin(At)}{\pi t} \, dt + O(1), \quad A \to +\infty
 \]
 
-Это следует из теоремы Римана об осцилляции % тут ссылка тоже можно вставить (сказано, что на 1 лекции)
+Это следует из теоремы Риммана об осцилляции % тут ссылка тоже можно вставить (сказано, что на 1 лекции)
 
 
-С другой стороны имеем формулу: % тут ссылка со 2 лекции
+С другой имеем формулу: % тут ссылка со 2 лекции 
 
 
 \[
 S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\underline{x} - t) \frac{\sin(nt)}{\pi t} \, dt + \varepsilon_n \left[\widetilde{f}\right](\underline{x})
 \]
 
-По теореме Римана об осцилляции: % ссылка со 2 лекции
+По теореме Риммана об осцилляции: % ссылка со 2 лекции
 \[
 S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\underline{x} - t) \frac{\sin(nt)}{\pi t} \, dt + \varepsilon_n \left[\widetilde{f}\right](\underline{x}) = \int\limits_{-\delta}^{\delta} \widetilde{f}(\underline{x} - t) \frac{\sin(nt)}{\pi t} \, dt + O(1), \quad n \rightarrow +\infty
 \]
@@ -412,7 +429,7 @@ S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\unde
 очевидно доказано}
 \]
 
-В общем случае, когда $A$ ~---~ нецелое, мы можем посмотреть на целую часть $A$
+В общем случае, окгда $A$ ~---~ нецелое, можем посмотреть на целую часть $A$
 
 (вспомним, что $I_A$ ~---~ это интеграл от преобразования Фурье).
 
@@ -427,7 +444,7 @@ S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\unde
 \leq 2 \sup_{|y| \geq A-1} \left| \mathcal{F} [f](y) \right| \longrightarrow 0, \quad A \rightarrow +\infty
 \]
 
-Действительно, по теореме Римана об осцилляции
+Действительно, по теореме Риммана обосцилляции 
 \[
 \mathcal{F} \left[ f \right](y) \longrightarrow 0, \quad y \rightarrow +\infty,
 \]
@@ -437,7 +454,7 @@ S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\unde
 \]
 
 \[
-\text{Так как }  f \in L_1(\mathbb{R}) \text{ по условию, то мы имеем право брать обычный Лебеговский интеграл}
+\text{Так как }  f \in L_1(\mathbb{R}) \text{ по усл, имеем право брать обычный Лебеговский интеграл}
 \]
 В итоге по неравенству треугольника:
 \[
@@ -450,13 +467,15 @@ S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\unde
 \end{aligned}
 \]
 
-Первое слагаемое $\bigl|I_{A}[f](\underline{x}) - I_{[A]}[f](\underline{x})\bigr| \rightarrow
- 0, A \rightarrow +\infty$ из только что доказанного:
+Первое слогаемое $\bigl|I_{A}[f](\underline{x}) - I_{[A]}[f](\underline{x})\bigr| \rightarrow
+ 0, A \rightarrow +\infty$ так как мы только что доказали следующее:
  \[
 \leq 2 \sup_{|y| \geq A-1} \left| \mathcal{F} [f](y) \right| \longrightarrow 0, \quad A \rightarrow +\infty
 \]
 
-Второе слагаемое тоже $\bigl|I_{[A]}[f](\underline{x}) - S_{[A]}[f](\underline{x})\bigr| \rightarrow 0, A \rightarrow +\infty$, поскольку при целых $A \hookrightarrow I_A[f](\underline{x}) = S_n[\widetilde{f}(x)]$ с точностью до $o(1)$, потому что $f = \widetilde{f}$ в $\delta$-окрестности $\underline{x}$
+Второе слогаемое тоже $\bigl|I_{[A]}[f](\underline{x}) - S_{[A]}[f](\underline{x})\bigr| \rightarrow 0, A \rightarrow +\infty$, так как при целых $A$ $I_A[f](\underline{x}) = S_n[\widetilde{f}(x)]$ с точностью до $o(1)$, потому что $f = \widetilde{f}$ в $\delta$-окрестности $\underline{x}$
+
+
 \end{proof}
 
 \begin{corollary}
