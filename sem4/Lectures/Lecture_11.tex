@@ -1,95 +1,95 @@
 \begin{corollary}
-    Все признаки которые были для рядов Фурье, для них есть аналоги:
+    Все признаки сходимости для рядов Фурье переносятся на интеграл Фурье:
     \begin{enumerate}
-        \item Пусть $f \in \mathbb{L}^{loc}_1(\R)$ в некоторой $U_\delta(\underline{x})$ и имеет ограниченную вариацию, тогда:
+        \item Пусть $f \in L_1(\R)$ и в некоторой $U_\delta(\underline{x})$ имеет ограниченную вариацию, тогда:
         \[
-            f(\underline{x}) = F^{-1} [F[f]] (\underline{x})
+            f(\underline{x}) = \mathcal{F}^{-1} [\mathcal{F}[f]] (\underline{x})
         \]
-        \item Пусть $f \in \mathbb{L}_1(\R)$ удовлетворяет условию Гёльдера с степенью $\alpha \in (0; 1]$ в некоторой $U_\delta(\underline{x})$. Тогда:
+        \item Пусть $f \in L_1(\R)$ и удовлетворяет условию Гёльдера с показателем $\alpha \in (0; 1]$ в некоторой окрестности $U_\delta(\underline{x})$. Тогда:
         \[
-            f(\underline{x}) = F^{-1} [F[f]] (\underline{x})
+            f(\underline{x}) = \mathcal{F}^{-1} [\mathcal{F}[f]] (\underline{x})
         \]
-        \item (Условие Дини) Пусть $f \in  \mathbb{L}_1(\R)$ и $\exists \delta > 0$ и $\exists c > 0$ такие что:
+        \item (Условие Дини) Пусть $f \in  L_1(\R)$ и $\exists \delta > 0$ и $\exists C > 0$ такие что:
         \[
-            \int_0^\delta | \frac{f(\underline{x} - u)+f(\underline{x} - u)}{2} - C |  \frac{du}{u} < +\infty \]
+            \int_0^\delta \big| f(\underline{x} - u)+f(\underline{x} + u) - 2C \big|  \frac{du}{2u} < +\infty \]
 
-        Тогда $F^{-1} [F[f]] (\underline{x}) = C$
+        Тогда $\mathcal{F}^{-1} [\mathcal{F}[f]] (\underline{x}) = C$
 
     \end{enumerate}
 \end{corollary}
+
 \subsection{Преобразование Фурье свёртки}
 \begin{reminder}
-    Пусть $f, g \in L_1(\R^n)$. Свёрткой называют $f * g = \int\limits_{\R^n} f(x-t)g(t)dt$. $f*g$ корректно определенная измеримая функция. Она является интегрируемой, если $f$ и $g$ интегрируемы. Свертка обладает свойствами:
+    Пусть $f, g \in L_1(\R^n)$. Свёрткой называют $f * g = \int\limits_{\R^n} f(x - t) g(t)dt$. $f * g$ -- корректно определенная интегрируемая по Лебегу функция.
+    \\ Свертка обладает следующими свойствами:
     \begin{itemize}
-        \item Коммутативность. $f*g = g*f$
-        \item Ассоциативность. $(f*g)*h = f(g*h)$
+        \item Коммутативность. $f * g = g * f$
+        \item Ассоциативность. $(f * g) * h = f * (g * h)$
     \end{itemize}
 \end{reminder}
 
 \begin{theorem}
-    Пусть $f,g\in L^1(\mathbb R)$. Тогда
+    Пусть $f, g\in L^1(\mathbb R)$.
+    Тогда
     \[
-        F[f * g](x) \;=\;\sqrt{2\pi}\, F[f](x)\,   F[g](x),
+        \mathcal{F}[f * g](x) \;=\;\sqrt{2\pi}\, \mathcal{F}[f](x)\,   \mathcal{F}[g](x),
     \]
     где
     \[
-        F[h](x)=\frac1{\sqrt{2\pi}}\int_{\mathbb R}e^{-i x y}h(y)\,dy.
+        \mathcal{F}[h](x)=\frac1{\sqrt{2\pi}}\int_{\mathbb R}e^{-i x y}h(y)\,dy.
     \]
 \end{theorem}
 
 \begin{proof}
     По определению
     \[
-        F[f*g](x)
+        \mathcal{F}[f*g](x)
         =\frac1{\sqrt{2\pi}}\int_{\mathbb R}e^{-i x y}\bigl(f*g\bigr)(y)\,dy
         =\frac1{\sqrt{2\pi}}\int_{\mathbb R}e^{-i x y}
         \Bigl(\int_{\mathbb R}f(y-t)\,g(t)\,dt\Bigr)dy.
     \]
-    Меняем порядок интегрирования и расписываем
-    $e^{-i x y}=e^{-i x (y-t+t)}=e^{-i x t}e^{-i x (y-t)}$:
-    \begin{align*}
-        F[f*g](x)
+    Меняем порядок интегрирования и расписываем $e^{-ixy}$ как
+    \[e^{-i x y}=e^{-i x (y-t+t)}=e^{-i x t}e^{-i x (y-t)}.\]
+    Теперь подставим этом в выражение для Фурье-образа:
+    \begin{equation*}
+        \mathcal{F}[f*g](x)
         &=\frac1{\sqrt{2\pi}}
-        \int_{\mathbb R}\int_{\mathbb R}e^{-i x t}e^{-i x (y-t)}f(y-t)\,g(t)\,dy\,dt\\
+        \int_{\mathbb R}\int_{\mathbb R}e^{-i x t}e^{-i x (y-t)}f(y-t)\,g(t)\,dy\,dt
         &=\frac1{\sqrt{2\pi}}
         \int_{\mathbb R}g(t)e^{-i x t}
         \Bigl(\int_{\mathbb R}e^{-i x (y-t)}f(y-t)\,dy\Bigr)dt.
-    \end{align*}
+    \end{equation*}
     Внутренний интеграл по $y$ при замене переменной $u=y-t$ даёт
     \[
         \int_{\mathbb R}e^{-i x (y-t)}f(y-t)\,dy
         =\int_{\mathbb R}e^{-i x u}f(u)\,du
-        =\sqrt{2\pi}\, F[f](x).
+        =\sqrt{2\pi}\, \mathcal{F}[f](x).
     \]
     Следовательно
     \[
-        F[f*g](x)
+        \mathcal{F}[f*g](x)
         =\frac1{\sqrt{2\pi}}\Bigl(\sqrt{2\pi}\, F[f](x)\Bigr)
         \int_{\mathbb R}g(t)e^{-i x t}\,dt
-        =\sqrt{2\pi}\, F[f](x)\, F[g](x).
+        =\sqrt{2\pi}\, \mathcal{F}[f](x)\, \mathcal{F}[g](x).
     \]
 \end{proof}
 \begin{note}
-    Интеграл двойного интегрирования можно менять местами по теореме Фубини (а для неотрицательных функций по теореме Тонелли), поскольку
+    Заметим, что функция $H(x, y) = |f(x - y)g(y)|$ -- интегрируема по $\LL^2$:
     \[
         \iint_{\mathbb R^2}\bigl|f(y-t)\bigr|\;\bigl|g(t)\bigr|\,dy\,dt
         =\int_{\mathbb R}\bigl|g(t)\bigr|\Bigl(\int_{\mathbb R}\bigl|f(y-t)\bigr|\,dy\Bigr)dt
         =\|g\|_{L^1}\,\|f\|_{L^1}<\infty.
     \]
-    Таким образом все переходы с перестановкой интегралов обоснованы.
+    Таким образом все переходы с перестановкой интегралов обоснованы теоремой Фубини.
 \end{note}
 
-
+\subsection{Производная преобразования Фурье и преобразование Фурье производной}
 
 \begin{theorem}[преобразование Фурье производной]
     Пусть
     \[
         f\in L^1(\mathbb R)\cap C^1(\mathbb R),
         \quad f'\in L^1(\mathbb R),
-    \]
-    и существуют конечные пределы
-    \[
-        \lim_{x\to\pm\infty}f(x)=0.
     \]
     Тогда для любого $y\in\mathbb R$
     \[
