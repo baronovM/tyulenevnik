@@ -1,4 +1,4 @@
-
+\newpage
 \section{Ряды Фурье}
 
 
@@ -31,7 +31,7 @@ c_{n}(x):=\frac{<x,e_{n}>}{<e_{n},e_{n}>}, \quad n \in \mathbb{N}
 элемента $x$ по системе $\{e_{n}\}_{n=1}^{\infty}$}.
 
 Частный случай гильбертова пространства -- $L_{2}([-l,l])$, где $l > 0$ -- фиксированное число. 
-Действительно, скалярное произведение, порождающее $L_{2}$--норму, задается формулой (мы рассматриваем случай комплексного пространства)
+Действительно, скалярное произведение, порождающее $L_{2}$--норму, задается формулой (мы рассматриваем случай комплексного пространства, интеграл от комплекснозначной функции по определению это $\int\limits_E f d\mu := \int\limits_E Re(f)d\mu + i\int\limits_E Im(f)d\mu$ )
 $$
 <f,g>:=\int\limits_{-l}^{l}f(x)\overline{g}(x)\,dx.
 $$
@@ -61,6 +61,7 @@ $$
 \end{note}
 
 \subsection{Строгая теория}
+Без ограничения общности будем работать с элементами $f \in L_{1}([-\pi,\pi])$, так как гомотетией можно любую систему привести к такому виду. Данная система называется стандартной тригонометричесской системой.
 
 \begin{definition}
     Гильбертово пространство — это вещественное линейное пространство \( H \), на котором задано скалярное произведение
@@ -73,7 +74,7 @@ $$
     \item \( \langle \alpha x + y, z \rangle = \alpha \langle x, z \rangle + \langle y, z \rangle \) (линейность по первому аргументу),
     \item \( \langle x, x \rangle \geq 0 \), причём \( \langle x, x \rangle = 0 \iff x = 0 \) (положительная определённость).
 \end{enumerate}
-При этом пространство \( H \) считается \textbf{полным} по норме, индуцированной внутренним произведением:
+При этом пространство \( H \) считается \textbf{полным} по норме, индуцированной скалярным произведением:
 \[
 \|x\| = \sqrt{\langle x, x \rangle}.
 \]
@@ -81,17 +82,15 @@ $$
 \end{definition}
 
 \begin{definition}
-    (Топологический базис или базис Шаудера)
-    Пусть у нас есть $X$ - л.н.п, будем говорить что система ненулевых векторов $\{e_n\}_{n=1}^{\infty}$ является базисом Шаудера пространства X, если:
+    (Топологический базис или базис Шаудер    Пусть у нас есть $X$ - л.н.п, будем говорить что система ненулевых векторов $\{e_n\}_{n=1}^{\infty}$ является базисом Шаудера пространства X, если:
     \[
-    \forall x \in X \exists! \{\alpha_k\}_{k=1}^{\infty} \in \R \hookrightarrow \| x - \sum_{k=1}^{N} \alpha_k(x) e_k\| \to 0, N \to \infty
+    \forall x \in X \exists! \{\alpha_k\}_{k=1}^{\infty} \subset \R \hookrightarrow \| x - \sum_{k=1}^{N} \alpha_k(x) e_k\| \to 0, N \to \infty
     \]
     То есть $x = \sum\limits_{k=1}^{\infty} \alpha_k(x) e_k$. Из единственности в определнии следует линейная независимость системы векторов.
 \end{definition}
 
-
-
-Без ограничения общности будем работать с элементами $f \in L_{1}([-\pi,\pi])$. Каждому такому элементу можно сопоставить формальный ряд Фурье по стандартной тригонометрической системе
+\begin{proposition}
+    Каждому такому элементу можно сопоставить формальный ряд Фурье по стандартной тригонометрической системе. При том знак "$\sim$" обозначет сопостовление функции ее формального ряда Фурье(Мы можем вычислить коэффициенты, но не можем ничего утверждать про сходиомсть)
 $$
 f \sim a_{0}(f)+\sum\limits_{k=1}^{\infty}a_{k}(f)\cos(kx) + b_{k}(f)\sin(kx),
 $$
@@ -104,17 +103,16 @@ $$
 $$
 S_{n}[f](x):=a_{0}(f)+\sum\limits_{k=1}^{n}a_{k}(f)\cos(kx) + b_{k}(f)\sin(kx).
 $$
-
-\subsection{Компактная форма записи}
+\end{proposition}
 
 Заметим, что
 \begin{equation}
 \label{eqq.6}
 \begin{split}
-S_n[f](x) &= \frac{1}{2\pi} \int\limits_{-\pi}^{\pi} f(t)\,dt 
-+ \frac{1}{\pi} \sum\limits_{k=1}^{n} \int\limits_{-\pi}^{\pi} f(t) \cos(kt) \cos(kx)\,dt 
+S_n[f](x) &= \frac{1}{2\pi} \int\limits_{-\pi}^{\pi} f(t)\,dt
++ \frac{1}{\pi} \sum\limits_{k=1}^{n} \int\limits_{-\pi}^{\pi} f(t) \cos(kt) \cos(kx)\,dt
 + \frac{1}{\pi} \sum\limits_{k=1}^{n} \int\limits_{-\pi}^{\pi} f(t) \sin(kt) \sin(kx)\,dt \\
-&= \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(t) \left( \frac{1}{2} + \sum\limits_{k=1}^{n} \cos(k(t - x)) \right) dt 
+&= \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(t) \left( \frac{1}{2} + \sum\limits_{k=1}^{n} \cos(k(t - x)) \right) dt
 = \int\limits_{-\pi}^{\pi} f(t) D_n(t - x)\,dt,
 \end{split}
 \end{equation}
@@ -127,11 +125,7 @@ D_n(x) := \frac{1}{\pi} \left( \frac{1}{2} + \sum\limits_{k=1}^{n} \cos(kx) \rig
 
 Свойства ядра Дирихле:
 
-1) $\int\limits_{-\pi}^{\pi}D_{n}(x)\,dx=1$;
-
-2) $D_{n}$ -- четная $2\pi$-периодическая функция.
-
-\subsection{Теорема Римана--Лебега}
+\subsection{Теорема Римана--Лебега об осцилляции}
 
 Докажем теперь важную теорему Римана--Лебега об осцилляции.
 \begin{note}
@@ -150,9 +144,8 @@ D_n(x) := \frac{1}{\pi} \left( \frac{1}{2} + \sum\limits_{k=1}^{n} \cos(kx) \rig
 I(y):=\int\limits_{E}f(x)e^{i<x,y>}\,dx \to 0, \quad \|y\| \to +\infty.
 \end{equation}
 \end{theorem}
-
-\textit{Доказательство.}
-Будем считать функцию $f$ продолженной нулем вне множества $E$. 
+\begin{proof}
+    Будем считать функцию $f$ продолженной нулем вне множества $E$. 
 При $y \neq 0$ рассмотрим вектор $h=h(y):=\frac{\pi y}{\|y\|^{2}}$.
 Тогда сделав замену переменной $x=x'-h$ имеем
 $$
@@ -160,9 +153,13 @@ I(y)=\int\limits_{\mathbb{R}^{n}}f(x)e^{i<x,y>}\,dx = \int\limits_{\mathbb{R}^{n
 $$
 Таким образом, поскольку $h(y) \to 0$, $\|y\| \to \infty$, получим
 \begin{equation}
-2|I(y)| = \Bigl|\int\limits_{\mathbb{R}^{n}}(f(x)-f(x-h(y)))e^{i<x,y>}\,dx\Bigr| \le \int\limits_{\mathbb{R}^{n}}|f(x)-f(x-h(y))|\,dx \to 0, \quad \|y\| \to +\infty.
+2|I(y)| = \Bigl|\int\limits_{\mathbb{R}^{n}}\bigg(f(x)-f(x-h(y))\bigg)e^{i<x,y>}\,dx\Bigr| \le \int\limits_{\mathbb{R}^{n}}|f(x)-f(x-h(y))|\,dx \to 0, \quad \|y\| \to +\infty.
 \end{equation}
-Теорема доказана.
+\end{proof}
+\begin{note}
+    Здесь используется непрерывность интеграла по сдвигу. Идея доказательства простая. Мы можем функцию из $L_1$ приблизить простой. А для нее это верно, тк это верно для характерестической функции, а для нее верно, тк это верно для измеримого множества.
+\end{note}
+
 
 
 \begin{corollary}
@@ -170,8 +167,106 @@ $$
 $$
 \lim\limits_{k \to \infty}a_{k}(f) = \lim\limits_{k \to \infty}b_{k}(f) = \lim\limits_{k \to \infty}c_{k}(f) = 0.
 $$
-
+Те мы получаем что коэффициенты Фурье стремятся к нулю, а значит выполнено необходимое условие сходимости ряда, то есть существуют условия при которых ряд Фурье будет сходится.
 \end{corollary}
+\begin{note}
+    Есть некотрая серия теорем которые дают понимание про ряды фурье, но доказательство которых выходит за рамки курса
+    \begin{enumerate}
+        \item Пример Колмогорова. $\exists f \in L_1[-\pi,\pi]$ такая что ее ряд Фурье расходится почти всюду.
+        \item Потом Колмогоров доказал более сильное утверждение. $\exists f \in L_1[-\pi,\pi]$ такая что ее ряд Фурье расходится в каждой точке.
+        \item  Есть также теорема (Lennart Carlesson), что $\forall f \in L_2[-\pi,\pi]$ ряд Фурье сходится к $f$ п.в на $[-\pi,\pi]$.
+        \item Теорема (Hunt) $\forall f \in L_p[-\pi,\pi], p \in (1, +\infty)$ ряд Фурье сходится к $f$ п.в на $[-\pi,\pi]$.
+    \end{enumerate}
+
+
+
+\end{note}
+
+\subsection{Компактная форма записи}
+\begin{definition}
+    Пусть \( X \) и \( Y \) — два линейных пространства. Отображение
+\[
+T \colon X \to Y
+\]
+называется оператором из \( X \) в \( Y \).
+\end{definition}
+
+\begin{definition}
+$\forall f \in L_1\left([-\pi, \pi]\right)$ определим оператор частичной суммы ряда Фурье $S_n \colon L_1\left([-\pi, \pi]\right) \to C \left([-\pi, \pi]\right)$.
+
+\[
+S_n[f](x) := a_0(f) + \sum_{k=1}^{n} \alpha_k(f) \cos(kx) + \beta_k(f) \sin(kx)
+\]
+Также это назвают $n$-ая частичная сумма Фурье
+\end{definition}
+
+
+Заметим, что
+\begin{equation}
+\label{eqq.6}
+\begin{split}
+S_n[f](x) &= \frac{1}{2\pi} \int\limits_{-\pi}^{\pi} f(t)\,dt 
++ \frac{1}{\pi} \sum\limits_{k=1}^{n} \int\limits_{-\pi}^{\pi} f(t) \cos(kt) \cos(kx)\,dt 
++ \frac{1}{\pi} \sum\limits_{k=1}^{n} \int\limits_{-\pi}^{\pi} f(t) \sin(kt) \sin(kx)\,dt= \\
+&= \frac{1}{\pi} \int\limits_{-\pi}^{\pi} f(t) \left( \frac{1}{2} + \sum\limits_{k=1}^{n} \cos(k(t - x)) \right) dt 
+= \int\limits_{-\pi}^{\pi} f(t) D_n(t - x)\,dt,
+\end{split}
+\end{equation}
+где \( D_n \) — ядро Дирихле:
+\begin{equation}
+\label{eqq.7}
+D_n(x) := \frac{1}{\pi} \left( \frac{1}{2} + \sum\limits_{k=1}^{n} \cos(kx) \right) = \frac{1}{\pi} \cdot \frac{\sin\left( \left(n + \frac{1}{2}\right) x \right)}{2 \sin\left( \frac{x}{2} \right)}.
+\end{equation}
+
+
+\begin{tikzpicture}
+  \begin{axis}[
+    domain=-4:4,
+    samples=1000,
+    xmin=-4, xmax=4,
+    ymin=-1, ymax=2.5,
+    axis lines=middle,
+    xlabel={$x$},
+    ylabel={$D_n(x)$},
+    xtick={-3.14,0,3.14},
+    xticklabels={$-\pi$,$0$,$\pi$},
+    ytick=\empty,
+    enlargelimits=false,
+    clip=false,
+    xscale=1.0,
+    yscale=1.0,
+    width=16cm,
+    height=9cm,
+    title={\text{График ядра Дирихле при } $n=5$}
+  ]
+    \addplot [blue, thick, domain=-4:4, samples=1000]
+      {1/(2*pi)*sin((2*5 + 1)*deg(x)/2)/sin(deg(x)/2)};
+    \node at (axis cs:0,1.75) [anchor=south west] {$\frac{2n+1}{2\pi}$};
+  \end{axis}
+\end{tikzpicture}
+
+
+
+
+\begin{definition}
+    Для $\mathcal{L}\text{-почти всех } x \in \mathbb{R}^n$ корректно определена функция, которую мы называем свёрткой:
+\[
+f * g(x) := \int_{\mathbb{R}^n} f(x - y) g(y) \, dy = \int_{\mathbb{R}^n} g(x - y) f(y) \, dy.
+\]
+Доказательство свойств свертки  будет далее.
+\end{definition}
+
+\begin{note}
+    Свойства ядра Дирихле:
+\begin{enumerate}
+    \item $D_{n}$ -- четная $2\pi$-периодическая функция;
+    \item $\int\limits_{-\pi}^{\pi}D_{n}(x)\,dx=1$
+    \item Продлив функции вне $[-\pi, \pi]$нулем, имеем $S_n[f](x) = \int\limits_{-\pi}^{\pi} f(t) D_n(t - x)\,dt, = D_n*f(x)$
+\end{enumerate}
+\end{note}
+
+
+
 
 \subsection{Вторая теорема о среднем}
 
@@ -202,8 +297,8 @@ $$
 
 \end{theorem}
 
-\textit{Доказательство.} Отметим, что $fg \in R([a,b])$, что легко следует из критерия Лебега. Поэтому, левые части формул \eqref{eqq.average_1}--\eqref{eqq.average_3} имеют смысл.
-
+\textit{Доказательство.} Отметим, что $fg \in R([a,b])$, что легко следует из критерия Лебега. Поэтому, левые части формул из определения теоремы \eqref{eqq.average_1}--\eqref{eqq.average_3} имеют смысл.
+    
 Мы докажем лишь формулу \eqref{eqq.average_2}, поскольку \eqref{eqq.average_3} доказывается аналогично, а равенство \eqref{eqq.average_1} легко 
 вытекает из \eqref{eqq.average_2} и \eqref{eqq.average_3}.
 
