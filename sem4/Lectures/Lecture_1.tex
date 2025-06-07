@@ -26,7 +26,7 @@ $$ \forall \epsilon > 0 \  \exists N (\epsilon) \in \N: \forall n \geq N, \foral
 
 \begin{definition}
 	Пусть $E = (E, \|\cdot\|)$  ~---~ линейное нормированое пространсвто (л.н.п.) Оно называется \textit{полным}, если
-	
+
 	$\forall$ фундаментальная (по норме $\|\cdot\|$) последовательность $\{x^n\}$ пространства $E$ сходится по норме пространства $E$ к некоторому элементу $x \in E$.
 \end{definition}
 
@@ -100,13 +100,13 @@ $$ \forall \epsilon > 0 \  \exists N (\epsilon) \in \N: \forall n \geq N, \foral
 \begin{proof}
 	Разберём случай $p \in [1, +\infty)$. В силу предыдущей теоремы достаточно доказать, что любой абсолютно сходящийся ряд в $L_p(\mu)$ сходится в $L_p(\mu)$.\\
 	Пусть $\sum\limits_{k=1}^\infty f_k$ ~---~ абсолютно сходящийся ряд в $L_p(\mu)$.
-	То есть $\sum\limits_{k=1}^\infty \|f_k\|_p$ сходится как числовой ряд. Определим $F_n := \bigg(\sum\limits_{k=1}^{N} |f_k|\bigg)^p$. Используя неравенство Минковского, покажем, что $F_n$ интегрируема: \[
-		\forall N \in \N \emb \left(\int\limits_X F_n(x)d\mu(x)\right)^{1/p} = \left(\int\limits_X \bigg(\sum_{k=1}^{N} |f_k|\bigg)^p d\mu(x)\right)^{1/p} \leq \sum_{k=1}^N \|f_k\|_p \leq \sum_{k=1}^{\infty} \|f_k\|_p < +\infty.
-	\]
-	Тогда $\{F_N\}_{N=1}^\infty$ ~---~ монотонная (неубывающая) функциональная последовательность.
+	То есть $\sum\limits_{k=1}^\infty \|f_k\|_p$ сходится как числовой ряд. Определим $F_n := \bigg(\sum\limits_{k=1}^{N} |f_k|\bigg)^p$. Тогда $\{F_N\}_{N=1}^\infty$ ~---~ монотонная (неубывающая) функциональная последовательность.
 	\begin{reminder}
 		Монотонность функциональной последовательности ~---~ это монотонность последовательность по $n$ при каждом фиксированом $x$.
 	\end{reminder}
+	Используя неравенство Минковского, покажем, что $F_n$ интегрируема: \[
+		\forall N \in \N \emb \left(\int\limits_X F_n(x)d\mu(x)\right)^{1/p} = \left(\int\limits_X \bigg(\sum_{k=1}^{N} |f_k|\bigg)^p d\mu(x)\right)^{1/p} \leq \sum_{k=1}^N \|f_k\|_p \leq \sum_{k=1}^{\infty} \|f_k\|_p < +\infty.
+	\]
 	Тогда по теореме Леви \[
 	\exists \lim_{N\ra\infty}\left(\int\limits_X F_n(x)d\mu(x)\right)^{1/p} = \left(\int\limits_X \lim_{N\ra\infty} F_n(x)d\mu(x)\right)^{1/p}
 	\]\[
@@ -126,7 +126,7 @@ $$ \forall \epsilon > 0 \  \exists N (\epsilon) \in \N: \forall n \geq N, \foral
 	% Тут -----------------------------
 	\[
 		J_n = \left( \int\limits_X \bigg|\sum_{k=n+1}^\infty f_k(x) \bigg|^p d\mu(x) \right)^{1/p}
-		\leq 
+		\leq
 		\left(\int\limits_X \bigg(\sum_{k=n+1}^\infty |f_k(x)| \bigg)^p d\mu(x)\right)^{1/p}
 		\incirc{\leq}
 	\]
@@ -159,13 +159,13 @@ $$ \forall \epsilon > 0 \  \exists N (\epsilon) \in \N: \forall n \geq N, \foral
 \begin{theorem}
 	Пространство $RL_p([a, b])$ неполно.
 \end{theorem}
-\begin{proof} \ \\ 
+\begin{proof} \ \\
 	Без ограничения общности, $[a, b] = [0, 1]$.
-	
+
 	Пусть $\epsilon \in (0, \frac{1}{2})$.
-	
+
 	Перенумеруем рациональные точки отрезка $[0, 1]$:\quad $\Q \cap [0, 1] = \{r_k\}$.
-	
+
 	\[
 	G_n := \bigcup_{k=1}^n \Big(r_k - \frac{\epsilon}{2^{k+2}}, r_k + \frac{\epsilon}{2^{k+2}}\Big) \cap  [0, 1].
 	\]\[
@@ -178,13 +178,13 @@ $$ \forall \epsilon > 0 \  \exists N (\epsilon) \in \N: \forall n \geq N, \foral
 		\{\chi_{G_n}\} \subset RL_p([0, 1]).
 		\label{rlp:gn_rlp}
 	\end{equation}
-	
+
 	Докажем, что $\chi_G$ имеет множество точек разрыва положительной меры Лебега. Для этого рассмотрим $F = [0, 1] \setminus G$. Тогда $\chi_G(F) = 0$, но в то же время $\chi_G(\mathbb{Q} \cap [0, 1]) = 1$, а так как $\Q$ плотно в $\R$, во всех точках $F$ функция $\chi_G$ разрывна. При этом по счётной полуаддитивности меры Лебега $\LL^n(G) \leq \frac{1}{2}$, а значит $\LL^n(F) \geq \frac{1}{2} > 0$. Итак, $\chi_G$ разрывна на множестве $F$ положительной меры, итого
 	\begin{equation}
 		\chi_G \not\in RL_p([0, 1]).
 		\label{rlp:g_nrlp}
 	\end{equation}
-	
+
 	Введём обозначения \[
 		E_k := \Big(r_k - \frac{\epsilon}{2^{k+2}}, r_k + \frac{\epsilon}{2^{k+2}}\Big) \cap  [0, 1].
 	\]\[
@@ -243,7 +243,7 @@ $$ \forall \epsilon > 0 \  \exists N (\epsilon) \in \N: \forall n \geq N, \foral
 		\leq
 		|\alpha| V_T(f_1) + |\beta| V_T(f_2).
 	\]
-	
+
 	Взяв супремум по всем разбиениям [a, b] получим желаемое.
 \end{proof}
 \begin{lemma}
@@ -263,7 +263,7 @@ $$ \forall \epsilon > 0 \  \exists N (\epsilon) \in \N: \forall n \geq N, \foral
 \end{lemma}
 \begin{proof} \ \\
 	\textbf{Шаг 1. } ($\implies$) и $\geq$\\
-		
+
     Пусть $f \in BV([a, b])$. Обозначим:
     \begin{itemize}
         \item $T_1$ ~---~ произвольное разбиение $[a, c]$,
@@ -271,42 +271,42 @@ $$ \forall \epsilon > 0 \  \exists N (\epsilon) \in \N: \forall n \geq N, \foral
         \item $T = T_1 \cup T_2$ ~---~ разбиение отрезка $[a, b]$.
     \end{itemize}
     Тогда имеем, что  $V_{T_1}(f) + V_{T_2}(f) \leq V_T(f) \leq V_a^b (f)$.
-    
+
     \begin{tikzpicture}
-    
+
     % Основной отрезок
     \draw[thick, blue] (0,0) -- (12,0);
-    
+
     % Точки alpha, c, beta
     \node[blue] at (0,-0.5) {$a$};
     \node[blue] at (6,-0.5) {$c$};
     \node[blue] at (12,-0.5) {$b$};
-    
+
     \filldraw[blue] (0,0) circle (2pt);
     \filldraw[blue] (6,0) circle (2pt);
     \filldraw[blue] (12,0) circle (2pt);
-    
+
     % Разбиение T1 на отрезке [alpha, c] (фиолетовые)
     \foreach \x in {1,2.5,3,4.7,5}
       \draw[magenta, thick] (\x,0.2) -- (\x,-0.2);
-    
+
     % Разбиение T2 на отрезке [c, beta] (жёлтые)
     \foreach \x in {7.2,8, 8.6,9.2,10.7,11}
       \draw[yellow!90!black, thick] (\x,0.2) -- (\x,-0.2);
-    
+
     % Подписи T1 и T2
     \node[magenta!90!black] at (3,0.8) {$T_1$};
     \node[yellow!90!black] at (9,0.8) {$T_2$};
-    
+
     \end{tikzpicture} \\
     Взяв $\sup$ сначала по $T_1$, а потом по $T_2$, получим $V_a^c (f) + V_c^b (f) \leq V_a^b (f)$.
-    
+
     \textbf{Шаг 2.} ($\impliedby$) и $\leq$ \\
     Пусть $\System{f \in BV([a, c]) \\ f \in BV([c, b])}$.\\
     Пусть $T = \{x_i\}_{i=0}^N$ ~---~ произвольное разбиение отрезка $[a, b]$.
-    
+
     Если $c = x_{i^{*}}$ при некотором $i^{*}$, то это простой случай, так как тогда можно $\{x_j\}_{j=0}^{i^{*}}$ выбрать в качестве $T_1$, а $\{x_j\}_{j=i^{*}}^N$ выбрать в качестве $T_2$. И тогда очевидным образом $V_T(f) = V_{T_1}(f) + V_{T_2} (f) \leq V_a^c(f) + V_c^b (f) < +\infty$, а взяв $\sup$ по всем $T$ получим $V_a^b(f) \leq V_a^c(f) + V_c^b (f) < +\infty$.
-    
+
     Теперь рассмотрим более интересный случай, когда ни при каком $i$ $x_i$ не равно $c$. Тогда $c \in (x_i, x_i + 1)$ при некотором $i$.
     \[\begin{aligned}
         V_T(f)
@@ -361,7 +361,7 @@ $$ \forall \epsilon > 0 \  \exists N (\epsilon) \in \N: \forall n \geq N, \foral
 		a \leq x \leq y \leq b.
 	\]\[
 		f_2(y) - f_2(x) = \bigg[f_1(y) - f(y)\bigg] - \bigg[f_1(x) - f(x)\bigg] = \bigg[f_1(y) - f_1(x)\bigg] - \bigg[f(y) - f(x)\bigg]
-		\stackrel{(1)}{=} 
+		\stackrel{(1)}{=}
 		V_x^y(f) - [f(y) - f(x)].
 	\]
 	(1) В силу аддитивности вариации по отрезкам\\
