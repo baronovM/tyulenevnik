@@ -1,46 +1,3 @@
-\subsection{Интеграл Фруллани.}
-\begin{lemma}
-    Пусть $f \in C([0, +\infty))$ и для любого $A > 0 \hookrightarrow$
-    \[
-        \int_A^{+\infty} \dfrac{f(x)}{x}dx
-    \]
-    сходится в несобственном смысле.
-    Тогда $\forall a, b > 0$ справедлива формула Фруллани:
-    \[
-        I = \int_0^{+\infty} \frac{f(ax) - f(bx)}{x}dx = f(0)\ln \frac{b}{a}.
-    \]
-\end{lemma}
-\begin{proof}
-    Поскольку
-    \[
-        I = \lim\limits_{\epsilon \ra +0, E \ra +\infty} \int_{\epsilon}^{E} \dfrac{f(ax) - f(bx)}{x}dx.
-    \]
-    Введём обозначение:
-    \[
-        I(\epsilon, E) = \int_{\epsilon}^{E} \dfrac{f(ax) - f(bx)}{x}dx.
-    \]
-    Поскольку
-    \[
-        I(\epsilon, E) = \int_{\epsilon}^E \dfrac{f(ax)}{x}dx - \int_{\epsilon}^{E} \dfrac{f(bx)}{x}dx = \int_{a\epsilon}^{aE} \dfrac{f(t)}{t}dt - \int_{b\epsilon}^{bE} \dfrac{f(t)}{t}dt = \int_{a\epsilon}^{b\epsilon} \dfrac{f(t)}{t}dt + \int_{bE}^{aE} \dfrac{f(t)}{t}dt = J(\epsilon) + K(E).
-    \]
-    Ключевой момент заключается в том, что $K(E) \ra 0, E \ra +\infty$ -- это следует из критерия Коши сходимости в применении к несобственному интегралу, данному в условии.
-    А $J(\epsilon)$ оценивается как
-    \[
-        J(\epsilon) = \int_{a\epsilon}^{b\epsilon} \dfrac{f(t) - f(0)}{t}dt + \int_{a \epsilon}^{b\epsilon} \dfrac{f(0)}{t}dt = f(0) \ln \frac{b}{a} + \int_{a\epsilon}^{b\epsilon} \dfrac{f(t) - f(0)}{t}dt \ra f(0) \ln \frac{b}{a}.
-    \]
-    Второе слагаемое стремится к 0 из непрерывности $f$:
-    \[
-        \biggr|\int_{a \epsilon}^{b\epsilon} \dfrac{f(0)}{t}dt \biggr| \leq \sup\limits_{t \in [a\epsilon, b \epsilon]}|f(t) - f(0)| \ln \frac{b}{a} \ra 0, \epsilon \ra +0.
-    \]
-\end{proof}
-\begin{example}
-    Рассмотрим интеграл $I = \int_0^1 \frac{x^\alpha - x^\beta}{\ln x}dx$.
-    Сделаем замену $x = e^{-t}$ и получим
-    \[
-        I = -\int_0^{+\infty} \dfrac{e^{-\alpha t} - e^{-\beta t}}{t} e^{-t}dt = \ln \dfrac{a + 1}{b + 1}.
-    \]
-    с использованием формулы Фруллани к функции $f(t) = e^{-t}$.
-\end{example}
 \subsection{Интеграл Дирихле}
 
 \[
@@ -429,9 +386,9 @@ I_A \bigl[f\bigr](\underline{x}) - S_{[A]}\bigl[\widetilde{f}\bigr](\underline{x
 
 Предположим, что $f \equiv \widetilde{f}  
     \text{ в } U_\delta(\underline{x})$ 
-Заметим, что $\forall S > 0 \hookrightarrow$
+
 \[
-I_A \left[ f \right](\underline{x}) = \int\limits_{-S}^{S} f(\underline{x} - t) \cdot \frac{\sin(At)}{\pi t} \, dt + o(1), \quad A \to +\infty
+I_A \left[ f \right](\underline{x}) = \int\limits_{-S}^{0} f(\underline{x} - t) \cdot \frac{\sin(At)}{\pi t} \, dt + O(1), \quad A \to +\infty
 \]
 
 Это следует из теоремы Римана об осцилляции % тут ссылка тоже можно вставить (сказано, что на 1 лекции)
@@ -446,7 +403,7 @@ S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\unde
 
 По теореме Римана об осцилляции: % ссылка со 2 лекции
 \[
-S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\underline{x} - t) \frac{\sin(nt)}{\pi t} \, dt + \varepsilon_n \left[\widetilde{f}\right](\underline{x}) = \int\limits_{-\delta}^{\delta} \widetilde{f}(\underline{x} - t) \frac{\sin(nt)}{\pi t} \, dt + o(1), \quad n \rightarrow +\infty
+S_n \left[\widetilde{f}\right](x) = \int\limits_{-\pi}^{\pi} \widetilde{f}(\underline{x} - t) \frac{\sin(nt)}{\pi t} \, dt + \varepsilon_n \left[\widetilde{f}\right](\underline{x}) = \int\limits_{-\delta}^{\delta} \widetilde{f}(\underline{x} - t) \frac{\sin(nt)}{\pi t} \, dt + O(1), \quad n \rightarrow +\infty
 \]
 
 
