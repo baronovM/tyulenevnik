@@ -62,7 +62,7 @@
                  J_k \geq \dfrac{\ln 2}{3\sqrt{k}}k! + O(1).
     \]
     Оценим $H_k$: \[
-                      |H_k| \leq \int_{t_{k - 1}}^\pi \ln \dfrac{\pi}{t_{k - 1}} \ln \dfrac{n_{k - 1}}{2} \leq (k - 1)!\ln 2.
+                      |H_k| \leq \ln \dfrac{\pi}{t_{k - 1}} = \ln \dfrac{n_{k - 1}}{2} \leq (k - 1)!\ln 2.
     \]
     И последний интеграл: \[
                               |F_k| \leq \int_0^{t_k} \biggr|\dfrac{\sin n_kt}{t}f(t)\biggr|dt \leq \int_0^{t_{k}}\dfrac{|\sin n_kt|}{t}|f(t)|dt \leq \int_0^{t_k}|n_kf(t)|dt \leq \dfrac{n_k t_k}{\sqrt{k}} = \dfrac{2\pi}{\sqrt{k}} \rightarrow 0, k \rightarrow +\infty.
