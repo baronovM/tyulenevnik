@@ -13,13 +13,13 @@
     \]
     То есть существует $\delta > 0$ такое, что
     \[
-                                                   \biggr|\dfrac{f(x_0 + u) - f(x_0 + 0)}{u}\biggr| \in \biggr[\dfrac{|f'_+(x_0)|}{2}, 2|f'_+(x_0)|\biggr] \quad \biggr|\dfrac{f(x_0 - u) - f(x_0 - 0)}{u}\biggr| \in \biggr[\dfrac{|f'_-(x_0)|}{2}, 2|f'_-(x_0)|\biggr] \forall u \in (0, \delta).
+        \biggr|\dfrac{f(x_0 + u) - f(x_0 + 0)}{u}\biggr| \in \biggr[\dfrac{|f'_+(x_0)|}{2}, 2|f'_+(x_0)|\biggr] \quad \biggr|\dfrac{f(x_0 - u) - f(x_0 - 0)}{u}\biggr| \in \biggr[\dfrac{|f'_-(x_0)|}{2}, 2|f'_-(x_0)|\biggr] \forall u \in (0, \delta).
     \]
     А значит выполнено условие Дини и ряд сходится к полусумме односторонних пределов.
 \end{proof}
 
 \begin{fact}
-        Для любой непрерывной $2\pi$ периодической функции ее ряд Фурье сходится к ней почти всюду (следует из теоремы Карлесона)
+    Для любой непрерывной $2\pi$ периодической функции ее ряд Фурье сходится к ней почти всюду (следует из теоремы Карлесона)
 \end{fact}
 
 
@@ -35,11 +35,11 @@
     \]
     где $n_k = 2^{k!}$, $t_1 = \pi$ и $t_k = \frac{2\pi}{n_k}, k > 1$.
     \begin{center}
-            \includegraphics[width=1\linewidth]{Pictures/Shwartz.png}
+        \includegraphics[width=1\linewidth]{Pictures/Shwartz.png}
     \end{center}
 
     Определим $J_n[f]$ как \[
-                                                                                                  J_n[f](0) = \int_0^\pi \dfrac{\sin nt}{t}f(t)dt.
+                               J_n[f](0) = \int_0^\pi \dfrac{\sin nt}{t}f(t)dt.
     \]
     Исследуем поведение $J_n[f]$ на гармониках $n_k$:
     \[
@@ -128,28 +128,28 @@
     \]
 \end{theorem}
 \begin{proof}
-    Для начала рассмотрим отклонения от суммы Фейера:
+    Для начала рассмотрим отклонения от суммы Фейера и, вставив <<умную $1$>>, с помощью ее интегрального свойства получим:
     \[
         \sigma_n[f](x) - f(x) = \int_{-\pi}^\pi f(x - t)\Phi_n(t)dt - \int_{-\pi}^{\pi}\Phi_n(t)f(x)dt = \int_{-\pi}^{\pi} (f(x - t) - f(x))\Phi_n(t)dt.
     \]
     То есть \[
                 |\sigma_n[f](x) - f(x)| \leq \int_{-\pi}^{\pi}|f(x - t) - f(x)|\Phi_n(t)dt \leq \dfrac{C}{2\pi n} \int_{0}^{\pi} t^\alpha \cdot \dfrac{\sin^2 (nt/2)}{\sin^2 t/2}dt \leq (*)
     \]
-    Но, поскольку $\sin t/2 \geq \dfrac{2}{\pi} \cdot \dfrac{t}{2} = \dfrac{t}{\pi}$, то \[
+    Но поскольку $\sin t/2 \geq \dfrac{2}{\pi} \cdot \dfrac{t}{2} = \dfrac{t}{\pi}$, то \[
                                                                                             (*) \leq \dfrac{C\pi}{2n} \int_0^{\pi} t^{\alpha - 2}\sin^2(nt/2)dt = (*)
     \]
     Теперь сделаем замену $nt/2 = u$ и получим \[
-                                                   (*) = \dfrac{C \pi}{2 n} \int_0^{\pi n/2} \biggr(\dfrac{2u}{n}\biggr)^{\alpha - 2}\cdot\sin^2 u\cdot \dfrac{2u}{n}du \leq \dfrac{2^{\alpha - 2}C \pi}{n^\alpha}\int_0^{\pi n / 2} \dfrac{\sin^2 u}{u^{2 - \alpha}}du.
+                                                   (*) = \dfrac{C \pi}{2 n} \int_0^{\pi n/2} \biggr(\dfrac{2u}{n}\biggr)^{\alpha - 2}\cdot\sin^2 u\cdot \dfrac{2}{n}du \leq \dfrac{2^{\alpha - 2}C \pi}{n^\alpha}\int_0^{\pi n / 2} \dfrac{\sin^2 u}{u^{2 - \alpha}}du.
     \]
-    Но $\int_0^{+\infty}\frac{\sin^2 u}{u^{2 - \alpha}}du$ сходится в несобственном смысле, а значит $\exists \widetilde{C} > 0$ такая, что \[
-                                                                                                                                                \biggr|\int_0^{\pi n / 2}\dfrac{\sin^2 u}{u^{2 - \alpha}}du\biggr| \leq \widetilde{C}.
+    Но $\displaystyle \int_0^{+\infty}\frac{\sin^2 u}{u^{2 - \alpha}}du$ сходится в несобственном смысле, а значит $\exists \widetilde{C} > 0$ такая, что \[
+                                                                                                                                                              \biggr|\int_0^{\pi n / 2}\dfrac{\sin^2 u}{u^{2 - \alpha}}du\biggr| \leq \widetilde{C}.
     \]
     И отклонение суммы Фейера от функции оценивается как \[
                                                              |\sigma_n[f](x) - f(x)| \leq \dfrac{M}{n^\alpha}.
     \]
     Пусть $\phi_n = f -\sigma_n[f]$. Cумма Фейера -- это тригонометрический полином $n$-ой степени, поэтому $S_n[\sigma_n[f]] = \sigma_n[f]$, а значит
     \[
-    	\big|S_n[\phi_n](x) - \phi_n(x)\big| = \big|S_n[f](x) - \sigma_n(x) - f(x) + \sigma_n(x) \big| = \big|S_n[f](x) - f(x)\big|.
+        \big|S_n[\phi_n](x) - \phi_n(x)\big| = \big|S_n[f](x) - \sigma_n(x) - f(x) + \sigma_n(x) \big| = \big|S_n[f](x) - f(x)\big|.
     \]
 
     Тогда
