@@ -138,7 +138,7 @@ D(y_2) = \int\limits_0^{+\infty} \frac{\sin x}{x} \cdot e^{-x y_2} \, dx
 \]
 
 \begin{note}
-Если доказать, что $D(y)$ непрерывен в нуле справа, т.е. что $\lim_{y \to +0} D(y) = D(0)$, то получим искомое
+Если доказать, что $D(y)$ непрерывен в нуле справа, то есть что $\lim_{y \to +0} D(y) = D(0)$, то получим искомое
 \end{note}
 
 \noindent Покажем, что \( D(y) \) — непрерывна и существует \( D'(y) \), \( \forall y > 0 \).
@@ -290,12 +290,12 @@ $
 Пусть $f \in L_1^{loc}(\R)$.
 Преобразованием Фурье функции $f$ будем называть функцию $\mathcal{F}[f]$, которая $\forall x \in \R$ определяется как
 \[
-    \mathcal{F}[f](x) := \dfrac{1}{\sqrt {2\pi}}\vpint_{\R} f(y)e^{-ixy}dy
+    \mathcal{F}[f](x) := \dfrac{1}{\sqrt {2\pi}}\vpint_{\R} f(y)e^{-ixy}dy.
 \]
 \end{definition}
 
 \begin{note}
-\textbf{v.p.} (от фран. \textit{Valeur Principale}) — интеграл в смысле главного значения по Коши.
+\textbf{v.p.} (от фран. \textit{Valeur Principale})~---~интеграл в смысле главного значения по Коши.
 \[
 \vpint_{\mathbb{R}} f(y) e^{-ixy}dy := \lim_{A \to +\infty} \int\limits_{-A}^{A} f(y)e^{-ixy}dy.
 \]
@@ -304,7 +304,7 @@ $
 \begin{definition}
     Обратное преобразование Фурье определим как
     \[
-        \mathcal{F}^{-1}[f](x) := \dfrac{1}{\sqrt {2\pi}}\vpint_{\R} f(y)e^{ixy}dy
+        \mathcal{F}^{-1}[f](x) := \dfrac{1}{\sqrt {2\pi}}\vpint_{\R} f(y)e^{ixy}dy.
     \]
 \end{definition}
 
@@ -313,15 +313,15 @@ $
 \end{note}
 
 \begin{note}
-    Ключевым отличием интеграла в смысле главного значения от несобственного интеграла Лебега являются симметричные пределы интегрирования.
-    Нетрудно заметить, что интеграл в смысле главного значения от любой нечётной функции $g \in L_1^{loc}(\R)$ будет равен 0:
+    Ключевым отличием интеграла в смысле главного значения от несобственного интеграла Лебега являются симметричные пределы интегрирования.\\
+    Нетрудно заметить, что интеграл в смысле главного значения от любой нечётной функции $g \in L_1^{loc}(\R)$ будет равен $0$:
     \[
         \forall A \in \R \hookrightarrow \int_{-A}^{A} g dx = 0 \Ra \vpint_{\R} gdx = 0.
     \]
 \end{note}
 \subsection{Интеграл Фурье}
 \begin{question}
-Нас будет интересовать вопрос -- для каких функций обратное преобразование Фурье действительно является обратным преобразованием, то есть
+Нас будет интересовать вопрос: для каких функций обратное преобразование Фурье действительно является <<обратным>> преобразованием? То есть
 \[
     \mathcal{F}^{-1}[\mathcal{F}[f]] = \mathcal{F}[\mathcal{F}^{-1}[f]] = f.
 \]
@@ -329,9 +329,9 @@ $
 Однако не все так просто.
 \end{question}
 \begin{definition}
-    Для всякого $A > 0$ введём следующее обозначение:
+    введём следующее обозначение $\forall A > 0$:
     \[
-        I_A[f](x) = \dfrac{1}{\sqrt {2\pi}} \int_{-A}^{A} \mathcal{F}[f](y)e^{ixy}dy
+        I_A[f](x) = \dfrac{1}{\sqrt {2\pi}} \int_{-A}^{A} \mathcal{F}[f](y)e^{ixy}dy.
     \]
 \end{definition}
 
@@ -355,7 +355,7 @@ I_A \left[ f \right](x) = \int\limits_{-\infty}^{+\infty} f(x - t) \frac{\sin(At
 %    \label{fig:graph1}
 %\end{figure}
 
-Таким образом мы можем применить теорему Фубини к $F$ и получить для $\iint_{(-A, A) \times \R} F(y, u)dydu$ с одной стороны вот такое выражение:
+Таким образом, мы можем применить теорему Фубини к $F$ и получить для $\displaystyle \iint_{(-A, A) \times \R} F(y, u)dydu$ с одной стороны вот такое выражение:
 \begin{multline*}
     \iint_{(-A, A) \times \R} F(y, u) du dy = \int_{\R} f(u) \int_{-A}^{A} e^{i(x - u)y}dy du = \\ =
     \int_{\R} f(u) \dfrac{e^{i(x - u)A} - e^{-i(x - u)A}}{i(x - i)}du = \int_{\R} f(u) \dfrac{2 \sin A(x - u)}{x - u}du = \int_{\R} f(x - t) \dfrac{2 \sin At}{t}dt.
@@ -373,22 +373,22 @@ I_A \left[ f \right](x) = \int\limits_{-\infty}^{+\infty} f(x - t) \frac{\sin(At
 \begin{definition}
     Пусть $f \in L_1^{loc}(\mathbb{R})$.
 \[
-\text{Если } \exists \lim_{A \to +\infty} I_A[f](x) \text{ при } x \in \mathbb{R}, \text{ то говорят, что $\exists$ интеграл Фурье функции } f 
+\text{Если } \exists \lim_{A \to +\infty} I_A[f](x) \text{ при } x \in \mathbb{R}, \text{ то говорят, что $\exists$ интеграл Фурье функции } f. 
 \]
 
-\begin{center}
+\begin{remark}
     По сути интеграл Фурье совпадает с $F^{-1}[F[f]].$
-\end{center}
+\end{remark}
 \end{definition}
 
 \begin{theorem}[Принцип локализации.]
     Пусть \( \widetilde{f} \in L_1([-\pi, \pi]) \) и \(2\pi\)-периодична.
     Пусть \( f \in L_1(\mathbb{R}) \) и совпадает с \( \widetilde{f} \) в некоторой окрестности точки \( \underline{x} \in \mathbb{R} \).
     Тогда следующие утверждения эквивалентны:
-    \begin{itemize}
-        \item Интеграл Фурье функции $f$ в точке \(\underline{x}\) сходится.
-        \item Ряд Фурье функции \(\widetilde{f}\) сходится в точке \(\underline{x}\).
-    \end{itemize}
+    \begin{enumerate}
+        \item[$\bullet$] Интеграл Фурье функции $f$ в точке \(\underline{x}\) сходится;
+        \item[$\bullet$] Ряд Фурье функции \(\widetilde{f}\) сходится в точке \(\underline{x}\).
+    \end{enumerate}
     Более того, в случае наличия сходимости справедливо равенство:
 \[
 \frac{1}{\sqrt{2\pi}}\,\vpint
@@ -396,7 +396,7 @@ _{-\infty}^{+\infty}
 \mathcal{F}[f](y)\,e^{\,i x\,y}\,dy
 \;=\;
 \sum_{n\in\mathbb{Z}}
-c_{n}\bigl(\widetilde{f}\bigr)\,e^{\,i n x}
+c_{n}\bigl(\widetilde{f}\bigr)\,e^{\,i n x}.
 \]
 \end{theorem}
 

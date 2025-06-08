@@ -1,10 +1,11 @@
 \subsubsection{Интегрирование несобственного интеграла по параметру.}
 \begin{theorem}
-    Пусть $Y = (Y, \NN, \nu)$ -- пространство конечной меры и задана
-    \[
-        f: [a, b) \times Y \to \overline{\R}.
-    \]
-    такая, что $\forall y \in Y$ интеграл $\int_a^{\ra b} f(t, y)dt = J(y)$ -- сходится, $\int_a^{\ra b}f(t, y)dt$ сходится равномерно по параметру и $\forall b' \in (a, b) \hookrightarrow f \in L_1(\LL^1 \otimes \nu)$.
+    Пусть $Y = (Y, \NN, \nu)$~---~пространство конечной меры и задана $f$: $[a, b) \times Y \to \overline{\R}$: 
+    \begin{enumerate}
+        \item[$\bullet$] $\forall y \in Y$ интеграл $\int_a^{\ra b} f(t, y)dt = J(y)$ сходится;
+        \item[$\bullet$] $\int_a^{\ra b}f(t, y)dt$ сходится равномерно по параметру;
+        \item[$\bullet$] $\forall b' \in (a, b) \hookrightarrow f \in L_1(\LL^1 \otimes \nu)$.
+    \end{enumerate}
     Тогда $J(y) \in L_1(Y)$ и верно следующее утверждение:
     \[
         \int_Y J(y)d\nu = \int_a^{\ra b} \int_Y f(t, y)d\nu(y)dt.
