@@ -100,17 +100,17 @@ $$ \forall \epsilon > 0 \  \exists N (\epsilon) \in \N: \forall n \geq N, \foral
 \begin{proof}
 	Разберём случай $p \in [1, +\infty)$. В силу предыдущей теоремы достаточно доказать, что любой абсолютно сходящийся ряд в $L_p(\mu)$ сходится в $L_p(\mu)$.\\
 	Пусть $\sum\limits_{k=1}^\infty f_k$ ~---~ абсолютно сходящийся ряд в $L_p(\mu)$.
-	То есть $\sum\limits_{k=1}^\infty \|f_k\|_p$ сходится как числовой ряд. Определим $F_n := \bigg(\sum\limits_{k=1}^{N} |f_k|\bigg)^p$. Тогда $\{F_N\}_{N=1}^\infty$ ~---~ монотонная (неубывающая) функциональная последовательность.
+	То есть $\sum\limits_{k=1}^\infty \|f_k\|_p$ сходится как числовой ряд. Определим $F_n (x) := \bigg(\sum\limits_{k=1}^{N} |f_k (x)|\bigg)^p$. Тогда $\{F_N (x)\}_{N=1}^\infty$ ~---~ монотонная (неубывающая) функциональная последовательность.
 	\begin{reminder}
 		Монотонность функциональной последовательности ~---~ это монотонность последовательность по $n$ при каждом фиксированом $x$.
 	\end{reminder}
 	Используя неравенство Минковского, покажем, что $F_n$ интегрируема: \[
-		\forall N \in \N \emb \left(\int\limits_X F_n(x)d\mu(x)\right)^{1/p} = \left(\int\limits_X \bigg(\sum_{k=1}^{N} |f_k|\bigg)^p d\mu(x)\right)^{1/p} \leq \sum_{k=1}^N \|f_k\|_p \leq \sum_{k=1}^{\infty} \|f_k\|_p < +\infty.
+		\forall N \in \N \emb \left(\int\limits_X F_n(x)d\mu(x)\right)^{1/p} = \left(\int\limits_X \bigg(\sum_{k=1}^{N} |f_k (x)|\bigg)^p d\mu(x)\right)^{1/p} \leq \sum_{k=1}^N \|f_k\|_p \leq \sum_{k=1}^{\infty} \|f_k\|_p < +\infty.
 	\]
 	Тогда по теореме Леви \[
 	\exists \lim_{N\ra\infty}\left(\int\limits_X F_n(x)d\mu(x)\right)^{1/p} = \left(\int\limits_X \lim_{N\ra\infty} F_n(x)d\mu(x)\right)^{1/p}
 	\]\[
-	\implies \left(\int\limits_X \bigg(\sum_{k=1}^\infty |f_k|\bigg)^p d\mu(x)\right)^{1/p} \leq \sum_{k=1}^{\infty} \|f_k\|_p < +\infty.
+	\implies \left(\int\limits_X \bigg(\sum_{k=1}^\infty |f_k (x)|\bigg)^p d\mu(x)\right)^{1/p} \leq \sum_{k=1}^{\infty} \|f_k\|_p < +\infty.
 	\]
 	\[
 		\implies \sum_{k=1}^\infty |f_k(x)| \text{ конечна при $\mu$-п.в. }x \in X.
@@ -221,7 +221,7 @@ $$ \forall \epsilon > 0 \  \exists N (\epsilon) \in \N: \forall n \geq N, \foral
 	\]\[
 		a = x_0 < x_1 < \dots < x_{N_T} = b.
 	\]
-	Пусть $f: [a, b] \ra \R$. Тогда $V_T(f)$ ~---~ вариация функции $f$ по разбиению $T$\[
+	Пусть $f$: $[a, b] \ra \R$. Тогда $V_T(f)$ ~---~ вариация функции $f$ по разбиению $T$\[
 		V_T(f) := \sum_{k=0}^{N_T-1} |f(x_{k+1}) - f(x_k)|
 	\]
 	\[
@@ -375,7 +375,7 @@ $$ \forall \epsilon > 0 \  \exists N (\epsilon) \in \N: \forall n \geq N, \foral
 
 \begin{definition}
 \label{def:ac}
-	функция $f: [a, b] \ra \R$ называется абсолютно непрерывной на $[a,b]$, если
+	функция $f$: $[a, b] \ra \R$ называется абсолютно непрерывной на $[a,b]$, если
 
 \begin{equation*}\begin{gathered}
 	\forall \epsilon \; \exists \delta (\epsilon) > 0: \forall \text{ \underline{дизъюнктивной} системы }\{(a_k, b_k)\}_{k=1}^N:
@@ -424,7 +424,7 @@ $$ \forall \epsilon > 0 \  \exists N (\epsilon) \in \N: \forall n \geq N, \foral
 \subsection{N-свойство Лузина}
 
 \begin{definition}
-	Пусть $f: \R^n \rightarrow R$. Будем говорить, что функция обладает N-свойством Лузина, если для любого измеримого множества $E \subset \R^n \ \hookrightarrow \LL^n(E) = 0 \Rightarrow \LL^1(f(E)) = 0$.
+	Пусть $f$: $\R^n \rightarrow R$. Будем говорить, что функция обладает N-свойством Лузина, если для любого измеримого множества $E \subset \R^n \ \hookrightarrow \LL^n(E) = 0 \Rightarrow \LL^1(f(E)) = 0$.
 \end{definition}
 
 \begin{theorem}
@@ -453,7 +453,7 @@ $$ \forall \epsilon > 0 \  \exists N (\epsilon) \in \N: \forall n \geq N, \foral
 	\begin{cases}
 		f \in BV([a, b]) \\
 		f \in C([a, b]) \\
-		f - \text{обладает N-свойством Лузина}
+		f \text{обладает N-свойством Лузина}
 	\end{cases}
 	$$
 	В одну сторону доказательство понятно и было в курсе. В другую сторону доказательство менее тривиальное и в курсе считается не обязательным.
